@@ -6,6 +6,7 @@ authors: [ jpage, pmig ]
 tags: [ On-Premises, ISV, Software Distribution Platform ]
 image: https://github.com/user-attachments/assets/789b7bc4-b507-4c38-8e11-27d4dc61b8ef
 ---
+
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
 ![5-ways thumbnail](https://github.com/user-attachments/assets/789b7bc4-b507-4c38-8e11-27d4dc61b8ef)
@@ -18,7 +19,7 @@ In recent years, companies of all sizes have faced a wave of new regulations and
 
 For [Independent Software Vendors (ISVs)](/glossary/isv-meaning/), this shift means the days of simply convincing a single decision-maker with a product demo and  only needing a credit card number are gone. Today’s enterprise customers have to deal with internal controls, legal reviews, and compliance checks before they can approve any new software. As a vendor, understanding exactly in which ways their end-customers hands are tied and preparing for their specific constraints is crucial if you want to sell software they can actually adopt.
 
-In industries like healthcare, banking, and government, customers can’t just [hand over a credit card](/glossary/saas-definition/) and grant access to their infrastructure. Vednor have to offer a more thoughtful approach to software delivery.
+In industries like healthcare, banking, and government, customers can’t just [hand over a credit card](/glossary/saas-definition/) and grant access to their infrastructure. Vendor have to offer a more thoughtful approach to software delivery.
 
 So, what’s the takeaway? You don’t need to obsess over your customers—you just need to understand them. Recognizing their restrictions, the environments they host software in, and how you can make self-hosting easier is key.
 
@@ -36,23 +37,23 @@ So how can this be achieved:
 
 A consistent, and what many consider to be a software versioning best practice is to use a method like Semantic Versioning (SemVer), which has intuitive and inherently encoded information that helps customers understand what to expect with each release. Use the MAJOR.MINOR.PATCH format to communicate changes clearly:
 
--   **Major** for breaking changes. 
--   **Minor** for new features. 
+-   **Major** for breaking changes.
+-   **Minor** for new features.
 -   **Patch** for bug fixes.
 
 ### Well-Packaged Solutions
 
 Examples across varied environments of optimized packaging prepared for each potential target:
 
--   Use **multi-architecture Docker images** to support diverse systems. 
+-   Use **multi-architecture Docker images** to support diverse systems.
 -   Provide **metadata-rich Helm charts** with versioning and repository links for transparency.
 
 ### Cloud-Native Portability
 
-Portability as mentioned before is hugely beneficial as application might be dynamic and change environmnets over time, consider adopting the principles of the 12-Factor App to enhance adaptability across environments, some useful tips are to:
+Portability as mentioned before is hugely beneficial as application might be dynamic and change environments over time, consider adopting the principles of the 12-Factor App to enhance adaptability across environments, some useful tips are to:
 
--   Externalize configurations using environment variables. 
--   Treat backing services like databases as replaceable resources. 
+-   Externalize configurations using environment variables.
+-   Treat backing services like databases as replaceable resources.
 -   Offer deployment methods compatible with VMs, bare-metal, and Kubernetes.
 
 
@@ -62,14 +63,14 @@ Security is paramount in on-prem environments and any environment for that matte
 
 -   Document dependencies and licensing for compliance.
 -   Identify vulnerabilities through automated CVE scans.
--   Build trust by providing customers with transparent software component details.  
+-   Build trust by providing customers with transparent software component details.
 
 ### Secure Base Images
 
 Have security in mind a the deepest base level of your software. Start with secure, minimal base images:
 
 -   Use **distroless images** to reduce attack surfaces.
--   Apply **cryptographic signatures** to ensure image integrity. 
+-   Apply **cryptographic signatures** to ensure image integrity.
 -   Regularly scan images for vulnerabilities and host them in trusted registries.
 
 
@@ -85,10 +86,10 @@ This is exactly the role software vendors must play when it comes to deployment 
 
 To provide this level of assurance, ISVs need to rigorously test their software across diverse deployment targets. Here’s how to approach it:
 
--   **Build Sophisticated Pre-Flight Checks**  
-    Pre-flight checks validate whether the target environment meets the necessary requirements for your software to run. These automated checks can verify resource availability, version compatibility, and other critical dependencies before deployment begins, reducing the likelihood of failures.  
--   **Simulate Real Target Environments with IaC tools**  
-    Tools like Pulumi or Terraform can be used to create infrastructure simulations that mimic customer environments. These Infrastructure as Code (IaC) templates allow you to test your software in controlled replicas of varied environments, ensuring compatibility across different configurations.
+-   **Build Sophisticated Pre-Flight Checks**
+Pre-flight checks validate whether the target environment meets the necessary requirements for your software to run. These automated checks can verify resource availability, version compatibility, and other critical dependencies before deployment begins, reducing the likelihood of failures.
+-   **Simulate Real Target Environments with IaC tools**
+Tools like Pulumi or Terraform can be used to create infrastructure simulations that mimic customer environments. These Infrastructure as Code (IaC) templates allow you to test your software in controlled replicas of varied environments, ensuring compatibility across different configurations.
 
 
 ## 3\. Simplify Licensing
@@ -99,21 +100,21 @@ Licensing is the mechanism through which vendors control the access and define t
 
 ### Two Primary Approaches to Licensing
 
-1.  **Simple On/Off Licensing**:  
+1.  **Simple On/Off Licensing**:
 This straightforward approach uses a license key to activate or deactivate an entire deployment or by simply giving access to a private container registry. While it’s easy to implement and manage, it offers limited flexibility. Essentially, the license acts as a switch, either granting or denying access to the entire application.
 
 2.  **Feature-Flag Licensing**:
-    This approach uses a more granular licensing system, where individual features within an application deployment can be unlocked or restricted via feature flags, this method also allows for dynamic pricing based on users, data usage or storage. While this method provides greater flexibility to tailor features to customer needs, it requires more effort to implement and maintain due to the complexity of managing feature states and dependencies. 
+This approach uses a more granular licensing system, where individual features within an application deployment can be unlocked or restricted via feature flags, this method also allows for dynamic pricing based on users, data usage or storage. While this method provides greater flexibility to tailor features to customer needs, it requires more effort to implement and maintain due to the complexity of managing feature states and dependencies.
 
 
 ### Licensing as a Tool for Insights
 
 The right licensing mechanism can go beyond access control, offering valuable insights into software usage. By incorporating usage tracking and reporting into the licensing process, vendors can monitor adoption patterns, identify opportunities for contract expansion, and address overages during renewal cycles.
 
--   **For vendors:**  
-    While licensing dashboards may seem unnecessary for vendors with only a few on-prem customers, they become incredibly valuable as the customer base grows. These dashboards can track contract expirations, monitor enabled features, and help identify potential infractions.
--   **For end customers:**  
-    Detailed usage reports allow customers to visualize their software utilization, helping them avoid contract violations and better plan for future needs. This transparency fosters trust and encourages smoother renewals or expansions.
+-   **For vendors:**
+While licensing dashboards may seem unnecessary for vendors with only a few on-prem customers, they become incredibly valuable as the customer base grows. These dashboards can track contract expirations, monitor enabled features, and help identify potential infractions.
+-   **For end customers:**
+Detailed usage reports allow customers to visualize their software utilization, helping them avoid contract violations and better plan for future needs. This transparency fosters trust and encourages smoother renewals or expansions.
 
 
 ## 4\. Provide Unified Installers and Self-Service Updates
@@ -145,29 +146,29 @@ Initially, customers may be reluctant to update their software too often. They k
 
 ![Communication](https://github.com/user-attachments/assets/b952526a-fe7b-4256-858b-8f2f3b666d82)
 
-When vendors are dealing with end-customers who are not at liberty to grant access to their infrastructure. You must be able to build out or leverage software delivery platforms that bridge the gap between you and them. “Bridging the gap“ is a saying at times admitadely overused, but really what are we referring to? We are talking about processes and platforms that are conducive to one thing, **clear communication**.  
+When vendors are dealing with end-customers who are not at liberty to grant access to their infrastructure. You must be able to build out or leverage software delivery platforms that bridge the gap between you and them. “Bridging the gap“ is a saying at times admittedly overused, but really what are we referring to? We are talking about processes and platforms that are conducive to one thing, **clear communication**.
 Communication, just to clarify isn’t only jumping on a call and chatting directly to each other. If it were that simple, exchanging phone numbers would solve all your problems. Here are the elements I believe lead to truly effective communication with end-customers:
 
 -   **Establish clear collaboration channels:** Define how you and your customers will work together, ensuring everyone knows where and how to share feedback or report issues.
 -   **Expose health endpoints:** Provide software with health endpoints that both the vendor and customer can monitor, ensuring everyone operates with the same base data.
 -   **Share key metrics and logs:** If possible and always with the consent of the end customer, implement processes to expose or share non-sensitive but essential metrics or logs, enabling more effective troubleshooting when errors occur.
 -   **Deliver thorough documentation:** Offer well-organized, easily accessible, and comprehensive documentation to reduce ambiguity and save time.
--   **Check in routinely:** Schedule regular usage, performance, and satisfaction check-ins to identify what can be improved to enhance customer success and satisfaction.  
+-   **Check in routinely:** Schedule regular usage, performance, and satisfaction check-ins to identify what can be improved to enhance customer success and satisfaction.
 
-Of course, there are many other ways to improve communication with end-customers. Remember that one of the very first things we mentioned in this piece is the unescapable base requirement of understanding your customer. As time goes by, customer needs change and previously reached understanding might need updating. The only way to achieve it is by being commited to high-quality communication and treat it as if it was a feature of your product.
+Of course, there are many other ways to improve communication with end-customers. Remember that one of the very first things we mentioned in this piece is the inescapable base requirement of understanding your customer. As time goes by, customer needs change and previously reached understanding might need updating. The only way to achieve it is by being commited to high-quality communication and treat it as if it was a feature of your product.
 
 ## Common Pitfalls: Things to Avoid When Applying These Methods
 
-1.  **Neglecting Thorough Deployment Testing**  
-    Insufficient validation of deployment targets can lead to compatibility issues, unexpected failures, and frustrated customers. Not testing enough or not testing the right way can hugely impact your customer trust 
-2.  **Failing to Address Security and Compliance**  
-    Overlooking essential components like SBOMs, secure base images, or compliance with industry standards can lead to vulnerabilities, compliance issues. If your software ever becomes a vulnerability source in a customer controlled environment, a churn is surely on the horizon.
-3.  **Lack of Visibility into Software Health**  
-    Without exposing health endpoints or sharing relevant logs, troubleshooting becomes exponentially more challenging for both vendors and customers, nobody want to be on an on-call bridge for longer than strictly needed.
-4.  **Ignoring Customer Feedback and Evolving Needs**  
-    Customer requirements and environments change over time. Failing to adapt to these shifts by not engaging in regular feedback loops risks misalignment with customer priorities.
-5.  **Overloading Software with Dependencies**  
-    Relying on too many external components or locking into opinionated third-party services can make deployments brittle and harder to support, especially in diverse environments.
+1.  **Neglecting Thorough Deployment Testing**
+Insufficient validation of deployment targets can lead to compatibility issues, unexpected failures, and frustrated customers. Not testing enough or not testing the right way can hugely impact your customer trust
+2.  **Failing to Address Security and Compliance**
+Overlooking essential components like SBOMs, secure base images, or compliance with industry standards can lead to vulnerabilities, compliance issues. If your software ever becomes a vulnerability source in a customer controlled environment, a churn is surely on the horizon.
+3.  **Lack of Visibility into Software Health**
+Without exposing health endpoints or sharing relevant logs, troubleshooting becomes exponentially more challenging for both vendors and customers, nobody want to be on an on-call bridge for longer than strictly needed.
+4.  **Ignoring Customer Feedback and Evolving Needs**
+Customer requirements and environments change over time. Failing to adapt to these shifts by not engaging in regular feedback loops risks misalignment with customer priorities.
+5.  **Overloading Software with Dependencies**
+Relying on too many external components or locking into opinionated third-party services can make deployments brittle and harder to support, especially in diverse environments.
 
 
 ## Conclusion
