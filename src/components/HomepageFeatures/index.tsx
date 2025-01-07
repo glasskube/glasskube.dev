@@ -53,10 +53,8 @@ function Feature({title, icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4', 'margin-top--lg')}>
       <div className={clsx('text--center', styles.iconBorder)}>
-        <FontAwesomeIcon icon={icon} size="8x" className={styles.iconHeight} />
-      </div>
-      <div className="text--center padding-horiz--md margin-top--lg">
-        <Heading as="h3" className="">
+        <FontAwesomeIcon icon={icon} size="4x" className={styles.iconHeight} />
+        <Heading as="h3" className="margin-top--md">
           {title}
         </Heading>
         <p>{description}</p>
