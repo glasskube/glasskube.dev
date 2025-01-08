@@ -6,12 +6,12 @@
 }
 
 .iconHeight {
-  height: 128px;
+  height: 64px;
 }
 
 .iconBorder {
   position: relative;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
 }
 
 .iconBorder::before {

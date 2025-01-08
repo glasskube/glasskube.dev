@@ -8,10 +8,16 @@
 }
 
 .testimonial {
-  background-color: var(--ifm-color-emphasis-100);
+  background: var(--ifm-color-emphasis-200);
   border-radius: 8px;
   padding: 1.5rem;
   height: 100%;
+}
+
+[data-theme='dark'] {
+  .testimonial {
+    background: var(--ifm-background-surface-color);
+  }
 }
 
 .testimonialContent {

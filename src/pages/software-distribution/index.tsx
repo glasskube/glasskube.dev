@@ -7,6 +7,7 @@ import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
 import SoftwareDistributionFeatures from '@site/src/pages/software-distribution/_components/SoftwareDistributionFeatures';
+import Link from '@docusaurus/Link';
 
 function Header() {
   return (
@@ -14,6 +15,19 @@ function Header() {
       <Heading as="h1" className={styles.heroHeading}>
         Software Distribution
       </Heading>
+      <p>
+        Distributing software across diverse customer environments with
+        different configurations can be tricky.
+        <br />
+        The following building blocks have been the most crucial in our
+        experience.
+      </p>
+      <p>
+        <strong>
+          For a full list and details of building blocks, please refer to our
+          <Link to="/white-paper/building-blocks/"> white paper</Link>.
+        </strong>
+      </p>
       <DemoButton additionalClassNames={'light button--lg margin-top--lg'} />
     </section>
   );
