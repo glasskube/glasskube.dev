@@ -21,8 +21,9 @@ const config: Config = {
   organizationName: 'glasskube', // Usually your GitHub org/user name.
   projectName: 'glasskube', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -118,9 +119,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
-      /* x-release-please-start-version */
-      content: `🎉 We just released v0.26.0 of our Open Source Kubernetes Package Manager on <a href="https://github.com/glasskube/glasskube/" target="_blank">⭐ GitHub ⭐</a>.`,
-      /* x-release-please-end */
+      content: `🎉 We just released v0.26.1 of our Open Source Kubernetes Package Manager on <a href="https://github.com/glasskube/glasskube/" target="_blank">⭐ GitHub ⭐</a>.`,
       isCloseable: false,
     },
     image:
@@ -134,6 +133,7 @@ const config: Config = {
       items: [
         {label: 'Software Distribution', to: '/software-distribution/'},
         {label: 'Blog', to: '/blog/'},
+        {label: 'White Paper', to: '/white-paper/building-blocks/'},
         {label: 'Pricing', to: '/pricing'},
         {type: 'custom-wrapper', position: 'right'},
         // {label: 'Login', to: 'https://glasskube.cloud/', position: 'right'},

@@ -89,15 +89,15 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--6', 'margin-top--lg')}>
+    <div className={clsx('col col--6', 'margin-vert--lg')}>
       <div className={clsx('text--center', styles.iconBorder)}>
         <FontAwesomeIcon icon={icon} size="8x" className={styles.iconHeight} />
-      </div>
-      <div className="text--center padding-horiz--md margin-top--lg">
-        <Heading as="h3" className="">
+        <Heading as="h3" className="margin-top--md">
           {title}
         </Heading>
-        <p>{description}</p>
+        <div className="text--center padding-horiz--md">
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -107,7 +107,7 @@ export default function SoftwareDistributionFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row margin-top--xl">
+        <div className="row margin-top--md">
           <div className="col text--center">
             <Heading as="h2">
               Building blocks for Modern On-Prem Software distribution

@@ -56,8 +56,6 @@ As we are working towards this goal we will need to iterate fast and things will
 
 ## Packages and Apps schedule 📦
 
-All planned and already supported packages can be found on our [Packages Directory](/packages/).
-
 Can't find a package or want your app included in the list? We are always adding new supported packages & apps,
 so just join us on [Discord](https://discord.gg/SxH6KUCGH7) or open up a new issue and let us know what is missing!
 

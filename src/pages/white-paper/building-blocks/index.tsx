@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import WhitePaperForm from '@site/src/pages/white-paper/building-blocks/WhitePaperForm';
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
-import NewsletterSignup from '@site/src/components/NewsletterSignup';
 
 const TITLE = 'Building Blocks for Modern On-Prem Software Distribution';
 const DESCRIPTION =

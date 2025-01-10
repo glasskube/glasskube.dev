@@ -63,6 +63,7 @@ function HomepageHeader() {
                 }>
                 {() => {
                   const Player =
+                    // eslint-disable-next-line @typescript-eslint/no-require-imports
                     require('@lottiefiles/react-lottie-player').Player;
                   return (
                     <Player
