@@ -6,6 +6,9 @@ authors: [ jpage, pmig ]
 tags: [ SaaS, On-Premises, Software Distribution Platforms ]
 image: https://github.com/user-attachments/assets/acb7688e-29a3-4bea-b332-478f2c398225
 ---
+
+
+
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
 ![Thumbnail](https://github.com/user-attachments/assets/acb7688e-29a3-4bea-b332-478f2c398225)
@@ -28,8 +31,8 @@ When you break down what’s needed for modern software distribution to almost a
 
 Of course, it’s not as simple as it sounds. Software distribution platforms have to be equipped to cater to a wide range of diverse end customers with varying target environment configurations. By "diverse," I mean customers who might deploy to heir own on-premises hardware, across various cloud providers, in hybrid setups, or even within highly secure, [air-gapped](/glossary/air-gapped-meaning/) environments. These platforms have to be capable of addressing these challenges, and while they may use different names for their features, they generally provide solutions that take the rough shape of the following:
 
--   **Release Channels**: Which are logical distribution channels for organizing and delivering different versions of software.   
--   **CI Pipeline Integration**: Allowing the distribution platform to seamlessly extend the vendor's CI/CD process, often becoming the “CD” component itself.   
+-   **Release Channels**: Which are logical distribution channels for organizing and delivering different versions of software.
+-   **CI Pipeline Integration**: Allowing the distribution platform to seamlessly extend the vendor's CI/CD process, often becoming the “CD” component itself.
 -   **Package Configuration**: Offering customizable software packages that adapt to varied deployment requirements and target environments.
 -   **Owner/Vendor and Customer/Tenant Relationship**: Bridging the gap between vendors and customers. Especially crucial in moments of software unreliability and failure when troubleshooting and collaboration is needed to avoid downtime and unfulfilled SLAs.
 -   **License management:** this might not be a basic feature in all distribution platforms but many enterprise solutions work through issuing either access licences or feature flag licenses so it not rare to see them.
@@ -74,13 +77,13 @@ Here we are only covering four but there are many others on the market.
 
 ### Push Deployment Platforms
 
-**Octopus Deploy**  
+**Octopus Deploy**
 
 [Octopus Deploy](https://octopus.com/) is a highly regarded and feature-rich distribution platform. It offers a range of CI/CD features that enable software vendors to manage critical software lifecycle tasks from a single interface. One of its standout distribution features is its tenant-based deployment model. This setup allows vendors to define target environments and push code directly to deployment targets, which are then applied to the end customer’s infrastructure.
 
 Octopus Deploy is an excellent choice for platform teams serving internal developers within their organization or for specific use cases, such as those mentioned earlier. For example, it has successfully helped hotel software vendors significantly reduce the time and effort required to manage deployments across hotel locations.
 
-**Apollo by Palantir** 
+**Apollo by Palantir**
 
 [Apollo by Palantir](https://www.palantir.com/platforms/apollo/) operates on a similar assumption: that end customers place a high level of trust in the software being pushed to their environments. Apollo introduces the concept of _release channels_, which end customers subscribe to based on their “risk tolerance.” These channels, whether stable, production, beta, or others, allow vendors to deploy updates as needed. However, this approach inherently requires a degree of trust, as subscribing to a release channel means updates can be applied whenever the vendor deems them necessary.
 
@@ -125,26 +128,22 @@ While still in its early iterations, Glasskube is growing in capabilities and fu
 
 ## Comparison table
 
-| Feature                      | Replicated       | Apollo          | Octopus Deploy  | Glasskube Cloud |
-|------------------------------|------------------|-----------------|-----------------|-----------------|
-| Deployment Method            | Pull             | Push            | Push            | Pull            |
-| Vendor Platform for Managing Releases | Yes       | Yes             | Yes             | Yes             |
-| CI / CD Integration (Planned for Glasskube) | Yes | Yes              | Yes              | Planned             |
-| Customer Portal              | Yes             | No              | No              | Yes             |
-| Docker Support               | Yes             | Yes             | Yes             | Yes             |
-| Helm Support                 | Yes             | Yes              | Yes              | Yes             |
-| On Premises Support          | No             | No              | No             | Yes             |
-| Application Management       | Yes             | Yes              | Yes             | Yes             |
-| Customer Management          | Yes             | Yes              | Yes             | Yes             |
-| Deployment Management        | Yes             | Yes             | Yes             | Yes             |
-| Dashboards                   | Yes             | Yes             | Yes             | Yes             |
-| Branding                     | Yes             | Yes              | Yes             | Yes             |
-| Price                        | [Link](https://www.replicated.com/pricing)            | [Link](https://www.palantir.com/platforms/apollo/pricing/)        | [Link](https://octopus.com/pricing/overview)        | [Link](https://glasskube.dev/pricing/)        |
+| Feature                                    | Replicated                                 | Apollo by Palantir                                         | Octopus Deploy                               | Glasskube Cloud                        |
+|--------------------------------------------|--------------------------------------------|------------------------------------------------------------|----------------------------------------------|----------------------------------------|
+| Deployment Method                          | Pull                                       | Push                                                       | Push                                         | Pull                                   |
+| Vendor Platform for Application Management | ✅                                          | ✅                                                          | ✅                                            | ✅                                      |
+| Customer Portal for Deployment Management  | ✅                                          | ❌                                                          | ❌                                            | ✅                                      |
+| Vendor & Customer CI / CD Integration      | ✅                                          | ✅                                                          | ✅                                            | Planned                                |
+| Docker Support                             | ✅                                          | ✅                                                          | ✅                                            | ✅                                      |
+| Helm Support                               | ✅                                          | ✅                                                          | ✅                                            | ✅                                      |
+| Whitelabel Branding                        | ✅                                          | ❌                                                          | ❌                                            | ✅                                      |
+| On Premises / Self hosted Support          | ❌                                          | ❌                                                          | ❌                                            | ✅                                      |
+| Price                                      | [Link](https://www.replicated.com/pricing) | [Link](https://www.palantir.com/platforms/apollo/pricing/) | [Link](https://octopus.com/pricing/overview) | [Link](https://glasskube.dev/pricing/) |
 
 
 ## Conclusion
 
-As [ISVs](/glossary/isv-meaning/) and therfore software distributors, one of the most crucial things you can do, something we emphasize repeatedly on this blog, is to truly understand your customer. The goal of this comparison isn’t to pass judgment on software distribution platforms that adopt either the push or pull deployment model. Instead, the key takeaway is recognizing that some end customers will never accept external parties pushing changes to their infrastructure.
+As [ISVs](/glossary/isv-meaning/) and therefore software distributors, one of the most crucial things you can do, something we emphasize repeatedly on this blog, is to truly understand your customer. The goal of this comparison isn’t to pass judgment on software distribution platforms that adopt either the push or pull deployment model. Instead, the key takeaway is recognizing that some end customers will never accept external parties pushing changes to their infrastructure.
 
 The level of trust required for push deployments is typically only found within large enterprises with dispersed teams, where a hub-and-spoke software distribution architecture makes sense, or in vendor-edge scenarios where trust is inherently established. For any other situation, platforms built on the pull model, where customers are notified of updates and changes but retain control over deployment, are the only viable option.
 
