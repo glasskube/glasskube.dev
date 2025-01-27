@@ -5,23 +5,34 @@ import TabItem from '@theme/TabItem';
 # Quickstart
 
 ## Prerequisites
-Glasskube Cloud is designed to help distribute "on-prem" ready software to customer-controlled environments. The key phrase here is "on-prem ready."
+Distr is designed to help distribute "on-prem" ready software to customer-controlled environments. The key phrase here is "on-prem ready."
 
-## What does "on-prem ready" mean?
+### What does "on-prem ready" mean?
 
-### On-prem ready checklist: 
+#### On-prem ready checklist: 
 
-- Your application is fully containerized (Docker or Helm)
-- You are using some sort of consistent versioning 
-- If your application has dependencies, these should also be standardized and declared
+- Your application is **fully containerized** (Docker or Helm)
+- You are using some sort of **consistent versioning** 
+- If your application has dependencies, these should also be **standardized and declared**
 
 If you're an ISV who has developed a SaaS product and later been approached by a customer requesting to use your product "on-prem," you’ve likely experienced the challenges of lacking on-prem readiness. Deploying to on-premises, self-hosted, or complex customer-controlled environments requires deliberate decisions and architectural considerations made early in the development process to ensure such deployments are practical.
 
 Software built with on-prem readiness in mind from the start often reflects thoughtful design, focusing on maintainability and configurations suitable for future on-prem use cases. However, many software solutions aren’t initially created with these scenarios in mind. As customer requirements evolve, SaaS products may need adjustments to support on-prem deployments. Ideally, your application should already be containerized, with a Docker Compose file or Helm chart prepared. If not, feel free to reach out for white-glove onboarding assistance.
 
-### What changes are needed for on-prem readiness?
+#### What changes are needed for on-prem readiness?
 
 To bridge this gap, we've compiled a document outlining the foundational building blocks for achieving on-prem readiness. You can access this comprehensive [whitepaper here](/white-paper/building-blocks/).
+
+## Quickstart
+
+In this Quickstart guide, we’ll walk through the primary workflow designed to help Distr users get the most value from the platform. Here’s what we’ll cover:
+- **Onboarding a sample application** to explore how Distr works.
+- **Choosing a deployment target setup**:
+    - Onboard your first customer, or
+    - Assign yourself as the owner of the deployment target environment.
+- **Creating a deployment** and verifying its installation using the Distr agent.
+
+All of this can be easily accomplished by following the helpful Onboarding Wizard. Let’s get started!
 
 ## Follow the onboarding wizard to get started
 
@@ -62,7 +73,7 @@ Once you click "Continue," Distr will create a deployment named "Test-Customer."
 Deployment with status: *initial*
 ![deployment-check](https://github.com/user-attachments/assets/84437f8d-31e1-419c-899b-b714610e9a0c)
 
-### Connect the Target Environment with the Dirstr Agent
+### Connect the Target Environment with the Distr Agent
 
 To complete the final step and connect the target environment to Distr, you'll need to access the target environment and run the curl command displayed in the Onboarding Wizard console. In this test case, the agent will be installed in a local Docker Desktop environment. So make sure to have access to a local Docker desktop instance. 
 
@@ -100,21 +111,27 @@ You can also navigate to the main Dashboard page, where the widgets will update 
 ## Onboard more applications, customers and deployments.
 
 Distr users will only see the Onboarding Wizard once, and only if no applications have been onboarded. After completing the onboarding process by adding their first application, customer, and running the first deployment, all of these steps can be repeated individually as needed.
-### Add another application
+
+### Add More Applications
 
 Head over to the `Applications` tab and on the top right corner click on the `+ Add Application` button. And simply follow the steps.
 
-![add-application](https://github.com/user-attachments/assets/10b46258-6966-4178-909c-861ea83162fe)
+![add-application](https://github.com/user-attachments/assets/8479305e-add9-4945-916c-fda88c04124b)
 
-### Invite more customer
+### Invite More Customers
 Head over to the `Customers` tab and on the top right corner click on the `+ Invite customer` button. And simply follow the steps. 
 
-![invite-customer](https://github.com/user-attachments/assets/caa362f6-16bc-4e3b-9bed-cbcbe53add02)
-### Add more deployments
+![invite-customer](https://github.com/user-attachments/assets/83818aae-8201-42a1-a22b-49b0bb4a810f)
+
+:::info
+Once the customer's email address is submitted, the recipient will receive an email containing login credentials for the Distr Customer Portal. Through this portal, they can view and manage the deployments of the applications they have purchased from the ISV.
+:::
+
+### Add More Deployments
 
 Head over to the `Deployments` tab and click on the `+ Add deployment` button and follow the steps.
 
-![Add deployments](https://github.com/user-attachments/assets/4ec8fe54-7d24-46b9-88a0-6596f686d3ba)
+![Add deployments](https://github.com/user-attachments/assets/5cfb11f6-a5c7-4a47-91e0-d029515c4386)
 
-- For more information on how to deploy a Docker compose packaged application, check out this guide.
-- For more information on how to deploy a Helm chart packaged application, check out this guide.
+- For more information on how to deploy a Docker compose packaged application, check out this [guide](/products/cloud/docs/guides/onboarding-a-docker-app/).
+- For more information on how to deploy a Helm chart packaged application, check out this [guide](/products/cloud/docs/guides/onboard-helm-app/).
