@@ -1,0 +1,64 @@
+---
+slug: from-java-to-go
+title: "We switch from Java to Go one year ago"
+description: "I always told memory, and efficiency is cheap and doesn't matter, but I was wrong"
+authors: [ pmig ]
+tags: [ Java, Kotlin, Golang, Kubernetes, Docker ]
+image: https://github.com/user-attachments/assets/acb7688e-29a3-4bea-b332-478f2c398225
+---
+
+> I always told people memory is cheap and efficiency doesn't matter in most cases, but boy how wrong was I ..
+
+
+<!-- truncate -->
+
+
+My Java journey started back in 2011 (15 years ago - wow) when I started studying cs at the Vienna University of Technology.
+Using editors like [jEdit](https://www.jedit.org/) and compiling my Java programs by hand with the command line.
+The first "major" applications have been Java Swing GUI applications and "old school" web applications with JSP and Servlets.
+
+Professionally I started writing Java code in 2016 when I joined a company that was developing a Java-based web application.
+It used the classic Stack: Java, Spring Boot, Hibernate, and a PostgreSQL database.
+I always loved all the Spring Features like Dependency Injection, Spring Security and Spring Data JPA.
+Yes the application took half a minute to boot up and consumed instantly gigabytes of RAM, but who cares, memory is cheap, right?
+
+Over the next years I always picked Java (and later on Kotlin) for new projects due to the familiarity and the vast ecosystem,
+and being afraid of slower development speed in other languages like Go or Rust due to the initial learning effort.
+We even went so far as writing infrastructure code for Kubernetes clusters that automatically provision apps in
+[Kotlin](https://github.com/glasskube/operator).
+Although it is still used in production, I wish we would have written it in Go from the beginning.
+Together with additional tooling our Stack consumes way over 2 GBs of RAM even if idle.
+
+In 2024 we decided to write our first go service. The first couple of times I started the web server I thought waited couple
+of seconds until it would "boot up" as I didn't see any new logs as I realised it was already running.
+
+## Compile & Startup Time
+
+```shell
+...Started CoreApplicationKt in 8.201 seconds (process running for 8.726)
+```
+
+Where the go web server is ready to accept connections in **less than 100 milliseconds**.
+
+In the course of a developers years if I only restart the server 2 times an hour.
+This saves me an additional day (!) of development time per year.
+
+This can also get critical in a scenario where all replicas are scaled down to zero and need to be started up again
+to accept requests as quickly as possible.
+
+I mean how doesn't like speed? I do.
+
+
+## Dependency Management & Context
+
+
+
+
+## Debugging & IDE support
+
+
+
+## CI & Release tooling
+
+
+
