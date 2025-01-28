@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 # Quickstart
 
 ## Prerequisites
-Distr is designed to help distribute "on-prem" ready software to customer-controlled environments. The key phrase here is "on-prem ready."
+Distr is designed to help distribute "on-prem" ready software to [customer-controlled environments](/blog/5-ways-to-succeed-without-access-to-customer-environments/). The key phrase here is ["on-prem ready"](/white-paper/building-blocks/).
 
 ### What does "on-prem ready" mean?
 
@@ -26,6 +26,8 @@ To bridge this gap, we've compiled a document outlining the foundational buildin
 ## Quickstart
 
 In this Quickstart guide, we’ll walk through the primary workflow designed to help Distr users get the most value from the platform. Here’s what we’ll cover:
+
+- Open your **free** [Distr account](https://distr.sh/).
 - **Onboarding a sample application** to explore how Distr works.
 - **Choosing a deployment target setup**:
     - Onboard your first customer, or
@@ -37,14 +39,14 @@ All of this can be easily accomplished by following the helpful Onboarding Wizar
 ## Follow the onboarding wizard to get started
 
 :::warning
-The Onboarding Wizard will only appear if your Distr account has not yet created its first application, customer, or deployment. If you’ve already used the Onboarding Wizard but would like to add more applications, customers, or deployments, please follow these [instructions](#onboard-more-applications-customers-and-deployments)
+The Onboarding Wizard will only appear if your Distr account has not yet created its first application, customer, or deployment. If you’ve already used the Onboarding Wizard but would like to add more applications, customers, or deployments, please follow these [instructions.](#onboard-more-applications-customers-and-deployments)
 :::
 
 ### Onboarding Wizard
 The Onboarding Wizard is a step-by-step guide that assists Distr users in uploading an application based on a Docker Compose file or a Helm chart, onboarding a customer if one is available, and adding a deployment that will be installed by the Distr agent.
 
 :::info
-The Onboarding Wizard also offers the option to onboard a sample app for testing purposes. To gain a better understanding of how Distr works, we'll begin by onboarding the test app.
+The Onboarding Wizard also offers the option to onboard a sample app for testing purposes. To gain a better understanding of how Distr works, we'll begin by onboarding the [test app](https://github.com/go-shiori/shiori).
 :::
 
 ![wizard-start](https://github.com/user-attachments/assets/ec3023db-abe6-434e-9e28-452f693d3300)
@@ -67,17 +69,17 @@ Next, you'll move to the stage where users are prompted to choose a name and def
 ![define-owner](https://github.com/user-attachments/assets/a890ed82-05b4-4a83-ba4b-94c6aa51435c)
 
 :::info
-Once you click "Continue," Distr will create a deployment named "Test-Customer." Since the target deployment environment hasn't been connected yet, the deployment status will appear in the gray "initial" stage. To complete the process and make the deployment of our test app healthy, we'll need to connect the target environment to Distr.
+Once you click `Continue`, Distr will create a deployment named `Test-Customer`. Since the target deployment environment hasn't been connected yet, the deployment status will appear in the gray `initial` stage. To complete the process and make the deployment of our test app healthy, we'll need to connect the target environment to Distr.
 :::
 
-Deployment with status: *initial*
+Deployment with status: `initial`
 ![deployment-check](https://github.com/user-attachments/assets/84437f8d-31e1-419c-899b-b714610e9a0c)
 
 ### Connect the Target Environment with the Distr Agent
 
 To complete the final step and connect the target environment to Distr, you'll need to access the target environment and run the curl command displayed in the Onboarding Wizard console. In this test case, the agent will be installed in a local Docker Desktop environment. So make sure to have access to a local Docker desktop instance. 
 
-Once the agent is installed, it will pull the deployment specifications and install the deployment into the target environment. After installation, the agent will communicate with the Distr hub to confirm that the deployment is up and running. This will update the status on the deployment page to *"OK."*
+Once the agent is installed, it will pull the deployment specifications and install the deployment into the target environment. After installation, the agent will communicate with the Distr hub to confirm that the deployment is up and running. This will update the status on the deployment page to `"OK"`.
 ![run-agent](https://github.com/user-attachments/assets/0e85094b-f596-458b-8883-614bd5888347)
 
 
@@ -88,7 +90,7 @@ Run the Distr agent in the target environment:
 
 Check in the "Deployments" tab, to see if the test deployments health is *green*.
 
-Deployment with status: *OK*
+Deployment with status: `OK`
 ![agent-up](https://github.com/user-attachments/assets/b68c78d6-2508-4ba4-a885-bb0109418c7a)
 
 As mentioned earlier, the test bookmarking app is packaged in a Docker Compose file and runs locally on Docker Desktop. You can verify the deployment by checking the running Docker containers.
@@ -97,7 +99,7 @@ To do this, run the command `docker ps` to view the active containers in your Do
 
 Here's what you'll find:
 
-1. The Distr (glasskube) agent was installed first.
+1. The Distr agent was installed first.
 2. The agent then deployed two additional containers:
     - The Shiori app
     - The Shiori app's database container
