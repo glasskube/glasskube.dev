@@ -13,7 +13,7 @@ image: https://github.com/user-attachments/assets/acb7688e-29a3-4bea-b332-478f2c
 <!-- truncate -->
 
 
-My Java journey started back in 2011 (15 years ago - wow) when I started studying cs at the Vienna University of Technology.
+My Java journey started back in 2011 (15 years ago - wow) when I started studying computer science at the Vienna University of Technology.
 Using editors like [jEdit](https://www.jedit.org/) and compiling my Java programs by hand with the command line.
 The first "major" applications have been Java Swing GUI applications and "old school" web applications with JSP and Servlets.
 
@@ -27,10 +27,33 @@ and being afraid of slower development speed in other languages like Go or Rust 
 We even went so far as writing infrastructure code for Kubernetes clusters that automatically provision apps in
 [Kotlin](https://github.com/glasskube/operator).
 Although it is still used in production, I wish we would have written it in Go from the beginning.
-Together with additional tooling our Stack consumes way over 2 GBs of RAM even if idle.
 
-In 2024 we decided to write our first go service. The first couple of times I started the web server I thought waited couple
-of seconds until it would "boot up" as I didn't see any new logs as I realised it was already running.
+In hindsight this decision seems to be obvious, but having already invested so much time and experience, the decision wasn't so clear
+back then. As a rule of thumb I like to follow following credo:
+
+> **Either do a project in an unfamiliar domain or with an unfamiliar tech stack.**
+
+As this was our first project in the Kubernetes domain, we didn't wanted to also introduce execution risk in addition to
+market / product risk.
+
+But it became pretty significant early on why most of the current tooling is written in Go. Other operators barley consumed any memory or cpu.
+Our operator with additional tooling our Stack consumes way over 2 GBs of RAM even if idle.
+
+In 2024 we decided to rewrite our first Kotlin based "package operator". Into a more generic and extensible package manager.
+Being already familiar with the domain, the Kubernetes API, and the operator pattern we have chosen go as the programming language.
+
+After an actually not so steep learning curve we were able to accelerate faster and faster and nearly match developing speed as we would write Kotlin.
+
+As a company that is constantly evolving and launching new Tools in the DevTool space we decided in late 2024 to launch Distr - An Open Source Software Distribution platform,
+helping software vendors deploying into customer controlled environments.
+
+As we have familiarized ourselves with the go stack and have experience in the software distribution domain.
+We decided to choose Golang for Distr which will be our first web application in Go.
+
+The first couple of times I started the web server I waited a couple of seconds until it would "boot up"
+as I didn't see any new logs as I realised it was already running and is ready to accept connections.
+
+
 
 ## Compile & Startup Time
 
@@ -46,19 +69,61 @@ This saves me an additional day (!) of development time per year.
 This can also get critical in a scenario where all replicas are scaled down to zero and need to be started up again
 to accept requests as quickly as possible.
 
-I mean how doesn't like speed? I do.
+I mean, who doesn't like speed? I do for sure. :D
 
 
-## Dependency Management & Context
+## Frameworks and libraries
+
+In the java ecosystem mostly frameworks exists covering a whole part of the stack from the web server to the
+database layer.
+
+Go is different having smaller libraries, for example WEBSERVER, / ROUTER, Database. which don't neccesasry
+belong togeher but play well togheter giving you the ability to pick the libraries you like instead of using
+an all-in-one solution like spring or Quarkus. But with the landscape more fragemntated you will see projects
+differ more than your tradiontial Java EE oder Spring Boot application.
+
+## Dependency Injection & Context
+
+Coming from Spring Framework, I was used to annotate my Services with `@Service` and I can happily use them in
+other services. This is also how Angular works. But go is different.
+
+There are no Singleton Services that can hold some kind of state in go. But there are obviously ways around.
+
+We heavily use `Context ctx` which we pass around functions in order to juggle data around in the application.
 
 
+## Debugging & IDE su the port
+
+In the beginning I was very sceptic about debugging capabilities of go based applications, but debugging application,
+setting breakpoints, evaluating expression is as convenient as with applications that run in the JVM.
+
+So IDE support is definitive comparable.
 
 
-## Debugging & IDE support
+But when it comes to Exceptions and Stacktrace I've made better expiriences with the Java ecosystem, I personally
+think that IDE support (at least in IntelliJ) as slightly suprior as it hides traces from frameworks and
+creates Hyperlinks to the source files inside the scope where you quickly browse into. I haven't seen Intellij
+doing it go
 
+> Debugging and IDE support - which are crucial for developer expirience - are mostly on par, but from my expiriences
+> stack traces being more tightly coupled to your sources for the Java ecosystems
 
 
 ## CI & Release tooling
+
+
+Releasing is always related to dependency managmeent and application bundeling. In the java world there are gradle
+and Maven. With Maven being the established player in the field and Gradle the "newer" version. Altough the Java
+escosystem is already that old so there are basically no new tools around.
+
+In the go ecosystem I think that there are less libraries that do the same thing. There is often one good solution
+For dependency managmeent and go releases is a great tool.
+
+## Summary
+
+For our next projects espacially 
+
+
 
 
 
