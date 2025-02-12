@@ -1,17 +1,17 @@
 ---
 slug: from-java-to-go
-title: "We switched from Java to Go one year ago"
-description: "I always told people memory and efficiency are cheap and don't matter, but I was wrong."
+title: "We switched from Java to Go and I don't regret it"
+description: "I always told people memory is cheap, black magic is OK and efficiency doesn't matter, but I was wrong."
 authors: [ pmig ]
 tags: [ Java, Kotlin, Golang, Kubernetes, Docker ]
 image: https://github.com/user-attachments/assets/acb7688e-29a3-4bea-b332-478f2c398225
 ---
 
-> I always told people memory is cheap and efficiency doesn't matter in most cases, but boy, how wrong was I...
+> I always told people memory is cheap, black magic is OK and efficiency doesn't matter in most cases, but boy, how wrong was I...
 
 <!-- truncate -->
 
-My Java journey started back in 2011 (15 years ago - wow) when I started studying computer science at the Vienna University of Technology.
+My Java journey started back in 2011 (14 years ago - wow) when I started studying computer science at the Vienna University of Technology.
 Using editors like [jEdit](https://www.jedit.org/) and compiling my Java programs by hand with the command line.
 My first "major" applications were Java Swing GUI applications and "old school" web applications with JSP and Servlets.
 
@@ -22,12 +22,12 @@ Yes, the application took half a minute to boot up and consumed hundreds of mega
 
 Over the next few years, I always picked Java (and later on Kotlin) for new projects due to the familiarity and the vast ecosystem,
 and being afraid of slower development speed in other languages like Go or Rust due to the initial learning effort.
-We even went so far as writing infrastructure code for Kubernetes clusters that automatically provision apps in
-[Kotlin](https://github.com/glasskube/operator).
+We even went so far as writing infrastructure code for Kubernetes clusters that
+[automatically provision apps in Kotlin](https://github.com/glasskube/operator).
 Although it is still used in production, I wish we had written it in Go from the beginning.
 
 In hindsight, this decision seems to be obvious, but having already invested so much time and experience, the decision wasn't so clear
-back then. As a rule of thumb, I like to follow this credo:
+back then. As a rule of thumb to ensure productivity and efficiency, I like to follow this credo.
 
 > **Either do a project in an unfamiliar domain or with an unfamiliar tech stack.**
 
@@ -53,6 +53,20 @@ The first couple of times I started the web server, I waited a few seconds until
 because I didn't see any new logs, but I realized it was already running and ready to accept connections.
 
 ## Compile & Startup Time
+
+### Compilation
+
+Java's JIT (Just-In-Time) compiler and Go's AOT (Ahead-Of-Time) compiler are definitely two very different approaches
+and therefore hard to compare.
+Where Java supports incremental builds hot code reloading which also allow for faster startup times in development.
+But this comes at a cost of using Gradle / Maven which definitely have an appetite for memory themselves and are
+sadly still far from providing an excellent developer experience.
+
+Go, on the other hand, compiles the whole application into a single binary, which requires a full rebuild on every change.
+
+### Startup Time
+
+Starting a real-world but still super light Spring Boot application outputs round about the following:
 
 ```
 ...Started CoreApplicationKt in 8.201 seconds (process running for 8.726)
@@ -83,9 +97,14 @@ differ more than your traditional Java EE or Spring Boot application.
 Coming from Spring Framework, I was used to annotating my services with `@Service`, and I could happily use them in
 other services. This is also how Angular works. But Go is different.
 
-There are no Singleton Services that can hold some kind of state in Go. But there are obviously ways around it.
+Although singleton services even exist in the standard library e.g. `http.DefaultClient` or `base64.StdEncoding` dependency
+injection is not a real thing as runtime reflections is much more limited in Go when compared to Java.
 
+But there are obviously work around solutions in the Go ecosystem.
 It uses the `Context ctx`, which we pass around functions in order to juggle data around in the application.
+
+Having less _black magic_ around dependency injection is definitely a general theme in Go and probably also a main reason
+for its popularity.
 
 ## Debugging & IDE Support
 
@@ -109,7 +128,7 @@ and Maven, with Maven being the established player in the field and Gradle the "
 ecosystem is already that old, there are basically no new tools around.
 
 In the Go ecosystem, I think that there are fewer libraries that do the same thing. There is often one good solution
-for dependency management, and Go Releases is a great tool.
+for dependency management, and GoReleaser is a great tool.
 
 ## Summary
 
@@ -118,7 +137,8 @@ The initial learning curve wasn’t as steep as expected, and the benefits—bla
 and a more lightweight ecosystem—became apparent pretty quickly.
 
 Of course, Java still has its strengths, and for certain projects, it remains a solid choice. But for cloud-native applications,
-Kubernetes tooling, and software distribution, Go just feels like the right tool for the job.
+Kubernetes tooling, and our self-hostable software distribution platform, Go just feels like the right tool for the job.
 
 Will I ever write Java again? Probably. But for now, I’m enjoying the speed, simplicity, and flexibility of Go.
-And honestly, I don’t miss waiting for my app to start. 😄
+
+And honestly, I don’t miss all of Java's and Spring's black magic under the hood. 😄
