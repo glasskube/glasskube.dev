@@ -6,10 +6,15 @@ authors: [ pmig ]
 tags: [ Software Distribution Platforms ]
 image: https://github.com/user-attachments/assets/0858e3ef-cd51-44fa-be2a-eb192bce4e17
 ---
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+
+![thumbnail](https://github.com/user-attachments/assets/0858e3ef-cd51-44fa-be2a-eb192bce4e17)
 
 Since starting development of Glasskube, an open source package manager for Kubernetes in February of 2024, we’ve been thinking a lot about software packaging and distribution.
 
 What started off as a different take on [Helm](https://helm.sh/) ended up being a vehicle that exposed us to companies who had never packaged their software before, at least with easy on-prem portability in mind, and who were badly struggling to get it right.
+
+<!-- truncate -->
 
 Aren’t tools like Helm and [Docker](https://www.docker.com/) pretty straight forward to use? Yep, the packaging logic or tooling aren’t the issue here. The issue we found is that companies who in an ideal world would be happy building their SaaS products, are now approached by increasingly large cohorts of their potential customer base requesting on-prem installable software.
 
@@ -121,3 +126,5 @@ Software deployment methods are never an afterthought if how they were architect
 When an app has to lift and shift from a SaaS to something portable and installable in any number of diverse environments, considerations like maintenance, responsibility sharing and licensing are now part of the equation. How end-users consume SaaS is much different to on-prem customers and developers eventually have deal with how “on-prem“ ready they are. 
 
 Tools like Distr can help bare the brunt of some of the new implications involved in delivering on-prem software has, unfortunately though, there is simply no antidote for software that’s not on-prem ready.
+
+<DefaultCTA />
