@@ -4,5 +4,120 @@ title: "Why software distribution is usually an afterthought for most engineers"
 description: "How to build an on-prem application when all you know is SaaS"
 authors: [ pmig ]
 tags: [ Software Distribution Platforms ]
-image: 
+image: https://github.com/user-attachments/assets/0858e3ef-cd51-44fa-be2a-eb192bce4e17
 ---
+
+Since starting development of Glasskube, an open source package manager for Kubernetes in February of 2024, we’ve been thinking a lot about software packaging and distribution.
+
+What started off as a different take on [Helm](https://helm.sh/) ended up being a vehicle that exposed us to companies who had never packaged their software before, at least with easy on-prem portability in mind, and who were badly struggling to get it right.
+
+Aren’t tools like Helm and [Docker](https://www.docker.com/) pretty straight forward to use? Yep, the packaging logic or tooling aren’t the issue here. The issue we found is that companies who in an ideal world would be happy building their SaaS products, are now approached by increasingly large cohorts of their potential customer base requesting on-prem installable software.
+
+Some companies simply say no, and stick to a single SaaS offering, and good for them. But not all companies can or want to leave that money on the table.
+
+These “SaaS-first” companies now have to deal with the concept of “on-prem“ readiness, decisions that were implicit in the SaaS architecture diagram now have to be revisited. A flurry of new considerations need taking into account around software updates, responsibility sharing, licensing and monitoring among others. This is why we built Distr, an open source software distribution platform to help in the process.
+
+But no platform is a silver bullet to a lack of “on-prem“ readiness. Here are some unavoidable hurdles companies will have to contend with.
+
+## TL;DR:
+
+> Packaging a SaaS solution is easier said than done.
+> 
+> Developers through no fault of their own are usually caught off guard when considerations like software packaging, versioning, update processes and troubleshooting support are suddenly foisted upon them.
+> 
+> “On-prem“ readiness is not something SaaS developers have to think about until they do, and the structural and organizational changes needed to achieve it, run deep.
+
+## The developer bait-and-switch
+
+Us developers, are at times described as grumpy, overly opinionated, keyboard banging creatures. As I see it though, developers are not risk or “change-averse“ at all. Shipping incremental updates is what we like doing most, it’s what innovation is based on. What turns a happy developer into a grumpy one is to misunderstand where we add the most amount of value.
+
+> Quality developers add the most amount of value before writing a single line of code, in the planning phase, actually architecting a solution for a well defined problem. When it turns out the the problem or business case wasn’t that well defined, the foundation of the solution shatters and the developers are left to pick up the pieces. Having to build something completely different from what was originally needed, that’s when the bait and switch occurs. 
+>
+> And for most developers, it's infuriating.
+
+## The implicit decisions made in a SaaS architecture diagram
+
+Here are some of the decisions and conclusions that are implicit in a SaaS Solution
+
+![saas diagram](https://github.com/user-attachments/assets/2c566b9d-d7c4-4278-a2c9-2a05593ce8e3)
+
+-   **Who updates the platform?** We do.
+-   **Who maintains the underlying infrastructure?** We do.
+-   **How do we onboard new customers?** Embedded sign-on and auth.
+-   **How do we handle payments?** Embedded payment system
+-   **Troubleshoot issues?** Easy, we have access to the logs.
+-   **Availability?** Our SRE team is on it. 
+-   **Should be use managed services?** Yes, it makes it so much easier
+    
+
+All of these questions need to be revisited when re-architecting a solution that needs packaging and portability.
+
+## The same implicit decisions are not applicable to on-prem solutions
+
+![on-prem](https://github.com/user-attachments/assets/8f288f35-f527-4f89-a8c0-bb36d4efbc68)
+
+-   **Who updates the platform?** Well you do, but will the customer allow updates to be pushed to their infrastructure or will they pull updates themselves when they’re ready? 
+-   **Who maintains the underlying infrastructure?** The customer does, and infrastructure now varies a lot, you’ll have to make sure your software is compatible with any possible target environment.
+-   **How do we onboard new customers?** Either your build a software delivery platform or you buy one.
+-   **How do we handle payments?** Licensing and payment system will have to be built
+-   **Troubleshoot issues?** Not that easy, when don’t have direct access to the logs
+-   **Availability?** Your software is running in multiple customer environments, your uptime monitoring dashboard is going to fill up quickly
+-   Can we leverage managed services? No, every environment is different, if a service is needed it has to be containerized and shipped along with all the other components.
+    
+
+> Apart from having to containerize all of the components. By default they are all more tightly coupled than before since they will be bundled in one or multiple helm charts or docker compose files. Components will have to work well together as well as share the same versioning and development life cycles.
+
+## Lift and shift or just shift?
+
+For some engineering teams, adapting a SaaS architecture diagram to accommodate a new on-prem offering is like removing the flooring out of a house while still trying to live in it. Speaking to some companies, they told us that building a the same SaaS platform for over a decade with multiple loosely coupled components with their own development styles and cycles, all carrying their own varying levels of technical debt, is just simply unfeasible to adapt it’s architecture. Starting fresh is the only option if they want to ship an on-prem solution.
+
+Regardless if you are starting anew or trying to adapt an existing diagram to build your on-prem offering, here are some of the on-prem readiness targets we found can be very useful.
+
+## An non-comprehensive “on-prem” readiness checklist
+
+### Follow semantic versioning
+
+Including early v1.0.0 releases, and as per definition, v0.x.0 releases can also include breaking changes. This gives customers clarity on which release is just a bug fix and can easily be deployed, and what to expect in a new version if they need to look more into the release notes.
+
+The difficulty here is that if a engineering organization is not already using semantic versioning, this is something you are going to have to get collective buy in on and changes how the teams collaborated and works together. There is not way around it though.
+
+### Publish detailed release notes
+
+This is probably already something most SaaS developers publish, but it’s worth reiterating how useful it is to have a place for users to know what has been shipped in a given version update, vulnerabilities that have been detected and what has been done to remediate.
+
+### Publish know issue tracking
+
+As vulnerabilities and know issues arise, have some sort of page, forum, or community where users can find existing issues, understand that work that is being done to remediate and make it easy to find temporary workarounds.
+
+### Offer enterprise support plans
+
+You are always going to know more about your solution than your users. The added value of offering assisted onboarding, scheduled follow-up meetings, optimization sessions are all features many customers will want.
+
+### Ensure software supply chain security
+
+Use minimal images and sign your OCI containers, then publish the signatures so your customers can verify image integrity.
+
+### Care about CVE’s
+
+Use tools like Renovate or Dependabot to patch CVEs as fast as possible, and also responsibly disclose CVEs if any pop up.
+
+### Consider customer constraints
+
+**Push or Pull updates**
+
+Will your customers accept software updates to be pushed directly into their infrastructure? As in many cases, this will not be possible, so updated software version will have to be made available via public or private repositories, allowing for a seamless update pull motion.
+
+**Air-gapped?**
+
+Some customers with their hands especially tied might want to run your software in internet deprived, air-gapped environments. Make sure you have vehicles at the ready to deliver the software offline.
+
+**Can customers expose and share logs?**
+
+Crashes, outages and unexpected behavior will happen, we are talking about troubleshooting at the end of the day. A way to support a customer in trying times is to see what they see, access to logs, traces and uptime monitors is ideal, but not always possible. You have to have workaround in place of offer secure tunneling to certain metrics.
+
+---
+Software deployment methods are never an afterthought if how they were architected matches how they will actually be consumed. For many unfortunate engineering organizations, for a multiplicity of reasons, they find that their assumptions about how their tool was intended to be consumed doesn’t turn out to be true.
+
+When an app has to lift and shift from a SaaS to something portable and installable in any number of diverse environments, considerations like maintenance, responsibility sharing and licensing are now part of the equation. How end-users consume SaaS is much different to on-prem customers and developers eventually have deal with how “on-prem“ ready they are. 
+
+Tools like Distr can help bare the brunt of some of the new implications involved in delivering on-prem software has, unfortunately though, there is simply no antidote for software that’s not on-prem ready.
