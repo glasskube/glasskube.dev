@@ -25,8 +25,8 @@ const FeatureList: FeatureItem[] = [
     icon: faCloud,
     description: (
       <>
-        Integrate your private package repositories with Distr, to
-        distribute your software to Kubernetes clusters.
+        Integrate your private package repositories with Distr, to distribute
+        your software to Kubernetes clusters.
       </>
     ),
   },

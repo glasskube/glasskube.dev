@@ -18,8 +18,11 @@ const ScreenshotList: ScreenshotItem[] = [
     title: 'Focus on simplicity and reliability',
     description: (
       <>
-        After <Link href={'/products/package-manager/docs/getting-started/install/'}>installation</Link>,
-        use <code>glasskube serve</code> to browse and find all your favorite
+        After{' '}
+        <Link href={'/products/package-manager/docs/getting-started/install/'}>
+          installation
+        </Link>
+        , use <code>glasskube serve</code> to browse and find all your favorite
         packages in one place. You do not need to look for a Helm repository to
         find a specific package.
       </>
@@ -34,7 +37,9 @@ const ScreenshotList: ScreenshotItem[] = [
     title: 'Package configurations',
     description: (
       <>
-        <Link href={'/products/package-manager/docs/design/package-config/'}>Configure packages</Link>{' '}
+        <Link href={'/products/package-manager/docs/design/package-config/'}>
+          Configure packages
+        </Link>{' '}
         with typesafe input values via the UI and with an interactive questioner
         via the cli. Your also able to inject values from other packages,
         ConfigMaps and Secrets. Say Good-Bye to un-typed and un-documented{' '}
@@ -52,7 +57,8 @@ const ScreenshotList: ScreenshotItem[] = [
     description: (
       <>
         Glasskube{' '}
-        <Link href={'/products/package-manager/docs/design/dependency-management/'}>
+        <Link
+          href={'/products/package-manager/docs/design/dependency-management/'}>
           packages are dependency aware
         </Link>
         , so they can be used and referenced by multiple other packages. They
@@ -103,7 +109,9 @@ const ScreenshotList: ScreenshotItem[] = [
     description: (
       <>
         Use{' '}
-        <Link href={'/products/package-manager/docs/design/repositories/'}>multiple repositories</Link>{' '}
+        <Link href={'/products/package-manager/docs/design/repositories/'}>
+          multiple repositories
+        </Link>{' '}
         and publish your own private packages. This could be your companies
         Internal services packages, so all developers will have the up-to-date
         and easily configured internal services.

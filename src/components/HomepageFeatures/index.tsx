@@ -32,8 +32,8 @@ const FeatureList: FeatureItem[] = [
     icon: faArrowTrendUp,
     description: (
       <>
-        Distr notifies your customers about new updates and empowers
-        them to update whenever they are ready.
+        Distr notifies your customers about new updates and empowers them to
+        update whenever they are ready.
       </>
     ),
   },
@@ -70,8 +70,8 @@ export default function HomepageFeatures(): JSX.Element {
         <div className="row">
           <div className="col text--center margin-top--xl">
             <Heading as="h2">
-              The Distr Software Distribution Platform is the central
-              place to manage all your on-prem, vpc and air-gapped customers.
+              The Distr Software Distribution Platform is the central place to
+              manage all your on-prem, vpc and air-gapped customers.
             </Heading>
           </div>
         </div>

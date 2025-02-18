@@ -93,7 +93,10 @@ const config: Config = {
           if (existingPath.includes('/products/package-manager')) {
             return [
               existingPath.replace('/products/package-manager/docs', '/docs'),
-              existingPath.replace('/products/package-manager/guides', '/guides'),
+              existingPath.replace(
+                '/products/package-manager/guides',
+                '/guides',
+              ),
             ];
           }
           return undefined; // Return a falsy value: no redirect created
@@ -122,7 +125,13 @@ const config: Config = {
         sitemap: {
           changefreq: EnumChangefreq.DAILY,
           priority: 1,
-          ignorePatterns: ['/telemetry/', '/blog/authors/', '/blog/archive/', '/blog/tags/**', '**/guides/tags/**'],
+          ignorePatterns: [
+            '/telemetry/',
+            '/blog/authors/',
+            '/blog/archive/',
+            '/blog/tags/**',
+            '**/guides/tags/**',
+          ],
           filename: 'sitemap.xml',
         },
       } satisfies Preset.Options,
@@ -160,37 +169,41 @@ const config: Config = {
         {label: 'Software Distribution', to: '/software-distribution/'},
         {label: 'Blog', to: '/blog/'},
         {label: 'White Paper', to: '/white-paper/building-blocks/'},
-        {label: 'Distr Pricing', to: '/pricing'},
+        {label: 'Pricing', to: '/pricing'},
         {type: 'custom-wrapper', position: 'right'},
-        {label: 'Distr Login', to: 'https://app.distr.sh/', position: 'right'},
+        {label: 'Login', to: 'https://app.distr.sh/', position: 'right'},
       ],
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Products',
+          title: 'Distr',
           items: [
-            {label: 'Distr', to: 'https://distr.sh/'},
-            {label: 'Package Manager', to: '/products/package-manager/'},
-            {label: 'Private Package Repository', to: '/products/hub/'},
+            {label: 'GitHub', to: 'https://github.com/glasskube/distr/'},
+            {label: 'Docs', to: 'https://distr.sh/docs/getting-started/about/'},
+            {label: 'Signup', href: 'https://signup.distr.sh/'},
           ],
         },
         {
-          title: 'Resources',
+          title: 'Package Manager',
           items: [
-            {label: 'Blog', to: '/blog/'},
-            {label: 'Glossary', to: '/glossary/'},
-            {label: 'Package Manager Docs', to: '/products/package-manager/docs/'},
-            {label: 'Package Manager Guides', to: '/products/package-manager/guides/'},
+            {label: 'GitHub', to: 'https://github.com/glasskube/distr/'},
+            {label: 'Docs', to: '/products/package-manager/docs/'},
+            {
+              label: 'Guides',
+              to: '/products/package-manager/guides/',
+            },
           ],
         },
         {
           title: 'Community',
           items: [
-            {label: 'GitHub', href: 'https://github.com/glasskube/glasskube'},
             {label: 'Discord', href: 'https://discord.gg/SxH6KUCGH7'},
-            {label: 'LinkedIn', href: 'https://www.linkedin.com/company/glasskube/'},
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/company/glasskube/',
+            },
             {label: 'Twitter / X', href: 'https://x.com/glasskube'},
           ],
         },
@@ -198,9 +211,12 @@ const config: Config = {
           title: 'More',
           items: [
             {label: 'Blog', to: '/blog/'},
+            {label: 'Glossary', to: '/glossary/'},
             {label: 'Contact us', to: '/contact/'},
-            {label: 'Schedule a meeting', href: 'https://cal.glasskube.com/team/founder/30min'},
-            {label: 'Get started for free', href: 'https://signup.distr.sh/'},
+            {
+              label: 'Schedule a meeting',
+              href: 'https://cal.glasskube.com/team/founder/30min',
+            },
           ],
         },
       ],

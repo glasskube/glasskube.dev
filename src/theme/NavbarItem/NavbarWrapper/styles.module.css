@@ -1,12 +1,12 @@
 .wrapper {
   text-align: center;
-  width: 160px;
+  width: 140px;
   height: 28px;
 }
 
 .ctaWrapper {
   text-align: center;
-  width: 300px;
+  width: 340px;
 }
 
 @media (max-width: 576px) {

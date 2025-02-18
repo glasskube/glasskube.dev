@@ -5,7 +5,7 @@ import Pricing from './_components/PricingComponent';
 import PricingFaq from '@site/src/pages/pricing/_components/PricingFaqComponent';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
 
-const TITLE = translate({message: 'Distr Pricing'});
+const TITLE = translate({message: 'Pricing'});
 const DESCRIPTION = translate({
   message: 'Software Distribution Platform',
 });

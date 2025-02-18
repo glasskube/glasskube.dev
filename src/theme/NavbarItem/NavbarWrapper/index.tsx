@@ -1,14 +1,14 @@
 import styles from './styles.module.css';
-import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton';
 import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
 import DemoButton from '@site/src/components/buttons/DemoButton';
+import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton';
 
 function Index() {
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.center}>
-          <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
+          <CustomGitHubButton href="https://github.com/glasskube/distr" />
         </div>
       </div>
       <div className={styles.ctaWrapper}>
