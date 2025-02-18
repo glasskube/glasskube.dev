@@ -6,9 +6,9 @@ authors: [ jpage ]
 tags: [ kube-prometheus-stack ]
 ---
 
-import CustomGitHubButton from '../src/components/buttons/CustomGitHubButton.tsx';
+import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
 import Discussion from '@site/src/components/GiscusWrapper';
-import Install from '../src/partials/_install.mdx';
+import Install from '@site/src/partials/_install.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -119,7 +119,7 @@ We want `Alertmanager` to be enabled so we can leverage the metrics prometheus e
 
 ### Grafana Domain 📊
 
-We will leave this empty for this demo since we would need to deploy an ingress controller to our cluster to handle the ingress object associated with the grafana service. We could use [kube-prometheus-stack](/guides/kube-prometheus-stack/) or [caddy-ingress](https://github.com/caddyserver/ingress) which are also supported by Glasskube for this.
+We will leave this empty for this demo since we would need to deploy an ingress controller to our cluster to handle the ingress object associated with the grafana service. We could use [kube-prometheus-stack](/products/package-manager/guides/kube-prometheus-stack/) or [caddy-ingress](https://github.com/caddyserver/ingress) which are also supported by Glasskube for this.
 > Glasskube will automatically port-forward the Grafana pod so we can access the dashboard via the `Open` button.
 
 ### Node Exporter host network 💽

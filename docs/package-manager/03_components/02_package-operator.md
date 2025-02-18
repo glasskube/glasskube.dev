@@ -7,7 +7,7 @@ The package operator follows the [Kubernetes Operator Pattern](https://kubernete
 The Package controller manages the `Package` resources of the cluster.
 
 Whenever a `Package` has been created, changed or deleted these changes will be picked up and applied by the Package controller.
-The Package controller also makes sure that dependencies of a `Package` are met without conflicting installations, by applying the logic described [here](/docs/design/dependency-management).
+The Package controller also makes sure that dependencies of a `Package` are met without conflicting installations, by applying the logic described [here](/products/package-manager/docs/design/dependency-management).
 
 ## PackageInfo Controller
 
@@ -70,4 +70,4 @@ while there might already be a prerelease of a new major version like `v2.0.0-al
 
 Instead of fetching `repository.xyz/package-name/package.yaml`, the operator fetches `repository.xyz/package-name/version/package.yaml`
 
-Check the [package repository docs](../package-repository#structure) and [dependency management docs](/docs/design/dependency-management) for more information.
+Check the [package repository docs](../package-repository#structure) and [dependency management docs](/products/package-manager/docs/design/dependency-management) for more information.

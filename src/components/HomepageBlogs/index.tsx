@@ -15,8 +15,8 @@ const LatestBlogPosts = ({recentPosts}: HomepageProps) => {
             <p>
               We regularly write{' '}
               <Link to={useBaseUrl('/blog/')}>blog posts</Link> and publish{' '}
-              <Link to={useBaseUrl('/guides/')}>guides</Link>. Find our latest
-              blog posts below.
+              <Link to={useBaseUrl('/glossary/')}>a glossary</Link>. Find our{' '}
+              latest blog posts below.
             </p>
           </div>
         </div>

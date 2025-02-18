@@ -1,19 +1,19 @@
 export const PricingFAQs: PricingFAQ[] = [
   {
-    id: 'glasskube-cloud',
-    question: 'What is Glasskube Cloud?',
+    id: 'distr',
+    question: 'What is Distr?',
     answer:
-      'Glasskube Cloud is the easiest way for ISVs to distribute their software to their customers. It has multiple modules: E.g. the Software Distribution Platform and Customer Portal',
+      'Distr is the easiest way for ISVs to distribute their software to their customers. It has multiple modules: E.g. the Software Distribution Platform and Customer Portal',
   },
   {
     id: 'software-distribution-platform',
-    question: 'What is the Glasskube Cloud Software Distribution Platform?',
+    question: 'What is the Distr Software Distribution Platform?',
     answer:
       'A platform for ISVs to manage their software application, release channels, versions, customers, and their deployment targets.',
   },
   {
     id: 'customer-portal',
-    question: 'What is the Glasskube Cloud Customer Portal?',
+    question: 'What is the Distr Customer Portal?',
     answer:
       'The customer portal is a white labeled or co-branded portal for your customers to receive installation instructions, updates, and support.',
   },

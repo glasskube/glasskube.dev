@@ -69,7 +69,7 @@ function ContactOptions() {
                 <Heading as="h3" className="">
                   Book a demo
                 </Heading>
-                <p>Directly schedule a demo of Glasskube Cloud.</p>
+                <p>Directly schedule a demo of Distr.</p>
               </div>
             </div>
             <div className="text--center">

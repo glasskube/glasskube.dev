@@ -10,9 +10,16 @@
   overflow: hidden;
 }
 
+.heroSuperTitle {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: white;
+}
+
 .heroTitle {
   text-align: center;
-  margin-top: 6rem;
   margin-bottom: 2rem;
   font-size: 4rem;
 }

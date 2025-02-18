@@ -26,6 +26,9 @@ function HomepageHeader() {
       <div className="container">
         <div className="row row--no-gutters">
           <div className="col">
+            <Heading as="h2" className={styles.heroSuperTitle}>
+              Introducing Distr
+            </Heading>
             <Heading as="h1" className={styles.heroTitle}>
               {siteConfig.tagline}
             </Heading>

@@ -39,10 +39,10 @@ function Pricing() {
                   Software Distribution
                 </h4>
                 <ul>
-                  <li>Support for docker-compose based application</li>
-                  <li>Support for Helm based applications</li>
-                  <li>Customer configurations & secrets</li>
-                  <li>Release Channels</li>
+                  <li>Support for docker-compose</li>
+                  <li>Support for Helm</li>
+                  <li>Configurations & secrets</li>
+                  <li>API Integrations & SDK</li>
                 </ul>
                 <h4 className={styles.pricingSectionHeader}>
                   Monitoring & Customer Support
@@ -55,7 +55,7 @@ function Pricing() {
               <div className="card__footer">
                 <Link
                   className="button button--secondary button--block button--lg"
-                  to="https://glasskube.cloud/">
+                  to="https://signup.distr.sh/">
                   Free forever
                 </Link>
               </div>
@@ -80,7 +80,7 @@ function Pricing() {
                 </h4>
                 All Free features and:
                 <ul className={styles.pricingItemList}>
-                  <li>API Integration</li>
+                  <li>Release Channels</li>
                   <li>License dependent features</li>
                 </ul>
                 <h4 className={styles.pricingSectionHeader}>
@@ -148,8 +148,7 @@ function Pricing() {
                   <li>Customer support SLAs</li>
                 </ul>
                 <h4 className={styles.pricingSectionHeader}>On-premises</h4>
-                You can also self host Glasskube Cloud on your own
-                infrastructure.
+                You can also self host Distr on your own infrastructure.
               </div>
               <div className="card__footer">
                 <ContactSalesButton

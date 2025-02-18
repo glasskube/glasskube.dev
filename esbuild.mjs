@@ -1,4 +1,4 @@
-import { build } from 'esbuild'
+import {build} from 'esbuild';
 
 await build({
   logLevel: 'info',
@@ -7,11 +7,11 @@ await build({
   minify: true,
   loader: {
     '.woff': 'file',
-    '.woff2': 'file'
+    '.woff2': 'file',
   },
   outExtension: {
     '.css': '.min.css',
-    '.js': '.min.js'
+    '.js': '.min.js',
   },
-  outdir: 'internal/web/root/static/bundle'
-})
+  outdir: 'internal/web/root/static/bundle',
+});

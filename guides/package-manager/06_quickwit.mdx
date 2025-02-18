@@ -6,7 +6,7 @@ authors: [ jpage ]
 tags: [ quickwit ]
 ---
 
-import CustomGitHubButton from '../src/components/buttons/CustomGitHubButton.tsx';
+import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
 import Discussion from '@site/src/components/GiscusWrapper';
 
 ![quickwit-thumbnail](https://github.com/glasskube/glasskube/assets/38757612/03478d89-1d11-4263-93ca-f80d1607cef9)
@@ -21,7 +21,7 @@ import Discussion from '@site/src/components/GiscusWrapper';
 ## Install Glasskube
 
 If you've already installed glasskube you can skip this step.
-If not, glasskube can easily be installed by following your [distribution's specific instructions](/docs/getting-started/install/).
+If not, glasskube can easily be installed by following your [distribution's specific instructions](/products/package-manager/docs/getting-started/install/).
 
 For this demo I'll be using a MacOs distribution:
 ``` yaml
@@ -29,7 +29,7 @@ brew install glasskube/tap/glasskube # install the glasskube cli
 minikube start # start a minikube Kubernetes cluster
 glasskube bootstrap # install glasskube on the kind cluster
 ```
-For more installation [guides, find them here.](/docs/getting-started/install/)
+For more installation [guides, find them here.](/products/package-manager/docs/getting-started/install/)
 
 Once Glasskube has been installed access via the UI with:
 ```
