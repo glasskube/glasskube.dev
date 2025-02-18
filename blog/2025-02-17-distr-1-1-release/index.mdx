@@ -1,0 +1,81 @@
+---
+slug: distr-v1-release-post
+title: "Distr v1.1 is Here!"
+description: "I always told people memory is cheap, black magic is OK and efficiency doesn't matter, but I was wrong."
+authors: [ jpage ]
+tags: [ Java, Kotlin, Golang, Kubernetes, Docker ]
+image: '/img/blog/2025-02-18-from-java-to-go/from-java-to-go.png'
+---
+
+### Distr v1.1 is Here!
+
+The inaugural release of Distr v1.0 shipped just a little over a week ago, and we’re already back with a minor update that packs major features! These updates expand Distr’s functionality in valuable ways, making it an even more powerful tool for your software distribution needs.
+
+___
+
+### **1\. Feature:** GitHub Release Action
+
+This action creates a new version of a [Distr](https://github.com/glasskube/distr) application, fully automating the software release lifecycle.
+
+-   **Why it matters:** Say goodbye to manual steps! With this action, you can ship new docker and helm bases application versions automatically from end to end, making them instantly available on Distr for deployment. It’s all about tying the loose ends of your CI/CD workflow, saving you time and effort.
+    
+-   **How to use it:** Ready to dive in? Check out the [action documentation](https://github.com/marketplace/actions/distr-create-version#usage) for more information to help you get started.
+    
+
+![](https://wiki.glasskube.eu/api/attachments.redirect?id=7818cfcc-1bbf-4cee-97f5-cbb6650c078d)
+
+Here is an example of how to use it to create a new version of a Docker based application
+
+![](https://wiki.glasskube.eu/api/attachments.redirect?id=09987307-d8d7-44ff-a0ba-a625cdea5a0c)
+
+
+### 2\. Feature: Docker Compose EnvVar Management
+
+This feature enables and simplifies the management of environment variables in your Docker Compose setup, ensuring a smoother and more secure deployment process.
+
+-   **Why it matters:** Managing environment variables can be tricky, especially in complex applications. With this feature, you can centralize and simplify env management, reducing errors and making it easier to maintain consistency across different environments.
+    
+-   **How to get started:** Check out the [guide](https://distr.sh/docs//docs/guides/docker-env-var-template/) on how to manage environment variables in Docker Compose files.
+    
+
+![](https://wiki.glasskube.eu/api/attachments.redirect?id=8a2e5636-a94b-46af-aa14-91c1d09d4c14)
+
+Have questions or feedback? Share your thoughts on [Discord](https://discord.gg/STk5Z3nFmT) or join request a [demo call](https://cal.glasskube.com/team/gk/demo?duration=30) here!
+
+### Upgrading to v1.1.0
+
+To take advantage of the new features in Distr v1.1.0, here’s what you need to do **if you’re using the previous version of the agents**:
+
+-   **Helm Agent**: If you're running an older version, update it via the **web UI** to ensure compatibility with the latest improvements.
+-   **Docker Agent**: Self-updating for Docker agents is now available in v1.1.0! However, if you’re using a previous version, you’ll need to **reconnect** your existing Docker agents once to enable automatic updates going forward.
+    
+
+![](https://wiki.glasskube.eu/api/attachments.redirect?id=0b1e891e-f4ba-4bab-bdcc-47a92829f2c8)
+
+These updates ensure you get the latest capabilities and security enhancements, so we recommend applying them as soon as possible.
+
+### What’s Coming Next
+
+We’re just getting started! Based on user feedback and feature requests, we are currently working on licensing and private repository support. This is how it will look like:
+
+-   Each license is uniquely named within its organization and can optionally include an expiration date (agent can revoke access to software is if there is now renewal)
+-   Licenses are tied to a specific application and can apply either to all versions or only to selected ones.
+-   Deployments can be linked to a license. If the license is activated, customers see only applications and versions they have a license for   
+-   For organizations using private container registries, licenses can also include Docker login credentials—such as a registry URL, username, and password—allowing the agent to authenticate and pull images securely.
+    
+
+Would love to get your thoughts on the licensing feature and hear what else you would like us to ship next.
+
+
+### Join the Conversation
+
+We’d love to hear your thoughts on this release! Share your feedback, ideas, or questions:
+
+-   Join the [Discord server](https://discord.gg/STk5Z3nFmT)
+-   [Book a demo call](https://cal.glasskube.com/team/gk/demo?duration=30)
+-   Reach out on [LinkedIn](https://www.linkedin.com/company/glasskube) or Twitter
+    
+
+### Thank You!
+
+Thank you for being part of the Distr community. We’re excited to continue building the best Open Source Software Distribution Platform together.
