@@ -8,27 +8,27 @@ image: '/img/blog/2025-02-26-replicated-comparison/comparison-thumbnail.png'
 ---
 ![thumbnail](/img/blog/2025-02-26-replicated-comparison/comparison-thumbnail.png)
 
-Distr and Replicated are software delivery platforms that help software vendors deliver their applications to complex and many times restricted on-premises environments. While both products are firmly places in the same product category, it makes sense to understand how they differ and how each platform approach modern software distribution.
+[Distr](https://distr.sh/) and [Replicated](https://www.replicated.com/) are software delivery platforms that help software vendors deliver their applications to complex and many times restricted on-premises environments. While both platforms are firmly placed in the same product category, it makes sense to understand how they differ and how each platform approaches modern software distribution.
 
 <!-- truncate -->
 
-1.  [Distr](https://distr.sh/) is an Open Source Software delivery platform that help software vendors serve a wide variety of end-users. It’s built for software vendors that want to adopt an Open Source distribution toolbox and to mix and match features according to their customers' specific needs, without unnecessary additions.
-2.  [Replicated](https://www.replicated.com/) is mature software distribution platform that facilitates the delivery of applications to on-premises, VPC and air gapped environments. With the same target users in mind, Replicated offers a comprehensive ecosystem with a range of integrated tools and services, which leads to a more cohesive but potentially less flexible environment for vendors.
+1.  **Distr** is an Open Source software delivery platform that helps software vendors serve a wide variety of use-cases. It’s built for software vendors that want to adopt an Open Source distribution toolbox and to mix and match features according to their customers' specific needs, without unnecessary additions.
+2.  **Replicated** is mature software distribution platform that facilitates the delivery of applications to on-premises, VPC and air gapped environments. With the same target users in mind, Replicated offers a comprehensive ecosystem with a range of integrated tools and services, which leads to a more cohesive but potentially less flexible environment for vendors.
     
 ## Software Delivery Platform Users vs. End-users
 
-> Before diving into software delivery platforms, it's important to clarify some key terms to avoid confusion.
+> Before diving deeper into software delivery platform parlance, it's important to clarify some key terms to avoid confusion.
 
 ### Who do these platforms serve?
 
-Software delivery platforms primarily serve **independent software vendors (ISVs)**. While ISVs are the direct users of these platforms, the ultimate goal is to bridge the gap between the ISV and their end customers. The best software delivery platforms make this connection as smooth and frictionless as possible, keeping both parties' needs in mind.
+Software delivery platforms primarily serve **independent software vendors (ISVs)**. While ISVs are the direct users of these platforms, the ultimate goal is to bridge the gap between the ISV and their **end-customers**. The best software delivery platforms make this connection as smooth and frictionless as possible, keeping both parties' needs in mind.
 
 -   **Independent Software Vendors:** These are the primary users of software delivery platforms. They leverage the platform's tools and features to package, distribute, and manage their software in complex environments.  
--   **End-Customers:** In the on-prem software delivery world, they are the party which software is delivered to. They interact with software delivery platforms indirectly and if done well, they need not even know that they are interacting with one. 
+-   **End-Customers:** In the context of on-prem software delivery, they are the party which software is delivered to. They interact with software delivery platforms indirectly and if done well, they need not even know they are interacting with one at all. 
 
 ## How is Distr different?
 
-1.  On-prem, shared-responsibility and self-service all on one platform
+1.  On-prem, shared-responsibility and self-service **all on one platform**.
     1.  Distr addresses a wider variety of use cases from a simple Helm package example to complex multi-cloud deployments. (Self-service, Push/Pull deployments, Hosted registry image serving, etc.)
     2.  Replicated focuses on a variety of target environments (Embedded K8s, Air gapped, VPC in different clouds)
         
@@ -39,51 +39,55 @@ Software delivery platforms primarily serve **independent software vendors (ISVs
     
 ## Core Distr vs Replicated features at a glance
 
+Even though both platforms largely deliver similar features and serve overlapping users, the way both tools approach software deliver differs, as always the ~~"devil"~~ "deployment" is in the details.
+
 | Feature | Distr | Replicated |
 |----|----|----|
 | Deployment Method | Pull and Push | Pull |
 | Vendor Platform for Application Management | ✅ | ✅ |
 | Customer Portal for Deployment Management | ✅ | ✅ |
-| Vendor & Customer CI / CD Integration | ✅ | ✅ |
+| Vendor & Customer CI/CD Integration | ✅ | ✅ |
 | Docker Support | ✅ | ✅ |
 | Helm Support | ✅ | ✅ |
-| White label Branding | ✅ | ✅ |
-| On Premises / Self hosted Support | ✅ | ❌ |
+| White Label Branding | ✅ | ✅ |
+| On Premises / Self Hosted Support | ✅ | ❌ |
 | Pricing | Open Source (Enterprise 500$) | 3000$ |
 | Compatibility Matrix | ❌ | ✅ |
 | Embedded K8s clusters | ❌ | ✅ |
-| Image registry | ✅ | ✅ |
+| Image Registry | ✅ | ✅ |
 | Open Source | ✅ | ❌ |
-| Custom onboarding sessions for all plans | ✅ | ❌ |
+| Custom Onboarding Sessions For All Plans | ✅ | ❌ |
 
 
-## Where do the platforms differ:
+## Where do the platforms differ
 
-### Deployment Methods:
+### Deployment Methods
 
-While Replicated is limited to serving images to end-customer that then have to be pulled, Distr has the capacity to push to target environments where the ISVs and end-customer have shared-responsibility over the target environment.
+While Replicated is limited to serving images to end-customer which are then only pulled by the end-customer, Distr has the capacity to push to target environments where the ISVs and end-customer have shared-responsibility over the target environment.
 
 ### Customer Portal for Deployment Management
 
-Both platforms offer a customer portal for deployment management. Alternatively, if a portal isn't needed, both platforms provide a vendor API with the same capabilities, allowing for programmatic management and integration into existing workflows.
+Both platforms offer a customer portal for deployment management. Alternatively, if a portal isn't needed, both platforms provide a [vendor API](https://distr.sh/docs/integrations/api/) with the same capabilities, allowing for programmatic management and integration into existing workflows.
 
 ### On Premises / Self hosted Support
 
-Even though it might seem a bit meta to talk about hosting a tool on-prem that itself help with on-prem software delivery but that’s what Distr offers which it’s self-hosted deployment method. In fact, the official Distr SaaS is managed in-house by our self-hosted instance of Distr.
+Even though it might seem a bit meta to talk about hosting a tool on-prem which itself helps with on-prem software delivery but that’s what Distr offers with it’s [self-hosted](https://distr.sh/docs/self-hosting/getting-started/) deployment method. In fact, the official Distr SaaS is managed in-house by a self-hosted instance of Distr.
 
 Replicated on the other hand only offers a SaaS offering.
 
 ### Pricing
 
-Distr being an open core company has a much more approachable pricing model, shipping the majority of the platform for free and offering onboarding, support, SLAs and expansion plans for the users who need them. Replicated on the other hand as a hefty price tag of 2000$/month on the builders plans and 3000$ on the business plan. For more detailed information on Replicated’s pricing tiers, visit their official site at [replicated.com](https://www.replicated.com/pricing)
+Distr being an open core company has a much more approachable pricing model, shipping the majority of the platform for free and offering onboarding, support, SLAs and expansion plans for the users who need them. Replicated on the other hand has a hefty price tag of 2000$/month on the builders plans and 3000$ on the business plan. For more detailed information on Replicated’s pricing tiers, visit their official site at [replicated.com](https://www.replicated.com/pricing)
 
 ### Compatibility Matrix
 
-A standout feature that Replicated delivers is the Compatibility matrix which is useful for ISV who want to test how their software performs in different target environments, this is a feature that Distr does not provide.
+A standout feature that Replicated delivers is the [Compatibility matrix](https://www.replicated.com/compatibility-matrix) which is useful for ISV who want to test how their software performs in different target environments, this is a feature that Distr does not provide.
 
 ### Embedded K8s clusters
 
-One of Replicated’s flagship features that it offers to give enterprise ISV a more ClickOps experience, improving deployments and updated of complex application by shipping a simple console and a full Kubernetes cluster alongside the application artifacts. Distr is yet to ship a similar feature but works closely with enterprise customer who might not want or need kubernetes to run in their environments.
+One of Replicated’s standout features is the [Embedded Kubernetes cluster](https://www.replicated.com/embedded-cluster), offering enterprise ISVs with limited Kubernetes experience a more intuitive, ClickOps-driven approach, reducing the need for deep Kubernetes knowledge, it improves how deployments and updates of applications are done by shipping a simple console and a full Kubernetes cluster alongside the application artifacts. 
+
+Distr is yet to ship a similar feature but works closely with enterprise customers who might not want or need kubernetes to run in their environments.
 
 ### Image registry
 
@@ -93,25 +97,27 @@ In contrast, Replicated offers a proxy registry designed to grant proxy access t
 
 ### Open Source
 
-Distr is an open-core platform, meaning its core functionality is freely available to everyone, now and forever. Anyone can fork, modify, and adapt Distr to fit their needs, and we actively welcome feedback and contributions from the open-source community. Unlike Replicated software, Distr’s open-core model values transparency and flexibility above all else.
+Distr is an Open Core platform, meaning its core functionality is freely available to everyone, now and forever. Anyone can fork, modify, and adapt Distr to fit their needs, and we actively welcome feedback and contributions from the open-source community. Unlike Replicated software, Distr’s open-core model values transparency and flexibility above all else.
 
 ### Custom onboarding session for all plans
 
-Whether you are a free plan user or have an enterprise vendor account, we provide tailored onboarding support to make sure your application is on-prem ready and in a position to make the most out of the platform as soon as possible.
+Whether you are a free plan user or have an enterprise vendor account, Distr provides tailored onboarding support to make sure your application is on-prem ready and in a position to make the most out of the platform as soon as possible.
 
 ## FAQs
 
 ### How much does Distr cost?
 
-Distr is an Open Core platform with a generous free tier. Paid plans are available for Distr users who require help getting their software packaged in a way that conforms to the platform so as to facilitate how end-customer can consume the software. In the future there will be paid features but as of now, any non free tier features are in beta and open to any users who request them free of charge. Access the full pricing page [here](https://glasskube.dev/pricing/).
+Distr is an Open Core platform with a generous free tier. Paid plans are available for Distr users who require help getting their software packaged in a way that conforms to the platform making it possible for end-customers to consume the software. In the future there will be paid features but as for now, any non free tier features are in beta and open to any users who request them free of charge. Access the full pricing page [here](https://glasskube.dev/pricing/).
 
 ### How much does Replicated cost?
 
-With different plan starting from builder plan starting at 2k$ to enterprise which requires individualized enquiry passing through the business plan with a price tag of 3k$ + and additional 200$ per license per month, Replicated is not cheap. Access the full pricing page [here](https://www.replicated.com/pricing).
+With different plans starting from builder plan coming in at 2k$ to enterprise which requires individualized enquiry passing through the business plan with a price tag of 3k$ + an additional 200$ per license per month, Replicated is not cheap. Access the full pricing page [here](https://www.replicated.com/pricing).
 
 ### Does Distr work for startups, mid-market and enterprise companies?
 
-Yes, regardless of the industry and companies size, Distr aims to enable software vendors to deliver software to end-users of all types of industries, sizes and levels of software delivery sophistication. If a Distr user has end-customers who not want to manage the software deployments themselves, Distr users can push, monitor and manage software directly from the Distr platform itself. On the other hand, Distr users serving sophisticated enterprise end-customers who might have their own well defined internal deployment processes and might only want access to secure vendor images, taking care of the rest themselves. Distr has features to serve these use cases too.
+Yes, regardless of the industry and companies size, Distr aims to enable software vendors to deliver software to end-users of all types of industries, sizes and levels of software delivery sophistication. If a Distr user has end-customers who do not want to manage the software deployments themselves, Distr users can push, monitor and manage software directly from the Distr platform itself. 
+
+On the other hand, Distr users serving sophisticated enterprise end-customers who might have their own well defined internal deployment processes and might only want access to secure vendor images, taking care of the rest themselves. Distr has features to serve these use cases too.
 
 ### How long does it take to implement Distr?
 
@@ -119,7 +125,7 @@ The time it takes to implement Distr depends largely on how prepared your softwa
 
 However, if your software isn't quite "on-prem" ready, it may take longer to realize the full benefits of Distr. In these cases, we offer hands-on onboarding support and can collaborate with you to improve your overall on-prem readiness.
 
-> To help with this process, we've published a [whitepaper](https://glasskube.dev/white-paper/building-blocks/), which you can download for free, outlining the key building blocks for packaging software that's truly ready to be distributed to end-customer target environments.
+> To help in this process, we've published a [whitepaper](https://glasskube.dev/white-paper/building-blocks/), which you can download for free, outlining the key building blocks for packaging software that's truly ready to be distributed to end-customer target environments.
 
 ### Does Distr have access to customer offsite data?
 
@@ -131,10 +137,10 @@ Replicated is a mature and well-established software delivery platform with stre
 
 Distr, on the other hand, takes a different approach. It recognizes the vast spectrum of on-prem implementation scenarios, use cases, and edge cases. Instead of locking users into a rigid system, Distr aims to be an open-source platform that delivers key features for specific needs with more flexibility and less vendor lock-in.
 
-Here’s how Distr stands out:
+Here’s how Distr stands out
 
--   **Empowering End Customers:** When serving on-prem customers who want full control over their environments, you can automatically push new software versions to Distr and let end customers decide when to pull updates, keeping them firmly in control, while offering Distr users .
--   **Shared Responsibility for Target Environments:** If you share responsibility for managing customer environments, Distr lets you push software directly into those environments, offering a proactive approach to delivery.
+-   **Empowering End Customers:** When serving on-prem customers who want full control over their environments, you can automatically push new software versions to Distr and let end customers decide when to pull updates, keeping them firmly in control, while offering Distr users rich and useful usage and uptime metrics.
+-   **Shared Responsibility for Target Environments:** If you share responsibility for managing customer or edge environments, Distr lets you push software directly into those environments, making software updates and rollbacks a breeze.
 -   **Artifact Management-Only Mode:** Not interested in using Distr as a management layer? You can use Distr solely as an artifact management registry with built-in vulnerability scanning, no extra fluff.
     
 
