@@ -12,14 +12,19 @@ import Image from '@theme/IdealImage';
 import HomepageBlogs from '@site/src/components/HomepageBlogs';
 import DemoButton from '@site/src/components/buttons/DemoButton';
 import Link from '@docusaurus/Link';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import HomepageProducts from '@site/src/components/HomepageProducts';
-import DefaultCTA from '../cta/DefaultCTA/defaultCTA';
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
+import {EmblaOptionsType} from 'embla-carousel';
+import EmblaCarousel from '@site/src/components/HomeCarousel/EmblaCarousel';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+
+  const OPTIONS: EmblaOptionsType = {dragFree: false, loop: true};
+  const SLIDE_COUNT = 3;
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
@@ -57,28 +62,9 @@ function HomepageHeader() {
             </div>
           </div>
         </div>
-        <div className="row row--no-gutters">
+        <div className="row row--no-gutters margin-top--lg margin-bottom--lg">
           <div className="col">
-            <div className={styles.lottiePlayerWrapper}>
-              <BrowserOnly
-                fallback={
-                  <div className={styles.lottieFallback}>Loading...</div>
-                }>
-                {() => {
-                  const Player =
-                    // eslint-disable-next-line @typescript-eslint/no-require-imports
-                    require('@lottiefiles/react-lottie-player').Player;
-                  return (
-                    <Player
-                      autoplay
-                      loop
-                      src="/animations/home.json"
-                      style={{height: '480px'}}
-                    />
-                  );
-                }}
-              </BrowserOnly>
-            </div>
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
           </div>
         </div>
       </div>
