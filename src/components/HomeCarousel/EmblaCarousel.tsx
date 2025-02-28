@@ -8,6 +8,8 @@ import {
 } from './EmblaCarouselArrowButtons';
 import useEmblaCarousel from 'embla-carousel-react';
 import Tilt from 'react-parallax-tilt';
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type PropType = {
   slides: number[];
@@ -31,57 +33,102 @@ const EmblaCarousel: React.FC<PropType> = props => {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          <div className="embla__slide" key={1}>
-            <div className="">
-              <Tilt tiltReverse={true} tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <figure className="app-frame mac dark borderless shadow--tl">
-                  <img
-                    src="/img/screenshots/distr-deployments-dark.png"
-                    alt="Distr"
-                  />
-                </figure>
-              </Tilt>
-              Deployment Overview Status Dashboard incl. Logs
-            </div>
-          </div>
           <div className="embla__slide" key={0}>
-            <div className="">
+            <figure>
               <Tilt tiltReverse={true} tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <figure className="app-frame mac dark borderless shadow--tl">
-                  <img
-                    src="/img/screenshots/distr-deployments-dark.png"
-                    alt="Distr"
+                <div
+                  className="app-frame mac dark borderless shadow--tl"
+                  data-url="app.distr.sh">
+                  <ThemedImage
+                    alt="Distr Deployment Overview Status Dashboard incl. Logs"
+                    sources={{
+                      light: useBaseUrl(
+                        '/img/screenshots/distr/distr-deployments-light.webp',
+                      ),
+                      dark: useBaseUrl(
+                        '/img/screenshots/distr/distr-deployments-dark.webp',
+                      ),
+                    }}
                   />
-                </figure>
+                </div>
               </Tilt>
-              Deployment Overview Status Dashboard incl. Logs
-            </div>
+              <figcaption className="embla__caption">
+                Deployment Overview Status Dashboard incl. Logs
+              </figcaption>
+            </figure>
           </div>
           <div className="embla__slide" key={1}>
-            <div className="">
+            <figure>
               <Tilt tiltReverse={true} tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <figure className="app-frame mac dark borderless shadow--tl">
-                  <img
-                    src="/img/screenshots/distr-deployments-dark.png"
-                    alt="Distr"
+                <div
+                  className="app-frame mac dark borderless shadow--tl"
+                  data-url="app.distr.sh">
+                  <ThemedImage
+                    alt="Distr OCI registry for on-premises artifact delivery"
+                    sources={{
+                      light: useBaseUrl(
+                        '/img/screenshots/distr/distr-artifacts-light.webp',
+                      ),
+                      dark: useBaseUrl(
+                        '/img/screenshots/distr/distr-artifacts-dark.webp',
+                      ),
+                    }}
                   />
-                </figure>
+                </div>
               </Tilt>
-              Deployment Overview Status Dashboard incl. Logs
-            </div>
+              <figcaption className="embla__caption">
+                OCI registry for on-premises artifact delivery
+              </figcaption>
+            </figure>
           </div>
           <div className="embla__slide" key={2}>
-            <div className="">
+            <figure>
               <Tilt tiltReverse={true} tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <figure className="app-frame mac dark borderless shadow--tl">
-                  <img
-                    src="/img/screenshots/distr-deployments-dark.png"
-                    alt="Distr"
+                <div
+                  className="app-frame mac dark borderless shadow--tl"
+                  data-url="app.distr.sh">
+                  <ThemedImage
+                    alt="Distr Artifact Licenses allow software vendors to restrict specific tags per customer"
+                    sources={{
+                      light: useBaseUrl(
+                        '/img/screenshots/distr/distr-artifact-licenses-light.webp',
+                      ),
+                      dark: useBaseUrl(
+                        '/img/screenshots/distr/distr-artifact-licenses-dark.webp',
+                      ),
+                    }}
                   />
-                </figure>
+                </div>
               </Tilt>
-              Deployment Overview Status Dashboard incl. Logs
-            </div>
+              <figcaption className="embla__caption">
+                Artifact Licenses allow software vendors to restrict specific
+                tags per customer
+              </figcaption>
+            </figure>
+          </div>
+          <div className="embla__slide" key={3}>
+            <figure>
+              <Tilt tiltReverse={true} tiltMaxAngleX={5} tiltMaxAngleY={5}>
+                <div
+                  className="app-frame mac dark borderless shadow--tl"
+                  data-url="app.distr.sh">
+                  <ThemedImage
+                    alt="Distr White-labeled Customer Portal for Artifact Downloads"
+                    sources={{
+                      light: useBaseUrl(
+                        '/img/screenshots/distr/distr-customer-portal-artifacts-light.webp',
+                      ),
+                      dark: useBaseUrl(
+                        '/img/screenshots/distr/distr-customer-portal-artifacts-dark.webp',
+                      ),
+                    }}
+                  />
+                </div>
+              </Tilt>
+              <figcaption className="embla__caption">
+                White-labeled Customer Portal for Artifact Downloads
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>
