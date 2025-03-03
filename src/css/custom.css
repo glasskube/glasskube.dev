@@ -4,12 +4,11 @@
  * work well for content-centric websites.
  */
 
-@import "@fontsource/inter/latin-300.css";
-@import "@fontsource/inter/latin-400.css";
-@import "@fontsource/inter/latin-600.css";
-@import "@fontsource/inter/latin-700.css";
-@import "@fontsource/poppins/latin-600.css";
-
+@import '@fontsource/inter/latin-300.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
+@import '@fontsource/poppins/latin-600.css';
 
 /* You can override the default Infima variables here. */
 :root {
@@ -49,7 +48,6 @@
   }
 }
 
-
 @media (min-width: 997px) {
   :root {
     --docusaurus-announcement-bar-height: auto !important;
@@ -87,7 +85,11 @@ html[data-theme='dark'] {
 
 div[class^='announcementBar_'] {
   color: var(--ifm-font-color-base);
-  background: linear-gradient(60deg, var(--glasskube-main-3), var(--glasskube-pink));
+  background: linear-gradient(
+    60deg,
+    var(--glasskube-main-3),
+    var(--glasskube-pink)
+  );
   font-weight: var(--ifm-font-weight-bold);
 }
 
@@ -130,14 +132,13 @@ div[class^='announcementBar_'] {
   }
 }
 
-a.button--outline.light, .light {
+a.button--outline.light,
+.light {
   color: var(--glasskube-main-light);
 }
 
-
 .typewriter-command {
   color: var(--glasskube-main-4);
-
 }
 
 .typewriter-argument {
@@ -180,19 +181,30 @@ a.button--outline.light, .light {
 }
 
 .button.button--outline::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: 8px;
   border: 3px solid transparent;
-  background: linear-gradient(to right, var(--glasskube-main-3), var(--glasskube-pink)) border-box;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(
+      to right,
+      var(--glasskube-main-3),
+      var(--glasskube-pink)
+    )
+    border-box;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
   mask-composite: exclude;
 }
 
 h1 {
   font-size: 3rem;
-  background: linear-gradient(60deg, var(--glasskube-main-3), var(--glasskube-pink));
+  background: linear-gradient(
+    60deg,
+    var(--glasskube-main-3),
+    var(--glasskube-pink)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -214,3 +226,6 @@ canary-trigger-searchbar::part(kbd) {
   background-color: var(--ifm-color-emphasis-200);
 }
 
+pre.language-go {
+  tab-size: 4;
+}
