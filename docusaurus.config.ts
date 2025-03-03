@@ -120,7 +120,11 @@ const config: Config = {
         docs: false,
         blog: false,
         theme: {
-          customCss: ['./src/css/custom.css'],
+          customCss: [
+            './src/css/custom.css',
+            './src/css/embla.css',
+            './node_modules/css-device-frames/dist/device-frames.css',
+          ],
         },
         sitemap: {
           changefreq: EnumChangefreq.DAILY,
