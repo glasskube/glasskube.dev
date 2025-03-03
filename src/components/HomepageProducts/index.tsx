@@ -18,8 +18,8 @@ const ScreenshotList: ScreenshotItem[] = [
     title: 'Software Distributor Platform',
     description: (
       <>
-        Onboard customers faster, distribute updates easily and troubleshoot
-        issues with confidence.
+        Onboard customers faster, distribute artifacts and update deployments
+        easily and troubleshoot issues with confidence.
         <br />
         <Link
           className="button button--secondary margin-top--md"
@@ -29,17 +29,16 @@ const ScreenshotList: ScreenshotItem[] = [
       </>
     ),
     screenshotAltText: 'Software distribution platform',
-    lightScreenshotUrl:
-      '/img/screenshots/glasskube-cloud-software-distributor-platform-light.png',
-    darkScreenshotUrl:
-      '/img/screenshots/glasskube-cloud-software-distributor-platform-dark.png',
+    lightScreenshotUrl: '/img/screenshots/distr/distr-dashboard-light.webp',
+    darkScreenshotUrl: '/img/screenshots/distr/distr-dashboard-dark.webp',
   },
   {
     title: 'Customer Portal',
     description: (
       <>
         Give your customers a simple, but powerful portal to simplify their
-        installations and stay on top of their deployments.
+        installations and artifact download and stay on top of their deployments
+        and potential security vulnerability in used images.
         <br />
         <Link
           className="button button--secondary margin-top--md"
@@ -50,9 +49,8 @@ const ScreenshotList: ScreenshotItem[] = [
     ),
     screenshotAltText: 'Glasskube overview page',
     lightScreenshotUrl:
-      '/img/screenshots/glasskube-cloud-customer-portal-light.png',
-    darkScreenshotUrl:
-      '/img/screenshots/glasskube-cloud-customer-portal-dark.png',
+      '/img/screenshots/distr/distr-customer-portal-light.webp',
+    darkScreenshotUrl: '/img/screenshots/distr/distr-customer-portal-dark.webp',
   },
 ];
 
@@ -67,14 +65,18 @@ function Screenshot(item: ScreenshotItem) {
           <p>{item.description}</p>
         </div>
       </div>
-      <div className={clsx('col col--9')}>
-        <ThemedImage
-          alt={item.screenshotAltText}
-          sources={{
-            light: item.lightScreenshotUrl,
-            dark: item.darkScreenshotUrl,
-          }}
-        />
+      <div className={clsx('col col--9 padding--lg')}>
+        <div
+          className="app-frame mac dark borderless shadow--tl"
+          data-url="app.distr.sh">
+          <ThemedImage
+            alt={item.screenshotAltText}
+            sources={{
+              light: item.lightScreenshotUrl,
+              dark: item.darkScreenshotUrl,
+            }}
+          />
+        </div>
       </div>
     </>
   );
