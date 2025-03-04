@@ -42,6 +42,11 @@
   --ifm-heading-font-family: Poppins, Inter, system-ui, sans-serif;
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* https://jhildenbiddle.github.io/css-device-frames/#/?id=customization */
+  .app-frame {
+    --bar-height: 33px;
+  }
 }
 
 
@@ -200,9 +205,12 @@ canary-root {
   --canary-color-primary-c: 0.08;
   --canary-color-primary-h: 250;
 }
+
 canary-trigger-searchbar::part(button) {
   background-color: var(--ifm-color-emphasis-100);
 }
+
 canary-trigger-searchbar::part(kbd) {
   background-color: var(--ifm-color-emphasis-200);
 }
+
