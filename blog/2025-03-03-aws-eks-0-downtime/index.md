@@ -209,10 +209,11 @@ you might be tempted to add a sidecar container with a `preStop` lifecycle hook 
         command: [sh, -c, 'sleep 20']
 ```
 
-Unfortunately, after lots of investigation, I have found that this does not work.
-Although your application container keeps running until the Kubelet sends the termination signal to all your containers, the ports are immediately closed as soon as the pod enters the `Terminating` phase.
+Unfortunately, after lots of trial and error, I have found that this does not work.
+Although your application container keeps running until the Kubelet sends the termination signal to all your containers, the ports are immediately closed as soon as the pod enters the `Terminating` phase, even though the underlying application remains in the "ready" state until it receives the termination signal after the `preStop` lifecycle hook of the sidecar container has finished.
 
 In those cases, your only option is to bake this feature directly into your application. You can either stick with the `preStop` lifecycle hook idea and implement something like a sleep sub-command or HTTP endpoint, or (my preferred solution) allow your application to wait for some time before shutting down the server.
+This is easy enough to accomplish in most programming languages. In Go you just have to call `time.Sleep` with the desired duration.
 
 ```go
 var terminationDelay = 20 * time.Second
@@ -226,7 +227,6 @@ func main() {
 		if err := srv.Shutdown(context.TODO()); err != nil {
 			log.Fatal(err)
 		}
-    time.Sleep(terminationDelay)
 		close(shutdownComplete)
 	})
 
@@ -236,5 +236,8 @@ func main() {
 	<-shutdownComplete
 }
 ```
+
+If you deploy this application and test the rolling update, you will see that there are no more 502/504 errors.
+We have achieved 100% downtime-free deployments!
 
 ![siege report with no errors](/img/blog/2025-03-03-aws-eks-0-downtime/success.png)
