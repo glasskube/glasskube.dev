@@ -154,7 +154,7 @@ After applying this fix, I was personally very excited to try this improved shut
 
 You can also see this in the AWS UI for target group monitoring as the "Target connection errors" metric
 
-![siege report with errors](/img/blog/2025-03-03-aws-eks-0-downtime/target-group-metrics.png)
+![aws target group metrics showing errors](/img/blog/2025-03-03-aws-eks-0-downtime/target-group-metrics.png)
 
 The reason for this is obvious in hindsight and attentive readers of this blog post might already have figured it out:
 The AWS Load Balancer keeps sending _new_ requests to the target for several seconds _after_ the application is sent the termination signal!
