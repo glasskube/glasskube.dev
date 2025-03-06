@@ -43,7 +43,9 @@ After an IP address is added to the target group, the AWS system starts performi
 Only once this health check indicates that the target is healthy, will the Load Balancer start routing traffic to that target.
 But because Kubernetes doesn't know about this external health check, it continues to replace other replicas of the workload which can lead to a situation where all pods have been replaced, but none are considered "healthy" by the Load Balancer yet.
 Conversely, if a Pod is marked as "terminating", it takes about 5-15 seconds for the AWS Load Balancer Controller to register this change and the Load Balancer to drain the target.
-But if the application has already terminated, it might still try to route some requests to this target, which results in a 502 or 504 HTTP error for the client (see above).
+But if the application has already terminated, it might still try to route some requests to this target, which results in a 502 or 504 HTTP error for the client.
+
+This is exactly what had happened when I took the screenshot in the introduction.
 
 Fortunately, both of those issues can be worked around, but the [documentation](https://docs.aws.amazon.com/eks/latest/best-practices/load-balancing.html#_availability_and_pod_lifecycle) is a little nebulous about how everything works in detail.
 
