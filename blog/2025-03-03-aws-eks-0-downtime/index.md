@@ -25,7 +25,7 @@ The truth is that although the AWS Load Balancer Controller is a fantastic piece
 In this blog post I will share what we have learned in the process of achieving this goal, hopefully in a way that you can adapt to your own application.
 But before getting to the solution, let's take a look under the hood and learn how the AWS Load Balancer Controller actually works.
 
-## Background: How do Load Balancers Work in Kubernetes on AWS with EKS
+## Background: How Do Load Balancers Work in Kubernetes on AWS with EKS
 
 In Kubernetes, usually every pod has its own IP address.
 This IP address can be used to communicate with a server application running in that pod via the clusters' internal network.
@@ -38,7 +38,6 @@ It automatically maps Ingress resources to AWS Application Load Balancers and Lo
 In both cases, it creates a `TargetGroupBinding` that represents the target group in the AWS ecosystem and watches the services `Endpoint` resource to update the target group with the IPs from the `Endpoint`.
 An `Endpoint` is created by Kubernetes for each service, and it tracks which IP addresses are routable via that service.
 The endpoint controller uses several signals to determine whether pod is eligible to be part of an endpoint, including container probes and whether the pod is marked as "terminating".
-
 
 ![siege report with errors](/img/blog/2025-03-03-aws-eks-0-downtime/aws-loadbalancer.png)
 
@@ -55,7 +54,7 @@ This is exactly what had happened when I took the screenshot in the introduction
 
 Fortunately, both of those issues can be worked around, but the [documentation](https://docs.aws.amazon.com/eks/latest/best-practices/load-balancing.html#_availability_and_pod_lifecycle) is a little nebulous about how everything works in detail.
 
-## Testing Zero downtime deployments
+## Testing Zero Downtime Deployments
 
 In what follows, I will describe several solutions to the issues outlined above, all of which are necessary to solve one part of the general problem.
 If you follow along, implementing these solutions for your own application, I suggest testing your changes after each iteration using [`siege`](https://github.com/JoeDog/siege).
@@ -63,7 +62,7 @@ Siege is an HTTP load testing utility that is perfect for our use-case.
 It lets you define how many requests it sends to your server, shows you the status code of each request and prints a nice summary at the end.
 It can be invoked like `siege -c 2 https://your-application.example.com`, where `-c 2` tells it to perform 2 requests in parallel.
 
-## How we archived Zero downtime deployments in three parts
+## How We Archived Zero Downtime Deployments in Three Parts
 
 ### Part 1: Using Pod Readiness Gate on AWS EKS
 
@@ -179,7 +178,7 @@ The reason for this is obvious in hindsight, and attentive readers of this blog 
 The AWS Load Balancer keeps sending _new_ requests to the target for several seconds _after_ the application is sent the termination signal!
 So, in order to actually fix issue number two from above, you have to make your application wait for some time after receiving the termination signal before initiating graceful shutdown.
 
-### Part 3: Kubernetes Termination Delay with Sidecars for Go applications
+### Part 3: Kubernetes Termination Delay with Sidecars for Go Applications
 
 As alluded to before, it usually takes 5-15 seconds for the endpoint change to fully propagate to the target group.
 Since you can not be sure how long it will actually take, determining the amount of time to wait is kind of a balancing act between safety margin and rollout speed.
