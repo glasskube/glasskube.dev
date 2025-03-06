@@ -1,11 +1,15 @@
 ---
-slug: eks-zero-downtime
-title: The Definitive Guide to Zero Downtime Deployments on EKS
-description: Achieving zero-downtime deployments on AWS EKS utilizing Pod Readiness Gates, graceful application shutdown and termination delays with working code examples in Go.
+slug: kubernetes-zero-downtime-deployments-aws-eks
+title: Zero Downtime Deployments on Kubernetes on AWS with EKS
+description: Zero-downtime deployments on Kubernetes on AWS EKS utilizing Pod Readiness Gates, graceful application shutdown and termination delays with code examples in Go
 authors: [kosmoz]
-tags: [AWS, Kubernetes, DevOps]
+tags: [AWS, Kubernetes, DevOps, EKS, Pod Readiness Gates, Golang]
 image: TODO
 ---
+
+I am Jakob—an engineer working at Glasskube, which helps companies distribute their application to customer-controlled environments.
+We build an Open Source Software Distribution platform called Distr ([`github.com/glasskube/distr`](https://github.com/glasskube/distr)),
+the [hosted version](https://signup.distr.sh/) of which is running on AWS EKS.
 
 If you have ever hosted a web-application on EKS, Amazon's managed Kubernetes offering, you are most-likely familiar with the AWS Load Balancer Controller project (formerly AWS ALB Ingress Controller).
 If you have also _upgraded_ that application, you might also be familiar with reports like this:
@@ -16,20 +20,17 @@ If you have also _upgraded_ that application, you might also be familiar with re
 
 The upgrade you just triggered has caused downtime for your application!
 You might think that there is an error your application, but all your logs and metrics seem to indicate that it's doing just fine.
-The truth is, that although the AWS Load Balancer Controller is a fantastic piece of software, it is surprisingly tricky to roll out releases without downtime.
-
-I am Jakob—an engineer working at Glasskube, which helps companies distribute their application to customer-controlled environments.
-We build an Open Source Software Distribution platform called Distr (https://github.com/glasskube/distr), the [hosted version](https://app.distr.sh/) of which is running on AWS EKS.
+The truth is that although the AWS Load Balancer Controller is a fantastic piece of software, it is surprisingly tricky to roll out releases without downtime.
 
 In this blog post I will share what we have learned in the process of achieving this goal, hopefully in a way that you can adapt to your own application.
 But before getting to the solution, let's take a look under the hood and learn how the AWS Load Balancer Controller actually works.
 
-## Background
+## Background: How do Load Balancers Work in Kubernetes on AWS with EKS
 
 In Kubernetes, usually every pod has its own IP address.
-This IP address can be used to communicate with a server application running in that pod via the clusters internal network.
-In most cases, however, this IP is _not_ publicly routable, so in order to make your server application available to the public you need to either expose your service via a Kubernetes service with type `NodePort` or, more commonly, via an `Ingress` or a Kubernetes service with type `LoadBalancer`.
-Both of these options are similar in the sense that Kubernetes doesn't normally come with a solution to reconcile these resources out of the box,
+This IP address can be used to communicate with a server application running in that pod via the clusters' internal network.
+In most cases, however, this IP is _not_ publicly routable, so to make your server application available to the public, you need to either expose your service via a Kubernetes service with type `NodePort` or, more commonly, via an `Ingress` or a Kubernetes service with type `LoadBalancer`.
+Both of these options are similar in the sense that Kubernetes doesn't normally come with a solution to reconcile these resources out of the box.
 So, if your managed Kubernetes distribution does not come with built-in support via their Cloud Controller Manager implementation, or you are running an unmanaged Kubernetes cluster, you will have to install your own implementations of these features.
 
 For this blog post we will focus on AWS EKS, where the AWS Load Balancer Controller is the canonical way to handle both Ingress and LoadBalancer resources.
@@ -37,6 +38,9 @@ It automatically maps Ingress resources to AWS Application Load Balancers and Lo
 In both cases, it creates a `TargetGroupBinding` that represents the target group in the AWS ecosystem and watches the services `Endpoint` resource to update the target group with the IPs from the `Endpoint`.
 An `Endpoint` is created by Kubernetes for each service, and it tracks which IP addresses are routable via that service.
 The endpoint controller uses several signals to determine whether pod is eligible to be part of an endpoint, including container probes and whether the pod is marked as "terminating".
+
+
+![siege report with errors](/img/blog/2025-03-03-aws-eks-0-downtime/aws-loadbalancer.png)
 
 From the above, it follows that the AWS Load Balancer Controller simply adds missing IP addresses to the target group and removes superfluous ones, but unfortunately, both of those actions take some time which can lead to downtime in subtle ways.
 After an IP address is added to the target group, the AWS system starts performing its own health check, which is completely unrelated to the Pod's container probes.
@@ -51,30 +55,31 @@ This is exactly what had happened when I took the screenshot in the introduction
 
 Fortunately, both of those issues can be worked around, but the [documentation](https://docs.aws.amazon.com/eks/latest/best-practices/load-balancing.html#_availability_and_pod_lifecycle) is a little nebulous about how everything works in detail.
 
-## Testing
+## Testing Zero downtime deployments
 
 In what follows, I will describe several solutions to the issues outlined above, all of which are necessary to solve one part of the general problem.
 If you follow along, implementing these solutions for your own application, I suggest testing your changes after each iteration using [`siege`](https://github.com/JoeDog/siege).
-Siege is an HTTP load testing utility that is perfect for our use-case because it lets you define how many requests it sends to your server, shows you the status code of each request and prints a nice summary at the end.
+Siege is an HTTP load testing utility that is perfect for our use-case.
+It lets you define how many requests it sends to your server, shows you the status code of each request and prints a nice summary at the end.
 It can be invoked like `siege -c 2 https://your-application.example.com`, where `-c 2` tells it to perform 2 requests in parallel.
 
-## Solution
+## How we archived Zero downtime deployments in three parts
 
-### Part 1: Pod Readiness Gate
+### Part 1: Using Pod Readiness Gate on AWS EKS
 
 The first issue (pods being cycled too quickly by Kubernetes) has, arguably, the easiest solution.
 Kubernetes supports adding extra pod status conditions by the use of [Pod Readiness Gates](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-readiness-gate).
 These readiness gates are considered for workload availability in addition to the container probes built-in to Kubernetes.
 For a `Deployment` this has the effect that during a `RollingUpdate` rollout the Deployment controller will not scale down the old `ReplicaSet` any further until the new Pod has a readiness gate indicating that it is "ready".
 The AWS Load Balancer Controller [supports](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/pod_readiness_gate/) adding readiness gates to relevant pods to indicate the load balancer health check status.
-This can be enabled by simply labelling the `Namespace` where the pods are situated with `elbv2.k8s.aws/pod-readiness-gate-inject=enabled`.
-If you do this, you will notice that Kubernetes will wait for a while before starting to terminate the next pod.
+This can be enabled by simply labeling the `Namespace` where the pods are situated with `elbv2.k8s.aws/pod-readiness-gate-inject=enabled`.
+If you do this, you will notice that Kubernetes will wait for a while before starting to terminate the next pod as it waits for the first one to become ready.
 To show readiness gates using `kubectl` you can use `kubectl get pods -o wide`.
 
-### Part 2: Graceful Shutdown
+### Part 2: Graceful Application Shutdown in Go
 
 This part does not directly relate to one of the issues above, and it is relevant not only to the AWS ecosystem.
-In order to minimize downtime, your web server must not terminate immediately when instructed to do so by the operating system.
+To minimize downtime, your web server must not terminate immediately when instructed to do so by the operating system.
 The solution described here applies to applications written in Go, using the standard library `http` module for serving and listening.
 Take a look at the following example web application:
 
@@ -170,11 +175,11 @@ You can also see this in the AWS UI for target group monitoring as the "Target c
 
 ![aws target group metrics showing errors](/img/blog/2025-03-03-aws-eks-0-downtime/target-group-metrics.png)
 
-The reason for this is obvious in hindsight and attentive readers of this blog post might already have figured it out:
+The reason for this is obvious in hindsight, and attentive readers of this blog post might already have figured it out:
 The AWS Load Balancer keeps sending _new_ requests to the target for several seconds _after_ the application is sent the termination signal!
 So, in order to actually fix issue number two from above, you have to make your application wait for some time after receiving the termination signal before initiating graceful shutdown.
 
-### Part 3: Termination Delay
+### Part 3: Kubernetes Termination Delay with Sidecars for Go applications
 
 As alluded to before, it usually takes 5-15 seconds for the endpoint change to fully propagate to the target group.
 Since you can not be sure how long it will actually take, determining the amount of time to wait is kind of a balancing act between safety margin and rollout speed.
@@ -261,4 +266,4 @@ We have achieved 100% downtime-free deployments!
 In this blog post we learned how to deploy on AWS EKS with zero downtime by enabling Pod Readiness Gates and implementing graceful shutdown as well as a termination delay.
 But in addition to this, I hope that, like me, you were able to learn something about how external load balancers work in Kubernetes.
 To me, it's always interesting to take a look below the surface of a complex system, this time learning about `Endpoints`, `EndpointSlices`, `TargetGroupBindings` and so much more, and I'm sure this knowledge will be very useful in the future.
-If you want to see a real world implementation of these features, check out Distr (https://github.com/glasskube/distr), our Open Source Software Distribution Platform!
+If you want to see a real-world implementation of these features, check out Distr ([`github.com/glasskube/distr`](https://github.com/glasskube/distr)), our Open Source Software Distribution Platform!
