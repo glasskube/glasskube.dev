@@ -18,6 +18,9 @@ The upgrade you just triggered has caused downtime for your application!
 You might think that there is an error your application, but all your logs and metrics seem to indicate that it's doing just fine.
 The truth is, that although the AWS Load Balancer Controller is a fantastic piece of software, it is surprisingly tricky to roll out releases without downtime.
 
+I am Jakob—an engineer working at Glasskube, which helps companies distribute their application to customer-controlled environments.
+We build an Open Source Software Distribution platform called Distr (https://github.com/glasskube/distr), the [hosted version](https://app.distr.sh/) of which is running on AWS EKS.
+
 In this blog post I will share what we have learned in the process of achieving this goal, hopefully in a way that you can adapt to your own application.
 But before getting to the solution, let's take a look under the hood and learn how the AWS Load Balancer Controller actually works.
 
@@ -252,3 +255,4 @@ We have achieved 100% downtime-free deployments!
 In this blog post we learned how to deploy on AWS EKS with zero downtime by enabling Pod Readiness Gates and implementing graceful shutdown as well as a termination delay.
 But in addition to this, I hope that, like me, you were able to learn something about how external load balancers work in Kubernetes.
 To me, it's always interesting to take a look below the surface of a complex system, this time learning about `Endpoints`, `EndpointSlices`, `TargetGroupBindings` and so much more, and I'm sure this knowledge will be very useful in the future.
+If you want to see a real world implementation of these features, check out Distr (https://github.com/glasskube/distr), our Open Source Software Distribution Platform!
