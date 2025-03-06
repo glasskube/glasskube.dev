@@ -18,7 +18,8 @@ The upgrade you just triggered has caused downtime for your application!
 You might think that there is an error your application, but all your logs and metrics seem to indicate that it's doing just fine.
 The truth is, that although the AWS Load Balancer Controller is a fantastic piece of software, it is surprisingly tricky to roll out releases without downtime.
 
-TODO: some more intro fluff
+In this blog post I will share what we have learned in the process of achieving this goal, hopefully in a way that you can adapt to your own application.
+But before getting to the solution, let's take a look under the hood and learn how the AWS Load Balancer Controller actually works.
 
 ## Background
 
@@ -47,6 +48,8 @@ Fortunately, both of those issues can be worked around, but the [documentation](
 
 In what follows, I will describe several solutions to the issues outlined above, all of which are necessary to solve one part of the general problem.
 If you follow along, implementing these solutions for your own application, I suggest testing your changes after each iteration using [`siege`](https://github.com/JoeDog/siege).
+Siege is an HTTP load testing utility that is perfect for our use-case because it lets you define how many requests it sends to your server, shows you the status code of each request and prints a nice summary at the end.
+It can be invoked like `siege -c 2 https://your-application.example.com`, where `-c 2` tells it to perform 2 requests in parallel.
 
 ## Solution
 
@@ -54,7 +57,8 @@ If you follow along, implementing these solutions for your own application, I su
 
 The first issue (pods being cycled too quickly by Kubernetes) has, arguably, the easiest solution.
 Kubernetes supports adding extra pod status conditions by the use of [Pod Readiness Gates](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-readiness-gate).
-The AWS Load Balancer Controller [supports](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/pod_readiness_gate/) adding readiness gates to relevant pods by simply labelling the `Namespace` where the pods are situated with `elbv2.k8s.aws/pod-readiness-gate-inject=enabled`.
+The AWS Load Balancer Controller [supports](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/pod_readiness_gate/) adding readiness gates to relevant pods to indicate the load balancer health check status.
+This can be enabled by simply labelling the `Namespace` where the pods are situated with `elbv2.k8s.aws/pod-readiness-gate-inject=enabled`.
 If you do this, you will notice that Kubernetes will wait for a while before starting to terminate the next pod.
 To show readiness gates using `kubectl` you can use `kubectl get pods -o wide`.
 
@@ -122,6 +126,7 @@ If you carefully read the documentation for the `net/http` package you will see 
 
 > When Shutdown is called, Serve, ListenAndServe, and ListenAndServeTLS immediately return ErrServerClosed. Make sure the program doesn't exit and waits instead for Shutdown to return.
 
+Oops!
 This means we have to do two additional things:
 
 1. Catch the `ErrServerClosed` returned in this case
@@ -223,7 +228,7 @@ func main() {
 
 	shutdownComplete := make(chan struct{})
 	go OnSigterm(func() {
-    time.Sleep(terminationDelay)
+		time.Sleep(terminationDelay)
 		if err := srv.Shutdown(context.TODO()); err != nil {
 			log.Fatal(err)
 		}
@@ -241,3 +246,9 @@ If you deploy this application and test the rolling update, you will see that th
 We have achieved 100% downtime-free deployments!
 
 ![siege report with no errors](/img/blog/2025-03-03-aws-eks-0-downtime/success.png)
+
+## Conclusion
+
+In this blog post we learned how to deploy on AWS EKS with zero downtime by enabling Pod Readiness Gates and implementing graceful shutdown as well as a termination delay.
+But in addition to this, I hope that, like me, you were able to learn something about how external load balancers work in Kubernetes.
+To me, it's always interesting to take a look below the surface of a complex system, this time learning about `Endpoints`, `EndpointSlices`, `TargetGroupBindings` and so much more, and I'm sure this knowledge will be very useful in the future.
