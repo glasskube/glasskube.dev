@@ -45,6 +45,8 @@ But because Kubernetes doesn't know about this external health check, it continu
 Conversely, if a Pod is marked as "terminating", it takes about 5-15 seconds for the AWS Load Balancer Controller to register this change and the Load Balancer to drain the target.
 But if the application has already terminated, it might still try to route some requests to this target, which results in a 502 or 504 HTTP error for the client.
 
+A 502 HTTP error code stands for "Bad Gateway", which, in our case, means that the load balancer was not able to get a valid HTTP response from a target, either because no target is available, the target sent an invalid response or no response at all.
+A 504 HTTP error code on the other hand stands of "Gateway Timeout", which means that the target didn't send a response in time.
 This is exactly what had happened when I took the screenshot in the introduction.
 
 Fortunately, both of those issues can be worked around, but the [documentation](https://docs.aws.amazon.com/eks/latest/best-practices/load-balancing.html#_availability_and_pod_lifecycle) is a little nebulous about how everything works in detail.
@@ -62,6 +64,8 @@ It can be invoked like `siege -c 2 https://your-application.example.com`, where 
 
 The first issue (pods being cycled too quickly by Kubernetes) has, arguably, the easiest solution.
 Kubernetes supports adding extra pod status conditions by the use of [Pod Readiness Gates](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-readiness-gate).
+These readiness gates are considered for workload availability in addition to the container probes built-in to Kubernetes.
+For a `Deployment` this has the effect that during a `RollingUpdate` rollout the Deployment controller will not scale down the old `ReplicaSet` any further until the new Pod has a readiness gate indicating that it is "ready".
 The AWS Load Balancer Controller [supports](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/pod_readiness_gate/) adding readiness gates to relevant pods to indicate the load balancer health check status.
 This can be enabled by simply labelling the `Namespace` where the pods are situated with `elbv2.k8s.aws/pod-readiness-gate-inject=enabled`.
 If you do this, you will notice that Kubernetes will wait for a while before starting to terminate the next pod.
