@@ -1,6 +1,6 @@
 ---
-slug: kubernetes-zero-downtime-deployments-aws-eks
-title: Zero Downtime Deployments on Kubernetes on AWS with EKS
+slug: zero-downtime-kubernetes-deployments-aws-eks
+title: Zero-Downtime Kubernetes Deployments on AWS EKS
 description: Zero-downtime deployments on Kubernetes on AWS EKS utilizing Pod Readiness Gates, graceful application shutdown and termination delays with code examples in Go
 authors: [kosmoz]
 tags: [AWS, Kubernetes, DevOps, EKS, Pod Readiness Gates, Golang]
