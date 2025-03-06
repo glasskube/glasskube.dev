@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 import DemoButton from '@site/src/components/buttons/DemoButton';
 import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
+import Link from '@docusaurus/Link';
 
 export default function BlogSidebar(): JSX.Element {
   return (
@@ -11,9 +12,12 @@ export default function BlogSidebar(): JSX.Element {
       <p>
         Glasskube is specialized in secure software distribution. Our Open
         Source Software Distribution Platform (
-        <a href={'https://github.com/glasskube/distr/'} target={'_blank'}>
+        <Link
+          href={'https://github.com/glasskube/distr/'}
+          target={'_blank'}
+          rel="noreferrer">
           Distr
-        </a>
+        </Link>
         ) is built for software vendors distributing their application to
         customer controlled environments. We are also the authors of a
         Kubernetes Package Manager.
