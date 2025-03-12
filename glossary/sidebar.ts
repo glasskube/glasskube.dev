@@ -27,6 +27,7 @@ const sidebars: SidebarsConfig = {
         'self-managed-software',
         'isv',
         'air-gapped',
+        'oci-registry',
       ],
     },
   ],
