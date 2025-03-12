@@ -1,0 +1,52 @@
+---
+title: OCI Artifact Registries
+slug: oci-registry-definition
+description: 'Understanding OCI Registries and how they enable modern software delivery definition'
+---
+
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+
+
+## What are OCI Artifact Registries?
+
+OCI Artifact Registries are services designed to store and manage software artifacts, such as container images, Helm charts, Terraform modules, and other components—used throughout software development and deployment workflows. These registries support the Open Container Initiative (OCI) standard, ensuring interoperability and consistency in artifact handling across different systems and environments.
+
+## What is an Artifact in Software?
+
+In computer science, a software artifact (or artefact, both spellings are used, but artifact is more common) refers to any tangible by-product produced during software development or operations. Examples include container images, compiled binaries, documentation, and infrastructure templates such as Terraform modules. Understanding artifacts in software is essential for efficient deployment, version management, and maintaining container image security.
+
+## Benefits of Using OCI Artifact Registries
+
+OCI Artifact Registries provide several advantages:
+
+- **Secure Images and Minimal Image Footprint:** Registries can store minimal images, such as Chainguard Images or other secure Docker images, optimized to reduce vulnerabilities and enhance container security.
+- **Centralized Artifact Management:** By centralizing software artifacts, registries enable efficient version control, reducing complexity when managing deployments, updates, and rollbacks.
+- **Enhanced Container Base Security:** By managing artifacts in a dedicated registry, organizations can enforce container image security policies, ensuring that only vetted and secure images are deployed in environments.
+- **Usage Tracking and Analytics:** Although usage tracking and analytics aren't standard features in most OCI registries, having the capability to trace health status and deployment metrics for registry images is highly valuable. Platforms like the Distr registry offer these advanced analytics capabilities from their beta version.
+
+## How OCI Artifact Registries Enable On-Premises Software Delivery
+
+OCI Artifact Registries significantly simplify software artifact distribution, particularly for on-premises environments:
+
+- **Private Registries for Controlled Deployment:** Organizations leveraging on-premises solutions often require full control over artifact distribution. OCI-compliant private registries ensure artifacts, like Terraform modules from a private Terraform registry or private enterprise Helm charts are securely and privately accessible to authorized environments.
+- **Reliable Artifact Supply Chain:** OCI Artifact Registries are key components in building a reliable software artifact supply chain, allowing secure, verified software artifacts to flow seamlessly from development to production environments.
+- **Self-Managed Deployments:** Organizations requiring single-tenancy or strict compliance benefit from OCI Artifact Registries by managing secure images internally, maintaining full visibility and control over their software development artifacts.
+
+## Artifact vs Artefact in Software
+
+While both "artifact" and "artefact" are technically correct, "artifact" is the standard spelling in software and computer science contexts, particularly in American English. The variant "artefact" is more common in British English but is rarely used in software globally. In the software industry, "artifact" remains the universally recognized and accepted spelling.
+
+## OCI Artifact Registries and Terraform Private Registry
+
+Terraform private registries specifically store Terraform modules, enabling secure sharing and reuse of infrastructure templates within an organization. OCI Artifact Registries can similarly store Terraform modules alongside container images and other software artifacts, simplifying infrastructure-as-code workflows.
+
+## OCI Artifact Registries for Enhanced Software Development
+
+By storing secure container images, minimal image bases, and verified software artifacts, OCI Artifact Registries enable organizations to adhere to best practices for software development artifacts. Teams benefit from improved software delivery efficiency, higher reliability deployments, and reduced risks associated with container image vulnerabilities.
+
+## Key Terms Recap
+
+- **Software Artifacts Examples:** Container images, Terraform modules, Helm charts, binaries, documentation.
+- **Artifact Meaning in Software:** Any product or by-product created during software development or deployment.
+- **Container Image Security:** Practices ensuring container images stored in registries are secure and minimal to reduce vulnerabilities.
+- **Secure Docker Images:** Docker images hardened against security threats, stored securely in OCI-compliant registries.
