@@ -1,0 +1,117 @@
+---
+title: OCI Artifact Registries
+slug: oci-registry-definition
+description: 'Understanding OCI Registries and how they enable modern software distribution'
+---
+
+## What are OCI Artifact Registries?
+
+OCI Artifact Registries are services designed to store and manage software artifacts, such as container images, Helm charts, Terraform modules, and other components, used throughout software development and deployment workflows.
+These registries support the [Open Container Initiative (OCI)](https://opencontainers.org/) standard, ensuring interoperability and consistency in artifact handling across different systems and environments.
+
+## What is an Artifact in Software?
+
+In computer science, a software artifact (or artefact, both spellings are used, but artifact is more common) refers to any tangible by-product produced during software development or operations.
+Examples include container images, compiled binaries, documentation, and infrastructure templates such as Terraform modules.
+
+## Benefits of Using OCI Artifact Registries
+
+OCI Artifact Registries provide several advantages:
+
+- **Secure Images and Minimal Image Footprint:** Registries can store minimal images, such as Chainguard Images or other secure Docker images, optimized to reduce vulnerabilities and enhance container security.
+- **Centralized Artifact Management:** By centralizing software artifacts, registries enable efficient version control, reducing complexity when managing deployments, updates, and rollbacks.
+- **Enhanced Container Base Security:** By managing artifacts in a dedicated registry, organizations can enforce container image security policies, ensuring that only vetted and secure images are deployed in environments.
+- **Usage Tracking and Analytics:** Although usage tracking and analytics aren't standard features in most OCI registries, having the capability to have an audit log for artifact downloads is highly valuable.
+Platforms like the Distr registry offer these advanced analytics capabilities.
+
+## How OCI Artifact Registries Enable On-Premises Software Delivery
+
+OCI Artifact Registries significantly simplify software artifact distribution, particularly for on-premises environments:
+
+- **Private Registries for Controlled Deployment:** Organizations leveraging on-premises solutions often require full control over artifact distribution. OCI-compliant private registries ensure artifacts, like Terraform modules from a private Terraform registry or private enterprise Helm charts are securely and privately accessible to authorized environments.
+- **Reliable Artifact Supply Chain:** OCI Artifact Registries are key components in building a reliable software artifact supply chain, allowing secure, verified software artifacts to flow seamlessly from development to production environments.
+- **Self-Managed Registries:** Organizations requiring single-tenancy or strict compliance benefit from OCI Artifact by hosting their own artifact registry internally, so they can distribute containers withing their network.
+
+## Artifact vs Artefact in Software
+
+While both "artifact" and "artefact" are technically correct, "artifact" is the standard spelling in software and computer science contexts, particularly in American English.
+The variant "artefact" is more common in British English but is rarely used in software globally.
+In the software industry, "artifact" remains the universally recognized and accepted spelling.
+
+## OCI Registry for Terraform modules
+
+Terraform private registries specifically store Terraform modules, enabling secure sharing and reuse of infrastructure templates within an organization.
+OCI Artifact Registries can similarly store Terraform modules alongside container images and other software artifacts, simplifying infrastructure-as-code workflows.
+
+Example:
+```bash
+tar cvzf my-module.tar.gz my-module/
+oras push my-registry.example.com/my-terraform-module:v1.0 \
+  --artifact-type application/vnd.hashicorp.terraform.module.v1+tar.gz \
+  my-module.tar.gz
+```
+
+## OCI Registry for Helm Charts
+Helm, the popular package manager for Kubernetes, allows users to store and distribute Helm charts using OCI-compliant artifact registries. OCI support in Helm provides a standardized way to manage and share Helm charts securely across different environments.
+
+Example:
+```bash
+helm package my-chart/
+helm push my-chart-0.1.0.tgz oci://my-registry.example.com/helm-charts
+```
+
+## Examples of OCI registries:
+
+Open Source:
+ - OpenRegistry
+ - [Django-OCI](https://vsoch.github.io/django-oci/)
+ - Distr
+ - Gitea Container Registry
+ 
+
+Hosted:
+ - JFrog Artifactory
+ - Distr
+ - Google Artifact Registry
+ - Docker Hub
+ - Cloudsmith Registry
+ - GitHub Container Registry
+
+
+### Open source OCI registries reference implementation
+
+- [Google Container Registry (GCR)](https://github.com/google/go-containerregistry)
+- [Distribution (formely Docker Distribution)](https://github.com/distribution/distribution)
+
+### OCI registry specifications
+OCI registry specifications define the standards for storing, distributing, and running containerized applications in a consistent and interoperable way. These specifications ensure compatibility across different registries, runtimes, and container tools, enabling a reliable ecosystem for modern software deployment.
+
+These are the three OCI specifications 
+- [OCI Image Format Specification](https://github.com/opencontainers/image-spec) – Defining how container images should be structured, stored, and transported.
+- [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec) – Standardizing how container images and artifacts are distributed via OCI-compliant registries.
+- [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec) – Specifying the low-level execution environment for running OCI-compliant containers.
+
+### OCI registry conformance
+OCI registry conformance ensures that a registry has been tested against the [OCI Distribution Specification](#oci-registry-specifications) (there are no conformance tests available for the runtime or image format specs yet), verifying its adherence to OCI standards and ensuring interoperability with OCI-compliant tools.
+
+A conformant registry must support APIs categorized into the following workflow groups:
+
+- **Pull** - Clients are able to pull from the registry
+- **Push** - Clients are able to push to the registry
+- **Content Discovery** - Clients are able to list or otherwise query the content stored in the registry
+- **Content Management** - Clients are able to control the full life-cycle of the content stored in the registry
+
+To be considered an OCI-conformant registry, at minimum, all APIs in the *Pull* category must be supported.
+
+#### Conformance testing
+If you are developing a registry and want to verify compliance with these workflow categories, use the [conformance testing tool](https://github.com/opencontainers/distribution-spec/tree/main/conformance).
+
+:::note
+Check out [conformance results](https://conformance.opencontainers.org/) for major open-source and hosted artifact registries.
+:::
+## Key Terms Recap
+
+- **Software Artifacts Examples:** Container images, Terraform modules, Helm charts, binaries, documentation.
+- **Artifact Meaning in Software:** Any product or by-product created during software development or deployment.
+- **Container Image Security:** Practices ensuring container images stored in registries are secure and minimal to reduce vulnerabilities.
+- **Secure Docker Images:** Docker images hardened against security threats, stored securely in OCI-compliant registries.
