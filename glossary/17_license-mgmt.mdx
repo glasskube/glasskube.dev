@@ -1,60 +1,46 @@
 ---
 title: Software License Management
 slug: license-management
-description: 'Software license management tools help businesses efficiently track, manage, and optimize software licenses to codify business contracts.'
+description: 'Software license management tools help vendors control access to software artifacts and enable businesses to track their software entitlement adjudication.'
 ---
+## What is Software License Management for On Prem environments?
 
-## What is Software License Management?
+[Software license management](https://distr.sh/docs/guides/license-mgmt/) refers to the processes, tooling, and systems used by software vendors to control, track, and manage access to software through licenses. In practice, this means enabling or disabling access to specific versions, features, or software artifacts based on a customer’s entitlement.
 
-Software license management refers to the processes, tools, and systems organizations use to efficiently manage, track, and control software licenses across their infrastructure.
-End customers want to keep track of their bought licenses and software vendors need ensure their software applications can validate the licenses.
+It’s a key part of how software is packaged and distributed not just an operational requirement, but a mechanism for delivering differentiated value and reducing adoption friction in on-premises or self-hosted environments.
 
 ## Why is Software License Management Important?
 
-End customers need to keep track about their software licenses to:
-
-- **Ensure Compliance:** Avoid legal risks and financial penalties associated with software license audits by tracking software licenses and ensuring all applications are properly licensed.
-- **Optimize Costs:** Reduce unnecessary expenses by identifying unused or underutilized licenses and reallocating them accordingly.
-- **Enhance Efficiency:** Automate and streamline license tracking and inventory processes, saving administrative resources and enabling rapid deployment and scaling.
-
-## Types of Software License Management Tools
-
-Organizations have multiple options for software license management tools:
-
-- **Enterprise Software License Management:** [Comprehensive tools](https://distr.sh/docs/guides/license-mgmt/) designed for managing software licenses at large organizations with complex license requirements, often supporting both cloud and on-premises deployments.
-- **Cloud Software License Management:** Cloud-native tools designed specifically for managing licenses of SaaS and cloud-based applications.
-- **SaaS License Management Tools:** Solutions tailored explicitly to track software licenses and manage subscriptions for cloud-hosted software products.
-- **Open Source License Management Tools:** Free or [open-source software](/) solutions ideal for businesses seeking cost-effective license management solutions with basic to intermediate functionality.
-
-## Features of Effective License Management Software
-
-An effective software license management tool typically includes:
-
-- **Software License Tracking System:** Capabilities to monitor, inventory, and maintain an up-to-date record of software licenses across the organization.
-- **License Control Software:** Tools that enforce license compliance, restrict unauthorized usage, and alert administrators to potential licensing issues.
-- **Software License Inventory:** Automated systems that provide detailed reporting of current software assets, their usage status, and associated licenses.
-- **Software License Audit Tools:** Features designed specifically for internal audits to proactively identify licensing discrepancies or potential compliance risks.
-
-## Benefits of Implementing a Software License Management Solution
-
-Deploying a comprehensive software license management solution offers significant business benefits, including:
-
-- **Scaling Enablement Management:** Efficiently manage and scale the ability to handle growing lists of bespoke customer enablements, ensuring precise control over tailored license distributions.
-- **Compliance Assurance:** Proactive management of software licenses reduces audit risks, ensuring adherence to licensing agreements.
-- **Increased Visibility:** Real-time insights into software utilization, aiding in strategic decision-making for future software investments.
-
-## How to Track Software Licenses Effectively
-
-Effective tracking of software licenses involves:
-
-- Utilizing robust software license tracking tools or dedicated license tracking software to automate inventory management.
-- Regularly conducting internal audits with software license audit tools.
-- Maintaining a centralized software license inventory accessible to IT administrators.
+- **Control Access to Artifacts or full Applications:** Define which customers can access specific artifacts and artifact versions in a registry or fully packaged applications.
+- **Enforce Business Subscription Models:** Support subscription, perpetual, or usage-based models with license enforcement tied to entitlement logic.
+- **Protect Intellectual Property:** Ensure proprietary software artifacts are only accessible to authorized users.
 
 ## Software License Management in Modern On-Premises Deployments
 
-With modern software distribution and deployment models, effective software license management extends beyond traditional installations. Tools now need to manage software licenses across hybrid infrastructures, including on-premises, cloud, and containerized environments, ensuring that license tracking remains consistent and compliant across all platforms.
+As more vendors offer software for on-premises, hybrid, and air-gapped environments, license management systems must adapt. Modern license enforcement goes beyond serial keys or cloud checks, it integrates with how software is packaged and distributed.
 
-## License vs Licence Management
+In platforms like Distr, licensing is embedded directly into the distribution flow, which not only secures access but also improves transparency and control for both vendor and customer.
 
-"License" (American English) and "Licence" (British English) both refer to the same concept. However, "license" is predominantly used in software and IT contexts globally, making "license management" the preferred terminology in international software distribution and technology industries.
+## Types of Software Enforcement
+
+Distr's license management is designed for two different distribution models and customer needs:
+
+- **Application License Enforcement:** Systems designed to manage access to full application or versions of an application.
+- **Artifact-Based License Enforcement:** Systems that restrict access to software artifacts in registries or repositories.
+
+## Features of Effective License Management Software
+
+Modern license management systems typically include:
+
+- **Granular Access Control:** Gate access to containers, binaries, Helm charts, release versions, patches, based on entitlements.
+- **Enablement Tracking:** Manage and audit what each customer is entitled to and verify if the entitlements are correctly adjudicated.
+- **Offline License Verification:** Ensure that license checks still work in air-gapped or disconnected environments.
+
+## How to Track Software Licenses Effectively
+
+Effective license tracking involves:
+
+- Using a centralized system to manage license data across customers and deployments
+- Automating license assignment and expiration
+- Performing regular internal audits
+- Ensuring license updates are enforced in real-time
