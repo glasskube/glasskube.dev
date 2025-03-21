@@ -1,0 +1,52 @@
+.features {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+  }
+  
+  .input {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: var(--ifm-button-border-radius);
+    border: 1px solid var(--glasskube-main-2);
+  }
+  
+  .input:focus {
+    border-color: var(--glasskube-main-3);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--ifm-global-spacing);
+  }
+  
+  .card {
+    background: var(--ifm-background-surface-color);
+    border: 1px solid var(--glasskube-main-2);
+    border-radius: var(--ifm-button-border-radius);
+    padding: 2rem;
+  }
+  
+  .raffleImage {
+    max-width: 578px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .featureList {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  
+  .featureItem {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
