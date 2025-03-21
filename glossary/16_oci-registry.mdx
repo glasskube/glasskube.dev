@@ -6,7 +6,8 @@ description: 'Understanding OCI Registries and how they enable modern software d
 
 ## What are OCI Artifact Registries?
 
-OCI Artifact Registries are services designed to store and manage software artifacts, such as container images, Helm charts, Terraform modules, and other components, used throughout software development and deployment workflows.
+OCI Artifact Registries are services designed to store and manage software artifacts. In OCI terminology, these artifacts are stored as "blobs" (binary large objects), which can be container images, Helm charts, Terraform modules, or other software components. Each blob is uniquely addressable by a digest, making it easy to track and manage throughout the software development and deployment workflows.
+
 These registries support the [Open Container Initiative (OCI)](https://opencontainers.org/) standard, ensuring interoperability and consistency in artifact handling across different systems and environments.
 
 ## What is an Artifact in Software?
@@ -32,18 +33,44 @@ OCI Artifact Registries significantly simplify software artifact distribution, p
 - **Reliable Artifact Supply Chain:** OCI Artifact Registries are key components in building a reliable software artifact supply chain, allowing secure, verified software artifacts to flow seamlessly from development to production environments.
 - **Self-Managed Registries:** Organizations requiring single-tenancy or strict compliance benefit from OCI Artifact by hosting their own artifact registry internally, so they can distribute containers withing their network.
 
-## Artifact vs Artefact in Software
+## Pushing and Pulling from OCI Registries
 
-While both "artifact" and "artefact" are technically correct, "artifact" is the standard spelling in software and computer science contexts, particularly in American English.
-The variant "artefact" is more common in British English but is rarely used in software globally.
-In the software industry, "artifact" remains the universally recognized and accepted spelling.
+OCI registries support standardized ways to push and pull artifacts. [ORAS (OCI Registry As Storage)](https://oras.land/) is a common tool used for this purpose.
+
+:::note
+To install ORAS:
+
+- **macOS**: `brew install oras`
+- **Windows**: `choco install oras`
+- **Linux**: 
+  ```bash
+  curl -LO https://github.com/oras-project/oras/releases/download/v1.1.0/oras_1.1.0_linux_amd64.tar.gz
+  mkdir -p oras-install/
+  tar -zxf oras_1.1.0_linux_amd64.tar.gz -C oras-install/
+  sudo mv oras-install/oras /usr/local/bin/
+  rm -rf oras_1.1.0_linux_amd64.tar.gz oras-install/
+  ```
+
+You can verify the installation with: `oras version`
+:::
+
+Basic usage of ORAS:
+```bash
+# Push an artifact
+oras push registry.example.com/hello-artifact:v1 \
+    --artifact-type application/vnd.unknown.artifact.v1 \
+    ./hello.txt:text/plain
+
+# Pull an artifact
+oras pull registry.example.com/hello-artifact:v1
+```
 
 ## OCI Registry for Terraform modules
 
 Terraform private registries specifically store Terraform modules, enabling secure sharing and reuse of infrastructure templates within an organization.
 OCI Artifact Registries can similarly store Terraform modules alongside container images and other software artifacts, simplifying infrastructure-as-code workflows.
 
-Example:
+Example of pushing a Terraform module:
 ```bash
 tar cvzf my-module.tar.gz my-module/
 oras push my-registry.example.com/my-terraform-module:v1.0 \
@@ -52,7 +79,7 @@ oras push my-registry.example.com/my-terraform-module:v1.0 \
 ```
 
 ## OCI Registry for Helm Charts
-Helm, the popular package manager for Kubernetes, allows users to store and distribute Helm charts using OCI-compliant artifact registries. OCI support in Helm provides a standardized way to manage and share Helm charts securely across different environments.
+Beginning from[ Helm v3.8.0](https://helm.sh/docs/topics/registries/) OCI support is enabled by default and provides a standardized way to manage and share Helm charts securely across different environments.
 
 Example:
 ```bash
@@ -60,23 +87,27 @@ helm package my-chart/
 helm push my-chart-0.1.0.tgz oci://my-registry.example.com/helm-charts
 ```
 
-## Examples of OCI registries:
+## Examples of OCI registries
 
-Cloud:
- - Docker Hub
+#### Open Source:
+ - [OpenRegistry](https://openregistry.dev/)
+ - [Harbor](https://goharbor.io/)
+ - [Django-OCI](https://vsoch.github.io/django-oci/)
+ - [Distr](https://glasskube.dev/)
+ - [Gitea Container Registry](https://about.gitea.com/)
+
+
+#### Hosted:
+ - [JFrog Artifactory](https://jfrog.com/artifact-management/)
+ - [Distr](https://glasskube.dev/)
+ - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs)
+ - [Docker Hub](https://www.docker.com/blog/announcing-docker-hub-oci-artifacts-support/)
+ - [Cloudsmith Registry](https://help.cloudsmith.io/docs/oci-repository)
  - GitHub Container Registry
- - Chainguard Registry
- - Google Artifact Registry
- - Distr
-
-Self hosted:
- - Harbor
- - JFrog Artifactory
- - Distr
- - Gitea Container Registry
 
 
 ### Open source OCI registries reference implementation
+These projects serve as reference implementations for building OCI-compliant registries:
 
 - [Google Container Registry (GCR)](https://github.com/google/go-containerregistry)
 - [Distribution (formely Docker Distribution)](https://github.com/distribution/distribution)
@@ -102,7 +133,7 @@ A conformant registry must support APIs categorized into the following workflow 
 To be considered an OCI-conformant registry, at minimum, all APIs in the *Pull* category must be supported.
 
 #### Conformance testing
-If you are developing a registry and want to verify compliance with these workflow categories, use the [conformance testing tool](https://github.com/opencontainers/distribution-spec/tree/main/conformance).
+If you are developing a registry service and want to verify compliance with these workflow categories, use the [conformance testing tool](https://github.com/opencontainers/distribution-spec/tree/main/conformance).
 
 :::note
 Check out [conformance results](https://conformance.opencontainers.org/) for major open-source and hosted artifact registries.
@@ -113,3 +144,4 @@ Check out [conformance results](https://conformance.opencontainers.org/) for maj
 - **Artifact Meaning in Software:** Any product or by-product created during software development or deployment.
 - **Container Image Security:** Practices ensuring container images stored in registries are secure and minimal to reduce vulnerabilities.
 - **Secure Docker Images:** Docker images hardened against security threats, stored securely in OCI-compliant registries.
+- **Blob:** The binary form of content that is stored by a registry, addressable by a digest. Blobs are the fundamental storage unit in OCI registries.
