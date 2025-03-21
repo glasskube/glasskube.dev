@@ -7,7 +7,6 @@ import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 
-
 function RaffleImage() {
   return (
     <ThemedImage
