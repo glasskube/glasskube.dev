@@ -131,6 +131,7 @@ const config: Config = {
           priority: 1,
           ignorePatterns: [
             '/telemetry/',
+            '/srecon-raffle/',
             '/blog/authors/',
             '/blog/archive/',
             '/blog/tags/**',
