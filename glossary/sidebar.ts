@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
         'isv',
         'air-gapped',
         'oci-registry',
+        'license-mgmt',
       ],
     },
   ],
