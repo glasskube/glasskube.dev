@@ -18,6 +18,7 @@ import Testimonials from '@site/src/components/Testimonials';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
 import {EmblaOptionsType} from 'embla-carousel';
 import EmblaCarousel from '@site/src/components/HomeCarousel/EmblaCarousel';
+import Head from '@docusaurus/Head';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -202,6 +203,9 @@ export default function Home({
     <Layout
       title={siteConfig.tagline}
       description="Featuring a GUI and a CLI. Glasskube packages are dependency aware, GitOps ready and get automatic updates via a central public package repository.">
+      <Head>
+        <script async src="/js/koala.js"></script>
+      </Head>
       <HomepageHeader />
       <main>
         <LogoSlider />

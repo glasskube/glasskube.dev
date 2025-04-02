@@ -4,6 +4,8 @@ import Heading from '@theme/Heading';
 import Pricing from './_components/PricingComponent';
 import PricingFaq from '@site/src/pages/pricing/_components/PricingFaqComponent';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
+import Head from '@docusaurus/Head';
+import React from 'react';
 
 const TITLE = translate({message: 'Pricing'});
 const DESCRIPTION = translate({
@@ -24,6 +26,9 @@ function PricingHeader() {
 export default function PackagePage(): JSX.Element {
   return (
     <Layout title={TITLE} description={DESCRIPTION}>
+      <Head>
+        <script async src="/js/koala.js"></script>
+      </Head>
       <main className="margin-vert--lg">
         <PricingHeader />
         <Pricing />
