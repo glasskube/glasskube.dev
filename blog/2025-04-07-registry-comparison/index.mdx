@@ -1,0 +1,401 @@
+---
+slug: container-image-registry-comparison-post
+title: "Choosing the Right Container Registry"
+description: "Compare open source container registries, private Docker registries, self-hosted options, and OCI-compliant solutions for on-premise and cloud environments."
+authors: [ jpage ]
+tags: [ "OCI Registry", "Docker Registry", "Container Compliance" ]
+image: '/img/blog/2025-04-07-registry-comparison/thumbnail.png'
+---
+
+![thumb](/img/blog/2025-04-07-registry-comparison/thumbnail.png)
+
+When Isaac Newton's famously stated, "If I have seen further, it is by standing on the shoulders of Giants," he was obviously speaking in reference to his scientific endeavors, but the centuries old statement is equally applicable to modern day software. Those giants are the developers who came before us, and their shoulders are the artifacts, packages, and libraries we rely on every day to build and ship our products.
+
+But that foundation only holds if those artifacts are secure, portable, and compatible across environments. Great code isn't of much use if it's fragile, locked into a specific environment, or can't move freely between systems.
+
+That's where image format and distribution standardization comes in, hugely impacting how software artifacts are stored, secured and distributed nowadays. Modern container registries, backed by the [Open Container Initiative (OCI)](https://opencontainers.org/), have been growing in popularity in the last few years and rightly so, they give us a shared foundation for packaging and distributing artifacts. They unlock portability across clouds, clusters, and even air-gapped environments.
+
+<!-- truncate -->
+
+But not all OCI registries serve the same purpose. Some are designed primarily for **internal use** - supporting developers, CI/CD pipelines, and deployment within a single organization. Others are built for **external distribution** - helping software vendors distribute artifacts to customers, often across security boundaries or into air-gapped environments.
+
+In this post, we'll compare different registry options, focusing on how each supports real-world software distribution needs. We'll explore which registries excel at internal workflows versus external distribution, with special attention to OCI compliance, the standard that ensures your artifacts work consistently across environments.
+
+But first, let's define a few key terms.
+
+## Terminology:
+
+-   **Registry**: A service for storing and distributing container artifacts. Examples include private Docker image registries, OCI registries and many proprietary registries which will be covered below.
+-   **Project:** In the context of registries it's sometimes used as a logical grouping of container image or artifact repositories.
+-   **Repository**: A logical grouping of artifacts within a registry, often organized by format or purpose.
+-   **Artifact**: Any stored item, binaries, config files, packages, policies, OCI images, etc.
+-   **Container Image**: A type of artifact built from blobs and a manifest, typically used to run containers.
+-   **Blob**: A registry-specific term for a layer within a container image.
+-   **Manifest**: Metadata that defines how blobs are combined to form a container image. 
+-   **Package**: A language-specific artifact format (e.g., Python wheels, npm modules). 
+-   **Monorepo Registry**: A registry where all artifacts live in a single logical space. 
+-   **Security Supply Chain Artifacts**: SBOMs, image signatures, and other integrity-related metadata.
+-   **SBOM (Software Bill of Materials)**: A list of components and dependencies used in a software build.
+-   **Image Signing**: A cryptographic process that ensures the integrity and authenticity of container images.
+-   **OCI Compliance**: Adherence to the Open Container Initiative standards, ensuring OCI-compliant containers can be used across different platforms.
+    
+
+## What Is a Container Registry?
+
+Traditionally, container registries stored ready-to-run images. But today's more highly integrated and complex workflows demand more. Developers also store supporting artifacts like Terraform modules, SBOMs, and image signatures, making flexible registries critical to the entire supply chain.
+
+Modern registries have evolved, largely in part thanks to the Open Container Initiative (OCI) to support these use cases, becoming general-purpose artifact hubs. That's why in this post, we're expanding the scope beyond just container images.
+
+## Let's Talk Artifact Formats
+
+Docker images are still everywhere, but the rise of the [OCI specifications](https://github.com/opencontainers) (heavily influenced by Docker's image and runtime specification) has opened the door to more flexible artifact definitions. Docker images are by default OCI-compatible, so you don't have to switch formats to gain portability. But OCI also supports a much broader range of artifact types, including:
+
+-   **Generic Artifacts**: Any unstructured file or binary  
+-   **OCI Artifacts**: Anything following the OCI spec 
+-   **JSON / CSV**: Common data formats
+-   **Language-Specific Formats**:
+    -   **Conan** (C/C++)
+    -   **Python** (.py, .whl)
+    -   **Maven** (Java)
+    -   **Apt** (Debian)
+    -   **NPM** (Node.js)
+    -   **Go** (Go modules)
+    -   **Yum** (RPM)
+    
+
+## Understanding the OCI Format
+Based on the original Docker runtime and image format, the Open Container Initiative stepped in to standardize these into the more open and widely available OCI Image, Distribution, and Runtime specifications. Bringing consistency and portability to container images. Now, it's doing the same for other types of artifacts.
+
+Popular tools like Helm, Docker, and ORAS support pushing and pulling OCI artifacts. An interesting trend that's emerged is that even non-OCI-native formats like Kubeflow pipelines or ML models can be wrapped as OCI artifacts and stored in registries.
+
+Think of it like a general grocery bag: it doesn't matter what you put inside, as long as it fits the format, it can be stored, versioned, and distributed reliably.
+
+## Key Considerations when choosing a registry
+
+When evaluating registries, consider these core criteria:
+
+**Internal vs. External Use**  
+Is this for your development team's workflow, or for distributing to customers? This is the most fundamental distinction.
+
+**OCI Compliance Level**  
+How completely does the registry implement the OCI specification? This affects which artifact types you can store and distribute.
+
+**Security & Access Controls**  
+For internal use, integration with your existing IAM may be sufficient. For external distribution, you'll need granular controls over which artifacts are visible to which customers.
+
+**Deployment Flexibility**  
+Can the registry deploy where you need it - cloud, on-prem, or air-gapped environments?
+
+> In this post, we'll focus primarily on the OCI-compatible capabilities of the registries we're comparing.
+
+## The building blocks of an Artifact registry
+
+When you look at the registry services out on market today, every registry is built from some combination of the following core components:
+
+![generic-diagram](/img/blog/2025-04-07-registry-comparison/generic-diagram.png)
+  
+-   Registries can act as **monorepos**, where all artifacts live in a single logical space.
+-   If they're **multi-repo**, registries are often organized into **projects** or **namespaces**.
+-   Repositories can be configured as **public** or **private** depending on the use case.
+-   All registries support some form of **user authentication**, and a few extend that access control down to individual artifacts, or even specific version tags.
+-   How repositories are structured varies between providers. Some support **multiple artifact groupings**, for example, by language-specific formats, by application, or into OCI-specific repositories. Others offer more generic repositories that work as a catch-all.
+-   **Clients** are used to interface with the registry. Most registries support common tools like the Docker CLI, Helm CLI, and ORAS.
+    
+Each registry we'll look at has its own configuration of these building blocks, plus platform-specific features that support different workflows.
+
+> In our comparison, we'll focus on OCI-compliant capabilities and provide a clear breakdown of key differences to help you find the right fit for your use case.
+
+## Detailed Comparisons of Popular OCI Registries
+
+## Internal Registries
+
+Internal registries are for the most part built for trusted, in-house use. They integrate tightly with cloud services, IAM systems, and CI/CD pipelines to support internal teams. Their strengths lie in automation, visibility, and secure artifact sharing within the same organization, not so much for external distribution.
+
+Most offer OCI compliance, access controls, and vulnerability scanning. They're ideal when dev and deploy happen inside the same security boundary, with no need to serve external customers.
+
+If you need cloud-native integration and efficient artifact workflows within your org, internal registries are a solid fit.
+
+### Azure Container Registry (ACR)
+![ACR](/img/blog/2025-04-07-registry-comparison/acr.png)
+
+[Azure Container Registry (ACR)](https://azure.microsoft.com/en-us/products/container-registry) allows users to store artifacts either in a default global namespace or organize them more granularly using the supported repository structure. Thanks to Microsoft's scale, ACR comes with some compelling features like global image replication and built-in automation for building and patching images. There's also support for vulnerability scanning, apparently via an integration with Aqua Security, though I've mostly seen that mentioned in [Aqua's own documentation](https://www.aquasec.com/blog/image-vulnerability-scanning-in-azure-container-registry/).
+
+![ACR-diagram](/img/blog/2025-04-07-registry-comparison/acr-diagram.png)
+
+**Key features:**
+
+-   OCI v1.1 compliant, strong integration with Azure 
+-   Supports specialized artifacts (WASM modules, Bicep files, ML models) 
+-   Built-in Azure policy management and security 
+-   Pricing transparency 
+-   Automated container building a patching
+    
+
+### AWS Elastic Container Registry (ECR)
+
+![ECR](/img/blog/2025-04-07-registry-comparison/ecr.png)
+
+[Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) supports both private and public repositories, integrating nicely with AWS services like ECS and EKS. ECR features include lifecycle policies for image management, automated vulnerability scanning, and cross-region replication. Access control is managed in AWS IAM. It's ideal for AWS-centric workflows, offering high availability and durability for container images.
+
+**Key features:**
+
+- Private and Public repositories
+- Automated vulnerability scanning 
+- Built-in lifecycle policies management
+- Easy Integration with CI/CD Pipelines like AWS CodePipeline and GitHub Actions
+    
+
+### Google Artifacts Registry (GCR)
+
+![gcr](/img/blog/2025-04-07-registry-comparison/gcr.png)
+
+[Google Artifact Registry](https://cloud.google.com/artifact-registry/docs) is the successor to Google Container Registry, offering a unified platform for managing both container images and non-container artifacts like Maven, npm, and OS packages. It integrates with Google Cloud services (e.g., Cloud Build, Deploy, GKE) and supports fine-grained access via IAM, CMEK encryption, and regional or multi-regional setups.
+
+> For users [transitioning](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) from Google Container Registry, Artifact Registry offers improved features and support for a broader range of artifact types.
+
+**Key features:**
+
+- Multi-Format Support
+- Custom Security and Access Control including customer-managed encryption keys (CMEK) for individual repositories
+- Regional and Multi-Regional Repositories
+    
+### Oracle Container Registry (OCR)
+
+![Oracle Container registry](/img/blog/2025-04-07-registry-comparison/ocr.png)
+
+[Oracle Container Registry](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryoverview.html) is a managed service for storing and sharing container images, with support for public and private repos. It integrates with Oracle Cloud IAM for access control, supports multi-architecture images, and offers high availability via replication. Best suited for Oracle Cloud users, it works seamlessly with tools like Kubernetes Engine and Visual Builder Studio.
+
+**Key features:**
+
+- Private and Public Docker Registries
+- Multi-Architecture Image Support
+    
+    
+### JFrog Artifactory
+![jfrog](/img/blog/2025-04-07-registry-comparison/jfrog.png)
+
+[JFrog Artifactory](https://jfrog.com/artifactory/) is without a doubt a huge player in the registry product catalog, being both a registry and a universal repository manager, supporting 30+ package formats.
+
+![jfrog-diagram](/img/blog/2025-04-07-registry-comparison/jfrog-diagram.png)
+
+Instead of a unified registry space, each format typically gets its own dedicated repository type. JFrog Artifactory pricing varies based on scale and features, but it offers one of the most comprehensive solutions for internal registries on the market.
+
+It supports three repo types:
+
+-   **Local** – for internal artifacts 
+-   **Remote** – for caching external sources 
+-   **Virtual** – unified views of local and remote repos
+    
+Artifactory includes enterprise-grade features like OCI v1.1 compliance, a proprietary query language (AQL), CDN integration, and fine-grained access controls for large-scale distribution.
+
+**Key features:**
+
+-   Full OCI-compliant registry with Referrers API support
+-   Universal artifact management across multiple formats
+-   Advanced artifact tracking, dependency management and caching
+-   Image vulnerability scanning and security features
+-   Proprietary query language
+-   Artifactory cloud + CDN Distribution
+    
+### GitLab Container Registry
+
+![gitlab](/img/blog/2025-04-07-registry-comparison/gitlab-cr.png)
+
+[GitLab Container Registry](https://docs.gitlab.com/user/packages/container_registry/) is a part of the GitLab suite, offering an easy integration with GitLab's CI/CD pipelines. It is currently working towards full OCI compliance, making it suitable for teams deeply embedded in the GitLab ecosystem. The registry supports webhook integrations for automation, allowing for more streamlined workflows.
+
+Key features:
+
+-   Tight integration with GitLab CI/CD for build, test, and deployment
+-   Webhook support for automation and external integrations
+-   Built-in image and repository management via the GitLab UI
+-   Ideal for teams already using GitLab for version control
+-   OCI compliance in progress  
+
+### Cloudsmith
+
+![cloudsmith](/img/blog/2025-04-07-registry-comparison/cloudsmith.png)
+
+[Cloudsmith](https://cloudsmith.com/) is a SaaS-based package management solution that supports OCI v1.1, enabling the management of container images alongside other package formats. It includes a unified policy management engine, which simplifies the enforcement of organizational policies across different artifact types. Cloudsmith is particularly useful for complex software distribution scenarios, offering features like ML model tracking.
+
+**Key Features:**
+
+-   OCI v1.1 compliance
+-   Unified policy engine across artifact types
+-   ML model tracking support
+-   Scalable, cloud-hosted (SaaS) solution
+-   Ideal for complex, multi-format distribution scenarios
+    
+### Mirantis
+
+![Mirantis](/img/blog/2025-04-07-registry-comparison/mirantis.png)
+
+[Mirantis Secure Registry (MSR)](https://www.mirantis.com/software/mirantis-secure-registry/) is an impressive enterprise-grade, private container registry designed to enhance the security and efficiency of any software supply chain. Unlike public registries, MSR offers a secure environment for storing, sharing, and managing container images, ensuring that only approved and trusted images are used in your development and production environments.
+
+**Key Features:**
+
+-   Role-Based Access Control (RBAC)
+-   Image Scanning
+-   Image Signing
+-   Caching and Mirroring
+-   Image Lifecycle Management
+-   High Availability (HA) Configurations
+-   Exportable Health Metrics  
+
+> Recent announcement: Mirantis has moved the open-source core of its Mirantis Secure Registry (MSR) to CNCF Harbor. Instead of continuing to develop their own registry independently, Mirantis now uses Harbor as the foundation of MSR.
+
+### Harbor
+
+![harbor-diagram](/img/blog/2025-04-07-registry-comparison/harbor-diagram.png)
+
+[Harbor](https://goharbor.io/) is an Open Source container registry that is quite robust in the feature set that it offers. It allows administrators to organize repositories into projects, which can be either public or private, with access controlled through role-based access control (RBAC). 
+
+Harbor supports full OCI v2.0 compliance and extends beyond basic container management by including features like vulnerability scanning, image replication, and automatic SBOM generation upon push. It is well-suited for enterprise environments due to its extensive security features and support for various artifact types.
+
+![harbor](/img/blog/2025-04-07-registry-comparison/harbor-cr.png)
+
+**Key Features:**
+
+-   Full OCI v2.0 Compliance
+-   Extensive Artifact Support: Includes support for CNABs, OPA bundles, and user-defined OCI artifacts like ML models.
+-   Enterprise Security Features: Offers vulnerability scanning, image replication, and advanced access control.
+-   Supply Chain Security Tools: Provides features like auto-generated SBOMs for enhanced security.
+
+### Gitea
+
+![gitea](/img/blog/2025-04-07-registry-comparison/gitea.png)
+
+[Gitea](https://about.gitea.com/) is a lightweight, open-source platform that integrates a container registry with its code hosting capabilities. It supports basic OCI compliance, allowing users to manage Docker images and Helm charts within the Gitea ecosystem. The registry is suitable for smaller projects or teams already using Gitea for version control. Authentication is facilitated through personal access tokens, making it easy to manage access to private registries.
+
+**Key Features:**
+
+-   Basic OCI Compliance: Supports publishing of OCI-compliant images.
+-   Integration with Gitea Code Hosting
+-   Lightweight and Easy to Use
+-   Personal Access Token Authentication
+
+## External Registries: The Distribution Challenge
+
+External registries face a fundamentally different challenge: distributing software to end-customers, usually outside of your organization. That shift requires a different focus: access control, auditing, version visibility, and compliance.
+
+While GitHub Container Registry and Docker Hub are excellent for open-source and low-security use cases, they're not well suited for commercial software distribution because they lack:
+
+- **Granular access control**: No way to give specific customers access to specific artifact versions
+- **Air-gapped support**: Limited options for distributing to high-security environments
+- **Usage visibility**: Missing audit logs and download tracking that commercial vendors need
+- **License management**: No built-in capabilities to manage software entitlements
+
+This is where purpose-built external registries like Distr come in, addressing these gaps for vendor-to-customer distribution.
+
+## Distr: The OCI Registry Built for Modern On-Prem Deployments
+
+![Distr OCI registry](/img/blog/2025-04-07-registry-comparison/distr-cr.png)
+
+[Distr](https://distr.sh/) is an external registry which is technically a "monorepo" today, but that's by design. Unlike other registries that try to group artifacts by application within the registry itself (like JFrog), Distr handles the application layer separately. 
+
+The Distr platform includes built-in support for Helm charts and Docker Compose files, so full applications can live outside the registry while still being tightly connected. 
+
+Our focus isn't just artifact storage, it's solving the real challenges software vendors face when distributing software to end customers. Even in its v1, Distr's OCI registry delivers on that with features like usage metrics, ORAS integration, and a model that's built around real-world distribution needs rather than internal ops workflows.
+
+![Distr-diagram](/img/blog/2025-04-07-registry-comparison/distr-diagram.png)
+
+**Key features:**
+
+-   Only supports OCI formatted and OCI-compliant artifacts (Helm, Docker, etc)
+-   Built on OCI v2.0
+-   Built specifically for on-prem deployment scenarios
+-   Advanced features: artifact tag filtering, usage tracking, granular access controls
+-   SaaS or Self Hosted deployment option on the air-gapped case
+-   Massively Scalable: supporting S3 and S3 alternative object storage services.
+    
+**Upcoming features:**
+
+-   Security Scanning  
+-   SBOM generation and image signature tracking 
+
+**Who it's for:**
+
+Built for Independent Software Vendors (ISVs), B2B platforms, and enterprise software teams who need to distribute commercial software to customer environments, especially air-gapped, self-managed, or regulated deployments.
+
+> Distr Artifacts Registry is currently in beta, to request access, reach out at support@glasskube.com
+
+### GitHub Container Registry
+
+![github](/img/blog/2025-04-07-registry-comparison/ghcr.png)
+
+[GitHub Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) is GitHub's OCI-compliant registry service that works alongside GitHub Packages. It's optimized for users already managing code and automation through GitHub, supporting fine-grained permissions via GitHub repositories and GitHub Actions for publishing and consuming container images. It's a solid choice for developers who want tighter control over container workflows without leaving the GitHub ecosystem.
+
+**Key Features:**
+
+-   Full OCI support for container images
+-   Integrated with GitHub Actions for automated image builds and publishing
+-   Fine-grained permission management tied to GitHub repos and orgs
+-   Namespace-scoped images using GitHub user/org paths
+-   Supports Helm charts and other OCI artifacts
+
+**Who it's for:**
+
+Ideal for open source developers, public project maintainers, and teams already using GitHub Actions for automation. Best suited for low-security, developer-to-developer artifact sharing.
+
+### Docker Hub
+
+![docker hub](/img/blog/2025-04-07-registry-comparison/docker-hub.png)
+
+[Docker Hub](https://hub.docker.com/) is the default public registry for Docker images and one of the most widely used registries in the container ecosystem. It's deeply integrated with the Docker CLI and provides a huge catalog of public images from official vendors and community publishers. While it's a convenient starting point for development, its rate limits and security concerns (due to its public nature) often lead teams to use it mainly for base images or non-sensitive workloads.
+
+**Key Features:**
+
+-   Native integration with Docker CLI and Docker Desktop
+-   Public and private repositories
+-   Automated builds and webhooks for CI integration
+-   Official and Verified Publisher image libraries
+-   Rate-limited anonymous access (login recommended for better limits)
+
+**Who it's for:**
+
+Best for individuals and open source projects looking for fast, low-friction distribution. Not recommended for commercial or enterprise use where artifact access needs to be tightly controlled.
+
+## Comparison Table
+
+| **Registry** | **OCI Version** | **Key Features** | **Artifact Support** | **Unique Differentiators** |
+|----|----|----|----|----|
+| **Gitea** | OCI Spec | Basic Docker client integration, Case-insensitive tags | Docker images, Helm Charts, OCI artifacts | Tight integration with Gitea's code hosting platform |
+| **Harbor** | OCI v2.0+ | Multi-arch support, Vulnerability scanning, Replication policies, Auto SBOM generation | Images, Helm charts, CNABs, OPA bundles, OCI artifacts | Enterprise security, content trust, retention policies |
+| **Docker Hub** | OCI Spec | Public and private repositories, a massive catalog of public image | Docker images, OCI artifacts | The default public registry for Docker images and one of the most widely used registries |
+| **GitLab CR** | In Progress | CI/CD integration, Webhook automation, Repo management | Docker image, OCI artifacts | Ideal for GitLab-based workflows |
+| **GitHub CR** | OCI Spec | Integrated with GitHub Actions, Fine-grained permission management | OCI artifacts, Docker images | Tightly linked to the GitHub ecosystem |
+| **JFrog Artifactory** | OCI v1.1 | Referrers API, Universal format support, AQL, CDN distribution | All OCI types + 30+ formats | Advanced artifact relationship tracking |
+| **Azure CR** | OCI v1.1 | Global replication, Supply chain support, Aqua Security integration | WASM, Bicep, ML models, OCI artifacts | Azure-native policies, ecosystem integration |
+| **AWS ECR** | OCI Spec | Vulnerability scanning, Lifecycle policies, IAM integration | Docker images, OCI artifacts | Tight ECS/EKS integration |
+| **GCR** | OCI Spec | CMEK, Multi-regional support, Docker native | Docker images, OCI artifacts | Being phased out for Artifact Registry |
+| **Oracle CR** | OCI Spec | Multi-architecture, Fault domain replication | Docker images, OCI artifacts | Optimized for Oracle Cloud users |
+| **Cloudsmith** | OCI v1.1 | ML model tracking, Policy engine, SaaS-hosted | Containers, WASM, OPA, Feature Store | Universal SaaS package management |
+| **Distr** | OCI v2.0 | Tag filtering, Usage tracking, Token auth, Multi-arch | Images, Helm, OCI artifacts | Built for on-prem, vendor-first, air-gapped support |
+
+### Criteria-Based Recommendations
+
+- **Enterprise scale & internal security**:  
+  Choose **JFrog Artifactory** or **Harbor** for large organizations managing complex internal workflows. Both offer robust access controls, multi-format support, and policy enforcement for secure, large-scale internal use.
+- **Azure-centric environments**:  
+  If your infrastructure runs on Azure, **Azure Container Registry** integrates seamlessly with Azure DevOps and other services, making it the natural choice for internal workloads.
+- **On-prem, customer-facing distribution**:  
+  **Distr** is built for software vendors distributing artifacts to external customer environments, including regulated, self-managed, or air-gapped deployments. It offers granular access controls, usage tracking, and flexible deployment models that internal or public registries can't deliver.
+- **Best for open source projects**:  
+  **GitHub Container Registry** and **Docker Hub** are ideal for distributing public artifacts to a wide audience with minimal setup. They're easy to adopt, work well with standard dev tooling, and are suited for low-security, high-discoverability use cases.
+- **Tight GitLab integration**:  
+  For teams using GitLab for source control and CI/CD, the **GitLab Container Registry** keeps your pipelines and packages in one place with minimal friction.
+- **Minimal, self-hosted setup**:  
+  If you need a lightweight, all-in-one option, **Gitea** offers basic registry support alongside its Git hosting features, great for small teams and internal tools.
+
+
+## Conclusion
+
+Choosing the right registry requires first understanding your distribution challenge:
+
+- **Internal registries** like JFrog, Harbor, and cloud provider options excel at workflow integration, developer experience, and automated pipelines within a single organization.
+
+- **External registries** vary significantly in capability. Public options like Docker Hub and GitHub CR work for open-source distribution but fall short for commercial software vendors who need control, visibility, and security.
+
+For software vendors distributing to external customers, particularly in regulated, on-premise, or air-gapped environments, purpose-built solutions like Distr fill critical gaps that general-purpose registries don't.
+
+The right registry won't just store your artifacts. It'll move your software forward, wherever it needs to go.
+
