@@ -64,24 +64,31 @@ Docker images are still everywhere, but the rise of the [OCI specifications](htt
     
 
 ## Understanding the OCI Format
-Based on the original Docker runtime and image format, the Open Container Initiative stepped in to standardize these into the more open and widely available OCI Image, Distribution, and Runtime specifications. Bringing consistency and portability to container images. Now, it's doing the same for other types of artifacts.
+Based on the original Docker runtime and image format, the Open Container Initiative (OCI) stepped in to standardize these into open, vendor-neutral specifications: the OCI Image, Distribution, and Runtime specs. This brought consistency and portability to container images, and now, the same is happening for other types of software artifacts.
 
-Popular tools like Helm, Docker, and ORAS support pushing and pulling OCI artifacts. An interesting trend that's emerged is that even non-OCI-native formats like Kubeflow pipelines or ML models can be wrapped as OCI artifacts and stored in registries.
+Popular tools like Helm, Docker, and [ORAS](https://oras.land/) support pushing and pulling OCI-compliant artifacts. A growing trend is using ORAS to package and store non-OCI-native formats, like Kubeflow pipelines, configuration bundles, or machine learning models, as OCI artifacts.
 
-Think of it like a general grocery bag: it doesn't matter what you put inside, as long as it fits the format, it can be stored, versioned, and distributed reliably.
+[ORAS](https://oras.land/) handles the heavy lifting under the hood: it wraps arbitrary files in a compliant OCI format, generating the appropriate manifests, content digests, and metadata needed to make the artifact registry-friendly.
 
+For example, you can push a machine learning model like this:
+
+```bash
+oras push registry.distr.sh/my-org/ml-model:latest ./model.pkl:application/vnd.myorg.model
+```
+
+Think of an OCI registry as a standardized grocery bag, it expects items to be packed in a particular way. ORAS is the delivery service that takes whatever file you give it, regardless of format, and packages it properly so it fits in the bag. No need to worry about the wrapping yourself; ORAS handles that, making sure your artifact can be stored, versioned, and retrieved just like a container image.
 ## Key Considerations when choosing a registry
 
 When evaluating registries, consider these core criteria:
 
 **Internal vs. External Use**  
-Is this for your development team's workflow, or for distributing to customers? This is the most fundamental distinction.
+Is this for your internal development team's workflow, or for distributing to customers? This is the most fundamental distinction.
 
 **OCI Compliance Level**  
 How completely does the registry implement the OCI specification? This affects which artifact types you can store and distribute.
 
 **Security & Access Controls**  
-For internal use, integration with your existing IAM may be sufficient. For external distribution, you'll need granular controls over which artifacts are visible to which customers.
+For internal use, integration with your existing IAM may be sufficient. For external distribution, you'll need granular controls over which artifacts are visible to which customers. Vulnerability scanning is also an important consideration.
 
 **Deployment Flexibility**  
 Can the registry deploy where you need it - cloud, on-prem, or air-gapped environments?
