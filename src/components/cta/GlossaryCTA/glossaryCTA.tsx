@@ -12,7 +12,7 @@ export default function GlossaryCTA({
   return (
     <CustomCTA
       header={header}
-      text="Distr is a battle tested software distribution platform that helps you scale from your first on-premises customers to dozens and even thousands."
+      text="Distr is a battle tested software distribution platform that helps you scale from your first self-managed customers to dozens and even thousands."
     />
   );
 } 
