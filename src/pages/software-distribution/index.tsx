@@ -37,7 +37,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title="Software Distribution"
-      description="Building Blocks for Modern On-Prem Software Distribution">
+      description="Building Blocks for Modern Self-Managed Software Distribution">
       <main className="margin-vert--lg">
         <Header />
         <SoftwareDistributionFeatures />

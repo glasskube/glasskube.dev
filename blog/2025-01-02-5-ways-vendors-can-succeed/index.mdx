@@ -1,9 +1,9 @@
 ---
 slug: 5-ways-to-succeed-without-access-to-customer-environments
 title: "5 Ways Vendors Can Succeed Without Access to Customer Environments"
-description: Software vendors don't have it easy, especially when trying to serve their on-prem customers, here are 5 tips that are sure to help.
+description: Software vendors don't have it easy, especially when trying to serve their self-managed customers, here are 5 tips that are sure to help.
 authors: [ jpage, pmig ]
-tags: [ On-Premises, ISV, Software Distribution Platform ]
+tags: [ self-managed, Software Vendor, Software Distribution Platform ]
 image: https://github.com/user-attachments/assets/789b7bc4-b507-4c38-8e11-27d4dc61b8ef
 ---
 
@@ -11,13 +11,13 @@ import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
 ![5-ways thumbnail](https://github.com/user-attachments/assets/789b7bc4-b507-4c38-8e11-27d4dc61b8ef)
 
-In recent years, companies of all sizes have faced a wave of new regulations and compliance demands, reshaping the landscape of software procurement. Enterprises customers now face heightened scrutiny over the tools they integrate, with each new application needing to meet strict security, regulatory, and data protection standards. It’s no longer just about onboarding any awl technology in-house, it’s about ensuring that every new piece of software can withstand regulatory scrutiny.
+In recent years, companies of all sizes have faced a wave of new regulations and compliance demands, reshaping the landscape of software procurement. Enterprise customers now face heightened scrutiny over the tools they integrate, with each new application needing to meet strict security, regulatory, and data protection standards. It’s no longer just about onboarding any awl technology in-house, it’s about ensuring that every new piece of software can withstand regulatory scrutiny.
 
 <!-- truncate -->
 
 <DefaultCTA />
 
-For [Independent Software Vendors (ISVs)](/glossary/isv-meaning/), this shift means the days of simply convincing a single decision-maker with a product demo and  only needing a credit card number are gone. Today’s enterprise customers have to deal with internal controls, legal reviews, and compliance checks before they can approve any new software. As a vendor, understanding exactly in which ways their end-customers hands are tied and preparing for their specific constraints is crucial if you want to sell software they can actually adopt.
+For Software and AI companies, this shift means the days of simply convincing a single decision-maker with a product demo and  only needing a credit card number are gone. Today’s enterprise customers have to deal with internal controls, legal reviews, and compliance checks before they can approve any new software. As a vendor, understanding exactly in which ways their end-customers hands are tied and preparing for their specific constraints is crucial if you want to sell software they can actually adopt.
 
 In industries like healthcare, banking, and government, customers can’t just [hand over a credit card](/glossary/saas-definition/) and grant access to their infrastructure. Vendor have to offer a more thoughtful approach to software delivery.
 
@@ -25,11 +25,11 @@ So, what’s the takeaway? You don’t need to obsess over your customers—you 
 
 Let’s explore five ways software vendors can succeed without direct access to their end-customers’ environments.
 
-## 1\. Build Software that is “On-Prem Ready”
+## 1\. Build Software that is “self-managed Ready”
 
-![On-prem ready software](https://github.com/user-attachments/assets/43c37646-9c33-4591-9cb9-5d100429ffe7)
+![self-managed ready software](https://github.com/user-attachments/assets/43c37646-9c33-4591-9cb9-5d100429ffe7)
 
-The first key consideration to keep in mind is that you have to build software that, for lack of a better way of putting it, is “[on-prem ready](/glossary/on-premises-definition/)". End-customer’s should not be expected to have more than the minimal knowledge of how your software works, they should be given a set of installation steps to get up and running that simply work. Beyond installation, your software must be architected for easy updates, seamless rollbacks, and compliance with modern safety, performance, and reliability standards. Let’s break down what “on-prem ready” entails and the components that make it possible.
+The first key consideration to keep in mind is that you have to build software that, for lack of a better way of putting it, is “[self-managed ready](/glossary/self-managed-software/)". End-customer’s should not be expected to have more than the minimal knowledge of how your software works, they should be given a set of installation steps to get up and running that simply work. Beyond installation, your software must be architected for easy updates, seamless rollbacks, and compliance with modern safety, performance, and reliability standards. Let’s break down what “self-managed ready” entails and the components that make it possible.
 
 So how can this be achieved:
 
@@ -59,7 +59,7 @@ Portability as mentioned before is hugely beneficial as application might be dyn
 
 ### SBOM (Software Bill of Materials)
 
-Security is paramount in on-prem environments and any environment for that matter. So, generate an SBOM during building your application in your CI/CD pipeline to:
+Security is paramount in self-managed environments and any environment for that matter. So, generate an SBOM during building your application in your CI/CD pipeline to:
 
 -   Document dependencies and licensing for compliance.
 -   Identify vulnerabilities through automated CVE scans.
@@ -80,11 +80,11 @@ Have security in mind a the deepest base level of your software. Start with secu
 
 What makes a sommelier such a valuable resource at a restaurant? When they stand at your table, describing the rolling hills of Tuscany or the ancient open-air vats of Georgian natural wine producers, they’re speaking from experience. That’s why you’re willing to pay for their expertise: they’ve tested what they’re recommending so you don’t have to.
 
-This is exactly the role software vendors must play when it comes to deployment targets. As an Independent Software Vendor (ISV), you need to know, from hands-on experience, how your software behaves in a variety of environments and platforms. If an end user asks, “Can I run your software on this version of Kubernetes, these operating systems, or my niche regional cloud provider?” you must be able to confidently say, “Yes,” because you’ve already done the groundwork.
+This is exactly the role software vendors must play when it comes to deployment targets. As vendor, you need to know, from hands-on experience, how your software behaves in a variety of environments and platforms. If an end user asks, “Can I run your software on this version of Kubernetes, these operating systems, or my niche regional cloud provider?” you must be able to confidently say, “Yes,” because you’ve already done the groundwork.
 
 ### How to Ensure Deployment Readiness
 
-To provide this level of assurance, ISVs need to rigorously test their software across diverse deployment targets. Here’s how to approach it:
+To provide this level of assurance, vendors need to rigorously test their software across diverse deployment targets. Here’s how to approach it:
 
 -   **Build Sophisticated Pre-Flight Checks**
 Pre-flight checks validate whether the target environment meets the necessary requirements for your software to run. These automated checks can verify resource availability, version compatibility, and other critical dependencies before deployment begins, reducing the likelihood of failures.
@@ -96,7 +96,7 @@ Tools like Pulumi or Terraform can be used to create infrastructure simulations 
 
 ![Licensing](https://github.com/user-attachments/assets/325b4937-fc0d-45f5-b065-8470365a1b08)
 
-Licensing is the mechanism through which vendors control the access and define the feature set of the software that is sold to end-customers. A well-designed licensing system codifies software contracts and integrates seamlessly with the application, often via a license server during startup or runtime. For on-premises deployments, this system has to account for the fact that vendors won’t have direct access to the end customer’s environment. This makes it essential for licensing to be built-in, unobtrusive, and highly targeted.
+Licensing is the mechanism through which vendors control the access and define the feature set of the software that is sold to end-customers. A well-designed licensing system codifies software contracts and integrates seamlessly with the application, often via a license server during startup or runtime. For self-managed deployments, this system has to account for the fact that vendors won’t have direct access to the end customer’s environment. This makes it essential for licensing to be built-in, unobtrusive, and highly targeted.
 
 ### Two Primary Approaches to Licensing
 
@@ -112,14 +112,14 @@ This approach uses a more granular licensing system, where individual features w
 The right licensing mechanism can go beyond access control, offering valuable insights into software usage. By incorporating usage tracking and reporting into the licensing process, vendors can monitor adoption patterns, identify opportunities for contract expansion, and address overages during renewal cycles.
 
 -   **For vendors:**
-While licensing dashboards may seem unnecessary for vendors with only a few on-prem customers, they become incredibly valuable as the customer base grows. These dashboards can track contract expirations, monitor enabled features, and help identify potential infractions.
+While licensing dashboards may seem unnecessary for vendors with only a few self-managed customers, they become incredibly valuable as the customer base grows. These dashboards can track contract expirations, monitor enabled features, and help identify potential infractions.
 -   **For end customers:**
 Detailed usage reports allow customers to visualize their software utilization, helping them avoid contract violations and better plan for future needs. This transparency fosters trust and encourages smoother renewals or expansions.
 
 
 ## 4\. Provide Unified Installers and Self-Service Updates
 
-Just as a parent might lay out their child’s clothes and pack their backpack the night before to simplify the morning routine, software vendors have to offer the same level of simplification to their end-customers by eliminating unnecessary decisions. This principle lies at the heart of serving on-prem customers: simplifying critical processes like installation and updates.
+Just as a parent might lay out their child’s clothes and pack their backpack the night before to simplify the morning routine, software vendors have to offer the same level of simplification to their end-customers by eliminating unnecessary decisions. This principle lies at the heart of serving self-managed customers: simplifying critical processes like installation and updates.
 
 These are processes that can be completely bespoke and will always be dictated by how you have previously architected your software, having said that, there is a lot vendors can do to guarantee that these two crucial steps are reliable, predictable and not prone to error. Unified installers and lightweight agent-based components play a crucial role in this, forming the foundation for a seamless software lifecycle.
 
@@ -173,10 +173,10 @@ Relying on too many external components or locking into opinionated third-party 
 
 ## Conclusion
 
-As you can probably tell from everything covered above, there’s no silver bullet or golden framework that fits every on-premises customer. Getting the delicate and synchronized dance between an ISV and their end-customers right, requires a process that’s carefully tailored to the specifics of your software and the unique needs of the customers you serve.
+As you can probably tell from everything covered above, there’s no silver bullet or golden framework that fits every self-managed customer. Getting the delicate and synchronized dance between a vendor and their end-customers right, requires a process that’s carefully tailored to the specifics of your software and the unique needs of the customers you serve.
 
-It all starts with building software designed with [on-prem readiness](/glossary/self-managed-software/) in mind. Simply lifting and shifting a SaaS offering to an on-premises customer isn’t a viable option in almost any case. Instead, by starting with a solid foundation of portable software, tested to run in diverse environments, and built with security, compliance, installation infrastructure, and updates as core considerations, you set yourself and your customers up for success.
+It all starts with building software designed with [self-managed readiness](/glossary/self-managed-software/) in mind. Simply lifting and shifting a SaaS offering to an self-managed customer isn’t a viable option in almost any case. Instead, by starting with a solid foundation of portable software, tested to run in diverse environments, and built with security, compliance, installation infrastructure, and updates as core considerations, you set yourself and your customers up for success.
 
-When you get it right be it by building the internal processes individually or by leveraging a software delivery management software like [Distr](/), serving your on-prem customers doesn’t just become manageable, it might even open doors to new deployment methods and help you grow your business. And really, who wouldn’t want that?
+When you get it right be it by building the internal processes individually or by leveraging a software delivery management software like [Distr](/), serving your self-managed customers doesn’t just become manageable, it might even open doors to new deployment methods and help you grow your business. And really, who wouldn’t want that?
 
 <DefaultCTA />
