@@ -9,7 +9,7 @@ image: '/img/blog/2025-02-26-replicated-comparison/comparison-thumbnail.png'
 ![thumbnail](/img/blog/2025-02-26-replicated-comparison/comparison-thumbnail.png)
 
 [Distr](https://distr.sh/) and [Replicated](https://www.replicated.com/) are software distribution platforms that help software vendors
-deliver their applications to complex and many times restricted on-premises environments.
+deliver their applications to complex and many times restricted self-managed environments.
 While both platforms are firmly placed in the same product category, it makes sense to understand how they differ
 and how each platform approaches modern software distribution.
 
@@ -17,10 +17,10 @@ and how each platform approaches modern software distribution.
 
 1. **Distr** is the latest Software Delivery Platform built by Glasskube that helps software vendors serve a wide variety of use-cases.
 Distr is Open Source and easily self-hostable.
-It’s built for software vendors that want to cover a wide variety of use-cases.
-Distr provides agents for guided Docker, Kubernetes, VPC, BYOC and on-premises installations,
+It's built for software vendors that want to cover a wide variety of use-cases.
+Distr provides agents for guided Docker, Kubernetes, VPC, BYOC and self-managed installations,
 as well as a secure OCI registry for storing and distributing software artifacts, managing licenses and collecting support insights.
-2. **Replicated** is a mature software distribution platform that facilitates the delivery of applications to on-premises, VPC, and air gapped environments
+2. **Replicated** is a mature software distribution platform that facilitates the delivery of applications to self-managed, VPC, and air gapped environments
 by wrapping your software in an installer ISVs can repackage their software. Replicated also provides license management capabilities, pre-flight checks,
 and compatibility testing.
 
@@ -36,17 +36,17 @@ The best software distribution platforms make this connection as smooth and fric
 
 - **Independent Software Vendors:** These are the primary users of software distribution platforms.
 They leverage the platform's tools and features to package, distribute, and manage their software in complex environments.
-- **End-Customers:** In the context of on-prem software delivery, they are the party which software is delivered to.
+- **End-Customers:** In the context of self-managed software delivery, they are the party which software is delivered to.
 They interact with software distribution platforms indirectly and if done well, they need not even know they are interacting with one at all.
 
-## Distr as Replicated alternative
+## Distr as a Replicated alternative
 
 Distr is an open source alternative to Replicated, offering a modern and flexible approach to software distribution.
 
-1. Distr provides **one platform** for on-prem, shared-responsibility, and self-service software distribution.
+1. Distr provides **one platform** for self-managed, shared-responsibility, and self-service software distribution.
 2. Distr starts with a **free plan** and can be [self-hosted](https://distr.sh/docs/self-hosting/getting-started/).
 3. Distr includes an OCI container registry where you can explicitly grant access to specific tags to specific users.
-
+4. Distr is built for modern Software and AI companies. Helping them scale from their first self-managed customers to many. Shipping the features they ask for, and shipping them fast. 
 
 ## Distr vs Replicated: Feature comparison table
 
@@ -63,7 +63,7 @@ the way both tools approach software deliver differs, as the ~~"devil"~~ "deploy
 | Docker Support                             | ✅                       | ✅               |
 | Helm Support                               | ✅                       | ✅               |
 | White Label Branding                       | ✅                       | ✅               |
-| On Premises / Self Hosted Support          | ✅                       | ❌               |
+| Self-Managed                               | ✅                       | ❌               |
 | BYOC Support                               | ✅                       | ❌               |
 | Pricing starts at                          | Free                    | 2000$ per Month |
 | Compatibility Matrix                       | ❌                       | ✅               |
@@ -89,7 +89,7 @@ Replicated's vendor platform is mostly used to administrate end customers, appli
 Both customer portals guide the end-customer through the deployment process, either by providing registry login credentials (Distr & Replicated)
 or directly allow one-click deployments with supported agents (Distr).
 
-### On-Premises / Self-hosted Support
+### Self-Managed Support
 
 Distr is designed to be easily [self-hosted](https://distr.sh/docs/self-hosting/getting-started/).
 It is written in go and can be deployed as a single binary / docker container or as a helm chart.
@@ -133,9 +133,10 @@ Anyone can fork, modify, and adapt Distr to fit their needs, and we actively wel
 
 ### Custom onboarding session for all plans
 
-Whether you are a free plan user or have an enterprise vendor account, Distr provides tailored onboarding support to make sure your application is on-prem ready.
+Whether you are a free plan user or have an enterprise vendor account, Distr provides tailored onboarding support to make sure your application is self-managed ready.
 So you are in a position to make the most out of the platform as soon as possible.
 
+> This has been particularly valuable for the early AI companies we've worked with. While these companies excel at AI and ML, some often need guidance with operational aspects like creating Helm charts or optimizing Docker Compose files, which is something we excel at. Regardless of the time it takes to get each customer up and running, our custom onboarding makes sure that their solutions are easily self-manageable by end customers from day one.
 
 ## FAQs
 
@@ -160,33 +161,34 @@ Distr has features to serve these use cases too.
 
 ### How long does it take to implement Distr?
 
-The time it takes to implement Distr depends largely on how prepared your software is for on-prem deployment.
+The time it takes to implement Distr depends largely on how prepared your software is for self-managed deployment.
 In the best-case scenario, where your software is already containerized, not dependent on non-portable services,
 and all components ready for delivery, onboarding can be completed in just a couple of minutes.
 
-However, if your software isn't quite "on-prem" ready, it may take longer to realize the full benefits of Distr.
-In these cases, we offer hands-on onboarding support and can collaborate with you to improve your overall on-prem readiness.
+However, if your software isn't quite "self-managed" ready, it may take longer to realize the full benefits of Distr.
+In these cases, we offer hands-on onboarding support and can collaborate with you to improve your overall self-managed readiness.
 
 > To help in this process, we've published a [whitepaper](https://glasskube.dev/white-paper/building-blocks/), which you can download for free,
 > outlining the key building blocks for packaging software that's truly ready to be distributed to end-customer target environments.
 
 ### Does Distr have access to customer offsite data?
 
-Distr doesn’t access any offsite data beyond deployment status logs and health metrics.
+Distr doesn't access any offsite data beyond deployment status logs and health metrics.
 
 ### Why choose Distr over Replicated?
 
 
-Here’s how Distr stands out
+Here's how Distr stands out
 
-- **Empowering End Customers:** When serving on-prem customers who want full control over their environments,
+- **Empowering End Customers:** When serving self-managed customers who want full control over their environments,
 you can automatically push new software versions to Distr and let end customers decide when to pull updates, keeping them firmly in control,
 while offering Distr users rich and useful usage and uptime metrics.
 - **Shared Responsibility for Target Environments:** If you share responsibility for managing customer or edge environments,
 Distr lets you push software directly into those environments, making software updates and rollbacks a breeze.
 - **Artifact Management-Only Mode:** Not interested in using Distr as a management layer?
 You can use Distr solely as an artifact management registry with built-in vulnerability scanning, and distribute specific tags to specific customers.
+- **Proven track record with AI companies:** Distr has grown alongside a number of AI startups, helping them expand beyond cloud-only offerings to support hybrid and self-managed deployment models. By working closely with ML-focused teams, we've enabled new distribution methods that unlock growth opportunities.
 
-Distr isn’t about prescribing a single "right" way to handle on-prem software delivery.
+Distr isn't about prescribing a single "right" way to handle self-managed software delivery.
 Instead, it offers a suite of features that address a wide range of modern challenges, giving software vendors the freedom to choose what fits their specific needs.
 The Open Source model gives you transparency and into the Distr Hub and all used components.
