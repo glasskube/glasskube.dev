@@ -68,7 +68,7 @@ export default function HomepageFeatures(): JSX.Element {
           <div className="col text--center margin-top--xl">
             <Heading as="h2">
               The Distr Software Distribution Platform is the central place to
-              manage all your on-prem, vpc and air-gapped customers.
+              manage all your self-managed, vpc and air-gapped customers.
             </Heading>
           </div>
         </div>

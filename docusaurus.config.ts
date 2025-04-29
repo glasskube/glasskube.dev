@@ -6,7 +6,7 @@ import {EnumChangefreq} from 'sitemap';
 
 const config: Config = {
   title: 'Glasskube',
-  tagline: 'The easiest way to distribute enterprise software',
+  tagline: 'Distribute your application to self-managed customers',
   favicon: 'img/favicon.png',
   trailingSlash: true,
 
@@ -159,7 +159,7 @@ const config: Config = {
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
       // content: `🎉 We just released v0.26.1 of our Open Source Kubernetes Package Manager on <a href="https://github.com/glasskube/glasskube/" target="_blank">⭐ GitHub ⭐</a>.`,
-      content: `🎉 We just released <a href="https://distr.sh/" target="_blank">Distr</a>  on <a href="https://github.com/glasskube/distr/" target="_blank">⭐ GitHub ⭐</a>.`,
+      content: `🎉 Check out <a href="https://distr.sh/" target="_blank">Distr</a>  on <a href="https://github.com/glasskube/distr/" target="_blank">⭐ GitHub ⭐</a>.`,
       isCloseable: false,
     },
     image:
@@ -171,7 +171,7 @@ const config: Config = {
         src: 'img/glasskube-logo.svg',
       },
       items: [
-        {label: 'Software Distribution', to: '/software-distribution/'},
+        {label: 'Docs', to: 'https://distr.sh/docs/getting-started/about/'},
         {label: 'Blog', to: '/blog/'},
         {label: 'White Paper', to: '/white-paper/building-blocks/'},
         {label: 'Pricing', to: '/pricing'},

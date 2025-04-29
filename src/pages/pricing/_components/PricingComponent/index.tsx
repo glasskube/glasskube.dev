@@ -1,15 +1,111 @@
 import Link from '@docusaurus/Link';
-import DemoButton from '@site/src/components/buttons/DemoButton';
-import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './styles.module.css';
-import ContactSalesButton from '@site/src/components/buttons/ContactSalesButton';
 import clsx from 'clsx';
 
 function Pricing() {
+  const [userCount, setUserCount] = useState(1);
+  const [billingCycle, setBillingCycle] = useState('yearly'); // 'monthly' or 'yearly'
+  const [currency, setCurrency] = useState('$'); // '$' or '€'
+
+  // Base prices per user
+  const proPriceMonthly = 58.8;
+  const proPriceYearly = 49;
+
+  // Calculate total prices based on user count and billing cycle
+  const calculatePrice = basePrice => {
+    return basePrice * userCount;
+  };
+
+  const proMonthlyTotal = calculatePrice(proPriceMonthly);
+  const proYearlyTotal = calculatePrice(proPriceYearly) * 12; // Yearly price is fixed at $49 per user per month
+
+  const decrementUserCount = () => {
+    if (userCount > 1) {
+      setUserCount(userCount - 1);
+    }
+  };
+
+  const incrementUserCount = () => {
+    setUserCount(userCount + 1);
+  };
+
   return (
     <section>
       <div className="container">
+        {/* User count and billing cycle selection */}
+        <div className={styles.pricingSelectorContainer}>
+          <div className={styles.userSelector}>
+            <div>
+              <h3>Users</h3>
+              <p>Select how many users you want </p>
+            </div>
+            <div className={styles.countSelector}>
+              <button
+                className={styles.countButton}
+                onClick={decrementUserCount}
+                disabled={userCount <= 1}>
+                -
+              </button>
+              <span className={styles.countDisplay}>{userCount}</span>
+              <button
+                className={styles.countButton}
+                onClick={incrementUserCount}>
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.billingSelector}>
+            <div>
+              <h3>Billing</h3>
+              <p>Select your preferred billing schedule</p>
+            </div>
+            <div className={styles.billingToggle}>
+              <button
+                className={clsx(
+                  styles.billingButton,
+                  billingCycle === 'monthly' && styles.billingButtonActive,
+                )}
+                onClick={() => setBillingCycle('monthly')}>
+                Monthly
+              </button>
+              <button
+                className={clsx(
+                  styles.billingButton,
+                  billingCycle === 'yearly' && styles.billingButtonActive,
+                )}
+                onClick={() => setBillingCycle('yearly')}>
+                Yearly
+              </button>
+            </div>
+          </div>
+          <div className={styles.currencySelector}>
+            <div>
+              <h3>Currency</h3>
+              <p>Select your preferred billing currency</p>
+            </div>
+            <div className={styles.billingToggle}>
+              <button
+                className={clsx(
+                  styles.billingButton,
+                  currency === '$' && styles.billingButtonActive,
+                )}
+                onClick={() => setCurrency('$')}>
+                USD
+              </button>
+              <button
+                className={clsx(
+                  styles.billingButton,
+                  currency === '€' && styles.billingButtonActive,
+                )}
+                onClick={() => setCurrency('€')}>
+                EUR
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col col--4">
             <div className={clsx('card', 'shadow--md', styles.pricingCardSide)}>
@@ -20,49 +116,51 @@ function Pricing() {
                   styles.pricingCardHeader,
                   styles.pricingCardHeaderSide,
                 )}>
-                <h3>Free Forever</h3>
-                (no Credit Card required)
+                <h3>Free</h3>
+                <div className={styles.price}>
+                  {currency}0<span className={styles.period}> /month</span>
+                </div>
+                <p className={styles.description}>Up to 3 users</p>
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.pricingSectionHeader}>
-                  Easy Customer Onboarding
-                </h4>
-                <ul className={styles.pricingItemList}>
-                  <li>Application & Customer Management</li>
+                <ul className={styles.featureList}>
+                  <li>License Management (Basic)</li>
+                  <li>Unlimited Deployments</li>
                   <li>
-                    Co-branded Customer Portal with interactive installation
-                    instructions
+                    Deployment Agents for Helm, Docker and Terraform (coming
+                    soon)
                   </li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Software Distribution
-                </h4>
-                <ul>
-                  <li>Support for docker-compose</li>
-                  <li>Support for Helm</li>
-                  <li>Configurations & secrets</li>
-                  <li>API Integrations & SDK</li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Monitoring & Customer Support
-                </h4>
-                <ul>
-                  <li>Deployment Target Healthcheck</li>
-                  <li>Installed versions overview</li>
+                  <li>Registry (up to 100 GB)</li>
+                  <li>2 Workflows (coming soon)</li>
+                  <li>Self-hosting or Cloud</li>
+                  <li>GitHub Integration for release automation</li>
+                  <li>Status Log (incl. Historical)</li>
+                  <li>
+                    Live Container Metrics (no retention) (OpenTelemetry
+                    compatible)
+                  </li>
+                  <li>
+                    Live Container Logs (no retention) (OpenTelemetry
+                    compatible)
+                  </li>
+                  <li>Distr API</li>
+                  <li>Distr CLI (coming soon)</li>
+                  <li>Community Support (Discord)</li>
                 </ul>
               </div>
               <div className="card__footer">
                 <Link
                   className="button button--secondary button--block button--lg"
                   to="https://signup.distr.sh/">
-                  Free forever
+                  Get Started →
                 </Link>
               </div>
             </div>
           </div>
           <div className="col col--4">
             <div className={clsx('card', 'shadow--md', styles.pricingCardMain)}>
+              <div className={styles.comingSoonBanner}>Coming Soon</div>
               <div
                 className={clsx(
                   'card__header',
@@ -71,42 +169,51 @@ function Pricing() {
                   styles.pricingCardHeaderMain,
                 )}>
                 <h3>Pro</h3>
-                Coming soon
+                <div className={styles.price}>
+                  {currency}
+                  {billingCycle === 'monthly'
+                    ? proMonthlyTotal % 1 === 0
+                      ? proMonthlyTotal
+                      : proMonthlyTotal.toFixed(1)
+                    : (proYearlyTotal / 12) % 1 === 0
+                      ? proYearlyTotal / 12
+                      : (proYearlyTotal / 12).toFixed(1)}
+                  <span className={styles.period}>/month</span>
+                </div>
+                <p className={styles.slider}>
+                  {userCount} {userCount === 1 ? 'user' : 'users'} •
+                  {billingCycle === 'monthly'
+                    ? ' Billed monthly'
+                    : ` ${currency}${proYearlyTotal % 1 === 0 ? proYearlyTotal : proYearlyTotal.toFixed(1)} billed yearly (save 2 months)`}
+                </p>
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.pricingSectionHeader}>
-                  Easy Customer Onboarding
-                </h4>
-                All Free features and:
-                <ul className={styles.pricingItemList}>
-                  <li>Release Channels</li>
-                  <li>License dependent features</li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Software Distribution
-                </h4>
-                All Free features and:
-                <ul>
-                  <li>Support for Glasskube Kubernetes packages</li>
-                  <li>
-                    Pre-flight checks to ensure deployment target integrity
-                  </li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Monitoring & Customer Support
-                </h4>
-                All Free features and:
-                <ul>
-                  <li>Customers can collect and send support insights</li>
+                <p className={styles.includedFeatures}>All of Free plus</p>
+                <ul className={styles.featureList}>
+                  <li>Unlimited Users</li>
+                  <li>Open Feature compatible Advanced License Management</li>
+                  <li>Usage based pricing and metering</li>
+                  <li>Registry (up to 1 TB)</li>
+                  <li>Up to 20 Workflows with Slack Notifications</li>
+                  <li></li>
+
+                  <li>Role-based Access Controls</li>
+                  <li>Single Sign-On (SSO)</li>
+                  <li>Billing</li>
+                  <li>Full White Label (Custom Domains)</li>
+                  <li>10 days Historical Container Metric & Logs</li>
+                  <li>Integrated CVE Scanning for the registry</li>
+                  <li>Priority Email Support</li>
+                  <li>Onboarding Support</li>
                 </ul>
               </div>
               <div className="card__footer">
-                <DemoButton additionalClassNames={'button--lg button--block'} />
-                <div className="margin-top--md" />
-                <SignupForWaitlistButton
-                  additionalClassNames={'button--lg button--block'}
-                />
+                <Link
+                  className="button button--primary button--block button--lg"
+                  to="https://cal.glasskube.com/team/gk/distr-pro-early-access">
+                  Get early access →
+                </Link>
               </div>
             </div>
           </div>
@@ -120,40 +227,34 @@ function Pricing() {
                   styles.pricingCardHeaderSide,
                 )}>
                 <h3>Enterprise</h3>
+                <div className={styles.price}>Get a Demo</div>
+                <p className={styles.description}>
+                  Flexible pricing that scales with your organization.
+                </p>
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.pricingSectionHeader}>
-                  Easy Customer Onboarding
-                </h4>
-                All Free & Pro features and:
-                <ul className={styles.pricingItemList}>
-                  <li>Single-Sign-On</li>
-                  <li>White Label Customer Portal</li>
+                <p className={styles.includedFeatures}>All of Pro plus</p>
+                <ul className={styles.featureList}>
+                  <li>Dedicated Infrastructure</li>
+                  <li>Service Levels up to 99.99% uptime</li>
+                  <li>24/7 Support</li>
+                  <li>GitLab Integration</li>
+                  <li>Multitenancy Support</li>
+                  <li>Self-hosted support</li>
+                  <li>Extended AirGap Support (Image & Application sync)</li>
+                  <li>Dedicated Slack Support</li>
+                  <li>Dedicated Support Engineer</li>
+                  <li>Custom Historical Container Metrics & Logs</li>
+                  <li>HubSpot Integration</li>
                 </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Software Distribution
-                </h4>
-                All Free & Pro features and:
-                <ul>
-                  <li>Software vulnerability scanning & reporting</li>
-                  <li>Air-Gapped software distribution</li>
-                  <li>Scheduled updates</li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>
-                  Monitoring & Customer Support
-                </h4>
-                All Free & Pro features and:
-                <ul>
-                  <li>Customer support SLAs</li>
-                </ul>
-                <h4 className={styles.pricingSectionHeader}>On-premises</h4>
-                You can also self host Distr on your own infrastructure.
               </div>
               <div className="card__footer">
-                <ContactSalesButton
-                  additionalClassNames={'button--lg button--block'}
-                />
+                <Link
+                  className="button button--secondary button--block button--lg"
+                  to="https://signup.distr.sh/">
+                  Contact Us →
+                </Link>
               </div>
             </div>
           </div>
