@@ -6,6 +6,7 @@ import PricingFaq from '@site/src/pages/pricing/_components/PricingFaqComponent'
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
 import Head from '@docusaurus/Head';
 import React from 'react';
+import PricingComparisionTable from '@site/src/pages/pricing/_components/PricingComparisionTableComponent';
 
 const TITLE = translate({message: 'Pricing'});
 const DESCRIPTION = translate({
@@ -32,6 +33,8 @@ export default function PackagePage(): JSX.Element {
       <main className="margin-vert--lg">
         <PricingHeader />
         <Pricing />
+        <div className="margin-vert--xl" />
+        <PricingComparisionTable />
         <div className="margin-vert--xl" />
         <PricingFaq />
         <div className="margin-vert--xl" />

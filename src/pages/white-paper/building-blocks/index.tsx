@@ -7,9 +7,9 @@ import WhitePaperForm from '@site/src/pages/white-paper/building-blocks/WhitePap
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
 
-const TITLE = 'Building Blocks for Modern On-Prem Software Distribution';
+const TITLE = 'Building Blocks for Modern Self-Managed Software Distribution';
 const DESCRIPTION =
-  'These building blocks lay the foundation of a successful on-prem offering that both ' +
+  'These building blocks lay the foundation of a successful self-managed software distribution offering that both ' +
   'software vendors and end-customers can depend on.';
 
 function WhitePaperLayout() {

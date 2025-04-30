@@ -22,8 +22,8 @@
   --glasskube-red: #ff4136;
   --glasskube-pink: #e03466;
 
-  --glasskube-background-dark: #0f1a24;
-  --glasskube-surface-dark: #1f2933;
+  --glasskube-background-dark: #16212e;
+  --glasskube-surface-dark: #293340;
 
   --ifm-color-primary: var(--glasskube-main-2);
   --ifm-color-primary-dark: var(--glasskube-main-2);
@@ -77,10 +77,31 @@ html[data-theme='dark'] {
   --ifm-background-surface-color: var(--glasskube-surface-dark);
 }
 
+[data-theme='dark'] .navbar {
+  background-color: var(--glasskube-surface-dark);
+}
+
 [data-theme='dark'] .hero--primary {
   /*--ifm-hero-background-color: var(--ifm-color-primary-darker);*/
   /*--ifm-hero-text-color: var(--ifm-font-color-base);*/
   --ifm-hero-background-color: var(--ifm-color-base);
+}
+
+[data-theme='dark'] .button {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Override primary button styling in dark mode */
+[data-theme='dark'] .button.button--primary {
+  background-color: var(--glasskube-pink);
+  color: var(--glasskube-main-light);
+  border-color: transparent;
+}
+
+[data-theme='dark'] input {
+  background-color: var(--glasskube-surface-dark);
+  color: white;
 }
 
 div[class^='announcementBar_'] {

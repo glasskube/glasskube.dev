@@ -64,7 +64,7 @@ const EmblaCarousel: React.FC<PropType> = props => {
                   className="app-frame mac dark borderless shadow--tl"
                   data-url="app.distr.sh">
                   <ThemedImage
-                    alt="Distr OCI registry for on-premises artifact delivery"
+                    alt="Distr OCI registry for self-managed artifact distribution"
                     sources={{
                       light: useBaseUrl(
                         '/img/screenshots/distr/distr-artifacts-light.webp',
@@ -77,7 +77,7 @@ const EmblaCarousel: React.FC<PropType> = props => {
                 </div>
               </Tilt>
               <figcaption className="embla__caption">
-                OCI registry for on-premises artifact delivery
+                OCI registry for self-managed artifact distribution
               </figcaption>
             </figure>
           </div>
