@@ -8,4 +8,5 @@ export default {
   useTabs: false,
   semi: true,
   printWidth: 80,
+  plugins: ['prettier-plugin-organize-imports'],
 };

@@ -1,8 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
-import styles from './styles.module.css';
 import Image from '@theme/IdealImage';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 type TestimonialItem = {
   name: string;

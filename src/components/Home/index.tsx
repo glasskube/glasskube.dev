@@ -1,24 +1,23 @@
-import clsx from 'clsx';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
-import {Content} from '@theme/BlogPostPage';
-import styles from './index.module.css';
-import React from 'react';
-import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
-import useBaseUrl from '@docusaurus/core/lib/client/exports/useBaseUrl';
-import Image from '@theme/IdealImage';
-import HomepageBlogs from '@site/src/components/HomepageBlogs';
-import DemoButton from '@site/src/components/buttons/DemoButton';
-import Link from '@docusaurus/Link';
-import HomepageProducts from '@site/src/components/HomepageProducts';
-import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-import Testimonials from '@site/src/components/Testimonials';
-import NewsletterSignup from '@site/src/components/NewsletterSignup';
-import {EmblaOptionsType} from 'embla-carousel';
-import EmblaCarousel from '@site/src/components/HomeCarousel/EmblaCarousel';
 import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/core/lib/client/exports/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import EmblaCarousel from '@site/src/components/HomeCarousel/EmblaCarousel';
+import HomepageBlogs from '@site/src/components/HomepageBlogs';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageProducts from '@site/src/components/HomepageProducts';
+import NewsletterSignup from '@site/src/components/NewsletterSignup';
+import Testimonials from '@site/src/components/Testimonials';
+import DemoButton from '@site/src/components/buttons/DemoButton';
+import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+import {Content} from '@theme/BlogPostPage';
+import Heading from '@theme/Heading';
+import Image from '@theme/IdealImage';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import {EmblaOptionsType} from 'embla-carousel';
+import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -93,17 +92,21 @@ function HomepageVideo() {
                 height: '0',
                 paddingBottom: '56.25%',
               }}>
-              <iframe
-                src="https://www.loom.com/embed/847a5f2161944150b8685536d73c7b70?sid=71b060ee-21b3-4c1f-8bbb-25c01422a45c"
-                frameBorder="0"
-                allowFullScreen
+              <div
                 style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  top: '0',
-                  left: '0',
-                }}></iframe>
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <iframe
+                  width="100%"
+                  height="460"
+                  src="https://www.youtube-nocookie.com/embed/FkSWkudlHJw"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen></iframe>
+              </div>
             </div>
           </div>
         </div>

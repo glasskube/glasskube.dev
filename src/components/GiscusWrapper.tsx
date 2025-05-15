@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import Giscus from '@giscus/react';
 import {useColorMode} from '@docusaurus/theme-common';
+import Giscus from '@giscus/react';
+import {useEffect} from 'react';
 
 export default function GiscusWrapper({
   category,

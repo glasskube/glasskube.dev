@@ -2,8 +2,8 @@
 title: Install cert-manager
 slug: cert-manager
 description: 'Install cert-manager for Kubernetes with Glasskube package manager including a GUI, CLI and automatic package updates'
-authors: [ pmig ]
-tags: [ cert-manager ]
+authors: [pmig]
+tags: [cert-manager]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,16 +18,16 @@ Learn how to install [cert-manager](https://cert-manager.io/) using the [`glassk
 ## Prerequisites
 
 - Kubernetes cluster (You can easily create a local cluster by using [Minikube](https://minikube.sigs.k8s.io/docs/start/))
-- [`kubectl`](https://kubernetes.io/docs/tasks/tools/) is strictly speaking no *dependency* for installing packages via glasskube,
-but it is the recommended way to interact with the cluster. Therefore, it is highly recommended.
-Installation instructions are available for
-[macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/),
-[Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+- [`kubectl`](https://kubernetes.io/docs/tasks/tools/) is strictly speaking no _dependency_ for installing packages via glasskube,
+  but it is the recommended way to interact with the cluster. Therefore, it is highly recommended.
+  Installation instructions are available for
+  [macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/),
+  [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+  and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
 
 ## About cert-manager
 
-<br/>
+<br />
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ flowchart LR
   end
 ```
 
-<br/>
+<br />
 
 :::info
 
@@ -59,7 +59,6 @@ Additionally, it can handle the automatic renewal of certificates before they ex
 These certificates can then be used by various applications like ingress controllers or deployments.
 :::
 
-
 ## Installation
 
 Installing cert-manager can easily be achieved with the Glasskube package manager.
@@ -69,7 +68,7 @@ Installing cert-manager can easily be achieved with the Glasskube package manage
 If you already installed `glasskube` you can skip this step.
 If not, `glasskube` can easily be installed the way you usually install packages for your operating system.
 
-<Install/>
+<Install />
 
 ### Install cert-manager
 
@@ -82,6 +81,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     Install cert-manager via the Glasskube UI.
+
   </TabItem>
   <TabItem value="cli" label="CLI 🧑‍💻">
     A package can be installed with a simple command.
@@ -91,6 +91,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     The process will wait until the package got successfully installed.
+
   </TabItem>
 </Tabs>
 
@@ -132,8 +133,8 @@ the cluster the [ingress-nginx controller](./02_ingress-nginx.mdx) can easily be
 
 Further links about cert-manager:
 
- - cert-manager docs: https://cert-manager.io/docs/
- - Issuer configuration: https://cert-manager.io/docs/configuration/
- - Issuer list: https://cert-manager.io/docs/configuration/issuers/
+- cert-manager docs: https://cert-manager.io/docs/
+- Issuer configuration: https://cert-manager.io/docs/configuration/
+- Issuer list: https://cert-manager.io/docs/configuration/issuers/
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

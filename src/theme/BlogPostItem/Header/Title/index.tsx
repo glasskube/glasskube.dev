@@ -1,7 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import type {Props} from '@theme/BlogPostItem/Header/Title';
+import clsx from 'clsx';
 
 import styles from './styles.module.css';
 

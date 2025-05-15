@@ -11,7 +11,7 @@ Our next [milestones](https://github.com/glasskube/glasskube/milestones) and pre
 Our pre releases are technical proof of concepts that aim to inspire technical folks and will give you a way to try our latest development snapshot where we ship features fast.
 
 |                |                                                                    Features                                                                     |      Timeline      |  Status  |
-|----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------:|:--------:|
+| -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------: | :----------------: | :------: |
 | v0.0.1 (Alpha) | - first working PackageOperator<br/>- first working client (UI & CLI)<br/>- install first packages (cert-manager, …) <br/>- `bootstrap` command | Released on Jan 31 | Released |
 | v0.0.2         |                                   - `open` command<br/>- real-time-updates<br/>- add more supported packages                                    | Released on Feb 09 | Released |
 | v0.0.3         |                                  - add package updates and outdated information<br/>- support version pinning                                   | Released on Feb 27 | Released |
@@ -58,6 +58,3 @@ As we are working towards this goal we will need to iterate fast and things will
 
 Can't find a package or want your app included in the list? We are always adding new supported packages & apps,
 so just join us on [Discord](https://discord.gg/SxH6KUCGH7) or open up a new issue and let us know what is missing!
-
-
-

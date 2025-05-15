@@ -7,9 +7,9 @@ The following decision tree states how the Package Operator is handling dependen
 
 ### Assumptions:
 
-* Each involved referred package has status Ready, i.e. none of the referred packages are currently being deleted or updated, and their installation has not failed.
-* Each involved referred package has a `Spec.PackageInfo.Version` set, and it is equal to its `Status.Version`.
-* When the result of a situation is a dependency conflict, it might either be resolvable or not. Either way, the operator does not resolve such a conflict directly, but rather
+- Each involved referred package has status Ready, i.e. none of the referred packages are currently being deleted or updated, and their installation has not failed.
+- Each involved referred package has a `Spec.PackageInfo.Version` set, and it is equal to its `Status.Version`.
+- When the result of a situation is a dependency conflict, it might either be resolvable or not. Either way, the operator does not resolve such a conflict directly, but rather
   the components interacting with the user (CLI, UI) need to guide them through potential resolution. Consequently, the only time the operator does resolve an unfulfilled
   dependency, the "result" is denoted as `install`.
 
@@ -18,10 +18,10 @@ The following decision tree states how the Package Operator is handling dependen
 **Abbreviations:**
 
 - **P** Package that is going to be installed
-- **D** Dependency that package *P* requires
-- **DV** Installed version of package *D*
-- **PDV** Version constraint for package *D* as defined in the dependency relation of package *P*
-- **XDV** / **YDV** Version constraint for package *D* as defined in the dependency relation of already installed package *X* / *Y* that also have a dependency on *D*
+- **D** Dependency that package _P_ requires
+- **DV** Installed version of package _D_
+- **PDV** Version constraint for package _D_ as defined in the dependency relation of package _P_
+- **XDV** / **YDV** Version constraint for package _D_ as defined in the dependency relation of already installed package _X_ / _Y_ that also have a dependency on _D_
 
 ```mermaid
 flowchart TD

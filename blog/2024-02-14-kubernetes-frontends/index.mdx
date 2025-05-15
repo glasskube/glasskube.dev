@@ -1,14 +1,15 @@
 ---
 slug: kubernetes-frontends
 title: The Inner Workings of Kubernetes Management Frontends — A Software Engineer’s Perspective
-description: "Analyzing Code and Architecture of Kubernetes Management Frontends — How to build and deploy tools like ArgoCD and glasskube."
-authors: [ christophenne ]
-tags: [ glasskube, kubernetes, frontends ]
+description: 'Analyzing Code and Architecture of Kubernetes Management Frontends — How to build and deploy tools like ArgoCD and glasskube.'
+authors: [christophenne]
+tags: [glasskube, kubernetes, frontends]
 image: https://github.com/user-attachments/assets/e6836ba6-6201-4f34-b7ba-981dfbd13dcc
 ---
+
 ![Inner workings thumbnail](https://github.com/user-attachments/assets/e6836ba6-6201-4f34-b7ba-981dfbd13dcc)
 
-*In this blogpost we are reviewing Kubernetes Management Frontends and discuss how these tools are being built.*
+_In this blogpost we are reviewing Kubernetes Management Frontends and discuss how these tools are being built._
 
 <!-- truncate -->
 
@@ -36,7 +37,7 @@ Whenever and wherever you interact with your cluster, you do it via the Kubernet
 though there might be other use cases.
 
 As a consumer of this API, one needs to know where it is hosted and how to authenticate against it.
-The Kubernetes API can be accessed both from inside a cluster (i.e., from an application running on a pod) and outside a cluster (e.g., from your command line). In some cases however, the API is only available from within a VPN. 
+The Kubernetes API can be accessed both from inside a cluster (i.e., from an application running on a pod) and outside a cluster (e.g., from your command line). In some cases however, the API is only available from within a VPN.
 
 Since we are looking at tools with a web UI, this UI and its backend need to be exposed such that a user can access it. The options are:
 
@@ -201,4 +202,3 @@ One more plug: I work at Glasskube, where we are building the missing Kubernetes
 If you are interested in our work, make sure to star us: [`glasskube/glasskube`](https://github.com/glasskube/glasskube).
 We are also working on an article shedding some light on different CLI frameworks, if you are more of a command line person. And if that's not enough, we might write about using htmx soon because it's trending, and we need your attention.
 I can already see the headline: "How we reduce our codebase by 95% by using seemingly old-school technology" — I think this has not been done before ;)
-

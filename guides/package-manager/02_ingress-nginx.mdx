@@ -2,15 +2,14 @@
 title: Install ingress-nginx
 slug: ingress-nginx
 description: 'Install ingress-nginx for Kubernetes with Glasskube package manager including a GUI, CLI and automatic package updates'
-authors: [ pmig ]
-tags: [ ingress-nginx ]
+authors: [pmig]
+tags: [ingress-nginx]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Install from '@site/src/partials/_install.mdx';
 import Discussion from '@site/src/components/GiscusWrapper';
-
 
 # Install ingress-nginx for Kubernetes
 
@@ -19,19 +18,19 @@ Learn how to install [ingress-nginx](https://kubernetes.github.io/ingress-nginx/
 ## Prerequisites
 
 - Kubernetes cluster (You can easily create a local cluster by using [Minikube](https://minikube.sigs.k8s.io/docs/start/))
-- [`kubectl`](https://kubernetes.io/docs/tasks/tools/) is *not* a dependency for installing packages via glasskube,
-but it is the recommended way to interact with the cluster. We therefore recommend you install it regardless.
-Installation instructions are available for
-[macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/),
-[Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+- [`kubectl`](https://kubernetes.io/docs/tasks/tools/) is _not_ a dependency for installing packages via glasskube,
+  but it is the recommended way to interact with the cluster. We therefore recommend you install it regardless.
+  Installation instructions are available for
+  [macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/),
+  [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+  and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
 
 Additionally, because ingress-nginx works by running a NGINX in the cluster and exposing it via a LoadBalancer Service, which is handled by a different controller that is usually provisioned by your cloud provider.
 If you run into issues installing ingress-nginx, please consult your cloud provider's documentation to learn how to create external load balancers for your cluster.
 
 ## About ingress-nginx
 
-<br/>
+<br />
 
 ```mermaid
 flowchart TB
@@ -67,7 +66,7 @@ flowchart TB
   end
 ```
 
-<br/>
+<br />
 
 :::info
 ingress-nginx is an Ingress controller for Kubernetes using [NGINX](https://nginx.org/) as a reverse proxy and load balancer.
@@ -95,6 +94,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     Install ingress-nginx via the Glasskube UI.
+
   </TabItem>
   <TabItem value="cli" label="CLI 🧑‍💻">
     A package can be installed with a simple command.
@@ -104,6 +104,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     The process will wait until the package got successfully installed.
+
   </TabItem>
 </Tabs>
 
@@ -146,8 +147,8 @@ To learn more about cert-manager, check out [our guide on how to install cert-ma
 
 Further links about ingress-nginx:
 
- - Ingress-nginx documentation: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/
- - Ingress configuration: https://kubernetes.io/docs/concepts/services-networking/ingress/
- - Ingress controllers: https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+- Ingress-nginx documentation: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/
+- Ingress configuration: https://kubernetes.io/docs/concepts/services-networking/ingress/
+- Ingress controllers: https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

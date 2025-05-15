@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from '@docusaurus/Head';
 import type {Props} from '@theme/BlogListPage/StructuredData';
 

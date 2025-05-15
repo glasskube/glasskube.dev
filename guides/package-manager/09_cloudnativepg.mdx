@@ -2,8 +2,8 @@
 title: Deploy a PostgresSQL database on Kubernetes with CloudNativePG
 slug: deploy-postgres-kubernetes
 description: 'Learn how to easily use the CloudNativePG operator to set up and manage PostgreSQL databases on Kubernetes'
-authors: [ jpage ]
-tags: [ postgres, kubernetes, cloudnativepg ]
+authors: [jpage]
+tags: [postgres, kubernetes, cloudnativepg]
 ---
 
 import Install from '@site/src/partials/_install.mdx';
@@ -23,7 +23,6 @@ Managing database workloads on Kubernetes isn’t “easy” by any stretch of t
 
 <DefaultCTA />
 
-
 ## **What is CloudNativePG?**
 
 CloudNativePG is a massively popular open-source Kubernetes operator for managing PostgreSQL clusters. Built as a CRD, CloudNativePG extends Kubernetes capabilities, allowing for the wholistic management of database workloads, in a way that solely using StatefulSet would never be able possible.
@@ -36,14 +35,14 @@ Originally developed by [EDB](https://www.enterprisedb.com/) and released as ope
 
 We’ve already covered some of the main features in part [one](/blog/postgres-on-kubernetes/) of this blog series. Here are some additional features though:
 
--   **Cross-Cluster Replication**: Enables high availability and disaster recovery across multiple Kubernetes clusters.
--   **Multi-Tenancy Support**: Allows multiple PostgreSQL clusters to run within a single Kubernetes environment, efficiently sharing resources.
--   **Advanced Connection Pooling**: Integrates with connection pooling tools to optimize resource usage and reduce latency for high-traffic applications.
--   **Point-in-Time Recovery (PITR)**: Enables restoration of databases to a specific moment, crucial for recovering from data corruption or accidental deletions.
--   **Environment Flexibility**: Compatible with various cloud environments, including private, public, and hybrid setups.
--   **WAL File Backup on Object Stores**: Supports streaming write-ahead log (WAL) files to object storage like Amazon S3 or GCS.
--   **Client TLS/SSL Connections**: Secure communication between PostgreSQL clients and the database clusters, protecting data in transit.
--   **Exposing Cluster Metrics for Observability Purposes**: exposing metrics that can be easily leveraged to monitor database health, performance, and resource utilization with tools like Grafana.
+- **Cross-Cluster Replication**: Enables high availability and disaster recovery across multiple Kubernetes clusters.
+- **Multi-Tenancy Support**: Allows multiple PostgreSQL clusters to run within a single Kubernetes environment, efficiently sharing resources.
+- **Advanced Connection Pooling**: Integrates with connection pooling tools to optimize resource usage and reduce latency for high-traffic applications.
+- **Point-in-Time Recovery (PITR)**: Enables restoration of databases to a specific moment, crucial for recovering from data corruption or accidental deletions.
+- **Environment Flexibility**: Compatible with various cloud environments, including private, public, and hybrid setups.
+- **WAL File Backup on Object Stores**: Supports streaming write-ahead log (WAL) files to object storage like Amazon S3 or GCS.
+- **Client TLS/SSL Connections**: Secure communication between PostgreSQL clients and the database clusters, protecting data in transit.
+- **Exposing Cluster Metrics for Observability Purposes**: exposing metrics that can be easily leveraged to monitor database health, performance, and resource utilization with tools like Grafana.
 
 In this blog post we will configure these last three features. But for instructions on how to enable and configure the other CloudNativePG features, reference the official CloudNativePG [documentation](https://cloudnative-pg.io/documentation/1.24/).
 
@@ -57,10 +56,9 @@ This cluster will be set up from scratch using a straightforward Cluster definit
 
 ## Prerequisites
 
--   Kubernetes cluster (You can easily create a local cluster by using [Minikube](https://minikube.sigs.k8s.io/docs/start/))
--   [kubectl](https://kubernetes.io/docs/tasks/tools/) is strictly speaking no _dependency_ for installing packages via glasskube, but it is the recommended way to interact with the cluster. Therefore, it is highly recommended. Installation instructions are available for [macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/), [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/), and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
--   [Glasskube](/products/package-manager/docs/getting-started/install/) installed
-
+- Kubernetes cluster (You can easily create a local cluster by using [Minikube](https://minikube.sigs.k8s.io/docs/start/))
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) is strictly speaking no _dependency_ for installing packages via glasskube, but it is the recommended way to interact with the cluster. Therefore, it is highly recommended. Installation instructions are available for [macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/), [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/), and [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+- [Glasskube](/products/package-manager/docs/getting-started/install/) installed
 
 ## Installation
 
@@ -82,6 +80,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     Install `cloudnative-pg` via the Glasskube UI by following the package customization steps below.
+
   </TabItem>
   <TabItem value="cli" label="CLI 🧑‍💻">
     A package can be installed with a simple command.
@@ -91,6 +90,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     The process will wait until the package got successfully installed.
+
   </TabItem>
 </Tabs>
 
@@ -118,7 +118,6 @@ spec:
     size: 1Gi
 ```
 
-
 Apply this configuration:
 
 ```shell
@@ -145,7 +144,7 @@ Now we can connect to our PostgreSQL database with.
 
 ```shell
 psql -h localhost -U app app
-````
+```
 
 ### SSL connection for PostgreSQL on Kubernetes
 
@@ -245,7 +244,9 @@ Then verify that the Pod - Database connection works run:
 kubectl exec -it deployments/cert-test -- bash -c \
 "psql 'sslkey=/etc/secrets/app/tls.key sslcert=/etc/secrets/app/tls.crt sslrootcert=/etc/secrets/ca/ca.crt host=pg-glasskube-cluster-rw dbname=app user=app sslmode=verify-full' -c 'select version();'"
 ```
+
 If you see the following output, you have configures SSL authentication correctly:
+
 ```
                                         version
 --------------------------------------------------------------------------------------
@@ -267,34 +268,28 @@ Fully recreating an entire PostgreSQL database typically involves combining base
 
 To back up WAL files to AWS S3, we are going to need to have the following:
 
--   An S3 bucket
--   An IAM user with a policy attached giving the user the requisite S3 permissions
--   A Kubernetes secret containing the AWS user credentials
-
+- An S3 bucket
+- An IAM user with a policy attached giving the user the requisite S3 permissions
+- A Kubernetes secret containing the AWS user credentials
 
 1.  [Create](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html) the S3 bucket and give it a relevant name
 
 2.  Create an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) and attach the following inline policy to the user:
 
-
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "Statement1",
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:ListBucket"
-            ],
-            "Resource": [
-                "arn:aws:s3:::test-cnpg-backup",
-                "arn:aws:s3:::test-cnpg-backup/*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement1",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
+      "Resource": [
+        "arn:aws:s3:::test-cnpg-backup",
+        "arn:aws:s3:::test-cnpg-backup/*"
+      ]
+    }
+  ]
 }
 ```
 
@@ -311,7 +306,7 @@ Then add the following section to the cluster spec:
 ```yaml
 backup:
   barmanObjectStore:
-    destinationPath: "s3://<BUCKET_NAME>/"
+    destinationPath: 's3://<BUCKET_NAME>/'
     s3Credentials:
       accessKeyId:
         name: aws-creds
@@ -358,7 +353,7 @@ spec:
 
   backup:
     barmanObjectStore:
-      destinationPath: "s3://test-cnpg-backup/"
+      destinationPath: 's3://test-cnpg-backup/'
       s3Credentials:
         accessKeyId:
           name: aws-creds
@@ -367,7 +362,7 @@ spec:
           name: aws-creds
           key: ACCESS_SECRET_KEY
 
-# We'll need this for the monitoring section below
+  # We'll need this for the monitoring section below
   monitoring:
     enablePodMonitor: true
 ```

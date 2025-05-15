@@ -1,6 +1,5 @@
-import React from 'react';
-import Translate, {translate} from '@docusaurus/Translate';
 import Link from '@docusaurus/Link';
+import Translate, {translate} from '@docusaurus/Translate';
 import type {Props} from '@theme/BlogPostItem/Footer/ReadMoreLink';
 
 function ReadMoreLabel() {

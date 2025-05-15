@@ -1,14 +1,13 @@
+import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
-import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
-import React from 'react';
-import clsx from 'clsx';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChalkboardUser, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import DemoButton from '@site/src/components/buttons/DemoButton';
 import ContactForm from '@site/src/pages/contact/ContactForm';
-import Link from '@docusaurus/Link';
+import Heading from '@theme/Heading';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 const TITLE = translate({message: 'Get in touch'});
 const DESCRIPTION = translate({

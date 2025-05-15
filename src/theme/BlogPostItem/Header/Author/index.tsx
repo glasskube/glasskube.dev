@@ -1,6 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
 import Link, {type Props as LinkProps} from '@docusaurus/Link';
+import clsx from 'clsx';
 
 import type {Props} from '@theme/BlogPostItem/Header/Author';
 

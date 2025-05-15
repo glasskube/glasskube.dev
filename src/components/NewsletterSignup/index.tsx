@@ -1,6 +1,6 @@
+import styles from '@site/src/components/Home/index.module.css';
 import Heading from '@theme/Heading';
 import React, {ChangeEvent} from 'react';
-import styles from '@site/src/components/Home/index.module.css';
 
 function loadScript() {
   if (typeof window === 'undefined') {

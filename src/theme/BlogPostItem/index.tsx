@@ -1,18 +1,17 @@
-import React from 'react';
-import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
-import BlogPostItemHeader from '@theme/BlogPostItem/Header';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import type {Props} from '@theme/BlogPostItem';
 import BlogPostItemContent from '@theme/BlogPostItem/Content';
 import BlogPostItemFooter from '@theme/BlogPostItem/Footer';
+import BlogPostItemHeader from '@theme/BlogPostItem/Header';
+import BlogSidebar from '@theme/BlogSidebar';
 import TOC from '@theme/TOC';
-import type {Props} from '@theme/BlogPostItem';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
-import Link from '@docusaurus/Link';
-import BlogPostItemHeaderTitle from './Header/Title';
+import clsx from 'clsx';
 import BlogPostItemHeaderAuthors from './Header/Authors';
 import BlogPostItemHeaderInfo from './Header/Info';
-import BlogSidebar from '@theme/BlogSidebar';
+import BlogPostItemHeaderTitle from './Header/Title';
+import styles from './styles.module.css';
 
 export default function BlogPostItem({
   children,

@@ -1,9 +1,9 @@
-import React from 'react';
 import {PricingFAQ, PricingFAQs} from '@site/src/data/pricing';
 import clsx from 'clsx';
+import React from 'react';
 
-import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
+import styles from './styles.module.css';
 
 function FAQ({faq}: {faq: PricingFAQ}) {
   return (

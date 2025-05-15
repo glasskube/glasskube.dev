@@ -4,9 +4,7 @@ slug: kustomize
 description: 'Understanding Kustomize, its role in Kubernetes configuration management, and how it simplifies the process of creating and managing Kubernetes resources'
 ---
 
-
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-
 
 ## What is Kustomize? Definition and explanation
 
@@ -21,7 +19,6 @@ import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 One of Kustomize's key strengths is its ability to dynamically create variations of Kubernetes resources through layering overlay file onto base kubernetes manifests. It enables you to apply patches, transformers, and generators to existing base configurations, generating environment-specific manifests while maintaining clean and separate base files. This is particularly useful in environments where maintaining a clean separation of concerns is critical, and changes to resources should not require modification of base files, simplifying long-term maintenance.
 
 ### Base Kustomize folder structure
-
 
 A typical Kustomize setup includes two main directories:
 

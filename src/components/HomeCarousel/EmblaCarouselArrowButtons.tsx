@@ -1,10 +1,10 @@
+import {EmblaCarouselType} from 'embla-carousel';
 import React, {
   ComponentPropsWithRef,
   useCallback,
   useEffect,
   useState,
 } from 'react';
-import {EmblaCarouselType} from 'embla-carousel';
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;

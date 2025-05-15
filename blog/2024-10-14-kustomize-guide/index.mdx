@@ -2,8 +2,8 @@
 slug: patching-with-kustomize
 title: The complete Kustomize tutorial
 description: A guide to modifying Kubernetes resource configurations using strategic merge and JSON patches, among other transformations with tips for managing resources across environments.
-authors: [ jpage, pmig ]
-tags: [ glasskube, kustomize]
+authors: [jpage, pmig]
+tags: [glasskube, kustomize]
 image: https://github.com/user-attachments/assets/37ecf483-a984-4ca5-b10f-eaad367ff7cd
 ---
 
@@ -35,10 +35,9 @@ If these methods are the agents of variation, the `kustomization.yaml` file is t
 
 A typical Kustomize setup has two main directories: base and overlays.
 
--   **base**: Contains the base Kubernetes resource definitions, with files for each object that makes up the application as well as the `base` level `kustomization.yaml` file.
+- **base**: Contains the base Kubernetes resource definitions, with files for each object that makes up the application as well as the `base` level `kustomization.yaml` file.
 
--   **overlays**: Holds environment-specific folders (e.g., prod, dev), each with its own patch files and a `kustomization.yaml` which contains environment specific transformers and generator. These overlays modify the base resources for each environment. For example, `ingress-patch.yaml` in `prod` will update the base `ingress.yaml` with production-specific settings.
-
+- **overlays**: Holds environment-specific folders (e.g., prod, dev), each with its own patch files and a `kustomization.yaml` which contains environment specific transformers and generator. These overlays modify the base resources for each environment. For example, `ingress-patch.yaml` in `prod` will update the base `ingress.yaml` with production-specific settings.
 
 ```
 |-- base
@@ -68,7 +67,7 @@ Kustomize transformers are embedded functions that allow for modification of Kub
 
 To add labels and/or annotations to all resources. If the label or annotation keys are already present on the resource, the value will be overridden.
 
-*Example*:
+_Example_:
 
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -92,7 +91,7 @@ resources:
 
 Enforcing consistency across a project's resources can be useful by ensuring all resources are in the correct namespace and follow a common naming convention and case be easily done.
 
-*Example*:
+_Example_:
 
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -112,13 +111,14 @@ resources:
 
 This transformer can modify the following container images specifications:
 
--   Name
--   Tag
--   Digest
--   Tag from the latest commit SHA
--   Tag from an Environment Variable
+- Name
+- Tag
+- Digest
+- Tag from the latest commit SHA
+- Tag from an Environment Variable
 
-*Example:*
+_Example:_
+
 ```
 # kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -163,8 +163,7 @@ Configmaps can be behave in three different ways is can `create`, `replace` or `
 
 **Creating a new configMap**
 
--   A configMap can be created using `.env` or `.properties` files:
-
+- A configMap can be created using `.env` or `.properties` files:
 
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -182,8 +181,7 @@ configMapGenerator:
   - tracing.env
 ```
 
--   configMaps can also be created from literals directly:
-
+- configMaps can also be created from literals directly:
 
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -252,7 +250,7 @@ secretGenerator:
 
 1.  **test-tls**: This generates a TLS secret using the `tls.crt` and `tls.key` files, setting the type to kubernetes.io/tls.
 2.  **test-tls-namespaced**: Similar to `test-tls`, but this secret is created in the `test-apps` namespace. It uses the specified files and assigns custom names to the keys (e.g., `tls.crt=secret/tls.crt`).
-3.  **env\_file\_secret**: This secret is created from an environment file (env.txt), setting the type to `Opaque`.
+3.  **env_file_secret**: This secret is created from an environment file (env.txt), setting the type to `Opaque`.
 4.  **secret-with-annotation**: This creates a secret from the file `app-config.yaml`, with additional metadata like annotations and labels for easier management.
 
 > **It is important to note that the secrets are** `base64` encoded
@@ -316,7 +314,8 @@ When Kustomize applies a strategic merge patch, it starts with the base resource
 
 Strategic merging is ideal when you need to preserve most of the base configuration while only adjusting specific parts. This approach is particularly useful for handling complex Kubernetes resources like Deployments, where you may want to update only the container image or replica count without affecting other settings.
 
-*Example `deployment-patch.yaml` file:*
+_Example `deployment-patch.yaml` file:_
+
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -344,9 +343,9 @@ Kustomize JSON patching, based on the JSON Patch specification, allows for preci
 
 A patch consists of an array of patch operations, each defined by the following fields:
 
--   **op**: The operation to perform ( `add`, `remove`, `replace`, `move`, `copy`, or `test`).
--   **path**: The JSON path to the field that needs to be modified.
--   **value**: (for add, replace, and move operations) The new value to be set or moved.
+- **op**: The operation to perform ( `add`, `remove`, `replace`, `move`, `copy`, or `test`).
+- **path**: The JSON path to the field that needs to be modified.
+- **value**: (for add, replace, and move operations) The new value to be set or moved.
 
 **Use Case and Benefits**
 
@@ -478,7 +477,8 @@ Once deployed, any changes to the source manifests in GitHub will be automatical
 
 Always be sure to test Kustomize patches and transformations before applying them. Two useful commands for this are using `kubectl apply -k` with the `--dry-run=client -o yaml` flag as well as and `kubectl diff` plugin.
 
-*Example usage:*
+_Example usage:_
+
 ```
 kubectl apply -k <path-to-your-kustomization-directory> --dry-run=client -o yaml
 ```
@@ -487,7 +487,8 @@ This command outputs the YAML rendered by combining the base resources and apply
 
 Use `kubectl diff` to compare the changes between your live cluster resources and the new configurations generated by Kustomize.
 
-*Example usage:*
+_Example usage:_
+
 ```
 kubectl diff -k <path-to-your-kustomization-directory>
 ```
@@ -501,11 +502,11 @@ When working with Kustomize, following best practices can help maintain clarity,
 1.  Fell free to use either `patchStrategicMerge` or `patchJson6902` path, keep in ming that `patchJson6902` can do almost everything a `patchStrategicMerge` can do, but with a briefer syntax.
 2.  Name kustomization directories after their corresponding namespaces.
 3.  Name patch files descriptively
-Use clear and descriptive names for your patch files that indicate what resource the patch targets.
+    Use clear and descriptive names for your patch files that indicate what resource the patch targets.
 4.  If something is the same between multiple overlays, consider putting it in your base.
 5.  Test patches thoroughly.
 6.  Securely manage secrets
-Use secretGenerator in Kustomize to handle sensitive information like passwords or API keys. Avoid hardcoding sensitive data in plain YAML files.
+    Use secretGenerator in Kustomize to handle sensitive information like passwords or API keys. Avoid hardcoding sensitive data in plain YAML files.
 
 ## Kustomize FAQs
 
@@ -513,7 +514,7 @@ Use secretGenerator in Kustomize to handle sensitive information like passwords 
 
 Kustomize is integrated directly into kubectl starting from version 1.14, allowing you to run commands like `kubectl apply -k` to apply configurations without needing to install Kustomize separately. However, if you prefer a [standalone installation](https://kubectl.docs.kubernetes.io/installation/kustomize/), there are multiple methods available.
 
-*For Homebrew users, simply run:*
+_For Homebrew users, simply run:_
 
 ```
 brew install kustomize

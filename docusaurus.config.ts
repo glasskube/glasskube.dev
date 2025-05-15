@@ -1,7 +1,7 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
 import type {Options as IdealImageOptions} from '@docusaurus/plugin-ideal-image';
 import type * as Preset from '@docusaurus/preset-classic';
+import type {Config} from '@docusaurus/types';
+import {themes as prismThemes} from 'prism-react-renderer';
 import {EnumChangefreq} from 'sitemap';
 
 const config: Config = {
@@ -158,8 +158,11 @@ const config: Config = {
     },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
-      // content: `🎉 We just released v0.26.1 of our Open Source Kubernetes Package Manager on <a href="https://github.com/glasskube/glasskube/" target="_blank">⭐ GitHub ⭐</a>.`,
-      content: `🎉 Check out <a href="https://distr.sh/" target="_blank">Distr</a>  on <a href="https://github.com/glasskube/distr/" target="_blank">⭐ GitHub ⭐</a>.`,
+      content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/" target="_blank">Distr</a> Launch Week is happening between May 19. and May 23. Stay tuned ⭐`,
+      // content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/"
+      // target="_blank">Distr</a> Launch Week is happening between May 19.
+      // and May 23.
+      // <a href="/blog/tags/distr-launch-week/">Read more</a> ⭐`,
       isCloseable: false,
     },
     image:
@@ -171,7 +174,10 @@ const config: Config = {
         src: 'img/glasskube-logo.svg',
       },
       items: [
-        {label: 'Docs', to: 'https://distr.sh/docs/getting-started/about/'},
+        {
+          label: 'Docs',
+          to: 'https://distr.sh/docs/getting-started/what-is-distr/',
+        },
         {label: 'Blog', to: '/blog/'},
         {label: 'White Paper', to: '/white-paper/building-blocks/'},
         {label: 'Pricing', to: '/pricing'},

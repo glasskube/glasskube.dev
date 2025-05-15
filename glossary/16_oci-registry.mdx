@@ -46,18 +46,20 @@ To install ORAS:
 - **macOS**: `brew install oras`
 - **Windows**: `choco install oras`
 - **Linux**:
+
 ```bash
 curl -LO https://github.com/oras-project/oras/releases/download/v1.1.0/oras_1.1.0_linux_amd64.tar.gz
 mkdir -p oras-install/
 tar -zxf oras_1.1.0_linux_amd64.tar.gz -C oras-install/
 sudo mv oras-install/oras /usr/local/bin/
 rm -rf oras_1.1.0_linux_amd64.tar.gz oras-install/
-  ```
+```
 
 You can verify the installation with: `oras version`
 :::
 
 Basic usage of ORAS:
+
 ```bash
 # Push an artifact
 oras push registry.example.com/hello-artifact:v1 \
@@ -74,6 +76,7 @@ Terraform private registries specifically store Terraform modules, enabling secu
 OCI Artifact Registries can similarly store Terraform modules alongside container images and other software artifacts, simplifying infrastructure-as-code workflows.
 
 Example of pushing a Terraform module:
+
 ```bash
 tar cvzf my-module.tar.gz my-module/
 oras push my-registry.example.com/my-terraform-module:v1.0 \
@@ -82,9 +85,11 @@ oras push my-registry.example.com/my-terraform-module:v1.0 \
 ```
 
 ## OCI Registry for Helm Charts
+
 Beginning from[ Helm v3.8.0](https://helm.sh/docs/topics/registries/) OCI support is enabled by default and provides a standardized way to manage and share Helm charts securely across different environments.
 
 Example:
+
 ```bash
 helm package my-chart/
 helm push my-chart-0.1.0.tgz oci://my-registry.example.com/helm-charts
@@ -95,19 +100,20 @@ helm push my-chart-0.1.0.tgz oci://my-registry.example.com/helm-charts
 Some examples of OCI registries include:
 
 #### Open Source:
- - [OpenRegistry](https://openregistry.dev/)
- - [Harbor](https://goharbor.io/)
- - [Django-OCI](https://vsoch.github.io/django-oci/)
- - [Distr](https://github.com/glasskube/distr/)
- - [Gitea Container Registry](https://about.gitea.com/)
 
+- [OpenRegistry](https://openregistry.dev/)
+- [Harbor](https://goharbor.io/)
+- [Django-OCI](https://vsoch.github.io/django-oci/)
+- [Distr](https://github.com/glasskube/distr/)
+- [Gitea Container Registry](https://about.gitea.com/)
 
 #### Hosted:
- - [JFrog Artifactory](https://jfrog.com/artifact-management/)
- - [Distr](https://glasskube.dev/)
- - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs)
- - [Docker Hub](https://www.docker.com/blog/announcing-docker-hub-oci-artifacts-support/)
- - [Cloudsmith Registry](https://help.cloudsmith.io/docs/oci-repository)
+
+- [JFrog Artifactory](https://jfrog.com/artifact-management/)
+- [Distr](https://glasskube.dev/)
+- [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs)
+- [Docker Hub](https://www.docker.com/blog/announcing-docker-hub-oci-artifacts-support/)
+- [Cloudsmith Registry](https://help.cloudsmith.io/docs/oci-repository)
 
 ### Open source OCI registries reference implementation
 
@@ -122,6 +128,7 @@ OCI registry specifications define the standards for storing, distributing, and 
 These specifications ensure compatibility across different registries, runtimes, and container tools, enabling a reliable ecosystem for modern software deployment.
 
 These are the three OCI specifications
+
 - [OCI Image Format Specification](https://github.com/opencontainers/image-spec) – Defining how container images should be structured, stored, and transported.
 - [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec) – Standardizing how container images and artifacts are distributed via OCI-compliant registries.
 - [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec) – Specifying the low-level execution environment for running OCI-compliant containers.
@@ -138,9 +145,10 @@ A conformant registry must support APIs categorized into the following workflow 
 - **Content Discovery** - Clients are able to list or otherwise query the content stored in the registry
 - **Content Management** - Clients are able to control the full life-cycle of the content stored in the registry
 
-To be considered an OCI-conformant registry, at minimum, all APIs in the *Pull* category must be supported.
+To be considered an OCI-conformant registry, at minimum, all APIs in the _Pull_ category must be supported.
 
 #### Conformance testing
+
 If you are developing a registry service and want to verify compliance with these workflow categories, use the [conformance testing tool](https://github.com/opencontainers/distribution-spec/tree/main/conformance).
 
 :::note

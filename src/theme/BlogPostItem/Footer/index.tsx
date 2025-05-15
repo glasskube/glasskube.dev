@@ -1,11 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import {ThemeClassNames} from '@docusaurus/theme-common';
+import {BlogDiscussion} from '@site/src/components/GiscusWrapper';
+import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
 import EditMetaRow from '@theme/EditMetaRow';
 import TagsListInline from '@theme/TagsListInline';
-import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
-import {BlogDiscussion} from '@site/src/components/GiscusWrapper';
+import clsx from 'clsx';
 
 export default function BlogPostItemFooter(): JSX.Element | null {
   const {metadata, isBlogPostPage} = useBlogPost();

@@ -1,8 +1,7 @@
-import React from 'react';
 import DemoButton from '@site/src/components/buttons/DemoButton';
-import styles from './styles.module.css';
-import clsx from 'clsx';
 import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 export default function CustomCTA({
   header,

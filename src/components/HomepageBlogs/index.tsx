@@ -1,9 +1,8 @@
-import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
 import clsx from 'clsx';
 import {HomepageProps} from '../Home';
+import styles from './styles.module.css';
 
 const LatestBlogPosts = ({recentPosts}: HomepageProps) => {
   return (

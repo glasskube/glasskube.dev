@@ -1,11 +1,10 @@
-import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
-import React from 'react';
-import clsx from 'clsx';
-import WhitePaperForm from '@site/src/pages/white-paper/building-blocks/WhitePaperForm';
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
+import WhitePaperForm from '@site/src/pages/white-paper/building-blocks/WhitePaperForm';
+import Heading from '@theme/Heading';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 const TITLE = 'Building Blocks for Modern Self-Managed Software Distribution';
 const DESCRIPTION =

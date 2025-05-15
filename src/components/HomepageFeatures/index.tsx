@@ -1,11 +1,10 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {IconDefinition} from '@fortawesome/free-regular-svg-icons';
-import React from 'react';
-import {faKey, faLightbulb} from '@fortawesome/free-solid-svg-icons';
 import {faDocker} from '@fortawesome/free-brands-svg-icons';
+import {IconDefinition} from '@fortawesome/free-regular-svg-icons';
+import {faKey, faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import Heading from '@theme/Heading';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;

@@ -1,12 +1,11 @@
-import Layout from '@theme/Layout';
-import React from 'react';
+import DemoButton from '@site/src/components/buttons/DemoButton';
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+import NewsletterSignup from '@site/src/components/NewsletterSignup';
+import Testimonials from '@site/src/components/Testimonials';
 import HubFeatures from '@site/src/pages/products/hub/_components/HubFeatures';
 import Heading from '@theme/Heading';
-import DemoButton from '@site/src/components/buttons/DemoButton';
+import Layout from '@theme/Layout';
 import styles from './index.module.css';
-import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-import Testimonials from '@site/src/components/Testimonials';
-import NewsletterSignup from '@site/src/components/NewsletterSignup';
 
 function HubHeader() {
   return (

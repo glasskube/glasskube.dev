@@ -81,7 +81,7 @@
 }
 
 .colorWhite {
-  color: #FFF;
+  color: #fff;
 }
 
 .lottieFallback {
@@ -150,9 +150,8 @@
   }
 }
 
-
 [data-theme='light'] .sliderBg {
-    background: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-dark);
 }
 
 .sliderWrap {

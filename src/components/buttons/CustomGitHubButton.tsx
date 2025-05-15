@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import GitHubButton from 'react-github-btn';
 
 interface CustomGitHubButtonProps {

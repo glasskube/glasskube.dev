@@ -1,11 +1,10 @@
-import React from 'react';
-import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {Props} from '@theme/BlogPostItem';
 import BlogPostItemHeaderAuthors from '../../BlogPostItem/Header/Authors';
 import BlogPostItemHeaderInfo from '../../BlogPostItem/Header/Info';
-import Link from '@docusaurus/Link';
-import {Props} from '@theme/BlogPostItem';
+import styles from './styles.module.css';
 
 export function LatestBlogPostItem({children}: Props) {
   const post = useBlogPost();

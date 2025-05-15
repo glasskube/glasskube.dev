@@ -8,8 +8,8 @@ description: Discover Glasskube, a fresh Kubernetes package manager challenging 
 # Glasskube vs Helm Comparison
 
 In late 2023, we published a [blog post](/blog/5-helm-shortcomings/) about, what we thought, were the biggest shortcomings of [Helm](https://helm.sh/)—undoubtedly the most popular package manager for Kubernetes.
-After receiving *TONS* of feedback from the community we realized that we were not alone in being unsatisfied with the status quo.
-That is why we started thinking about and prototyping Glasskube—a *new* vision of what a package manager for Kubernetes could look like.
+After receiving _TONS_ of feedback from the community we realized that we were not alone in being unsatisfied with the status quo.
+That is why we started thinking about and prototyping Glasskube—a _new_ vision of what a package manager for Kubernetes could look like.
 
 We take a new approach on multiple features, but want to highlight the 5 most important differences that got either just released, are in development right now or are on our roadmap and will be started soon:
 

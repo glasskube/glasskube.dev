@@ -1,10 +1,9 @@
-import React from 'react';
+import {BlogPaginatedMetadata} from '@docusaurus/plugin-content-blog';
 import {BlogPostProvider} from '@docusaurus/plugin-content-blog/client';
 import BlogPostItem from '@theme/BlogPostItem';
 import type {Props} from '@theme/BlogPostItems';
 import {LatestBlogPostItem} from './LatestBlogPostItem/LatestBlogPostItem';
 import styles from './styles.module.css';
-import {BlogPaginatedMetadata} from '@docusaurus/plugin-content-blog';
 
 export default function BlogPostItems({
   items,

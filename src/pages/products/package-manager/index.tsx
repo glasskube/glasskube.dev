@@ -1,15 +1,14 @@
-import Layout from '@theme/Layout';
-import React from 'react';
-import Heading from '@theme/Heading';
-import styles from './index.module.css';
-import PackageManagerScreenshots from '@site/src/pages/products/package-manager/_components/PackageManagerScreenshots';
 import Link from '@docusaurus/Link';
-import clsx from 'clsx';
-import Typewriter from 'typewriter-effect';
-import PackageManagerFeatures from '@site/src/pages/products/package-manager/_components/PackageManagerFeatures';
-import Testimonials from '@site/src/components/Testimonials';
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import NewsletterSignup from '@site/src/components/NewsletterSignup';
+import Testimonials from '@site/src/components/Testimonials';
+import PackageManagerFeatures from '@site/src/pages/products/package-manager/_components/PackageManagerFeatures';
+import PackageManagerScreenshots from '@site/src/pages/products/package-manager/_components/PackageManagerScreenshots';
+import Heading from '@theme/Heading';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import Typewriter from 'typewriter-effect';
+import styles from './index.module.css';
 
 function PackageManagerHeader() {
   return (

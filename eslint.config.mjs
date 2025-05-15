@@ -1,10 +1,10 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import * as tseslint from 'typescript-eslint';
-import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
-import prettierEslintPlugin from 'eslint-plugin-prettier';
 import docusaurusEslintPlugin from '@docusaurus/eslint-plugin';
+import pluginJs from '@eslint/js';
 import pluginPrettierConfig from 'eslint-config-prettier';
+import prettierEslintPlugin from 'eslint-plugin-prettier';
+import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
+import globals from 'globals';
+import * as tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [

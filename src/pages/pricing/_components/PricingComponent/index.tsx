@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
+import clsx from 'clsx';
 import React, {useState} from 'react';
 import styles from './styles.module.css';
-import clsx from 'clsx';
 
 function Pricing() {
   const [userCount, setUserCount] = useState(1);

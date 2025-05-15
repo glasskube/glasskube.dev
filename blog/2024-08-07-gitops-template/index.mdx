@@ -2,8 +2,8 @@
 slug: gitops-template
 title: Glasskube GitOps template
 description: A GitOps starter template to get started with ArgoCD & Glasskube in seconds instead of hours
-authors: [ christophenne, jpage, pmig ]
-tags: [ glasskube, argocd, gitops, template ]
+authors: [christophenne, jpage, pmig]
+tags: [glasskube, argocd, gitops, template]
 image: https://github.com/user-attachments/assets/7ad482a7-c0a2-4081-8654-670f3cccb7cd
 ---
 
@@ -46,10 +46,10 @@ Template diagram
 
 The repository contains:
 
--   a `bootstrap` directory containing the initial/parent Argo Application, and the necessary Glasskube manifests.
--   a `packages` directory containing the `ArgoCD` ,`cloudnative-pg` and `kube-prometheus-stack` cluster packages.
--   an `apps` folder containing a simple `shiori` bookmarking web app. 
--   the `renovate` configuration file.
+- a `bootstrap` directory containing the initial/parent Argo Application, and the necessary Glasskube manifests.
+- a `packages` directory containing the `ArgoCD` ,`cloudnative-pg` and `kube-prometheus-stack` cluster packages.
+- an `apps` folder containing a simple `shiori` bookmarking web app. 
+- the `renovate` configuration file.
 
 Glasskube custom resources will only be picked up by ArgoCD after placing the package definition files inside the `packages` directory.
 
@@ -89,8 +89,8 @@ Replace the placeholder **repoURL** in your local GitOps repository
 
 Replace the default value of `repoURL` to your repository url:
 
--   Line 12 in: `bootstrap/glasskube-application.yaml`
--   Lines 11, 16 and 26 in: `bootstrap/glasskube/applicationset.yaml`
+- Line 12 in: `bootstrap/glasskube-application.yaml`
+- Lines 11, 16 and 26 in: `bootstrap/glasskube/applicationset.yaml`
 
 Bootstrap ArgoCD and Glasskube for your Kubernetes cluster:
 
@@ -166,8 +166,9 @@ Its manifests are defined in `apps/shiori`, which is a pattern you can follow fo
 
 In a minikube environment, two manual steps are required to access the application (for more information consult the
 [minikube docs](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)):
-* Run `minikube addons enable ingress -p gitops`.
-* Run `minikube ip -p gitops` and add the line `<your-IP> my-shiori.example` to your `/etc/hosts` file.
+
+- Run `minikube addons enable ingress -p gitops`.
+- Run `minikube ip -p gitops` and add the line `<your-IP> my-shiori.example` to your `/etc/hosts` file.
 
 After that you will be able to access the application via [http://my-shiori.example](http://my-shiori.example) in your browser.
 The default login credentials are `shiori` / `gopher` – for more information check the [shiori docs](https://github.com/go-shiori/shiori/tree/master/docs).
@@ -193,9 +194,14 @@ Of course monitoring your experimental minikube cluster is a bit of an overkill,
 ### Template setup walkthrough
 
 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-  <iframe width="100%" height="460" src="https://www.youtube-nocookie.com/embed/Xbs2Tq-dgbI?si=PfrhS5g0ZVq-YDCi"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe
+    width="100%"
+    height="460"
+    src="https://www.youtube-nocookie.com/embed/Xbs2Tq-dgbI?si=PfrhS5g0ZVq-YDCi"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
 </div>
 
 ### Upcoming Features

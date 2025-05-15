@@ -1,5 +1,5 @@
-import ComponentTypes from '@theme-original/NavbarItem/ComponentTypes';
 import NavbarWrapper from '@site/src/theme/NavbarItem/NavbarWrapper';
+import ComponentTypes from '@theme-original/NavbarItem/ComponentTypes';
 
 export default {
   ...ComponentTypes,

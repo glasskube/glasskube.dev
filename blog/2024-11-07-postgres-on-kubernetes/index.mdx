@@ -2,13 +2,12 @@
 slug: postgres-on-kubernetes
 title: Should you run PostgreSQL on Kubernetes?
 description: Exploring the viability, benefits, and best practices of running PostgreSQL on Kubernetes with modern operators.
-authors: [ jpage]
-tags: [ postgres, kubernetes, database ]
+authors: [jpage]
+tags: [postgres, kubernetes, database]
 image: https://github.com/user-attachments/assets/47028afb-53d8-4994-a4a3-8a32b06fcb31
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-
 
 ![thumbnail](https://github.com/user-attachments/assets/47028afb-53d8-4994-a4a3-8a32b06fcb31)
 
@@ -26,7 +25,6 @@ That said, running PostgreSQL on Kubernetes won’t necessarily boost your secur
 
 <DefaultCTA />
 
-
 ## Why focus on PostgreSQL?
 
 Sure, database workloads aren’t limited to PostgreSQL. [MySQL](https://dev.mysql.com/doc/mysql-operator/en/), [MongoDB](https://www.mongodb.com/try/download/community-kubernetes-operator), and other database technologies also offer mature operators with useful features and interesting use cases, many of which could make for great future blog posts. But in this piece (and in the two to come), we’re focusing on PostgreSQL for a few reasons.
@@ -35,12 +33,12 @@ First, it’s the database we use internally at Glasskube, and we help several c
 
 ### Here are some of the things PostgreSQL has going for it
 
--   **Longevity**: With over 25 years of innovation and development. PostgreSQL is a stable and trusted choice by many.
--   **Open-Source and Versatile**: A multi-purpose database, PostgreSQL fits a wide range of workloads and use cases.
--   **High Availability**: Supports a primary-replica architecture with a single primary and multiple read-only replicas, maximizing uptime and availability.
--   **Advanced Replication Protocol**: Features like synchronous replication (transaction-level control) and cascading replication ensure data consistency and reliable read performance even between Kubernetes clusters.
--   **Disaster Recovery**: Continuous backup and point-in-time recovery (PITR) enable reliable restoration from any point, providing strong resilience and operational security.
--   **Strong Community and Popularity**: PostgreSQL is widely adopted and consistently rated as one of the most admired databases, making it a popular choice for many teams and projects.
+- **Longevity**: With over 25 years of innovation and development. PostgreSQL is a stable and trusted choice by many.
+- **Open-Source and Versatile**: A multi-purpose database, PostgreSQL fits a wide range of workloads and use cases.
+- **High Availability**: Supports a primary-replica architecture with a single primary and multiple read-only replicas, maximizing uptime and availability.
+- **Advanced Replication Protocol**: Features like synchronous replication (transaction-level control) and cascading replication ensure data consistency and reliable read performance even between Kubernetes clusters.
+- **Disaster Recovery**: Continuous backup and point-in-time recovery (PITR) enable reliable restoration from any point, providing strong resilience and operational security.
+- **Strong Community and Popularity**: PostgreSQL is widely adopted and consistently rated as one of the most admired databases, making it a popular choice for many teams and projects.
 
 ## PostgreSQL on Kubernetes, is it a good idea?
 
@@ -56,10 +54,10 @@ Yet as [Viktor Farcic](https://www.youtube.com/watch?v=Ny9RxM6H6Hg) put it,
 
 For true production-grade database workloads, StatefulSets still lack critical database features like:
 
--   Backups
--   Automated Failovers
--   Replica Promotions
--   Observability
+- Backups
+- Automated Failovers
+- Replica Promotions
+- Observability
 
 And since StatefulSets weren’t enough, many determined that Kubernetes was not for Databases.
 
@@ -79,8 +77,8 @@ When incorporating the data layer of your architecture into a Kubernetes cluster
 
 [Gabriele Bartolini](https://www.linkedin.com/in/gbartolini/), VP of Cloud Native at EDB and a well-regarded figure in the PostgreSQL community advocates running PostgreSQL on Kubernetes to achieve these key benefits:
 
--   **Application-Level Replication**: By using PostgreSQL's native replication to synchronize data within and across Kubernetes clusters, rather than relying on storage-level replication. This approach, native to Kubernetes, is ideal for maintaining application resilience and state consistency.
--   **Availability Zone Optimization**: By leveraging Kubernetes’ availability zones rather than isolating data centers in separate clusters. This enables automatic high availability with zero data loss and very low Recovery Time Objective (RTO) within a single region—out-of-the-box.
+- **Application-Level Replication**: By using PostgreSQL's native replication to synchronize data within and across Kubernetes clusters, rather than relying on storage-level replication. This approach, native to Kubernetes, is ideal for maintaining application resilience and state consistency.
+- **Availability Zone Optimization**: By leveraging Kubernetes’ availability zones rather than isolating data centers in separate clusters. This enables automatic high availability with zero data loss and very low Recovery Time Objective (RTO) within a single region—out-of-the-box.
 
 ### What alternative methods are there?
 
@@ -101,11 +99,11 @@ A comment on the [/kubernetes](https://www.reddit.com/r/kubernetes/comments/1c2u
 
 Largely there are three main ingredients required to be able to pull off efficient PostgreSQL management on Kubernetes.
 
--   **Kubernetes Expertise**: Your team or organization should have a solid understanding of Kubernetes to manage and troubleshoot the environment effectively.
+- **Kubernetes Expertise**: Your team or organization should have a solid understanding of Kubernetes to manage and troubleshoot the environment effectively.
 
--   **PostgreSQL Expertise**: A strong grasp of PostgreSQL is essential to configure, optimize, and maintain the database within a Kubernetes setup.
+- **PostgreSQL Expertise**: A strong grasp of PostgreSQL is essential to configure, optimize, and maintain the database within a Kubernetes setup.
 
--   **A Reliable Operator**: Use a dependable operator to handle the full lifecycle management of PostgreSQL clusters, ensuring high availability and seamless scaling.
+- **A Reliable Operator**: Use a dependable operator to handle the full lifecycle management of PostgreSQL clusters, ensuring high availability and seamless scaling.
 
 :::warning
 If you’re already running application workloads in Kubernetes but have a data layer outside of it, consult with an experienced professional before attempting to “lift and shift” your database workloads into Kubernetes, this process is far from straightforward. Likewise, if you’re starting from scratch in a new Kubernetes environment, it’s wise to get guidance from a seasoned professional who can help you make architectural decisions you won’t regret later on.
@@ -119,29 +117,29 @@ CloudNativePG is an open-source operator designed for managing PostgreSQL databa
 
 Some of its key capabilities include:
 
--   **It’s Production-Ready**: Built to handle production-grade workloads.
--   **It’s Kubernetes Operator**: Fully integrated with the Kubernetes API.
--   **Automated Failover**: Ensures high availability by automatically switching to a replica if the primary instance fails
--   **Fully Declarative**: It makes managing PostgreSQL clusters with declarative configurations possible.
--   **Open-Source**: Freely available and community-supported.
--   **Self-Healing**: Automatically detects instance failures and re-provisiones databases.
--   **Cluster Management**: Acts as a PostgreSQL cluster manager within Kubernetes.
--   **Enhanced Security**: Supports mTLS for secure communication.
--   **Optimized Storage**: Manages separate volumes for WAL files.
--   **Backup and Recovery**: It has built-in features for backup and disaster recovery.
--   **Rolling Updates**: Minimizes downtime during updates.
--   **Extended Kubernetes Controller**: Adds enhanced PostgreSQL-specific functionality.
--   **Native Prometheus Exporters**: Enables easy integration with monitoring tools.
--   **Direct PVC Management**: Uses PersistentVolumeClaims (PVCs) directly to associate many types of storage targets.
--   **Application-Level Replication**: Handles data replication at the application level for consistency.
--   **Kubectl Plugin**: Offers convenient management through Kubernetes CLI.
+- **It’s Production-Ready**: Built to handle production-grade workloads.
+- **It’s Kubernetes Operator**: Fully integrated with the Kubernetes API.
+- **Automated Failover**: Ensures high availability by automatically switching to a replica if the primary instance fails
+- **Fully Declarative**: It makes managing PostgreSQL clusters with declarative configurations possible.
+- **Open-Source**: Freely available and community-supported.
+- **Self-Healing**: Automatically detects instance failures and re-provisiones databases.
+- **Cluster Management**: Acts as a PostgreSQL cluster manager within Kubernetes.
+- **Enhanced Security**: Supports mTLS for secure communication.
+- **Optimized Storage**: Manages separate volumes for WAL files.
+- **Backup and Recovery**: It has built-in features for backup and disaster recovery.
+- **Rolling Updates**: Minimizes downtime during updates.
+- **Extended Kubernetes Controller**: Adds enhanced PostgreSQL-specific functionality.
+- **Native Prometheus Exporters**: Enables easy integration with monitoring tools.
+- **Direct PVC Management**: Uses PersistentVolumeClaims (PVCs) directly to associate many types of storage targets.
+- **Application-Level Replication**: Handles data replication at the application level for consistency.
+- **Kubectl Plugin**: Offers convenient management through Kubernetes CLI.
 
 ### What Storage Should You Use?
 
 In Kubernetes, there are two main types of storage access:
 
--   **Network Storage**: Typically accessed through Network File Systems (NFS), Container Storage Interface (CSI) plugins, or similar network-attached options. This is commonly used in Kubernetes but can introduce issues with throughput and latency, particularly in shared environments where multiple applications compete for I/O resources.
--   **Local Storage**: Since Kubernetes v1.14, local storage can be directly attached to a node, including in bare-metal setups. Local storage is ideal for high-transaction or Very Large Database (VLDB) workloads. It provides a "shared-nothing" architecture, delivering higher and more predictable performance, which is particularly useful for workloads requiring fast and consistent access times.
+- **Network Storage**: Typically accessed through Network File Systems (NFS), Container Storage Interface (CSI) plugins, or similar network-attached options. This is commonly used in Kubernetes but can introduce issues with throughput and latency, particularly in shared environments where multiple applications compete for I/O resources.
+- **Local Storage**: Since Kubernetes v1.14, local storage can be directly attached to a node, including in bare-metal setups. Local storage is ideal for high-transaction or Very Large Database (VLDB) workloads. It provides a "shared-nothing" architecture, delivering higher and more predictable performance, which is particularly useful for workloads requiring fast and consistent access times.
 
 Using local storage attached to the host where the PostgreSQL database is running is generally the best and most recommended way for production workloads. CloudNativePG is highly flexible, allowing you to use various storage types attached through Persistent Volume Claims (PVCs) for both active workloads and backups. In upcoming blog posts, we’ll explore how to set this up in practice.
 

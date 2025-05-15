@@ -2,8 +2,8 @@
 title: Install the Kube Prometheus Stack
 slug: kube-prometheus-stack
 description: 'Learn how to easily install the kube-prometheus-stack with Glasskube'
-authors: [ jpage ]
-tags: [ kube-prometheus-stack ]
+authors: [jpage]
+tags: [kube-prometheus-stack]
 ---
 
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
@@ -58,14 +58,19 @@ In this blog post, we will explore the steps to configure and install the `kube-
 ### Create a cluster
 
 Install [Minikube](https://minikube.sigs.k8s.io/docs/start) then run:
+
 ```
 minikube start
 ```
+
 Check your installation by running:
+
 ```
 minukube status
 ```
+
 Desired output:
+
 ```
 ➜  ~ minikube status
 minikube
@@ -75,6 +80,7 @@ kubelet: Running
 apiserver: Running
 kubeconfig: Configured
 ```
+
 ### Install Glasskube
 
 If you already installed `glasskube` you can skip this step.
@@ -93,6 +99,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     Install kube-prometheus-stack via the Glasskube UI by following the package customization steps below.
+
   </TabItem>
   <TabItem value="cli" label="CLI 🧑‍💻">
     A package can be installed with a simple command.
@@ -102,6 +109,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     The process will wait until the package got successfully installed.
+
   </TabItem>
 </Tabs>
 
@@ -120,6 +128,7 @@ We want `Alertmanager` to be enabled so we can leverage the metrics prometheus e
 ### Grafana Domain 📊
 
 We will leave this empty for this demo since we would need to deploy an ingress controller to our cluster to handle the ingress object associated with the grafana service. We could use [kube-prometheus-stack](/products/package-manager/guides/kube-prometheus-stack/) or [caddy-ingress](https://github.com/caddyserver/ingress) which are also supported by Glasskube for this.
+
 > Glasskube will automatically port-forward the Grafana pod so we can access the dashboard via the `Open` button.
 
 ### Node Exporter host network 💽
@@ -170,9 +179,11 @@ Upon installation you can see that the `kube-prometheus-stack` namespace has bee
 ![open command](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mnt9zl5qxuq8cd54qwni.gif)
 
 Hit the `Open` button or if you want to access Grafana on a different port you can simply `port-forward` the pod, which will map the exposed Grafana port to a port on your localhost. I've arbitrarily chosen to `port-forward` to `localhost 52222` since it's available.
+
 ```
 kubectl port-forward POD_NAME 52222:3000
 ```
+
 Head over to `http://localhost:52222/` and you will then be greated by the Granfana login page. To find your credentials which are stored in a Kubernetes secret that was generated as part of the deployed stack, run:
 
 ```
@@ -181,11 +192,13 @@ kubectl get secret kube-prometheus-stack-kube-prometheus-stack-grafana  -o go-te
 ```
 
 Which will output something like:
+
 ```
 admin-password: <password>
 admin-user: admin
 ldap-toml:
 ```
+
 Upon access you we be greeted by a long list of powerful pre-configured Grafana dashboards which are already showing local cluster metrics:
 
 ![dashboards](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6qet3srm7xly065jfbx5.png)
@@ -217,11 +230,8 @@ The `kube-prometheus-stack` offers tremendous **"out-of-the-box"** value for Kub
 If you like this sort of content and would like to see more of it, please consider supporting us by giving us a Star on [GitHub](https://github.com/glasskube/glasskube) 🙏
 [![cats-like--github-stars](https://github.com/glasskube/glasskube/assets/38757612/05a03edf-7d6a-48fd-9b24-598abcfd1e9a)](https://github.com/glasskube/glasskube)
 
-
-<div style={{ display: 'flex', justifyContent: 'right' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
+<div style={{display: 'flex', justifyContent: 'right'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
 </div>
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

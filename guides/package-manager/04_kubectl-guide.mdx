@@ -1,9 +1,9 @@
 ---
 title: The guide to kubectl I never had.
 slug: kubectl
-description: "A deep dive into the tips and tricks, plugins and tool that make kubectl such a versatile CLI tool for Kubernetes"
-authors: [ jpage ]
-tags: [ kubectl ]
+description: 'A deep dive into the tips and tricks, plugins and tool that make kubectl such a versatile CLI tool for Kubernetes'
+authors: [jpage]
+tags: [kubectl]
 ---
 
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
@@ -117,6 +117,7 @@ kubectl run nginx-deployment --image=nginx
 # Delete a pod named "nginx-deployment" in the default namespace
 kubectl delete pod nginx-deployment
 ```
+
 To take imperative commands to the next step know that you can modify resources by using the [TUI](https://en.wikipedia.org/wiki/Text-based_user_interface#:~:text=In%20computing%2C%20text%2Dbased%20user,before%20the%20advent%20of%20bitmapped) editor:
 By running `kubectl edit -n [namespace] [resource-name]` a text editor like the one below will open. Make you edits and close the editor just like in [vim](https://www.vim.org/) by running `ESC + :q!`.
 
@@ -150,9 +151,11 @@ metadata:
 Most commands are applicable to all sorts of Kubernetes objects. Insofar as it is useful further down we will touch on specific commands that are useful for certain Kubernetes resources. Before that though, it’s worth learning about some useful flags that can be applied to many different objects.
 
 ## Useful flags:
+
 **--env:**
 
 The `--env` flag allows you to specify environment variables for the container being created.
+
 ```
 kubectl run nginx-deployment --image=nginx --env="ENV_VARIABLE=value"
 ```
@@ -170,8 +173,10 @@ Massively useful when you want render a manifest for an object you don't remembe
 ```
 kubectl create secret generic github-api-token --from-literal token=$GITHUB_TOKEN --dry-run=client -o yaml
 ```
+
 Concatenating the command with other tools can be very useful too.
 Taking the example above, you can pipe the output of the generated manifest and pass in into a third party secret manager like [Sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) to create a kubeseal secret manifest.
+
 ```
 kubectl create secret generic github-api-token --from-literal token=$GITHUB_TOKEN --dry-run=client -o yaml | kubeseal --format yaml > api-token-secret.sealed.yaml
 ```
@@ -309,6 +314,7 @@ source <(kubectl completion zsh)
 
 And restart the shell.
 Follow the instructions here if you are using `bash`:
+
 ```
 # Install bash-completion package
 sudo apt-get install -y bash-completion
@@ -325,7 +331,9 @@ source ~/.bashrc
 Declarative management of Kubernetes resources involves specifying the desired state of your resources using YAML manifest files and applying those manifests to the cluster.
 
 ### Create YAML files
+
 All Kubernetes objects are defined in YAML files, regardless if you write them yourself or not, YAML file definitions are how the Kubernetes API knows what the state of the cluster should be:
+
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -349,6 +357,7 @@ spec:
 ```
 
 To create this deployment from scratch use the `kubectl create` command:
+
 ```
 kubectl create -f glasskube-deployment.yaml
 ```
@@ -378,6 +387,7 @@ Whenever I see some back and forth around what Kubernetes is and isn’t. What u
 The sentiment is widely agreed upon, as evidenced by the extensive ecosystem of Kubernetes plugins and tools designed to assist in various stages of the Kubernetes lifecycle.
 
 ### Krew the Kubernetes plugin manager
+
 A great plugin manager to find new plugins is [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), install is here.
 
 Command to install `kubectl` plugins via Krew:
@@ -389,9 +399,11 @@ kubectl krew install <PLUGIN_NAME>
 Let’s explore some of the main plguing and tooling categories and highlight some of the most useful projects out there. Since there are so many worth bringing attention to, I will add a section of `Honorable mentions` to each section.
 
 ### Content and Namespace switching 🔀
-In Kubernetes environments, you consistently operate within 2  hierarchical contexts the clusters and the namespaces. Ensuring accurate command execution requires specifying the appropriate context to obtain the desired output. Switching cluster contexts or namespaces can involve lengthy commands to remember, which is where tools like Kubectl and Kubens come in.
+
+In Kubernetes environments, you consistently operate within 2 hierarchical contexts the clusters and the namespaces. Ensuring accurate command execution requires specifying the appropriate context to obtain the desired output. Switching cluster contexts or namespaces can involve lengthy commands to remember, which is where tools like Kubectl and Kubens come in.
 
 #### Kubectx and Kubens
+
 Easily see the available clusters and namespaces and swith between them effortlessly.
 Installation instructions [here](https://github.com/ahmetb/kubectx).
 
@@ -402,9 +414,11 @@ Installation instructions [here](https://github.com/ahmetb/kubectx).
 - [kubectl-cf](https://github.com/surfinggo/kubectl-cf): A faster way to switch between kubeconfig files (not contexts).
 
 ### Visibility 🔭
+
 Kubernetes clusters are complex systems, with many moving parts that depend on each other so that your apps run. To have clear visibility into what is happening at all times is crucial.
 
 #### k9s
+
 [K9s](https://k9scli.io/) is a handy and low-weight interactive Kubernetes dashboard that runs right in the terminal. As well as visualizing your k8s resources, you can also easily execute into pods, edit manifest, and manage your workloads all in one place. It is probably one of my favorite tools for Kubernetes management
 
 Install is [here.](https://k9scli.io/topics/install/)
@@ -412,42 +426,58 @@ Install is [here.](https://k9scli.io/topics/install/)
 ![k9s-gif](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/njtibnqfg83vsats8e3s.gif)
 
 #### kubectl tree
+
 A `kubectl` plugin to explore ownership relationships between Kubernetes objects through `ownersReferences` on the objects.
 
 ![kubectl tree](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jmjhurlsn2vlbwbbjwk4.png)
 Install:
+
 ```
 kubectl krew install tree
 kubectl tree --help
 ```
 
 #### kubecolor
+
 [KubeColor](https://github.com/kubecolor/kubecolor) is used to add colors to your `kubectl` output.
 
 ![Kubecolor](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qnqqg7x3hxxrqnwscrkl.png)
 Installations instructions [here.](https://github.com/kubecolor/kubecolor?tab=readme-ov-file#installation)
 
 ### Package management 📦
+
 Cluster package management with conventional package management tools can be a pain in the neck, and updating packages is a hassle. Configuration is clunky and applying your desired package stack declaratively has been still out of reach, until now.
 
 #### Glasskube:
+
 With [Glasskube](https://github.com/glasskube/glasskube) all the pain points found in conventional package managers like helm are solved to ensure you have time to manage your workloads and not have to worry about managing your k8s package stack.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ONNUP7l7WJM?si=y3tJVPcbyn6O7epl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/ONNUP7l7WJM?si=y3tJVPcbyn6O7epl"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen></iframe>
 
 ### Networking 🌐
 
 #### Kubectl-Cilium:
+
 [kubectl-Cilium](https://github.com/bmcustodio/kubectl-cilium) is a plugin that interacts with Cilum which is an eBPF-based, cloud-native solution for providing, securing, and observing network connectivity between workloads.
 
 ![Cilium](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/251mnpv708jj8jemx1iw.png)
 
 Install:
+
 ```
 kubectl krew install cilium
 ```
 
 #### cert-manager:
+
 [cert-manager](https://github.com/cert-manager/cert-manager) adds certificates and certificate issuers as resource types in Kubernetes clusters, simplifying obtaining, renewing, and using those certificates.
 
 ![cert-manager](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q67bciwayb5j88bhmc80.png)
@@ -456,18 +486,21 @@ Installation instructions [here](https://cert-manager.io/docs/installation/).
 
 **Honorable mentions:**
 
-[Ksniff](https://github.com/eldadru/ksniff):  A `kubectl` plugin that utilizes `tcpdump` and Wireshark to start a remote capture on any pod in your Kubernetes cluster.
+[Ksniff](https://github.com/eldadru/ksniff): A `kubectl` plugin that utilizes `tcpdump` and Wireshark to start a remote capture on any pod in your Kubernetes cluster.
 
 ### RBAC 🫷
 
 #### Kubelogin
+
 [Kubelogin](https://github.com/int128/kubelogin) is a plugin for `Kubernetes OpenID Connect (OIDC) authentication`, also known as `kubectl oidc-login`.
 
 Installation instructions [here](https://github.com/Azure/kubelogin?tab=readme-ov-file#installation).
 
 #### Kube-policy-advisor:
+
 [Kube-policy-advisor](https://github.com/sysdiglabs/kube-policy-advisor) makes it easier to create K8s Pod Security Policies (PSPs) or OPA Policy from either a live K8s environment or from a single .yaml file containing a pod specification (Deployment, DaemonSet, Pod, etc).
 Install:
+
 ```
 kubectl krew install advise-policy
 ```
@@ -483,14 +516,17 @@ kubectl krew install advise-policy
 ### Linting 📋
 
 #### Kubectl-neat:
+
 [Kubectl-neat](https://github.com/itaysk/kubectl-neat) removes clutter from Kubernetes manifests to make them more readable. It primarily looks for two types of things to ignore: default values inserted by Kubernetes' object model and common mutating controllers.
 Install:
+
 ```
 kubectl krew install neat
 
 ```
 
 #### KubeLinter:
+
 [KubeLinter](https://github.com/stackrox/kube-linter) analyzes Kubernetes YAML files and Helm charts, and checks them against a variety of best practices, with a focus on production readiness and security.
 
 Installation instructions https://github.com/stackrox/kube-linter?tab=readme-ov-file#installing-kubelinter.
@@ -498,9 +534,11 @@ Installation instructions https://github.com/stackrox/kube-linter?tab=readme-ov-
 ### Cluster maintenance and Security 🛡️
 
 #### KubePug
+
 [KubePug](https://github.com/kubepug/kubepug) downloads a generated `data.json` file containing API deprecation information for a specified release of Kubernetes, scans a running Kubernetes cluster to determine if any objects will be affected by deprecation and displays affected objects to the user.
 Example:
 You can check the status of a running cluster with the following command.
+
 ```
 $ kubepug --k8s-version=v1.22 # Will verify the current context against v1.22 version
 [...]
@@ -519,14 +557,16 @@ Ingress found in extensions/v1beta1
 	 ├─ Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give servicesexternally-reachable urls, load balance traffic, terminate SSL, offer namebased virtual hosting etc.DEPRECATED - This group version of Ingress is deprecated by networking.k8s.io/v1beta1 Ingress. See the release notes for more information.
 		-> OBJECT: bla namespace: blabla
 ```
+
 Install:
+
 ```
 kubectl krew install deprecations
 ```
 
 #### Kubescape:
-[Kubescape](https://github.com/kubescape/kubescape/) is an open-source Kubernetes security platform for your clusters, CI/CD pipelines, and IDE that separates out the security signal from the scanner noise.
 
+[Kubescape](https://github.com/kubescape/kubescape/) is an open-source Kubernetes security platform for your clusters, CI/CD pipelines, and IDE that separates out the security signal from the scanner noise.
 
 ![kubescape-screen](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2mmc28za1p641ehr2ruh.gif)
 
@@ -539,6 +579,7 @@ Installation instructions [here](https://github.com/kubescape/kubescape/blob/mas
 ### Troubleshooting 🧑‍🔧
 
 #### Inspektor-Gadget:
+
 [Inspektor-gadget](https://github.com/inspektor-gadget/inspektor-gadget) is a collection of tools (or gadgets) to debug and inspect Kubernetes resources and applications.
 
 Inspektor Gadget tools are known as gadgets. You can deploy one, two, or many gadgets.
@@ -546,6 +587,7 @@ Inspektor Gadget tools are known as gadgets. You can deploy one, two, or many ga
 ![inspektor gadget](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m8jkvc1m5bmn6v7ksu2k.png)
 
 #### K8s-gpt:
+
 [k8sgpt](https://github.com/k8sgpt-ai/k8sgpt) is a tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.
 
 ![k8sgpt](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/crnj90uvi0b6x1slitlo.gif)
@@ -559,8 +601,10 @@ Installation instructions [here](https://github.com/k8sgpt-ai/k8sgpt?tab=readme-
 ### Logging 🪵
 
 #### Stern:
+
 [Stern](https://github.com/stern/stern) allows you to `tail` multiple pods on Kubernetes and multiple containers within the pod. Each result is color-coded for quicker debugging.
 Install:
+
 ```
 kubectl krew install stern
 ```
@@ -568,11 +612,13 @@ kubectl krew install stern
 > ℹ️ Some security implications of using `kubectl` plugins include possible Vulnerabilities, Privilege Escalation, and inadvertent Data Leakage. Make sure to only use actively maintained plugins and ideally have an active community around them.
 
 ## Aliases 📇
+
 With so many `kubectl` commands to remember, simplify your life by using keyboard shortcuts or aliases.
 
 Here you will find a [repo](https://github.com/ahmetb/kubectl-aliases) with contains [a script](https://github.com/ahmetb/kubectl-aliases/blob/master/generate_aliases.py) to generate hundreds of convenient shell aliases for `kubectl`. The thing is that many of the aliases are long and might become hard to recall. Don’t worry though I found this [very pragmatic blog post by Benoit Couetil](https://dev.to/zenika/kubernetes-a-pragmatic-kubectl-aliases-collection-17oc) on how to deal with the many aliases generated by the above script.
 
 ## Kubectl Cheatsheet
+
 No guide is complete without a cheatsheet now is it?
 
 ```
@@ -716,15 +762,12 @@ kubectl top
 
 ---
 
-
 [![Screenshot 2024-04-26 at 10 54 54](https://github.com/glasskube/glasskube/assets/38757612/05a03edf-7d6a-48fd-9b24-598abcfd1e9a)](https://github.com/glasskube/glasskube)
 
 If you like this sort of content and would like to see more of it, please consider supporting us by giving us a Star on GitHub 🙏
-<div style={{ display: 'flex', justifyContent: 'left' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
-</div>
 
+<div style={{display: 'flex', justifyContent: 'left'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
+</div>
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

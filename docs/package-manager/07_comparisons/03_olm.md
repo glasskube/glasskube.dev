@@ -27,4 +27,3 @@ Another difference between Glasskube and OLM is that **OLM only supports operato
 
 If you are already an OpenShift customer or only want to install operators, OLM might be a good fit for you,
 but you will enjoy using Glasskube if you work with Kubernetes clusters and are looking for a package manager that supports all kind of packages.
-

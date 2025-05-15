@@ -1,15 +1,15 @@
 ---
 slug: 5-helm-shortcomings
 title: 5 shortcomings of Helm
-description: "5 reasons we are trying to build the next generation of deployment automation for Kubernetes."
-authors: [ pmig, kosmoz ]
-tags: [ glasskube, helm, kubernetes ]
+description: '5 reasons we are trying to build the next generation of deployment automation for Kubernetes.'
+authors: [pmig, kosmoz]
+tags: [glasskube, helm, kubernetes]
 image: https://cms.glasskube.eu/uploads/Goodbyehelm_7c21643ff8.png
 ---
 
 ![helm-thumbnail](https://cms.glasskube.eu/uploads/Goodbyehelm_7c21643ff8.png)
 
-*5 reasons we are trying to build the next generation of deployment automation for Kubernetes.*
+_5 reasons we are trying to build the next generation of deployment automation for Kubernetes._
 
 <!-- truncate -->
 
@@ -22,11 +22,11 @@ If you never heard about Helm before, in a nutshell it is:
 
 > A framework for packaging Kubernetes resources (apps) to charts, publish them and let them easily be installed via a command line interface.
 
-The goal of this post is *not* to hate on the smart and talented people who built helm, but maybe we can kindle a productive and healthy discussion about where we need to go as the DevOps industry to stay relevant in the coming years. But to fully understand the following, I think it is important to understand what developments lead us to where we are today.
+The goal of this post is _not_ to hate on the smart and talented people who built helm, but maybe we can kindle a productive and healthy discussion about where we need to go as the DevOps industry to stay relevant in the coming years. But to fully understand the following, I think it is important to understand what developments lead us to where we are today.
 So, before we start, let's quickly dive into the history of Helm.
 
 In 2015, a company called Deis created Helm, a package manager for Kubernetes.
-Deis is now part of Azure Kubernetes Service but the original project still exists as [Helm Classic](https://github.com/helm/helm-classic). At the same time, Google had a project called *Kubernetes Deployment Manager*, which was similar to [Google Deployment Manager](https://cloud.google.com/deployment-manager/docs) but for Kubernetes resources, rather than GCS resources.
+Deis is now part of Azure Kubernetes Service but the original project still exists as [Helm Classic](https://github.com/helm/helm-classic). At the same time, Google had a project called _Kubernetes Deployment Manager_, which was similar to [Google Deployment Manager](https://cloud.google.com/deployment-manager/docs) but for Kubernetes resources, rather than GCS resources.
 
 At the beginning of 2016, the two projects decided to merge, which resulted in the release of [Helm v2](https://v2.helm.sh/) later that year.
 Helm v2 consists of a client and server component (Helm and tiller, respectively), where the latter was the continuation of the original Kubernetes Deployment Manager project.
@@ -46,12 +46,12 @@ As you can see, helm has a very rich history. It became the gold-standard of pac
 
 `helm` does provide a method of packaging Custom Resource Definitions (CRDs) by placing them in a dedicated `crds` directory, but these are ignored during upgrades!
 [This is intentional](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#some-caveats-and-explanations) and designed to prevent accidental data loss.
-Therefore, upgrading a chart does *not* automatically upgrade it's associated CRDs, which is unexpected for many engineers and leads to more manually involved and error-prone upgrade procedures and other anti-patterns.
+Therefore, upgrading a chart does _not_ automatically upgrade it's associated CRDs, which is unexpected for many engineers and leads to more manually involved and error-prone upgrade procedures and other anti-patterns.
 
 To combat this major design flaw, chart developers have come up with several strategies, the most popular of which are:
 
-* Putting the CRDs into the chart's `template` directory
-* Creating separate sub-charts just for CRDs
+- Putting the CRDs into the chart's `template` directory
+- Creating separate sub-charts just for CRDs
 
 An alternative way to overcome this shortcoming is to not invoke helm commands directly, but rather use a CI/CD solution, like [Flux](https://github.com/fluxcd/flux2).
 Flux provides a setting to automatically update CRDs during a helm upgrade, but it is [set to only 'create' CRDs and don't update them](https://fluxcd.io/flux/components/helm/api/v2/#helm.toolkit.fluxcd.io/v2.CRDsPolicy).
@@ -61,8 +61,8 @@ Flux provides a setting to automatically update CRDs during a helm upgrade, but 
 The way to specify a dependency in a helm chart is to reference it as a sub-chart.
 This method can work great for tightly coupled dependencies that you might want to install separately or as part of another chart, but it has some weaknesses that are important to understand:
 
-* Sub-charts are **always installed in the same namespace** as the primary release and there is no way to change this.
-* There exists **no mechanism to share a dependency** between two releases.
+- Sub-charts are **always installed in the same namespace** as the primary release and there is no way to change this.
+- There exists **no mechanism to share a dependency** between two releases.
 
 For example, our [Glasskube Operator Helm Chart](https://github.com/glasskube/operator/tree/main/charts/glasskube-operator) depends on kube-prometheus-stack, velero and a bunch of other dependencies, some of which are already installed in many Kubernetes clusters.
 To provide an installation experience that is as simple as possible, the chart references all those dependencies as sub-charts, but using this approach, all those dependencies are bundled in the Glasskube [Operator](https://glasskube.eu/de/r/glossar/kubernetes-operator/) release and can not be changed or updated separately.
@@ -80,7 +80,7 @@ But what does the situation look like for chart developers?
 Well, let's start by creating a new chart.
 This can be achieved by calling `helm create your-chart`.
 I invite you to quickly open a terminal, run this command and go through all the files it creates.
-As I'm sure you will agree, it's… a *lot*.
+As I'm sure you will agree, it's… a _lot_.
 I still remember the moment when I wanted to create my first helm chart and saw the results of this command thinking, “this can't be right.”
 
 ```
@@ -176,6 +176,7 @@ This inability to interact with the release during later stages of a release's l
 A simple example that an [Operator](https://glasskube.eu/de/r/glossar/kubernetes-operator/) can do, but helm can't would be setting the Ingress class and annotations dynamically based on the detected Kubernetes environment:
 
 **Detecting the cloud environment:**
+
 ```kotlin
 private val dynamicCloudProvider
     get() = when {
@@ -195,6 +196,7 @@ private val dynamicCloudProvider
 ```
 
 **Applying configurations based on the environment:**
+
 ```kotlin
 protected val defaultIngressClassName: String?
     get() = when (configService.cloudProvider) {
@@ -218,4 +220,4 @@ New requirements for applications will require more dynamic deployment methods a
 
 This is why we started Glasskube: An easier way to deploy applications and infrastructure on Kubernetes with Glasskube [`glasskube/glasskube`](https://github.com/glasskube/glasskube).
 
-**If you want to follow our progress make sure to star  [`glasskube/glasskube`](https://github.com/glasskube/glasskube) and join our [`Discord`](https://discord.gg/j9A7epEeg2).**
+**If you want to follow our progress make sure to star [`glasskube/glasskube`](https://github.com/glasskube/glasskube) and join our [`Discord`](https://discord.gg/j9A7epEeg2).**

@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
-import Link from '@docusaurus/Link';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import Link from '@docusaurus/Link';
+import {FC} from 'react';
 
 interface SignupForWaitlistButtonProps {
   additionalClassNames: string;

@@ -39,7 +39,6 @@ In both cases, it creates a `TargetGroupBinding` that represents the target grou
 An `Endpoint` is created by Kubernetes for each service, and it tracks which IP addresses are routable via that service.
 The endpoint controller uses several signals to determine whether pod is eligible to be part of an endpoint, including container probes and whether the pod is marked as "terminating".
 
-
 ![aws load balancer diagram](/img/blog/2025-03-03-aws-eks-0-downtime/aws-loadbalancer.png)
 
 From the above, it follows that the AWS Load Balancer Controller simply adds missing IP addresses to the target group and removes superfluous ones, but unfortunately, both of those actions take some time which can lead to downtime in subtle ways.

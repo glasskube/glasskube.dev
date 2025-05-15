@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
 import Link from '@docusaurus/Link';
+import {FC} from 'react';
 
 interface ContactSalesButtonProps {
   additionalClassNames: string;

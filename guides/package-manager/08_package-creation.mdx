@@ -2,8 +2,8 @@
 title: How to add a Package to Glasskube
 slug: how-to-add-a-package
 description: 'Learn how to easily add a new package to the Glasskube package catalogue'
-authors: [ jpage ]
-tags: [ add-a-new-package ]
+authors: [jpage]
+tags: [add-a-new-package]
 ---
 
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
@@ -40,13 +40,13 @@ Glasskube is an **Open Source package manager for Kubernetes**. It makes deployi
 
 Glasskube deploys packages that are defined in package definition repositories. When you install Glasskube for the first time you can see the default configured package repo by running:
 
-``` bash
+```bash
 glasskube repo list
 ```
 
 This is the URL for the public Glasskube package repo which comes configured by default:
 
-``` bash
+```bash
 NAME       URL                                         DEFAULT  AUTHENTICATION  STATUS  MESSAGE
 glasskube  https://packages.dl.glasskube.dev/packages  Yes      None            Ready   repo has 16 packages
 ```
@@ -63,44 +63,45 @@ Glasskube consists of distinct `client-side` and `server-side` components:
 
 **Client-side:**
 
--   UI
--   CLI
+- UI
+- CLI
 
 **Server-side**:
 
--   **PackageInfoController:** reads the package definitions files from the configured repositories and has a reconciliation process to apply any changes to the repos.
--   **PackageController:** reconciles with KubernetesAPI and PackageInfoController to compare the state of in-cluster packages and deploy the desired package changes.
--   **PackageRepositoryController:** reconciles the configured repositories.
+- **PackageInfoController:** reads the package definitions files from the configured repositories and has a reconciliation process to apply any changes to the repos.
+- **PackageController:** reconciles with KubernetesAPI and PackageInfoController to compare the state of in-cluster packages and deploy the desired package changes.
+- **PackageRepositoryController:** reconciles the configured repositories.
 
 **Package definition repositories**
 
--   By default the [Public Glasskube Package repo](https://github.com/glasskube/packages) is configured
--   Multiple repos can be added as a backend for Glasskube to apply
+- By default the [Public Glasskube Package repo](https://github.com/glasskube/packages) is configured
+- Multiple repos can be added as a backend for Glasskube to apply
 
 ![argo-workflow-gif](https://github.com/user-attachments/assets/07123727-9b02-4946-9e98-9feead827f3b)
 
 ## Package repository structure 🏗️
+
 Link to more in depth repository structure [documentation](/products/package-manager/docs/design/repositories)
 
 ![package-repo-structure](https://github.com/user-attachments/assets/67b6d5d5-f8da-4a84-8be9-1ec852ae4507)
 
 **Level 0**
 
--   **Root packages folder:** where all packages definition files can be found
+- **Root packages folder:** where all packages definition files can be found
 
 **Level 1**
 
--   **Folder per package**
--   **index.yaml** File which holds important information about each package (updated automatically during CI but manually during testing)
+- **Folder per package**
+- **index.yaml** File which holds important information about each package (updated automatically during CI but manually during testing)
 
 **Level 2**
 
--   **Folder per package version**
--   **versions.yaml** File containing reference to all **available versions** as well as the reference to the latest package version
+- **Folder per package version**
+- **versions.yaml** File containing reference to all **available versions** as well as the reference to the latest package version
 
 **Level 3**
 
--   **package.yaml** file where the package definition for a certain package version is found
+- **package.yaml** file where the package definition for a certain package version is found
 
 ### Understanding the Package Definition file
 
@@ -108,13 +109,13 @@ Link to more in depth repository structure [documentation](/products/package-man
 
 Your package definition file follows a specific schema. The schema ensures your file has the correct structure and required fields. Below is an outline of the sections you’ll need to configure:
 
--   **name:** The name of your package.
--   **scope:** Specifies if the package is cluster-wide (Cluster) or limited to a namespace (Namespaced).
--   **shortDescription:** A brief description of the package.
--   **longDescription:** A detailed description of the package.
--   **iconUrl:** URL of an icon representing the package.
+- **name:** The name of your package.
+- **scope:** Specifies if the package is cluster-wide (Cluster) or limited to a namespace (Namespaced).
+- **shortDescription:** A brief description of the package.
+- **longDescription:** A detailed description of the package.
+- **iconUrl:** URL of an icon representing the package.
 
-``` yaml
+```yaml
 name: my-package
 scope: Cluster
 shortDescription: A short description of the package
@@ -128,12 +129,12 @@ iconUrl: https://avatars.githubusercontent.com/u/<iconNumber>
 
 If your package references a Helm chart, include the helm section:
 
--   **chartName:** The name of the Helm chart.
--   **chartVersion:** The version of the Helm chart.
--   **repositoryUrl:** URL of the Helm chart repository.
--   **values:** Optional. Hardcode specific values for the Helm chart.
+- **chartName:** The name of the Helm chart.
+- **chartVersion:** The version of the Helm chart.
+- **repositoryUrl:** URL of the Helm chart repository.
+- **values:** Optional. Hardcode specific values for the Helm chart.
 
-``` yaml
+```yaml
 helm:
   chartName: my-chart
   chartVersion: <version>
@@ -147,25 +148,26 @@ helm:
 
 If your package references Kubernetes manifests, include the manifests section:
 
--   **url:** URL to the Kubernetes manifest file.
+- **url:** URL to the Kubernetes manifest file.
 
 Example:
 
-``` yaml
+```yaml
 manifests:
   - url: https://k8s.manifest.url
 ```
 
 #### 4\. Value Definitions (Optional)
+
 Link to the official package config [documentation](/products/package-manager/docs/design/package-config)
 
 Use the valueDefinitions section for interactive package configuration. This allows users to input values that modify the package configuration.
 
--   **metadata:** Description of the value.
--   **type:** Type of the value (e.g. text).
--   **targets:** Specifies where to apply the value in the Helm chart, use the `add` operation under `patch` to inject data to the values file.
+- **metadata:** Description of the value.
+- **type:** Type of the value (e.g. text).
+- **targets:** Specifies where to apply the value in the Helm chart, use the `add` operation under `patch` to inject data to the values file.
 
-``` yaml
+```yaml
 valueDefinitions:
   automaticHTTPS:
     metadata:
@@ -184,28 +186,28 @@ In case you want to hard code or create paths that are empty in the base values 
 
 An example of hard coding values:
 
-``` yaml
-  values:
-    serviceAccount:
-      name: my-service-account
+```yaml
+values:
+  serviceAccount:
+    name: my-service-account
 ```
 
 A current limitation of value definitions is that they can only patch helm values in existing paths, in like the [caddy-ingress-controller](https://github.com/caddyserver/ingress/blob/main/charts/caddy-ingress-controller/values.yaml#L33) we instantiate them like so:
 
-``` yaml
-  values:
-    ingressController:
-      config: {}
+```yaml
+values:
+  ingressController:
+    config: {}
 ```
 
 #### 6\. References (Optional)
 
 Add references to external resources related to your package.
 
--   **label:** Descriptive label for the reference.
--   **url:** URL of the reference.
+- **label:** Descriptive label for the reference.
+- **url:** URL of the reference.
 
-``` yaml
+```yaml
 references:
   - label: ArtifactHub
     url: https://artifacthub.url
@@ -215,12 +217,12 @@ references:
 
 Define `entrypoints` if your package includes a frontend component.
 
--   **serviceName**: The name of the service.
--   **port**: The service port.
--   **localPort**: The local port for accessing the service.
--   **name**: Name of the entry point.
+- **serviceName**: The name of the service.
+- **port**: The service port.
+- **localPort**: The local port for accessing the service.
+- **name**: Name of the entry point.
 
-``` yaml
+```yaml
 entrypoints:
   - serviceName: my-service
     port: 80
@@ -230,7 +232,7 @@ entrypoints:
 
 ### Complete example template
 
-``` yaml
+```yaml
 # yaml-language-server: $schema=https://glasskube.dev/schemas/v1/package-manifest.json
 
 name: my-package
@@ -239,7 +241,6 @@ shortDescription: A short description of the package
 longDescription: |
   A longer description to be displayed in the UI
 iconUrl: https://avatars.githubusercontent.com/u/12345678
-
 helm:
   chartName: my-chart
   chartVersion: <version>
@@ -281,8 +282,8 @@ Questions you should ask yourself before integrating a new package:
 
 1. Is the package **Cluster** or **Namespace** scoped?
 
--   **Cluster scoped:** Installed once in a cluster can be accesses from other namespaces.
--   **Namespaces scoped:** Can be installed multiple times per cluster, logically isolated per namespace
+- **Cluster scoped:** Installed once in a cluster can be accesses from other namespaces.
+- **Namespaces scoped:** Can be installed multiple times per cluster, logically isolated per namespace
 
 2. Will the package reference a **Helm** chart or **Kubernetes** **manifest**?
 
@@ -296,40 +297,45 @@ Questions you should ask yourself before integrating a new package:
 
 The best way to learn is by doing so lets integrate a new package. We have already integrated the ArgoCD operator so let’s add the [Argo workflows](https://github.com/argoproj/argo-workflows) controller too.
 
-<iframe width="100%" height="460" src="https://www.youtube.com/embed/TZgLkCFQ2tk?si=9btd_wCdDyZtqRNh"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe
+  width="100%"
+  height="460"
+  src="https://www.youtube.com/embed/TZgLkCFQ2tk?si=9btd_wCdDyZtqRNh"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen></iframe>
 
 ### Pre-integration checklist for Argo Workflows
 
 1. **Is the package Cluster or Namespace scoped?**
 
-    -   Cluster scoped
+   - Cluster scoped
 
 2. **Will the package reference a Helm chart or Kubernetes manifest?**
 
-    -   In the documentation we can see that both the manifest and a helm chart are available
-    -   To keep consistent with the ArgoCD operator previously installed, I will use the Kubernetes manifest
+   - In the documentation we can see that both the manifest and a helm chart are available
+   - To keep consistent with the ArgoCD operator previously installed, I will use the Kubernetes manifest
 
 3. **Will the package require an** `entrypoints` **configuration, if so which ports need to be accessible?**
 
-    -   Yes:
-        -   Port: `2746`
-        -   LocalPort: `2746`
+   - Yes:
+     - Port: `2746`
+     - LocalPort: `2746`
 
 4. **Will the package require custom value definitions, if so which ones?**
 
-    -   No
+   - No
 
 5. **Which URL references will be included?**
-    - GitHub URL: https://github.com/argoproj/argo-workflows
-    - Website: https://argoproj.github.io/workflows/
+   - GitHub URL: https://github.com/argoproj/argo-workflows
+   - Website: https://argoproj.github.io/workflows/
 
 ### Step 1: Fork the packages repo
 
 Fork the official [packages repo](https://github.com/glasskube/packages) and create a new branch.
 
-``` bash
+```bash
 git checkout -b add-argo-workflows-support
 ```
 
@@ -337,7 +343,7 @@ git checkout -b add-argo-workflows-support
 
 Using the repo structure inside the `packages` folder, add create the `argo-workflows` folder. Find the version of `argo-workflows` and create the version folder as well as the versions file. Lastly create the
 
-``` bash
+```bash
 packages/
 └── argo-workflows/
     ├── versions.yaml
@@ -347,7 +353,7 @@ packages/
 
 ### package.yaml file
 
-``` yaml
+```yaml
 # yaml-language-server: $schema=https://glasskube.dev/schemas/v1/package-manifest.json
 name: argo-workflows
 shortDescription: Kubernetes-native workflow engine supporting DAG and step-based workflows.
@@ -364,48 +370,52 @@ references:
 
 ### versions.yaml file
 
-``` yaml
-latestVersion: "v3.5.8+1"
+```yaml
+latestVersion: 'v3.5.8+1'
 versions:
-- version: "v3.5.8+1"
+  - version: 'v3.5.8+1'
 ```
 
 ### Step 3: Add the package to the index.yaml file
 
 > In the root of the `/packages` folder you will find an `index.yaml` file that needs to be updated manually while testing but left unchanged when you open a PR again the public Glasskube repo since this file is automatically updated.
 
-``` yaml
-  - iconUrl: https://avatars.githubusercontent.com/u/30269780
-    latestVersion: v3.5.8+1
-    name: argo-workflows
-    shortDescription: Kubernetes-native workflow engine supporting DAG and step-based workflows
+```yaml
+- iconUrl: https://avatars.githubusercontent.com/u/30269780
+  latestVersion: v3.5.8+1
+  name: argo-workflows
+  shortDescription: Kubernetes-native workflow engine supporting DAG and step-based workflows
 ```
 
 ### Step 4: Commit these new changes to your local branch
 
-``` bash
+```bash
 git add .
 git commit -m "feat(argo-workflow): initial argo-workflow support"
 git push origin add-argo-workflows-support
 ```
 
 ### Step 5: Add the repo to your local Glasskube backend
+
 > For testing locally, reference the [testing guidelines](https://github.com/glasskube/glasskube/blob/main/CONTRIBUTING.md#custom-package-repository).
 
 To test the package configuration use `glasskube repo add` to configure your test repository.
 
-``` bash
+```bash
 glasskube repo add argo-workflows https://raw.githubusercontent.com/jakepage91/packages/add-argo-workflows-support/packages/
 ```
 
 > _Use the raw GitHub url, so Glasskube doesn’t need to translate the html to yaml_
 
 View locally configured repositories:
+
 ```
 glasskube repo list
 ```
+
 Expected output:
-``` bash
+
+```bash
 NAME            URL                                                                                         DEFAULT  AUTHENTICATION  STATUS  MESSAGE
 argo-workflows  https://raw.githubusercontent.com/jakepage91/packages/add-argo-workflows-support/packages/  No       None            Ready   repo has 17 packages
 glasskube       https://packages.dl.glasskube.dev/packages
@@ -415,7 +425,7 @@ glasskube       https://packages.dl.glasskube.dev/packages
 
 > Please note that any changes made to your package repository will not be picked up immediately. To ensure all caches are cleared, either wait 5 minutes or restart both the operator and the UI. This is a known issue that will be addressed in a future version.
 
-``` bash
+```bash
 glasskube serve
 ```
 
@@ -425,13 +435,13 @@ Opens on [https://localhost:8580](https://localhost:8580/)
 
 Once installed check to see if the pods are ready:
 
-``` bash
+```bash
 kubectl get pods -n argo
 ```
 
 Output:
 
-``` bash
+```bash
 NAME                                   READY   STATUS    RESTARTS   AGE
 argo-server-69f4d5846b-s2dj4           1/1     Running   0          2m37s
 workflow-controller-66fd69c457-xnr4p   1/1     Running   0          2m37s
@@ -449,7 +459,7 @@ Example `config-values.txt` file:
 
 Updated folder structure:
 
-``` bash
+```bash
 packages/
 └── argo-workflows/
     ├── versions.yaml
@@ -472,11 +482,8 @@ git commit -S -m "feat(<NameOfPackage>: commit-message)"
 If you like this sort of content and would like to see more of it, please consider supporting us by giving us a Star on [GitHub](https://github.com/glasskube/glasskube) 🙏
 [![cats-like--github-stars](https://github.com/glasskube/glasskube/assets/38757612/05a03edf-7d6a-48fd-9b24-598abcfd1e9a)](https://github.com/glasskube/glasskube)
 
-
-<div style={{ display: 'flex', justifyContent: 'right' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
+<div style={{display: 'flex', justifyContent: 'right'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
 </div>
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

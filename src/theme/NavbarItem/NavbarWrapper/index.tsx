@@ -1,7 +1,7 @@
-import styles from './styles.module.css';
-import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
-import DemoButton from '@site/src/components/buttons/DemoButton';
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton';
+import DemoButton from '@site/src/components/buttons/DemoButton';
+import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
+import styles from './styles.module.css';
 
 function Index() {
   return (

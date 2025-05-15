@@ -15,6 +15,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'air-gapped',
         'byoc-definition',
+        'cve',
         'devops',
         'helm',
         'helm-chart',
@@ -28,7 +29,9 @@ const sidebars: SidebarsConfig = {
         'oci-registry',
         'on-premises-definition',
         'saas-definition',
+        'sbom',
         'self-managed-software',
+        'vulnerability-scanning',
       ],
     },
   ],

@@ -1,9 +1,9 @@
 ---
 slug: distr-v1.4-release-post
-title: "Distr v1.4 is here!"
-description: "All the details about Distr v1.4"
-authors: [ jpage ]
-tags: [ Releases ]
+title: 'Distr v1.4 is here!'
+description: 'All the details about Distr v1.4'
+authors: [jpage]
+tags: [Releases]
 image: '/img/blog/2025-03-25-distr-1-4-release/thumb.png'
 ---
 
@@ -15,7 +15,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 Hey there! We listened to your feedback, and we're back with a massive new feature.
 
-This one was inspired by some interesting insights into the real-world use cases a considerable amount of vendors told us they were up against, and it's why we're shipping **v1.4** today. It’s a minor version bump, but it unlocks new possibilities for advanced self-managed distribution. 
+This one was inspired by some interesting insights into the real-world use cases a considerable amount of vendors told us they were up against, and it's why we're shipping **v1.4** today. It’s a minor version bump, but it unlocks new possibilities for advanced self-managed distribution.
 
 <!-- truncate -->
 
@@ -29,19 +29,19 @@ Want a hint? It’s all about **artifacts**, and a whole new way to manage them.
 
 We are rolling out the **beta version of the Distr OCI Registry**. Initially enabling the feature to users who specifically asked for it, but if you’re interested, just let us know, and we’ll unlock it for you.
 
-### Why it matters 
+### Why it matters
+
 Self-managed deployments often require strict control over what software gets deployed, where, and by whom. That’s where Distr’s new **OCI Artifact Registry** comes in.
 
 With the Distr OCI registry, software vendors can now publish and distribute not just container images, but also **Helm charts, SBOMs, policy modules**, and other **OCI-compliant artifacts**, all managed natively within your Distr account.
 
 ### This means software vendors get
 
-- ✅ **Granular access control**: Define exactly which customer can pull which artifacts and versions  
-- 🧩 **Multi-artifact support**: Distribute Helm charts, images, config bundles, and any artifact that is OCI-compliant  
-- 🔐 **Software supply chain security**: Store SBOMs and signatures for safer distribution  
-- 📊 **Visibility**: Track where, how, and by whom artifacts are consumed  
+- ✅ **Granular access control**: Define exactly which customer can pull which artifacts and versions
+- 🧩 **Multi-artifact support**: Distribute Helm charts, images, config bundles, and any artifact that is OCI-compliant
+- 🔐 **Software supply chain security**: Store SBOMs and signatures for safer distribution
+- 📊 **Visibility**: Track where, how, and by whom artifacts are consumed
 - 📦 **Open standards**: Built on the OCI spec and compatible with existing tooling (Docker, ORAS, etc.)
-
 
 <ThemedImage
   alt="Diagram showing OCI registry architecture"
@@ -55,25 +55,24 @@ Whether you're distributing a single binary or an entire application stack, the 
 
 ## Watch the video to see how it works
 
-<div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
-    <iframe 
-        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-downloads allow-storage-access-by-user-activation"
-        frameBorder="0"
-        title="embed"
-        loading="lazy"
-        src="https://www.youtube.com/embed/gM9WCx61owQ?si=QEccDX-VyV3XMiQI"
-        allowFullScreen
-        style={{ 
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%', 
-            height: '100%', 
-            border: 'none'
-        }}
-    />
+<div style={{position: 'relative', width: '100%', paddingTop: '56.25%'}}>
+  <iframe
+    sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-downloads allow-storage-access-by-user-activation"
+    frameBorder="0"
+    title="embed"
+    loading="lazy"
+    src="https://www.youtube.com/embed/gM9WCx61owQ?si=QEccDX-VyV3XMiQI"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      border: 'none',
+    }}
+  />
 </div>
-
 
 #### 👉 Want to access the OCI Registry feature? Let us know via email at support@glasskube.com!
 
@@ -83,8 +82,8 @@ Whether you're distributing a single binary or an entire application stack, the 
 
 This is just the start! Here's a peek at what we’re working on for upcoming releases:
 
-- Built-in vulnerability scanning and security checks  
-- Display audit trails  
+- Built-in vulnerability scanning and security checks
+- Display audit trails
 - UI improvements for better overall usability
 
 Follow us on [LinkedIn](https://www.linkedin.com/company/glasskube) to stay up to date on the latest Distr news.

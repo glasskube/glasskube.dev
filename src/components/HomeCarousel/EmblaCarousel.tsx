@@ -1,15 +1,15 @@
-import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
 import {EmblaOptionsType} from 'embla-carousel';
-import {DotButton, useDotButton} from './EmblaCarouselDotButton';
+import useEmblaCarousel from 'embla-carousel-react';
+import React from 'react';
+import Tilt from 'react-parallax-tilt';
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
 } from './EmblaCarouselArrowButtons';
-import useEmblaCarousel from 'embla-carousel-react';
-import Tilt from 'react-parallax-tilt';
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import {DotButton, useDotButton} from './EmblaCarouselDotButton';
 
 type PropType = {
   slides: number[];

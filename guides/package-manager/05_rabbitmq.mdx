@@ -2,8 +2,8 @@
 title: RabbitMQ on Kubernetes
 slug: rabbitmq
 description: 'Learn how to install RabbitMQ on Kubernetes'
-authors: [ jpage ]
-tags: [ rabbitmq ]
+authors: [jpage]
+tags: [rabbitmq]
 ---
 
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
@@ -11,7 +11,6 @@ import Discussion from '@site/src/components/GiscusWrapper';
 import Install from '@site/src/partials/_install.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 ![thumbnail](https://github.com/glasskube/glasskube/assets/38757612/547e73fa-37dc-4b63-8ef5-bfc928f76d95)
 
@@ -137,16 +136,15 @@ RabbitMQ as a messaging broker fits into distributed architectures, using produc
 
 RabbitMQ has a series of tools and [plugins](https://www.rabbitmq.com/docs/plugins) to make managment and configuration much easier. Just as the management plugin which delivers a useful GUI from which mange management and monitoring tasks can be done as well as deployment plugins. Some useful plugins
 
-  -   **rabbitmq\_management:** for management console access
+- **rabbitmq_management:** for management console access
 
-  -   **rabbitmq\_prometheus:** exports metrics in Prometheus-compatible format, facilitating monitoring and observability.
+- **rabbitmq_prometheus:** exports metrics in Prometheus-compatible format, facilitating monitoring and observability.
 
-  -   **rabbitmq\_federation:** enables cluster and exchange formation and data replication
+- **rabbitmq_federation:** enables cluster and exchange formation and data replication
 
-  -   **rabbitmq\_peer\_discovery\_k8s:** used for automatic node discovery (cluster formation) in k8s environments
+- **rabbitmq_peer_discovery_k8s:** used for automatic node discovery (cluster formation) in k8s environments
 
-  -   RabbitMQ comes with some useful CLI tools `rabbitmqcli` ,`rabbitmq-plugins`,`rabbitmqadmin` and `rabbitmq-queues`. To be executed inside the RabbitMQ nodes they enable cluster management, plugin configurations, and an array of customizations.
-
+- RabbitMQ comes with some useful CLI tools `rabbitmqcli` ,`rabbitmq-plugins`,`rabbitmqadmin` and `rabbitmq-queues`. To be executed inside the RabbitMQ nodes they enable cluster management, plugin configurations, and an array of customizations.
 
 ## RabbitMQ Installation methods
 
@@ -156,16 +154,16 @@ RabbitMQ has a series of tools and [plugins](https://www.rabbitmq.com/docs/plugi
 # latest RabbitMQ 3.13
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 ```
+
 > ℹ️ Check out a great in-depth installation [guide](https://www.youtube.com/watch?v=hfUIWe1tK8E) from Marcel Dempers using Docker
 
 ### Open Source RabbitMQ Server on multiple operating systems
 
--   Linux: ([Debian](https://www.rabbitmq.com/docs/install-debian), [RHEL, CentOS Stream, Fedora, Amazon Linux 2023](https://www.rabbitmq.com/docs/install-rpm))
+- Linux: ([Debian](https://www.rabbitmq.com/docs/install-debian), [RHEL, CentOS Stream, Fedora, Amazon Linux 2023](https://www.rabbitmq.com/docs/install-rpm))
 
--   [Windows](https://www.rabbitmq.com/docs/install-windows)
+- [Windows](https://www.rabbitmq.com/docs/install-windows)
 
--   [MacOS](https://www.rabbitmq.com/docs/install-homebrew)
-
+- [MacOS](https://www.rabbitmq.com/docs/install-homebrew)
 
 ### RabbitMQ Cluster Kubernetes Operator ☸️
 
@@ -184,7 +182,7 @@ Installing the RabbitMQ cluster operator can easily be achieved with the Glassku
 If you already installed `glasskube` you can skip this step.
 If not, `glasskube` can easily be installed the way you usually install packages for your operating system.
 
-<Install/>
+<Install />
 
 ### Install the RabbitMQ cluster operator
 
@@ -197,6 +195,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     Install RabbitMQ cluster operator via the Glasskube UI.
+
   </TabItem>
   <TabItem value="cli" label="CLI 🧑‍💻">
     A package can be installed with a simple command.
@@ -206,6 +205,7 @@ If not, `glasskube` can easily be installed the way you usually install packages
     ```
 
     The process will wait until the package got successfully installed.
+
   </TabItem>
 </Tabs>
 
@@ -213,7 +213,7 @@ You will need access to a Kubernetes cluster running `Kubernetes 1.19` or later 
 
 > ℹ️ Glasskube will automatically install the cluster operator in a newly created namespace called `rabbitmq-system`
 
-## Confirm Service Availability[](https://www.rabbitmq.com/kubernetes/operator/using-operator#service-availability "Direct link to Confirm Service Availability")
+## Confirm Service Availability[](https://www.rabbitmq.com/kubernetes/operator/using-operator#service-availability 'Direct link to Confirm Service Availability')
 
 Before configuring your app to use RabbitMQ Cluster Kubernetes Operator, ensure that `RabbitmqCluster` Custom Resource is deployed to your Kubernetes cluster and is available.
 
@@ -223,7 +223,7 @@ To confirm this availability, run
 kubectl get customresourcedefinitions.apiextensions.k8s.io
 ```
 
-## Create a RabbitMQ Instance[](https://www.rabbitmq.com/kubernetes/operator/using-operator#create "Direct link to Create a RabbitMQ Instance")
+## Create a RabbitMQ Instance[](https://www.rabbitmq.com/kubernetes/operator/using-operator#create 'Direct link to Create a RabbitMQ Instance')
 
 The RabbitMQ Cluster Kubernetes Operator creates the necessary resources, such as `Services`, `StatefulSets`, `Secrets` and `ConfigMaps` in the same namespace in which the `RabbitmqCluster` was defined.
 
@@ -252,7 +252,7 @@ Then verify that the process was successful by running:
 kubectl get all -l app.kubernetes.io/name=definition
 ```
 
-## Configure a RabbitMQ Instance[](https://www.rabbitmq.com/kubernetes/operator/using-operator#configure "Direct link to Configure a RabbitMQ Instance")
+## Configure a RabbitMQ Instance[](https://www.rabbitmq.com/kubernetes/operator/using-operator#configure 'Direct link to Configure a RabbitMQ Instance')
 
 To configure a RabbitMQ instance in other words the cluster itself, open definition.yaml or edit the configuration in place by running:
 
@@ -343,12 +343,11 @@ rabbitmqctl set_permissions -p vhost-1 jake ".*" ".*" ".*"
 
 4.  **Add Queue**: Scroll to the bottom of the page and click on the "Add a new queue" button to create a new queue.
 
-    -   Specify the queue name, type, and other desired properties like node preference.
+    - Specify the queue name, type, and other desired properties like node preference.
 
-    -   Optionally, configure queue bindings, policies, and other advanced settings based on your requirements.
+    - Optionally, configure queue bindings, policies, and other advanced settings based on your requirements.
 
 5.  **Save Changes**: Click on the "Add queue" or "Save" button to confirm and create the new queue.
-
 
 By following these steps, you can easily create and manage queues in RabbitMQ according to your specific needs.
 
@@ -365,7 +364,7 @@ When building a production application with a messaging component to its archite
 ![rabbitmq-cluster-graph](https://github.com/glasskube/glasskube/assets/38757612/69b9d748-f616-4944-8a4f-b0d9f0aed85f)
 
 > ℹ️ To understand how clusters are formed we will need to understand a few concepts.
-By using the operator, much of the concepts we explore below will be configured for you by default. Nonetheless, it’s still valuable to understand what is happening under the hood.
+> By using the operator, much of the concepts we explore below will be configured for you by default. Nonetheless, it’s still valuable to understand what is happening under the hood.
 
 ### Authentication
 
@@ -461,15 +460,11 @@ Messaging brokers such as RabbitMQ play a central role in [event-driven architec
 
 Getting started with RabbitMQ is easier than ever especially now that [Glasskube](https://github.com/glasskube/glasskube) integrates the cluster controller for easy installation and management. This guide aims to offer the necessary insights for setting up a functional instance or RabbitMQ cluster within a Kubernetes environment. While there's so much more to learn regarding RabbitMQ such as this and that, I hope this primer provides ample groundwork to kickstart your RabbitMQ journey.
 
-
 If you like this sort of content and would like to see more of it, please consider supporting us by giving us a Star on [GitHub](https://github.com/glasskube/glasskube) 🙏
 [![cats-like--github-stars](https://github.com/glasskube/glasskube/assets/38757612/05a03edf-7d6a-48fd-9b24-598abcfd1e9a)](https://github.com/glasskube/glasskube)
 
-
-<div style={{ display: 'flex', justifyContent: 'right' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
+<div style={{display: 'flex', justifyContent: 'right'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
 </div>
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

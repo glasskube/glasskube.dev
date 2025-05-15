@@ -2,8 +2,8 @@
 title: The guide to Git I never had.
 slug: git
 description: 'Learn how to use git with commands for commiting, branching, rebasing and squashing'
-authors: [ jpage ]
-tags: [ git ]
+authors: [jpage]
+tags: [git]
 ---
 
 import CustomGitHubButton from '@site/src/components/buttons/CustomGitHubButton.tsx';
@@ -31,10 +31,8 @@ So let’s get started
 
 If you are looking to put your Git skills to work and would like to contribute to Glasskube, we officially launched in February and we aim to be the no-brainer, default solution for Kubernetes package management. With your support, we can make it happen. The best way to show your support is by starring us on GitHub ⭐
 
-<div style={{ display: 'flex', justifyContent: 'left' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
+<div style={{display: 'flex', justifyContent: 'left'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
 </div>
 
 ## Let’s lay down the foundations
@@ -49,6 +47,7 @@ In a Git repository, you'll find a main line of development, typically named "ma
 ![Git branches](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t3p5q80hldckku20urm0.png)
 
 ### Commits
+
 Git commits serve as bundles of updated code, capturing a snapshot of the project's code at a specific point in time. Each commit records changes made since the last commit was recorded, all together building a comprehensive history of the project's development journey.
 
 ![Git commits](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dcjp286j11bqkx0k9w35.png)
@@ -56,39 +55,51 @@ Git commits serve as bundles of updated code, capturing a snapshot of the projec
 When referencing commits you will generally use its uniquely identified cryptographic [hash](https://www.mikestreety.co.uk/blog/the-git-commit-hash/).
 
 Example:
+
 ```
 git show abc123def456789
 ```
+
 This shows detailed information about the commit with that hash.
 
 ### Tags
+
 Git [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) serve as landmarks within the Git history, typically marking significant milestones in a project's development, such as `releases`, `versions`, or `standout commits`. These tags are invaluable for marking specific points in time, often representing the starting points or major achievements in a project's journey.
 
 ![Git tags](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/06uilykiq1ky6dtnr3ez.png)
 
 ### HEAD
+
 The most recent commit on the currently checked-out branch is indicated by the `HEAD`, serving as a pointer to any reference within the repository. When you're on a specific branch, `HEAD` points to the latest commit on that branch. Sometimes, instead of pointing to the tip of a branch, `HEAD` can directly point to a specific commit (`detached HEAD` state).
 
 ### Stages
+
 Understanding Git stages is crucial for navigating your Git workflow. They represent the logical transitions where changes to your files occur before they are committed to the repository.
 Let's delve into the concept of Git stages:
 
 ![Git stages](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/96ndc8w183kh0tcb3uxb.png)
 
 #### Working directory 👷
+
 The `working directory` is where you edit, modify, and create files for your project. Representing the current state of your files on your local machine.
 
 #### Staging area 🚉
+
 The `staging` area is like a holding area or a pre-commit zone where you prepare your changes before committing them to the repository.
+
 > Useful command here: `git add`
 > Also `git rm` can be used to unstage changes
 
 #### Local repository 🗄️
+
 The local repository is where Git permanently stores the committed changes. It allows you to review your project's history, revert to previous states, and collaborate with others on the same codebase.
+
 > You can commit changes that are ready in the staging area with: `git commit`
 
 #### Remote repository 🛫
+
 The remote repository is a centralized location, typically hosted on a server (like GitHub, GitLab, or Bitbucket), where you can share and collaborate with others on your project.
+
 > You can use commands like `git push` and `git pull` to push/pull your committed changes from your local repository to the remote repository.
 
 ## Getting Started with Git
@@ -96,7 +107,9 @@ The remote repository is a centralized location, typically hosted on a server (l
 Well, you have to start somewhere, and in Git that is your `workspace`. You can `fork` or `clone` an existing repository and have a copy of that workspace, or if you are starting completely fresh in a new local folder on your machine you have to turn it into a git repository with `git init`. The next step, crucially not to be overlooked is setting up your credentials.
 
 [![Source:  Shuai Li](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fqr8mylqjo91zurb7gmi.png)](https://li.earthonline.us/)
+
 ### Credentials set up
+
 When running pushing and pulling to a remote repository you don’t want to have to type your username and password every time, avoid that by simply executing the following command:
 
 ```
@@ -114,7 +127,9 @@ git config --global credential.helper
 ```
 
 ### Working with branches
+
 When working locally it’s crucial to know which branch you are currently on. These commands are helpful:
+
 ```
 # Will show the changes in the local repository
 git branch
@@ -122,17 +137,23 @@ git branch
 # Or create a branch directly with
 git branch feature-branch-name
 ```
+
 To transition between branches use:
+
 ```
 git switch
 ```
+
 Additionally to transitioning between them, you can also use:
+
 ```
 git checkout
 # A shortcut to switch to a branch that is yet to be created with the -b flag
 git checkout -b feature-branch-name
 ```
+
 To check the repository's state, use:
+
 ```
 git status
 ```
@@ -142,11 +163,14 @@ A great way to always have a clear view of your current branch is to see it righ
 ![Terminal view](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nycmbxgrtplax7q83g3n.png)
 
 ### Working with commits
+
 When working with commits, utilize git commit -m to record changes, git amend to modify the most recent commit, and try your best to adhere to [commit message conventions](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13).
+
 ```
 # Make sure to add a message to each commit
 git commit -m "meaningful message"
 ```
+
 If you have changes to your last commit, you don’t have to create another commit altogether, you can use the -—amend flag to amend the most recent commit with your staged changes
 
 ```
@@ -156,6 +180,7 @@ git commit --amend
 # This will open your default text editor to modify the commit message if needed.
 git push origin your_branch --force
 ```
+
 > ⚠️ Exercise caution when utilizing `--force`, as it has the potential to overwrite the history of the target branch. Its application on the main/master branch should be generally avoided.
 
 > As a rule of thumb it's better to commit more often than not, to avoid losing progress or accidentally resetting the unstaged changes. One can rewrite the history afterward by squashing multiple commits or doing an interactive rebase.
@@ -167,6 +192,7 @@ Use `git log` to show a chronological list of commits, starting from the most re
 Manipulating History involves some powerful commands. `Rebase` rewrites commit history, `Squashing` combines multiple commits into one, and `Cherry-picking` selects specific commits.
 
 ### Rebasing and merging
+
 It makes sense to compare rebasing to merging since their aim is the same but they achieve it in different ways. The crucial difference is that rebasing rewrites the project's history. A desired choice for projects that value clear and easily understandable project history. On the other hand, merging maintains both branch histories by generating a new merge commit.
 
 During a rebase, the commit history of the feature branch is restructured as it's moved onto the `HEAD` of the main branch
@@ -181,17 +207,23 @@ Ensure you're on the branch you want to rebase and fetch the latest changes from
 git checkout your_branch
 git fetch
 ```
+
 Now choose the branch you want to rebase onto and run this command:
+
 ```
 git rebase upstream_branch
 ```
+
 After rebasing, you might need to force-push your changes if the branch has already been pushed to a remote repository:
+
 ```
 git push origin your_branch --force
 ```
+
 > ⚠️ Exercise caution when utilizing `--force`, as it has the potential to overwrite the history of the target branch. Its application on the main/master branch should be generally avoided.
 
 ### Squashing
+
 Git squashing is used to condense multiple commits into a single, cohesive commit.
 
 ![git squashing](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/owzri2ufj3meqhtjjpc0.png)
@@ -204,14 +236,16 @@ git reset --soft HEAD~X
 git commit -m "Your squashed commit message"
 git push origin your_branch --force
 ```
+
 > ⚠️ Exercise caution when utilizing `--force`, as it has the potential to overwrite the history of the target branch. Its application on the main/master branch should be generally avoided.
 
 ### Cherry-picking
+
 Cherry-picking is useful for selectively incorporating changes from one branch to another, especially when merging entire branches is not desirable or feasible. However, it's important to use cherry-picking judiciously, as it can lead to duplicate commits and divergent histories if misapplied
 
 ![Cherry-picking](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wxe90o4u26mikikee9f1.png)
 
-To perform this first you have to identify the commit hash of the commit you would like to pick, you can do this with `git log`.  Once you have the commit hash identified you can run:
+To perform this first you have to identify the commit hash of the commit you would like to pick, you can do this with `git log`. Once you have the commit hash identified you can run:
 
 ```
 git checkout target_branch
@@ -220,7 +254,9 @@ git push origin target_branch
 ```
 
 ## Advanced Git Commands
+
 ### Signing commits
+
 Signing commits is a way to verify the authenticity and integrity of your commits in Git. It allows you to cryptographically sign your commits using your GPG (GNU Privacy Guard) key, assuring Git that you are indeed the author of the commit. You can do so by creating a GPG key and configuring Git to use the key when committing.
 Here are the steps:
 
@@ -261,7 +297,6 @@ In order to use it you have to become familiar with the possible actions such ar
 - Squash (“s“)
 - Drop (“d“)
 
-
 ![Interactive rebase](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/98sngs9j2dl5awcmm8dt.png)
 
 Here is a useful [video](https://www.youtube.com/watch?v=qsTthZi23VE) to learn how to perform an interactive rebase in the terminal, I have also linked a useful tool at the bottom of the blog post.
@@ -269,11 +304,13 @@ Here is a useful [video](https://www.youtube.com/watch?v=qsTthZi23VE) to learn h
 ## Collaborating with Git
 
 ### Origin vs Upstream
+
 The **origin** is the default remote repository associated with your local Git repository when you clone it. If you've forked a repository, then that fork becomes your "origin" repository by default.
 
 **Upstream** on the other hand refers to the original repository from which your repository was forked.
 
 To keep your forked repository up-to-date with the latest changes from the original project, you `git fetch` changes from the "upstream" repository and merge or rebase them into your local repository.
+
 ```
 # By pulling the pulled changes will be merged into your working branch
 git pull <remote_name> <branch_name>
@@ -282,11 +319,13 @@ git fetch <remote_name>
 ```
 
 To see the remote repositories associated with you local Git repo, run:
+
 ```
 git remote -v
 ```
 
 ### Conflicts
+
 Don’t panic, when trying to merge or rebase a branch and conflicts are detected it only means that there are conflicting changes between different versions of the same file or files in your repository and they can be easily resolved (most times).
 
 <p align="center">
@@ -299,6 +338,7 @@ Decide which changes to keep, modify, or remove, ensuring that the resulting cod
 After manually resolving conflicts in the conflicted files, remove the conflict markers `<<<<<<<`, `=======`, and `>>>>>>>` and adjust the code as necessary.
 
 Save the changes in the conflicted files once you're satisfied with the resolution.
+
 > If you have issues resolving conflicts, this [video](https://www.youtube.com/watch?v=xNVM5UxlFSA) does a good job at explaining it.
 
 ## Popular Git workflows
@@ -312,19 +352,22 @@ Various Git workflows exist, however, it's important to note that there's no uni
 <p align="center">
   <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTY0eTI3anV6YnJ3Y2Y3bzd6ZTE5dHJ6OG9hdDNsM3hwcW1ubHZiMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dSetNZo2AJfptAk9hp/giphy.gif" />
 </p>
-### Feature Branch Workflow 🌱
-Each new feature or bug fix is developed in its own branch and then merge it back into the main branch once completed by opening a PR.
-> - **Strength**: Isolation of changes and reducing conflicts.
-> - **Weakness**: Can become complex and require diligent branch management.
+### Feature Branch Workflow 🌱 Each new feature or bug fix is developed in its
+own branch and then merge it back into the main branch once completed by opening
+a PR. > - **Strength**: Isolation of changes and reducing conflicts. > -
+**Weakness**: Can become complex and require diligent branch management.
 
 ### Gitflow Workflow 🌊
+
 Gitflow defines a strict branching model with predefined branches for different types of development tasks.
 
 It includes long-lived branches such as main, develop, feature branches, release branches, and hotfix branches.
+
 > - **Strength**: Suitable for projects with scheduled releases and long-term maintenance.
 > - **Weakness**: Can be overly complex for smaller teams
 
 ### Forking Workflow 🍴
+
 In this workflow, each developer clones the main repository, but instead of pushing changes directly to it, they push changes to their own fork of the repository. Developers then create pull requests to propose changes to the main repository, allowing for code review and collaboration before merging.
 
 This is the workflow we use to collaborate on the open-source Glasskube repos.
@@ -333,6 +376,7 @@ This is the workflow we use to collaborate on the open-source Glasskube repos.
 > - **Weakness**: Maintaining synchronization between forks and the main repository can be challenging.
 
 ### Trunk-Based Development 🪵
+
 If you are on a team focused on rapid iteration and continuous delivery, you might use trunk-based development which developers work directly on the main branch committing small and frequent changes.
 
 > - **Strength**: Promotes rapid iteration, continuous integration, and a focus on delivering small, frequent changes to production.
@@ -347,6 +391,7 @@ Forking is highly recommended for collaborating on Open Source projects since yo
 That’s why even when you push to your origin repository. Your changes will show up on the remote also.
 
 ## Git Cheatsheet
+
 ---
 
 ```
@@ -418,10 +463,9 @@ git fetch <remote_name>
 ---
 
 If you like this sort of content and would like to see more of it, please consider supporting us by giving us a Star on GitHub 🙏
-<div style={{ display: 'flex', justifyContent: 'left' }}>
-  <CustomGitHubButton
-    href="https://github.com/glasskube/glasskube"
-  />
+
+<div style={{display: 'flex', justifyContent: 'left'}}>
+  <CustomGitHubButton href="https://github.com/glasskube/glasskube" />
 </div>
 
 <Discussion category="Guides" categoryId="DIC_kwDOLDumD84CfK3R" />

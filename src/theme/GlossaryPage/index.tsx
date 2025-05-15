@@ -1,7 +1,6 @@
-import React from 'react';
+import sidebars from '@site/sidebar-glossary';
 import GlossaryItem from '@site/src/pages/glossary/_components/GlossaryItem';
 import styles from './styles.module.css';
-import sidebars from '@site/sidebar-glossary';
 
 export default function GlossaryPage(): JSX.Element {
   const glossaryItems = sidebars.glossary[0].items as string[];
