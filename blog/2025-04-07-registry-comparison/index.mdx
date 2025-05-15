@@ -42,12 +42,10 @@ It can also reference other manifests in the case of a multi-arch image.
 
 ## What Is a Container Registry?
 
-Traditionally, container registries store ready-to-run images.
-But today's more highly integrated and complex workflows demand more.
-Developers also store supporting artifacts like Terraform modules, SBOMs, and image signatures, making flexible registries critical to the entire supply chain.
+A container registry is used by software developers as a service to store, manage, and distribute container images and related OCI-compliant artifacts.
+It provides APIs for pushing and pulling artifacts and is mostly consumed by CLI clients in CI/CD environments or deployment targets.
+Mature container registries come with advanced access control, analytics, and user interfaces.
 
-Modern registries have evolved, largely in part thanks to the Open Container Initiative (OCI), to support these use cases, becoming general-purpose artifact hubs.
-That's why in this post, we're expanding the scope beyond just container images.
 
 
 ## Understanding the OCI Format
