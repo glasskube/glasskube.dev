@@ -192,14 +192,17 @@ const config: Config = {
           title: 'Distr',
           items: [
             {label: 'GitHub', to: 'https://github.com/glasskube/distr/'},
-            {label: 'Docs', to: 'https://distr.sh/docs/getting-started/about/'},
+            {
+              label: 'Docs',
+              to: 'https://distr.sh/docs/getting-started/what-is-distr/',
+            },
             {label: 'Signup', href: 'https://signup.distr.sh/'},
           ],
         },
         {
           title: 'Package Manager',
           items: [
-            {label: 'GitHub', to: 'https://github.com/glasskube/distr/'},
+            {label: 'GitHub', to: 'https://github.com/glasskube/glasskube/'},
             {label: 'Docs', to: '/products/package-manager/docs/'},
             {
               label: 'Guides',
