@@ -1,6 +1,6 @@
 ---
-slug: tutorials-no-idea-lol
-title: "SHOW ME WHAT YOU GOOOOOT – Easy Onboarding with Distr Tutorials please change me lol"
+slug: releasing-distr-tutorials
+title: "Easy Onboarding with Distr Tutorials"
 description: ""
 authors: [  ]
 tags: [ Releases ]
@@ -8,38 +8,52 @@ tags: [ Releases ]
 
 import ThemedImage from '@theme/ThemedImage';
 
-# Easy Onboarding with Distr Tutorials please change me lol
+# Easy Onboarding with Distr Tutorials
 
-Since the early days of Distr we have been strongly opinionated about onboarding.
+Today is international onboarding day! It's not an official holiday (yet), but we are declaring it so. 
+In fact, we are declaring every day to be international onboarding day, because we are just super excited about onboarding in general.
+Since the early days of Distr we have been strongly opinionated about onboarding. 
+And now we improve our onboarding experience even further with the release of Distr Tutorials. We just love onboarding!
+
+<!-- truncate -->
+
+## What is changing?
+
 So far we had an onboarding wizard popping up on the dashboard of new users.
 As Distr has grown both in features and users, we decided to revisit this approach and create a more flexible and powerful onboarding experience.
 We are now releasing Distr Tutorials, a way for you to quickly get started with the exact features that matter most to you.
 
-<!-- truncate -->
-
 ## Why care about onboarding?
 
-Because you want to get the most out of Distr in a short time, and we want to help you with that.
-
-You might be evaluating the market and want to see what's the right tool for you. 
-Or not, I don't know, maybe you also don't know what you want, and that's fine too. Either way, it's a good reason to have a look at the tutorials.
-Do you really need more marketing text here? My god, I hope not. But the LLM of my choice is so good at completing these prompts, I just can't stop it.
+Because as a new user you want to see what we've got, and we are happy to show you.
+But to that end, sometimes a few minimal one-time setup steps are required – and this is what we want to guide you through. 
+The goal is to get you up and running with the features you want to use, as quickly as possible.
 
 ## Show me what you got – What are these Distr Tutorials?
 
+We split up the onboarding process into smaller, more manageable steps, based on the features you want to use. There are three tutorials:
+* Setting up your Customer Portal
+* Getting started with Distr Agents and Release Automation
+* Getting started with the Registry
 
+### Introducing the `hello-distr` sample application
 
-## Introducing the `hello-distr` sample application
+There are valid reasons to try Distr with a little sample application before onboarding your entire stack. 
+Our own [hello-distr](https://github.com/glasskube/hello-distr) is made for exactly that. 
 
-Head over to the [hello-distr Repo](https://github.com/glasskube/hello-distr) to see technical details, or stay here for the marketing text.
+When you start the Agents tutorial, this application will be automtically created in your organization, along with a few other resources.
 
-It's basically a simple, state-of-the-art web application in a form that many of us know and love to develop, but then have trouble with deploying.
+When stepping through the Registry tutorial, you will also work with the artifacts of this sample application, in order to have your very own registry filled with real artifacts.
 
-### Release Automation is easy
+**Release Automation is easy**
 
-<!-- 
+For the full end to end release automation experience, we recommend to use the hello-distr application. 
+It is set up to use GitHub Actions and our [distr-create-version-action](https://github.com/marketplace/actions/distr-create-version) for integrating with Distr.
+You can fork it and set up your own GitHub Actions workflow, that pushes new releases to your Distr organization. 
 
-* 3 - 4 Sections eher Marketing
-* 3 - 4 Sections Tech
+## Your Feedback matters
 
--->
+We are very excited about this new onboarding experience and we hope you are too. 
+If you think there is something missing in the tutorials, or if you have any other feedback, please let us know!
+
+Thanks and happy onboarding!
