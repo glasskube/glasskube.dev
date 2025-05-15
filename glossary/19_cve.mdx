@@ -1,6 +1,6 @@
 ---
 title: Common Vulnerabilities and Exposures (CVE)
-slug: cve
+slug: cve-common-vulnerabilities-and-exposures
 description: 'Understanding CVEs: What they are, how they work, and their critical role in cybersecurity and vulnerability management.'
 ---
 
@@ -8,7 +8,10 @@ import GlossaryCTA from '@site/src/components/cta/GlossaryCTA/glossaryCTA';
 
 ## What is a CVE?
 
-Common Vulnerabilities and Exposures (CVE) is a standardized system for identifying, cataloging, and referencing known cybersecurity vulnerabilities. Each CVE entry receives a unique identifier (e.g., CVE-2021-44228 for [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell)) that helps security professionals, software developers, and users consistently track and address specific security flaws across different platforms and tools.
+Common Vulnerabilities and Exposures (CVE) is a standardized system for identifying, cataloging, and referencing known cybersecurity vulnerabilities.
+Each CVE entry receives a unique identifier
+(e.g., [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/cve-2021-44228) for [Log4Shell](https://en.wikipedia.org/wiki/Log4Shell)) that helps security professionals,
+software developers, and users consistently track and address specific security flaws across different platforms and tools.
 
 ## The Significance of CVEs in Cybersecurity
 
@@ -42,11 +45,6 @@ graph LR
     E -->|Referenced by| F[Security Tools]
     E -->|Incorporated into| G[CVE Databases]
     E -->|Used by| H[Vulnerability Management]
-    
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#bbf,stroke:#333,stroke-width:2px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
 ```
 
 <div style={{textAlign: "center"}}><em>Fig 1: The CVE assignment and documentation process</em></div>
@@ -97,13 +95,6 @@ graph LR
     F --> K[Confidentiality]
     F --> L[Integrity]
     F --> M[Availability]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:1px
-    style C fill:#bbf,stroke:#333,stroke-width:1px
-    style D fill:#bbf,stroke:#333,stroke-width:1px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
 ```
 
 <div style={{textAlign: "center"}}><em>Fig 2: Components of the CVSS scoring system</em></div>
@@ -209,15 +200,6 @@ graph LR
     D --> E[Verification]
     E --> F[Reporting]
     F --> A
-    
-    style A fill:#dfd,stroke:#333,stroke-width:1px
-    style B fill:#dfd,stroke:#333,stroke-width:1px
-    style C fill:#dfd,stroke:#333,stroke-width:1px
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#dfd,stroke:#333,stroke-width:1px
-    style F fill:#dfd,stroke:#333,stroke-width:1px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
 ```
 
 <div style={{textAlign: "center"}}><em>Fig 3: The vulnerability management lifecycle</em></div>
@@ -293,7 +275,7 @@ If you discover a vulnerability, you can report a CVE ID through the following p
 
 For detailed guidance, refer to [MITRE's CVE report process](https://cve.mitre.org/cve/report_id.html) or the vendor-specific security vulnerability reporting instructions.
 
-<GlossaryCTA title="CVE" />
+<GlossaryCTA title="security" />
 
 ## Key Terms
 

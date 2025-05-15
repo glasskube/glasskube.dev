@@ -1,6 +1,6 @@
 ---
-title: Software Bill of Materials (SBOM)
-slug: sboms
+title: Software Bill of Materials (SBOMs)
+slug: sbom-software-bill-of-materials
 description: 'Discover what SBOMs are, their importance, and their role in software security supply chains.'
 ---
 
@@ -22,12 +22,6 @@ graph TD
     G --> I[Transitive Dependencies]
     I --> J[Sub-Dependency A v0.9.5]
     I --> K[Sub-Dependency B v1.5.0]
-    
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style A fill:#bbf,stroke:#333,stroke-width:2px
-    style D fill:#dfd,stroke:#333,stroke-width:1px
-    style E fill:#dfd,stroke:#333,stroke-width:1px
-    style F fill:#dfd,stroke:#333,stroke-width:1px
 ```
 
 The diagram above illustrates how an SBOM provides a comprehensive inventory of all software components, including direct and transitive dependencies, along with essential metadata.
@@ -47,46 +41,7 @@ SBOMs are essential for several reasons:
 SBOMs are typically stored in:
 
 - **Version Control Systems:** Integrated with source code repositories to ensure they are updated alongside the software.
-- **Artifact Repositories:** Stored with other build artifacts to maintain a complete record of what was used in each build.
-- **Security Tools:** Used by vulnerability scanners and other security tools to assess the software's security posture.
-
-```mermaid
-graph LR
-    subgraph "Storage Systems"
-    A[Version Control System] -->|Stores| B[SBOM]
-    C[Artifact Repository] -->|Stores| B
-    D[OCI Registry<br>e.g. Distr] -->|Stores| B
-    end
-    
-    subgraph "Usage Systems"
-    E[Security Tools] -->|Uses| B
-    F[Vulnerability Scanners] -->|Uses| B
-    end
-    
-    subgraph "Access Purposes"
-    B -->|Accessible for| G[Security Assessments]
-    B -->|Accessible for| H[Audits]
-    B -->|Accessible for| I[Compliance Checks]
-    end
-
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style A fill:#bbf,stroke:#333,stroke-width:1px
-    style C fill:#bbf,stroke:#333,stroke-width:1px
-    style D fill:#bbf,stroke:#333,stroke-width:1px
-    style E fill:#ffd700,stroke:#333,stroke-width:1px
-    style F fill:#ffd700,stroke:#333,stroke-width:1px
-    style G fill:#90ee90,stroke:#333,stroke-width:1px
-    style H fill:#90ee90,stroke:#333,stroke-width:1px
-    style I fill:#90ee90,stroke:#333,stroke-width:1px
-    
-    classDef storageGroup fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
-    classDef usageGroup fill:#fff7e6,stroke:#fa8c16,stroke-width:1px
-    classDef accessGroup fill:#f6ffed,stroke:#52c41a,stroke-width:1px
-    
-    class Storage_Systems storageGroup
-    class Usage_Systems usageGroup
-    class Access_Purposes accessGroup
-```
+- **Artifact Repositories:** Can be directly embedded in an OCI compliant image.
 
 By maintaining SBOMs in these locations, organizations ensure they are readily accessible for security assessments, audits, and compliance checks.
 
@@ -128,18 +83,6 @@ oras push registry.distr.sh/my-organization/my-application:1.0.0 \
 ```
 
 These tools provide flexibility and support for various formats and environments, making it easier to integrate SBOM generation into your development workflow.
-
-## Choosing the Right SBOM Platform
-
-When selecting an SBOM platform for software supply chain security, consider the following factors:
-
-- **Integration:** Ensure compatibility with CI/CD pipelines and existing tools to streamline workflows.
-- **Automation:** Look for platforms that support automatic SBOM generation like Distr during builds to reduce manual effort.
-- **Validation:** Choose platforms with tools for verifying SBOM completeness and accuracy, ensuring reliable documentation.
-- **Vulnerability Scanning:** Opt for platforms with built-in scanning against vulnerability databases to enhance security.
-- **Compliance:** Ensure support for necessary formats and standards to meet regulatory requirements.
-
-Popular platforms include Anchore, Dependency-Track, Snyk, Distr, Harbor and FOSSA, which offer various features to support SBOM generation, management and security.
 
 ## Best Practices for Implementing SBOMs
 
