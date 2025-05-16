@@ -1,0 +1,48 @@
+---
+slug: distr-docker-swarm
+title: 'Distr Launch Week: Distributing Applications to Docker Swarm'
+description: |
+  The Distr Docker Agent is now capable of deploying your application to a Docker Swarm cluster using the Docker Stack API.
+authors:
+  - kosmoz
+tags:
+  - Docker
+  - Swarm
+  - Containers
+  - Distributed Systems
+  - Distr
+image: TODO
+---
+
+If you've ever thought that **Docker Compose** is too basic for your deployment needs, but a full **Kubernetes** setup feels like overkill, you're definitely not alone.
+Many developers find themselves in this tricky spot, looking for something that strikes the right balance between simplicity and functionality.
+
+<!-- truncate -->
+
+Luckily, Docker has come up with a solution just for this: **Docker Swarm**.
+This tool lets you connect multiple Docker daemons to create a **Swarm cluster**, giving you access to distributed computing features.
+With Docker Swarm, you get benefits like scheduling, better availability, and many of the advantages that come with cloud-native technologies like Kubernetes.
+
+<div style={{'text-align': 'center'}}>
+![Meme about deploying a container on Kubernetes](/img/blog/2025-05-20-distr-docker-swarm/kubernetes-meme.jpg)
+</div>
+
+On top of that, Docker Stacks make it easy to deploy almost any **Compose file** to your Swarm cluster.
+This means you can take advantage of a distributed deployment infrastructure while keeping your application manifest straightforward and easy to manage.
+
+Given all these benefits, it’s no surprise that Docker Swarm support was one of our most requested features.
+Today, we’re excited to announce that **Docker Swarm support has officially landed in Distr!**
+This enhancement opens up new possibilities for users looking to streamline their deployment processes.
+
+To enable Docker Swarm support, the steps are simple.
+After you [enable Swarm mode](https://docs.docker.com/engine/swarm/swarm-mode/), just check the box labeled “Swarm mode” when adding a deployment, and you’re good to go.
+Keep in mind that you currently can’t enable or disable Swarm mode for existing deployments due to some limitations in the underlying Docker system.
+
+Once Swarm mode is turned on, the **Distr Docker Agent** will use the **Docker Stack API** to deploy your application’s Compose file.
+It will also use the **Docker Service API** to monitor your application’s health metrics and log streams (coming soon).
+
+Have you tried out the new Docker Swarm mode in Distr yet?
+We’d love to hear your thoughts, as we’re on a mission to create the best application distribution solution possible!
+
+This enhancement was made possible thanks to collaboration with GitHub user **[asherAbecasiss](https://github.com/asherAbecasiss)**, who led this initiative and provided our very first community contribution.
+We appreciate the support and feedback from our community, which helps us keep improving!
