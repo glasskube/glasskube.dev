@@ -1,0 +1,143 @@
+---
+slug: distr-registry
+title: 'Introducing the Distr Artifact Registry'
+description: 'A built-in OCI registry with tag-based access control, audit logs, and support for Helm, Docker & more, designed to simplify self-managed software distribution for both vendors and customers.'
+authors: [jpage]
+tags: ['OCI Registry', 'distr-launch-week']
+image: 'TODO'
+---
+
+import ThemedImage from '@theme/ThemedImage';
+
+![](https://wiki.glasskube.eu/api/attachments.redirect?id=e5a0439e-aa69-410d-9da6-8fc0491de425)
+
+Today, we are happy to announce that Distr now includes a built-in private OCI-compliant [artifact registry](https://distr.sh/docs/product/registry/). 
+
+Manage and distribute container images, Helm charts, and other OCI artifacts with license-based access control, audit logs, and a visual UI that makes self-managed software distribution pretty darn simple if we do say so ourselves, built for both you and your customers.
+
+<!-- truncate -->
+
+## Why we built a registry into Distr
+
+Early users of Distr appreciated having control over which versions of their software customers could access. 
+But it didn’t take long for a pattern to emerge, users started asking for the same kind of control over their container images and artifacts.
+
+Some described workarounds they were using with third-party registries, but none offered the ability to restrict access by tag or version. 
+Others mentioned how hard it was to get visibility into which customers were downloading what, and when.
+
+We realized this wasn’t just a feature request, it was a gap in the ecosystem. 
+And that’s why we bumped up the development priority of the OCI-compliant artifact registry that is now available for you to try today.
+
+<div style={{ textAlign: 'center' }}>
+  ![registry-diagram](/img/blog/2025-05-22-lw-registry/spongebob-meme.png)
+</div>
+
+## Real-world pain, solved.
+
+In case you are unsure whether this is a feature you need, consider this. 
+
+Let’s say a new customer is ready to deploy your self-managed solution. 
+Contracts signed. 
+Excitement is high. 
+But then you get a flurry of messages from your end customers along the lines of…
+
+> "We can't access your registry."  
+> "Is our firewall blocking the pull?"  
+> "Which version are we supposed to use?"
+
+Sound familiar?
+
+Vendors often don’t have a standard way to set up credentials, provide pull instructions, and troubleshoot artifact access issues. 
+Customers get frustrated. 
+Deployment stalls.
+
+With Distr's built-in registry, those problems go away.
+
+## Meet the Distr Artifact Registry
+
+Built for software vendors who serve end-customer with different [deployment appetites](https://distr.sh/docs/use-cases/fully-self-managed/), our registry brings OCI-compliant artifact distribution natively integrated into Distr.
+
+Here are a few of its key features:
+
+![registry-diagram](/img/blog/2025-05-22-lw-registry/registry-diagram.png)
+
+### OCI-compliant & format-flexible
+
+The registry supports any OCI artifact, including:
+
+-   Docker images   
+-   Helm charts  
+-   WASM modules 
+-   Anything else that follows the OCI spec
+
+### License-based access control
+
+Vendors can restrict access by using Artifacts licenses. Grant or revoke permissions to one or many artifacts at the tag level. Update instantly when entitlements change.
+
+<ThemedImage
+  alt="Distr Onboarding Tutorials"
+  sources={{
+    light: '/img/blog/2025-05-22-lw-registry/lw-license-light.png',
+    dark: '/img/blog/2025-05-22-lw-registry/lw-license-dark.png',
+  }}
+/>
+
+### Visual management
+
+Use any OCI compliant CLI for pushing and pulling, and use the Distr Registry UI to:
+
+-   View artifact versions or tags
+-   See which customer pulled what, and when 
+-   Track deployment status across environments
+    
+**General Artifact UI**
+
+<ThemedImage
+  alt="General Artifact UI"
+  sources={{
+    light: '/img/blog/2025-05-22-lw-registry/lw-artifacts-ui-light.png',
+    dark: '/img/blog/2025-05-22-lw-registry/lw-artifacts-ui-dark.png',
+  }}
+/>
+
+**Deployment tracking UI**
+
+<ThemedImage
+  alt="Deployment tracking UI"
+  sources={{
+    light: '/img/blog/2025-05-22-lw-registry/lw-artifacts-light.png',
+    dark: '/img/blog/2025-05-22-lw-registry/lw-artifacts-dark.png',
+  }}
+/>
+
+The downloads page gives granular artifact consumption logs
+
+**Download audit logs UI**
+
+<ThemedImage
+  alt="Download audit logs UI"
+  sources={{
+    light: '/img/blog/2025-05-22-lw-registry/lw-deploy-logs-light.png',
+    dark: '/img/blog/2025-05-22-lw-registry/lw-deploy-logs-dark.png',
+  }}
+/>
+
+## What's next for the Registry?
+
+We’re just getting started, here’s what’s coming soon:
+
+-   Integrated CVE scanning for registry artifacts
+-   Advanced usage metrics  
+-   Audit log export  
+-   SBOM support  
+
+## Give it a try today
+
+Several organizations are already using the registry in production, some even with custom domains, so their end users interact with a fully branded portal without ever seeing Distr.
+
+The registry is available now in all Distr accounts. Just head to the Artifacts tab in the dashboard to [get started](https://distr.sh/docs/guides/container-registry/).
+
+-   Read the [docs](https://distr.sh/docs/product/registry/)
+-   Contact us for a [demo](https://cal.glasskube.com/team/gk/demo)
+
+We are excited to hear your thoughts on the registry and open to your feedback to further shape the product to make it as useful as possible for vendors and end-customers alike.
