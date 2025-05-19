@@ -11,7 +11,7 @@ tags:
   - Containers
   - Distributed Systems
   - Distr
-image: TODO
+image: /img/blog/2025-05-20-distr-docker-swarm/title.png
 ---
 
 If you've ever thought that **Docker Compose** is too basic for your deployment needs, but a full **Kubernetes** setup feels like overkill, you're definitely not alone.
