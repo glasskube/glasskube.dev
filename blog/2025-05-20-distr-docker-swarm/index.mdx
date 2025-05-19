@@ -9,6 +9,7 @@ image: /img/blog/2025-05-20-distr-docker-swarm/title.png
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+import Link from '@docusaurus/Link';
 
 I am Jakob—an engineer working at Glasskube, which helps software and ai companies distribute their applications to self-managed environments.
 We build an Open Source Software Distribution platform called Distr ([`github.com/glasskube/distr`](https://github.com/glasskube/distr)).
@@ -17,13 +18,14 @@ If you've ever thought that **Docker Compose** is too basic for your deployment 
 
 {/* truncate */}
 
-![thumbnail](//img/blog/2025-05-20-distr-docker-swarm/title.png)
+![thumbnail](/img/blog/2025-05-20-distr-docker-swarm/title.png)
 
 Luckily, Docker has come up with a solution just for this: **Docker Swarm**.
 This tool lets you connect multiple Docker daemons to create a **Swarm cluster**, giving you access to distributed computing features.
 With Docker Swarm, you get benefits like scheduling, better availability, and many of the advantages that come with cloud-native technologies like Kubernetes.
 
 On top of that, Docker Stacks make it easy to deploy almost any **Compose file** to your Swarm cluster.
+This means you can take advantage of a distributed deployment infrastructure while keeping your application manifest straightforward and easy to manage.
 
 Given all these benefits, it’s no surprise that Docker Swarm support was one of our most requested features.
 Today, we’re excited to announce that **Docker Swarm support has officially landed in Distr!**
