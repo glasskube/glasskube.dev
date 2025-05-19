@@ -1,6 +1,6 @@
 ---
 slug: distr-registry
-title: 'Introducing the Distr Artifact Registry'
+title: 'The Distr Artifact Registry is GA'
 description: 'A built-in OCI registry with tag-based access control, audit logs, and support for Helm, Docker & more, designed to simplify self-managed software distribution for both vendors and customers.'
 authors: [jpage]
 tags: ['OCI Registry', 'distr-launch-week']
@@ -14,18 +14,13 @@ Today, we are happy to announce that the Distr [artifact registry](https://distr
 
 Manage and distribute container images, Helm charts, and other OCI artifacts with license-based access control, audit logs, and a visual UI that makes self-managed software distribution pretty darn simple if we do say so ourselves, built for both you and your customers.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Why we built a registry into Distr
 
-Early users of Distr appreciated having control over which versions of their software customers could access.
-But it didn’t take long for a pattern to emerge, users started asking for the same kind of control over their container images and artifacts.
-
-Some described workarounds they were using with third-party registries, but none offered the ability to restrict access by tag or version.
-Others mentioned how hard it was to get visibility into which customers were downloading what, and when.
-
-We realized this wasn’t just a feature request, it was a gap in the ecosystem.
-And that’s why we bumped up the development priority of the OCI-compliant artifact registry that is now available for you to try today.
+Distr was originally built to help vendors manage software distribution in agent based [assisted self-managed](https://distr.sh/docs/use-cases/assisted-self-managed/) environments.
+But as end customers increasingly requested full control over their deployments, vendors needed a way to offer a [fully self-managed model](https://distr.sh/docs/use-cases/fully-self-managed/) as well.
+Other third-party registries lacked the fine-grained access controls and visibility these scenarios call for, so that's why we built an OCI-compliant registry directly into Distr, enabling both assisted and fully self-managed distribution, with features like tag-based access control and detailed download logs.
 
 <div style={{textAlign: 'center'}}>
   ![registry-diagram](/img/blog/2025-05-22-lw-registry/spongebob-meme.png)
@@ -128,13 +123,13 @@ The downloads page gives granular artifact consumption logs
 We’re just getting started, here’s what’s coming soon:
 
 - Integrated CVE scanning for registry artifacts
-- Advanced usage metrics
-- Audit log export
-- SBOM support
+- Download history query & export
+- Visual indicators and download for SBOM & image signature layers
 
 ## Give it a try today
 
-Several organizations are already using the registry in production, some even with custom domains, so their end users interact with a fully branded portal without ever seeing Distr.
+The Distr container registry has already distributed thousands of artifact versions to end customers.
+Often completely white-labeled, with a custom CNAME DNS record, as part of a vendors software supply distribution stack.
 
 The registry is available now in all Distr accounts. Just head to the Artifacts tab in the dashboard to [get started](https://distr.sh/docs/guides/container-registry/).
 
