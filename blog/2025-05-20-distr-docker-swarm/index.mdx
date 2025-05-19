@@ -3,23 +3,17 @@ slug: distr-docker-swarm
 title: 'Distr Launch Week: Distributing Applications to Docker Swarm'
 description: |
   The Distr Docker Agent is now capable of deploying your application to a Docker Swarm cluster using the Docker Stack API.
-authors:
-  - kosmoz
-tags:
-  - Docker
-  - Swarm
-  - Containers
-  - Distributed Systems
-  - Distr
+authors: [kosmoz]
+tags: [distr-launch-week, docker swarm]
 image: /img/blog/2025-05-20-distr-docker-swarm/title.png
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-import {signupLink} from '@site/src/components/buttons/SignupForWaitlistButton.tsx';
-import Link from '@docusaurus/Link';
+
+I am Jakob—an engineer working at Glasskube, which helps software and ai companies distribute their applications to self-managed environments.
+We build an Open Source Software Distribution platform called Distr ([`github.com/glasskube/distr`](https://github.com/glasskube/distr)).
 
 If you've ever thought that **Docker Compose** is too basic for your deployment needs, but a full **Kubernetes** setup feels like overkill, you're definitely not alone.
-Many developers find themselves in this tricky spot, looking for something that strikes the right balance between simplicity and functionality.
 
 {/* truncate */}
 
@@ -33,11 +27,9 @@ With Docker Swarm, you get benefits like scheduling, better availability, and ma
 </div>
 
 On top of that, Docker Stacks make it easy to deploy almost any **Compose file** to your Swarm cluster.
-This means you can take advantage of a distributed deployment infrastructure while keeping your application manifest straightforward and easy to manage.
 
 Given all these benefits, it’s no surprise that Docker Swarm support was one of our most requested features.
 Today, we’re excited to announce that **Docker Swarm support has officially landed in Distr!**
-This enhancement opens up new possibilities for users looking to streamline their deployment processes.
 
 To enable Docker Swarm support, the steps are simple.
 First, you need to be signed in to Distr.
@@ -51,7 +43,9 @@ It will also use the **Docker Service API** to monitor your application’s heal
 Have you tried out the new Docker Swarm mode in Distr yet?
 We’d love to hear your thoughts, as we’re on a mission to create the best application distribution solution possible!
 
-This enhancement was made possible thanks to collaboration with GitHub user **[asherAbecasiss](https://github.com/asherAbecasiss)**, who led this initiative and provided our very first community contribution.
+This enhancement was made possible thanks to collaboration with GitHub user **[Asher Abecasiss](https://github.com/asherAbecasiss)**,
+who led this initiative and provided our very first community contribution.
+
 We appreciate the support and feedback from our community, which helps us keep improving!
 
 <DefaultCTA />
