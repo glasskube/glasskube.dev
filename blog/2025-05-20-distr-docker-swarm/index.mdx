@@ -9,7 +9,7 @@ image: /img/blog/2025-05-20-distr-docker-swarm/title.png
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-import Link from '@docusaurus/Link';
+import SignupLink from '@site/src/components/buttons/SignupLink';
 
 I am Jakob—an engineer working at Glasskube, which helps software and ai companies distribute their applications to self-managed environments.
 We build an Open Source Software Distribution platform called Distr ([`github.com/glasskube/distr`](https://github.com/glasskube/distr)).
@@ -32,7 +32,7 @@ Today, we’re excited to announce that **Docker Swarm support has officially la
 
 To enable Docker Swarm support, the steps are simple.
 First, you need to be signed in to Distr.
-If you don't have an account yet, you can just <Link to={signupLink()}>sign up for free</Link>.
+If you don't have an account yet, you can just <SignupLink text={'sign up for free'} />.
 After [enabling Swarm mode](https://docs.docker.com/engine/swarm/swarm-mode/), all you need to do is to check the box labeled “Swarm mode” when adding a deployment, and you’re good to go!
 Keep in mind that you currently can’t enable or disable Swarm mode for existing deployments due to some limitations in the underlying Docker system.
 
