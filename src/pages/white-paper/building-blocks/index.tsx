@@ -1,6 +1,6 @@
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import Testimonials from '@site/src/components/Testimonials';
-import WhitePaperForm from '@site/src/pages/white-paper/building-blocks/WhitePaperForm';
+import WhitePaperForm from '@site/src/components/WhitePaperForm';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
