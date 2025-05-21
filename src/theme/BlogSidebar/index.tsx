@@ -9,17 +9,16 @@ export default function BlogSidebar(): JSX.Element {
     <div className={clsx('card__header', styles.sidebar)}>
       <h3>About Glasskube</h3>
       <p>
-        Glasskube is specialized in secure software distribution. Our Open
-        Source Software Distribution Platform (
+        Glasskube is specialized in secure software distribution.{' '}
         <Link
           href={'https://github.com/glasskube/distr/'}
           target={'_blank'}
           rel="noreferrer">
           Distr
-        </Link>
-        ) is built for software vendors distributing their application to
-        customer controlled environments. We are also the authors of a
-        Kubernetes Package Manager.
+        </Link>{' '}
+        is our Open Source control plane for self-managed, BYOC, and on-prem
+        deployments. Everything you need to distribute applications to
+        self-managed customers out of the box.
       </p>
       <div className={styles.buttons}>
         <DemoButton additionalClassNames="" />

@@ -21,7 +21,8 @@ Although it is not directly part of OpenShift, it is loosely coupled as the rela
 Using the OLM is very complex and consists of multiple CRDs and concepts, but you could achieve something similar to `glasskube install cert-manager` with
 `kubectl operator install cert-manager -n cert-manager --channel stable --approval Automatic --create-operator-group`, but still lacking a GUI and the simple bootstrap of `glasskube bootstrap`.
 
-OLMs [operatorhub.io](https://operatorhub.io/) lists currently more packages than Glasskube, but [Glasskube packages](https://glasskube.dev/packages/) will rapidly increase over time.
+OLMs [operatorhub.io](https://operatorhub.io/) lists currently more packages than Glasskube,
+but [Glasskube packages](https://github.com/glasskube/packages/tree/main/packages) will rapidly increase over time.
 
 Another difference between Glasskube and OLM is that **OLM only supports operators while Glasskube supports all kinds of cloud-native applications**.
 

@@ -18,12 +18,16 @@ function posthogId() {
   return '';
 }
 
+export function signupLink() {
+  return `https://signup.distr.sh${posthogId()}`;
+}
+
 const SignupForWaitlistButton: FC<SignupForWaitlistButtonProps> = ({
   additionalClassNames,
 }) => (
   <Link
     className={`glasskube-telemetry-waitlist button button--outline ${additionalClassNames}`}
-    to={`https://signup.distr.sh${posthogId()}`}>
+    to={signupLink()}>
     Get started for free
   </Link>
 );

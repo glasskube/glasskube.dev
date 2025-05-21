@@ -89,6 +89,16 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          {
+            to: 'https://github.com/glasskube/packages/tree/main/packages',
+            from: '/packages',
+          },
+          {
+            to: '/contact',
+            from: '/building-blocks-whitepaper-cta',
+          },
+        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/products/package-manager')) {
             return [
@@ -158,11 +168,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
-      content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/" target="_blank">Distr</a> Launch Week is happening between May 19. and May 23. Stay tuned ⭐`,
-      // content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/"
-      // target="_blank">Distr</a> Launch Week is happening between May 19.
-      // and May 23.
-      // <a href="/blog/tags/distr-launch-week/">Read more</a> ⭐`,
+      content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/" target="_blank">Distr</a> Launch Week is happening this week! <a href="/blog/tags/distr-launch-week/">Check out all announcements</a> ⭐`,
       isCloseable: false,
     },
     image:
@@ -213,7 +219,7 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {label: 'Discord', href: 'https://discord.gg/SxH6KUCGH7'},
+            {label: 'Discord', href: 'https://discord.com/invite/SxH6KUCGH7'},
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/glasskube/',
