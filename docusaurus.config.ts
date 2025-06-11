@@ -171,8 +171,7 @@ const config: Config = {
       content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/" target="_blank">Distr</a> Launch Week is happening this week! <a href="/blog/tags/distr-launch-week/">Check out all announcements</a> ⭐`,
       isCloseable: false,
     },
-    image:
-      'https://opengraph.githubassets.com/3fbd03d4d860275ee154ca566f24ecce9243e229fe367523fbcab52e8b43db3f/glasskube/glasskube',
+    image: '/img/meta/distrimage.png',
     navbar: {
       title: 'Glasskube',
       logo: {
