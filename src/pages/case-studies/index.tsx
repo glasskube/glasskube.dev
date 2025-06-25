@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
-import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { allCaseStudies, CaseStudyData } from '../../../case-studies';
+import Heading from '@theme/Heading';
+import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import React, {useEffect, useRef, useState} from 'react';
+import {allCaseStudies, CaseStudyData} from '../../../case-studies';
 import styles from './styles.module.css';
 
 const TITLE = 'Case Studies';
@@ -47,40 +47,38 @@ function CaseStudyCard({
           </div>
         </div>
       </div>
-      
+
       <div className={styles.cardContent}>
         <div className={styles.mainContent}>
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Challenge</h3>
-            <p 
+            <p
               className={styles.sectionText}
-              dangerouslySetInnerHTML={{ __html: challenge }}
+              dangerouslySetInnerHTML={{__html: challenge}}
             />
           </div>
-          
+
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Solution</h3>
-            <p 
+            <p
               className={styles.sectionText}
-              dangerouslySetInnerHTML={{ __html: solution }}
+              dangerouslySetInnerHTML={{__html: solution}}
             />
           </div>
-          
+
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Result</h3>
-            <p 
+            <p
               className={styles.sectionText}
-              dangerouslySetInnerHTML={{ __html: result }}
+              dangerouslySetInnerHTML={{__html: result}}
             />
           </div>
         </div>
-        
+
         <div className={styles.sidebar}>
           <div className={styles.quoteSection}>
             <div className={styles.quoteBox}>
-              <blockquote className={styles.quote}>
-                "{ctoQuote}"
-              </blockquote>
+              <blockquote className={styles.quote}>"{ctoQuote}"</blockquote>
             </div>
             <div className={styles.ctoInfo}>
               <div className={styles.ctoPicContainer}>
@@ -103,7 +101,11 @@ function CaseStudyCard({
   );
 }
 
-function CaseStudyTracker({ caseStudies, activeCase, onCaseClick }: {
+function CaseStudyTracker({
+  caseStudies,
+  activeCase,
+  onCaseClick,
+}: {
   caseStudies: CaseStudyData[];
   activeCase: string | null;
   onCaseClick: (slug: string) => void;
@@ -115,15 +117,14 @@ function CaseStudyTracker({ caseStudies, activeCase, onCaseClick }: {
       <div className={styles.trackerContent}>
         <h4 className={styles.trackerTitle}>Case Studies</h4>
         <nav className={styles.trackerNav}>
-          {caseStudies.map((caseStudy) => (
+          {caseStudies.map(caseStudy => (
             <button
               key={caseStudy.slug}
               className={clsx(
                 styles.trackerItem,
-                activeCase === caseStudy.slug && styles.trackerItemActive
+                activeCase === caseStudy.slug && styles.trackerItemActive,
               )}
-              onClick={() => onCaseClick(caseStudy.slug)}
-            >
+              onClick={() => onCaseClick(caseStudy.slug)}>
               {caseStudy.company}
             </button>
           ))}
@@ -146,12 +147,14 @@ function CaseStudiesHeader() {
 
 function CaseStudiesContent() {
   const [activeCase, setActiveCase] = useState<string | null>(
-    allCaseStudies.length > 0 ? allCaseStudies[0].slug : null
+    allCaseStudies.length > 0 ? allCaseStudies[0].slug : null,
   );
-  const caseStudyRefs = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
+  const caseStudyRefs = useRef<Record<string, React.RefObject<HTMLDivElement>>>(
+    {},
+  );
 
   // Create refs for each case study
-  allCaseStudies.forEach((caseStudy) => {
+  allCaseStudies.forEach(caseStudy => {
     if (!caseStudyRefs.current[caseStudy.slug]) {
       caseStudyRefs.current[caseStudy.slug] = React.createRef<HTMLDivElement>();
     }
@@ -161,9 +164,9 @@ function CaseStudiesContent() {
   const handleCaseClick = (slug: string) => {
     const ref = caseStudyRefs.current[slug];
     if (ref?.current) {
-      ref.current.scrollIntoView({ 
+      ref.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   };
@@ -173,8 +176,8 @@ function CaseStudiesContent() {
     if (allCaseStudies.length <= 1) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const slug = entry.target.getAttribute('data-slug');
             if (slug) {
@@ -183,7 +186,7 @@ function CaseStudiesContent() {
           }
         });
       },
-      { rootMargin: '-20% 0px -60% 0px' }
+      {rootMargin: '-20% 0px -60% 0px'},
     );
 
     Object.entries(caseStudyRefs.current).forEach(([slug, ref]) => {
@@ -200,16 +203,18 @@ function CaseStudiesContent() {
     <section className={styles.caseStudiesSection}>
       <div className="container">
         <div className={styles.caseStudiesContainer}>
-          <CaseStudyTracker 
+          <CaseStudyTracker
             caseStudies={allCaseStudies}
             activeCase={activeCase}
             onCaseClick={handleCaseClick}
           />
           <div className={styles.caseStudiesMain}>
             {allCaseStudies.map((caseStudy, index) => (
-              <div key={caseStudy.slug} className={index > 0 ? styles.caseStudySpacing : ''}>
-                <CaseStudyCard 
-                  {...caseStudy} 
+              <div
+                key={caseStudy.slug}
+                className={index > 0 ? styles.caseStudySpacing : ''}>
+                <CaseStudyCard
+                  {...caseStudy}
                   caseStudyRef={caseStudyRefs.current[caseStudy.slug]}
                 />
               </div>
@@ -230,4 +235,4 @@ export default function CaseStudiesPage(): JSX.Element {
       </main>
     </Layout>
   );
-} 
+}
