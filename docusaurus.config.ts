@@ -185,7 +185,21 @@ const config: Config = {
           to: 'https://distr.sh/docs/getting-started/what-is-distr/',
         },
         {label: 'Blog', to: '/blog/'},
-        {label: 'White Paper', to: '/white-paper/building-blocks/'},
+        {
+          type: 'dropdown',
+          label: 'Resources',
+          position: 'left',
+          items: [
+            {
+              label: 'White Paper',
+              to: '/white-paper/building-blocks/',
+            },
+            {
+              label: 'Case Studies',
+              to: '/case-studies/',
+            },
+          ],
+        },
         {label: 'Pricing', to: '/pricing'},
         {type: 'custom-wrapper', position: 'right'},
         {label: 'Login', to: 'https://app.distr.sh/', position: 'right'},
