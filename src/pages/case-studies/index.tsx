@@ -1,12 +1,12 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+import NewsletterSignup from '@site/src/components/NewsletterSignup';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React, {useEffect, useRef, useState} from 'react';
 import {allCaseStudies, CaseStudyData} from '../../../case-studies';
 import styles from './styles.module.css';
-import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
-import NewsletterSignup from '@site/src/components/NewsletterSignup';
 
 const TITLE = 'Case Studies';
 const DESCRIPTION = 'Customer success stories using Distr';
