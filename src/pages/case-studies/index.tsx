@@ -5,6 +5,8 @@ import clsx from 'clsx';
 import React, {useEffect, useRef, useState} from 'react';
 import {allCaseStudies, CaseStudyData} from '../../../case-studies';
 import styles from './styles.module.css';
+import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
+import NewsletterSignup from '@site/src/components/NewsletterSignup';
 
 const TITLE = 'Case Studies';
 const DESCRIPTION = 'Customer success stories using Distr';
@@ -232,6 +234,14 @@ export default function CaseStudiesPage(): JSX.Element {
       <main className="margin-vert--lg">
         <CaseStudiesHeader />
         <CaseStudiesContent />
+        <div className="container">
+          <div className="row">
+            <div className="col col--10 col--offset-1">
+              <DefaultCTA />
+            </div>
+          </div>
+        </div>
+        <NewsletterSignup />
       </main>
     </Layout>
   );
