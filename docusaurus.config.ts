@@ -172,7 +172,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
-      content: `🎉 <a href="https://distr.sh/docs/getting-started/what-is-distr/" target="_blank">Distr</a> Launch Week is happening this week! <a href="/blog/tags/distr-launch-week/">Check out all announcements</a> ⭐`,
+      content: `🎉 The <a href="https://distr.sh/" target="_blank">Distr</a> <a href="/blog/distr-mcp-server/" target="_blank">MCP server</a> is now available as a remote MCP server and is hosted on <a href="https://hyprmcp.com/" target="_blank">https://hyprmcp.com</a>. ⭐`,
       isCloseable: false,
     },
     image: '/img/meta/distrimage.png',
