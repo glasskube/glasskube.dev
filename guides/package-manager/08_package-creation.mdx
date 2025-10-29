@@ -309,22 +309,18 @@ The best way to learn is by doing so lets integrate a new package. We have alrea
 ### Pre-integration checklist for Argo Workflows
 
 1. **Is the package Cluster or Namespace scoped?**
-
    - Cluster scoped
 
 2. **Will the package reference a Helm chart or Kubernetes manifest?**
-
    - In the documentation we can see that both the manifest and a helm chart are available
    - To keep consistent with the ArgoCD operator previously installed, I will use the Kubernetes manifest
 
 3. **Will the package require an** `entrypoints` **configuration, if so which ports need to be accessible?**
-
    - Yes:
      - Port: `2746`
      - LocalPort: `2746`
 
 4. **Will the package require custom value definitions, if so which ones?**
-
    - No
 
 5. **Which URL references will be included?**

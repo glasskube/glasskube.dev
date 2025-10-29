@@ -2,9 +2,13 @@ import type {Options as IdealImageOptions} from '@docusaurus/plugin-ideal-image'
 import type * as Preset from '@docusaurus/preset-classic';
 import type {Config} from '@docusaurus/types';
 import {themes as prismThemes} from 'prism-react-renderer';
-import {EnumChangefreq} from 'sitemap';
 
 const config: Config = {
+  future: {
+    v4: true, // opt-in for Docusaurus v4 planned changes
+    experimental_faster: true, // turns Docusaurus Faster on globally
+  },
+
   title: 'Glasskube',
   tagline: 'Distribute your application to self-managed customers',
   favicon: 'img/favicon.png',
@@ -16,18 +20,18 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'glasskube', // Usually your GitHub org/user name.
-  projectName: 'glasskube', // Usually your repo name.
+  organizationName: 'glasskube',
+  projectName: 'glasskube.dev',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'ignore',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -137,7 +141,7 @@ const config: Config = {
           ],
         },
         sitemap: {
-          changefreq: EnumChangefreq.DAILY,
+          changefreq: 'weekly',
           priority: 1,
           ignorePatterns: [
             '/telemetry/',

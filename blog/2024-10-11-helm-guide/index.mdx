@@ -89,17 +89,14 @@ mychart/
 ### Key Components of a Helm Chart:
 
 1.  **Templates**:
-
     - Template files define the Kubernetes resources required for your application, such as Deployments, Services, ConfigMaps, and more.
     - They use the [Go templating language](https://pkg.go.dev/text/template), allowing for dynamic configuration. It's thanks to Go templating that the customization of aspects of kubernetes objects, like the number of replicas, container images, and resource limits, is possible. Allowing for the insertion of specific values at the time of installation.
 
 2.  **Values**:
-
     - The `values.yaml` file contains default configuration settings for your application. This file serves as a centralized place for defining values that can be injected into the template files.
     - When installing a chart, you can override these defaults to adapt the deployment to your specific environment and requirements.
 
 3.  **Chart.yaml**:
-
     - This metadata file provides essential information about the chart, including its name, version, description, and any dependencies on other charts it might have.
     - The `Chart.yaml` file helps manage versions and maintain compatibility with other charts.
 
@@ -597,17 +594,14 @@ Yes, Helm is specifically designed for Kubernetes environments.
 Helm users frequently encounter a few common errors, and here are some of the most notable ones along with possible solutions:
 
 - **Error: "installation failed: cannot re-use a name that is still in use"**
-
   - **Cause:** this occurs when trying to install a release with a name that is already taken by an existing release.
   - **Solution:** Either delete the existing release with `helm delete <release-name>` or choose a new, unique name for the new release.
 
 - **Error: "upgrade failed: another operation (install/upgrade/rollback) is in progress"**
-
   - **Cause:** this happens when Helm is already performing an action, and a new operation is triggered before the current one finishes.
   - **Solution:** Wait for the ongoing operation to complete or manually clean up any stuck resources with `kubectl`, especially if resources like pods or deployments are causing a blockage.
 
 - **Error: "installation failed: must either provide a name or specify --generate-name"**
-
   - **Cause:** this occurs when no release name is provided during installation and the `--generate-name` flag isn't used.
   - **Solution:** Either specify a release name `(helm install <release-name>)` or use the `--generate-name` flag to allow Helm to auto-generate a unique name for the release.
 
