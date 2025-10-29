@@ -1,0 +1,128 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="157.5" x2="1200" y2="157.5" stroke="#3b82f6" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#3b82f6" stroke-width="1"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5" stroke="#3b82f6" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#3b82f6" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#3b82f6" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#3b82f6" stroke-width="1"/>
+  </g>
+
+  <!-- Connection nodes and lines -->
+  <g opacity="0.4">
+    <!-- Left cluster -->
+    <circle cx="150" cy="200" r="6" fill="#3b82f6"/>
+    <circle cx="200" cy="250" r="6" fill="#06b6d4"/>
+    <circle cx="180" cy="320" r="6" fill="#3b82f6"/>
+    <line x1="150" y1="200" x2="200" y2="250" stroke="#3b82f6" stroke-width="2"/>
+    <line x1="200" y1="250" x2="180" y2="320" stroke="#3b82f6" stroke-width="2"/>
+
+    <!-- Right cluster -->
+    <circle cx="1050" cy="180" r="6" fill="#06b6d4"/>
+    <circle cx="1020" cy="260" r="6" fill="#3b82f6"/>
+    <circle cx="1070" cy="340" r="6" fill="#06b6d4"/>
+    <line x1="1050" y1="180" x2="1020" y2="260" stroke="#06b6d4" stroke-width="2"/>
+    <line x1="1020" y1="260" x2="1070" y2="340" stroke="#06b6d4" stroke-width="2"/>
+  </g>
+
+  <!-- Center server icon -->
+  <g transform="translate(850, 150)">
+    <!-- Server stack -->
+    <rect x="0" y="0" width="120" height="35" rx="4" fill="#1e293b" stroke="url(#accentGradient)" stroke-width="2"/>
+    <rect x="0" y="45" width="120" height="35" rx="4" fill="#1e293b" stroke="url(#accentGradient)" stroke-width="2"/>
+    <rect x="0" y="90" width="120" height="35" rx="4" fill="#1e293b" stroke="url(#accentGradient)" stroke-width="2"/>
+
+    <!-- Server lights -->
+    <circle cx="15" cy="17.5" r="4" fill="#10b981"/>
+    <circle cx="30" cy="17.5" r="4" fill="#10b981"/>
+    <circle cx="15" cy="62.5" r="4" fill="#3b82f6"/>
+    <circle cx="30" cy="62.5" r="4" fill="#10b981"/>
+    <circle cx="15" cy="107.5" r="4" fill="#06b6d4"/>
+    <circle cx="30" cy="107.5" r="4" fill="#10b981"/>
+  </g>
+
+  <!-- AI/Agent icon (brain/circuit) -->
+  <g transform="translate(200, 140)">
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#3b82f6" stroke-width="3" filter="url(#glow)"/>
+    <circle cx="40" cy="40" r="25" fill="none" stroke="#06b6d4" stroke-width="2"/>
+    <!-- Circuit nodes -->
+    <circle cx="40" cy="25" r="3" fill="#3b82f6"/>
+    <circle cx="55" cy="40" r="3" fill="#06b6d4"/>
+    <circle cx="40" cy="55" r="3" fill="#3b82f6"/>
+    <circle cx="25" cy="40" r="3" fill="#06b6d4"/>
+    <!-- Lines connecting -->
+    <line x1="40" y1="25" x2="40" y2="55" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+    <line x1="25" y1="40" x2="55" y2="40" stroke="#06b6d4" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Cloud icon -->
+  <g transform="translate(900, 400)">
+    <ellipse cx="30" cy="25" rx="20" ry="15" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+    <ellipse cx="50" cy="20" rx="25" ry="18" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+    <ellipse cx="70" cy="25" rx="20" ry="15" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+    <rect x="10" y="25" width="80" height="15" fill="#1e293b"/>
+    <line x1="10" y1="40" x2="90" y2="40" stroke="#06b6d4" stroke-width="2"/>
+  </g>
+
+  <!-- Connection line from AI to Server -->
+  <path d="M 280 180 Q 450 120 850 200" fill="none" stroke="url(#accentGradient)" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Connection line from Server to Cloud -->
+  <path d="M 970 290 Q 950 350 950 430" fill="none" stroke="url(#accentGradient)" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Main Title -->
+  <text x="100" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="bold" fill="#ffffff">
+    Building a Remote
+  </text>
+  <text x="100" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="bold" fill="url(#accentGradient)">
+    MCP Server
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="590" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94a3b8">
+    Distr + HyprMCP
+  </text>
+
+  <!-- Badge/Tag -->
+  <g transform="translate(100, 70)">
+    <rect x="0" y="0" width="180" height="40" rx="20" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="90" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#3b82f6" text-anchor="middle" font-weight="600">
+      INTEGRATION
+    </text>
+  </g>
+
+  <!-- Glasskube branding -->
+  <text x="1100" y="605" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#64748b" text-anchor="end">
+    glasskube.dev
+  </text>
+</svg>
