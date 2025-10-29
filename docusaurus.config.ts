@@ -15,18 +15,18 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'glasskube', // Usually your GitHub org/user name.
-  projectName: 'glasskube', // Usually your repo name.
+  organizationName: 'glasskube',
+  projectName: 'glasskube.dev',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'ignore',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw'
+    }
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
