@@ -20,7 +20,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["docusaurus.config.ts"],
+      "managerFilePatterns": ["/docusaurus.config.ts/"],
       "matchStrings": [
         "We just released (?<currentValue>v[0-9.]*) of our Open Source Kubernetes Package Manager"
       ],
@@ -30,7 +30,10 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["src/partials/_install.mdx", "src/partials/_upgrade.mdx"],
+      "managerFilePatterns": [
+        "/src/partials/_install.mdx/",
+        "/src/partials/_upgrade.mdx/"
+      ],
       "matchStrings": ["glasskube_(?<currentValue>v[0-9.]*)_"],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "docker",
