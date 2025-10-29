@@ -4,7 +4,6 @@ import type {Config} from '@docusaurus/types';
 import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
-
   future: {
     v4: true, // opt-in for Docusaurus v4 planned changes
     experimental_faster: true, // turns Docusaurus Faster on globally
@@ -29,8 +28,8 @@ const config: Config = {
 
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'throw'
-    }
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
 
   i18n: {
