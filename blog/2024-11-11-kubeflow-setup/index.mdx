@@ -91,7 +91,6 @@ To create your cluster using the Google Cloud Console UI, go to https://console.
 Then, choose a name and region and configure your node pools:
 
 1. The first node pool (let's call it `default`) should be configured with
-
    - “Number of nodes (per zone)” set to 4 (12 nodes total is a good start for a Kubeflow installation)
    - “Enable cluster autoscaler” checked
    - “Size limit type” set to “Total limits”
@@ -101,7 +100,6 @@ Then, choose a name and region and configure your node pools:
    - “Enable nodes on spot VMs” checked (recommended)
 
 2. Add a second node pool using the button in the top bar (let's call this one `gpu`) and configure it with
-
    - “Number of nodes (per zone)” set to 0 (nodes in this group should only be provisioned on-demand)
    - “Enable cluster autoscaler” checked
    - “Size limit type” set to “Total limits”

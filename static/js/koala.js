@@ -14,7 +14,7 @@
   ].forEach(function (t) {
     ko[t] = function () {
       var n = [].slice.call(arguments);
-      return n.unshift(t), ko.push(n), ko;
+      return (n.unshift(t), ko.push(n), ko);
     };
   });
   const n = document.createElement('script');
