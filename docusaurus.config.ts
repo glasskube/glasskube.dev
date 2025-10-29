@@ -4,6 +4,12 @@ import type {Config} from '@docusaurus/types';
 import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
+
+  future: {
+    v4: true, // opt-in for Docusaurus v4 planned changes
+    experimental_faster: true, // turns Docusaurus Faster on globally
+  },
+
   title: 'Glasskube',
   tagline: 'Distribute your application to self-managed customers',
   favicon: 'img/favicon.png',
