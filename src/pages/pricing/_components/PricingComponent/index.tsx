@@ -319,7 +319,7 @@ function Pricing() {
                   <li>1 deployment per customer</li>
                   <li>1 user per customer</li>
                   <li>Pre & Post install scripts</li>
-                  <li>Customer Portal with installtion instruction</li>
+                  <li>Customer Portal with installation instructions</li>
                   <li>Basic email support + onboarding</li>
                 </ul>
                 <div className={styles.valueHook}>

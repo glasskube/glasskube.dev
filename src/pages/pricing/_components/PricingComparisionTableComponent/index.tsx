@@ -152,7 +152,7 @@ function PricingComparisonTable() {
                       <td>Support Type</td>
                       <td>Email</td>
                       <td>Email + Slack</td>
-                      <td>Email + Slack+ Phone</td>
+                      <td>Email + Slack + Phone</td>
                     </tr>
                     <tr>
                       <td>Onboarding Support</td>
