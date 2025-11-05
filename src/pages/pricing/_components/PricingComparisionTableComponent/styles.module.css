@@ -66,19 +66,19 @@
 }
 
 .categoryRow {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--ifm-color-emphasis-100);
 }
 
 .categoryRow td {
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   text-align: left !important;
-  padding: 0.75rem 1rem !important;
-  color: var(--ifm-color-emphasis-800);
+  padding: 1rem 1rem !important;
+  color: var(--ifm-color-emphasis-900);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 0.8rem !important;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200) !important;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.85rem !important;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300) !important;
+  border-top: 2px solid var(--ifm-color-emphasis-300);
 }
 
 .checkmark {
@@ -102,7 +102,14 @@
 }
 
 [data-theme='dark'] .categoryRow {
-  background-color: var(--ifm-color-emphasis-100);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='dark'] .categoryRow td {
+  color: var(--ifm-color-emphasis-800);
+  border-bottom-color: var(--ifm-color-emphasis-200) !important;
+  border-top-color: var(--ifm-color-emphasis-200);
+  font-weight: 600 !important;
 }
 
 [data-theme='dark'] .comparisonTable {
@@ -126,11 +133,11 @@
   }
 
   .categoryRow td:first-child {
-    background-color: rgba(0, 0, 0, 0.02) !important;
+    background-color: var(--ifm-color-emphasis-100) !important;
   }
 
   [data-theme='dark'] .categoryRow td:first-child {
-    background-color: var(--ifm-color-emphasis-100) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
   }
 }
 

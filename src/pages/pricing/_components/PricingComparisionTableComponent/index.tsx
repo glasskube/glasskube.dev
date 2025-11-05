@@ -16,7 +16,7 @@ function PricingComparisonTable() {
                   <thead>
                     <tr>
                       <th></th>
-                      <th className={styles.freeHeader}>Free</th>
+                      <th className={styles.freeHeader}>Starter</th>
                       <th className={styles.proHeader}>Pro</th>
                       <th className={styles.enterpriseHeader}>Enterprise</th>
                     </tr>
@@ -26,9 +26,21 @@ function PricingComparisonTable() {
                       <td colSpan={4}>Limits</td>
                     </tr>
                     <tr>
-                      <td>Users</td>
-                      <td>Up to 3</td>
+                      <td>Max Customers</td>
+                      <td>3</td>
+                      <td>50</td>
                       <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                      <td>Max Deployments per Customer</td>
+                      <td>1</td>
+                      <td>3</td>
+                      <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                      <td>Max Users per Customer</td>
+                      <td>1</td>
+                      <td>10</td>
                       <td>Unlimited</td>
                     </tr>
                     <tr>
@@ -37,74 +49,71 @@ function PricingComparisonTable() {
                       <td>Up to 1 TB</td>
                       <td>Unlimited</td>
                     </tr>
-                    <tr>
-                      <td>Workflows</td>
-                      <td>2 (coming soon)</td>
-                      <td>Up to 20</td>
-                      <td>Unlimited</td>
-                    </tr>
 
                     <tr className={styles.categoryRow}>
-                      <td colSpan={4}>Core Features</td>
+                      <td colSpan={4}>LICENSING & DEPLOYMENT</td>
                     </tr>
                     <tr>
-                      <td>Unlimited Deployments</td>
+                      <td>Deployment Agents (Docker / K8s)</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Self-hosting or Cloud</td>
+                      <td>GitHub Release Automation</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
-                    </tr>
+                    </tr>       
                     <tr>
                       <td>
-                        Deployment Agents for Helm, Docker, Terraform (coming
-                        soon)
+                      Pre/Post Install Scripts
                       </td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Customer Portal</td>
+                      <td>Customer Portal with installation instructions</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>License Management Basic</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>License Management</td>
+                      <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
                       <td>
-                        Advanced License Management <br></br>(Open Feature
-                        compatible)
+                        License SDK
                       </td>
                       <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Usage based pricing and metering</td>
+                      <td>
+                        Dynamic License Management
+                      </td>
                       <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>GitHub Integration</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>Customer Billing</td>
+                      <td>—</td>
+                      <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
+                    <tr className={styles.categoryRow}>
+                      <td colSpan={4}>SECURITY & GOVERNANCE</td>
+                    </tr>
                     <tr>
-                      <td>GitLab Integration</td>
+                      <td>Single Sign-On (SSO)</td>
                       <td>—</td>
-                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
@@ -114,73 +123,9 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Single Sign-On (SSO)</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Billing</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>White Label</td>
-                      <td>Only Customer Portal</td>
-                      <td>Full (incl. Custom Domains)</td>
-                      <td>Full (incl. Custom Domains)</td>
-                    </tr>
-                    <tr>
-                      <td>Multitenancy Support</td>
+                      <td>Custom Roles</td>
                       <td>—</td>
                       <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>AirGap Support</td>
-                      <td>Basic</td>
-                      <td>Basic</td>
-                      <td>Extended (Image & Application sync)</td>
-                    </tr>
-                    <tr>
-                      <td>HubSpot Integration</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-
-                    <tr className={styles.categoryRow}>
-                      <td colSpan={4}>APIs and Tools</td>
-                    </tr>
-                    <tr>
-                      <td>Distr API</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Distr SDK</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Distr CLI (coming soon)</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Slack Notifications</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Integrated CVE Scanning</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
 
@@ -188,44 +133,38 @@ function PricingComparisonTable() {
                       <td colSpan={4}>Observability</td>
                     </tr>
                     <tr>
-                      <td>Deployment Status Logs (incl. Historical)</td>
+                      <td>Live Container Metrics</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Container Metrics</td>
-                      <td>Live (no retention)</td>
-                      <td>10 days historical</td>
-                      <td>Custom retention</td>
+                      <td>Deployment Status Metrics</td>
+                      <td className={styles.checkmark}>✓</td>
+                      <td className={styles.checkmark}>✓</td>
+                      <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
                       <td>Container Logs</td>
-                      <td>Live (no retention)</td>
-                      <td>10 days historical</td>
-                      <td>Custom retention</td>
-                    </tr>
-                    <tr>
-                      <td>OpenTelemetry compatibility</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>100 rows</td>
+                      <td>10.000 rows</td>
+                      <td>Unlimited</td>
                     </tr>
 
                     <tr className={styles.categoryRow}>
-                      <td colSpan={4}>Support</td>
+                      <td colSpan={4}>SUPPORT / OPERATIONS</td>
                     </tr>
                     <tr>
                       <td>Support Type</td>
-                      <td>Community (Discord)</td>
-                      <td>Priority Email</td>
-                      <td>24/7 Support</td>
+                      <td>Email</td>
+                      <td>Email + Slack</td>
+                      <td>Email + Slack+ Phone</td>
                     </tr>
                     <tr>
-                      <td>Dedicated Slack Support</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
+                      <td>Onboarding Support</td>
+                      <td>Free Onboarding Call</td>
+                      <td>White Glove Onboarding</td>
+                      <td>White Glove Onboarding</td>
                     </tr>
                     <tr>
                       <td>Dedicated Support Engineer</td>
@@ -234,25 +173,58 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Onboarding Support</td>
-                      <td>—</td>
-                      <td className={styles.checkmark}>✓</td>
-                      <td className={styles.checkmark}>✓</td>
-                    </tr>
-                    <tr>
-                      <td>Self-hosted Support</td>
+                      <td>SLA</td>
                       <td>—</td>
                       <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>Service Level</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>Up to 99.99% uptime</td>
-                    </tr>
+                      <td>Self-hosting or Cloud</td>
+                      <td className={styles.checkmark}>✓</td>
+                      <td className={styles.checkmark}>✓</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr> 
                     <tr>
                       <td>Dedicated Infrastructure</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    <tr>
+                      <td>White Label</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    
+                    
+
+                    <tr>
+                      <td>Workflows / Automation</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    <tr>
+                      <td>Documentation Pages & Wiki</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    <tr>
+                      <td>Ticket System</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    <tr>
+                      <td>Public Registry</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td className={styles.checkmark}>✓</td>
+                    </tr>
+                    <tr>
+                      <td>CVE Scanning</td>
                       <td>—</td>
                       <td>—</td>
                       <td className={styles.checkmark}>✓</td>
