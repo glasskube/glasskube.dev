@@ -8,12 +8,6 @@
     filter 0.3s ease;
 }
 
-.pricingCardEnterprise {
-  margin-top: 20px;
-  padding-top: 76px;
-  position: relative;
-}
-
 .pricingCardDisabled {
   opacity: 0.5;
   filter: blur(4px);
@@ -57,18 +51,12 @@
 }
 
 .pricingCardHeaderSide {
-  min-height: 8rem;
+  min-height: 18rem;
 }
 
 .pricingCardHeaderMain {
   min-height: 9rem;
   padding-top: 30px;
-}
-
-.pricingCardHeaderEnterprise {
-  min-height: 14.5rem;
-  padding-top: 0px;
-  padding-bottom: 1.5rem;
 }
 
 .highlightedHeader {

@@ -413,19 +413,13 @@ function Pricing() {
             </div>
           </div>
           <div className="col">
-            <div
-              className={clsx(
-                'card',
-                'shadow--md',
-                styles.pricingCardSide,
-                styles.pricingCardEnterprise,
-              )}>
+            <div className={clsx('card', 'shadow--md', styles.pricingCardSide)}>
               <div
                 className={clsx(
                   'card__header',
                   'text--center',
                   styles.pricingCardHeader,
-                  styles.pricingCardHeaderEnterprise,
+                  styles.pricingCardHeaderSide,
                 )}>
                 <h3>Enterprise</h3>
                 <div className={styles.price}>Get a Demo</div>

@@ -1,8 +1,6 @@
 /* Feature Comparison Table Styles */
 .featureComparisonContainer {
   margin-top: 4rem;
-  overflow-x: hidden;
-  max-width: 3000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -12,23 +10,8 @@
   margin-bottom: 2rem;
   font-size: 1.75rem;
 }
-
-.comparisonTable,
-.comparisonTable table {
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-.comparisonTable {
-  padding-right: 0 !important;
-  margin-right: 0 !important;
-  max-width: 100%;
-}
-
-.comparisonTable table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
+.comparisonTable td {
+  width: 25%;
 }
 
 .comparisonTable th {
@@ -40,19 +23,7 @@
   font-size: 0.95rem;
 }
 
-.comparisonTable th:first-child {
-  width: 32%;
-  text-align: left;
-}
-
-.comparisonTable th:nth-child(2),
-.comparisonTable th:nth-child(3),
-.comparisonTable th:nth-child(4) {
-  width: 22.67%;
-}
-
 .comparisonTable td {
-  padding-right: 0 !important;
   padding: 0.9rem 1rem;
   text-align: center;
   vertical-align: middle;
@@ -146,7 +117,7 @@
 }
 
 .comparisonTable tr:last-child td {
-  border-bottom: none;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 [data-theme='dark'] .comparisonTable tr:not(.categoryRow):hover {
