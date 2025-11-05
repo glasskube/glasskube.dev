@@ -20,26 +20,26 @@ function Pricing() {
 
   // Get current prices based on billing cycle
   const getStarterInternalUserPrice = () => {
-    return billingCycle === 'monthly' 
-      ? starterInternalUserPriceMonthly 
+    return billingCycle === 'monthly'
+      ? starterInternalUserPriceMonthly
       : starterInternalUserPriceMonthly * yearlyDiscount;
   };
 
   const getStarterExternalCustomerPrice = () => {
-    return billingCycle === 'monthly' 
-      ? starterExternalCustomerPriceMonthly 
+    return billingCycle === 'monthly'
+      ? starterExternalCustomerPriceMonthly
       : starterExternalCustomerPriceMonthly * yearlyDiscount;
   };
 
   const getProInternalUserPrice = () => {
-    return billingCycle === 'monthly' 
-      ? proInternalUserPriceMonthly 
+    return billingCycle === 'monthly'
+      ? proInternalUserPriceMonthly
       : proInternalUserPriceMonthly * yearlyDiscount;
   };
 
   const getProExternalCustomerPrice = () => {
-    return billingCycle === 'monthly' 
-      ? proExternalCustomerPriceMonthly 
+    return billingCycle === 'monthly'
+      ? proExternalCustomerPriceMonthly
       : proExternalCustomerPriceMonthly * yearlyDiscount;
   };
 
@@ -59,26 +59,36 @@ function Pricing() {
 
   // Calculate total monthly prices (capped at plan limits)
   const calculateStarterMonthlyPrice = () => {
-    const cappedCustomers = Math.min(externalCustomers, starterMaxExternalCustomers);
-    return (starterInternalUserPrice * internalUsers) + 
-           (starterExternalCustomerPrice * cappedCustomers);
+    const cappedCustomers = Math.min(
+      externalCustomers,
+      starterMaxExternalCustomers,
+    );
+    return (
+      starterInternalUserPrice * internalUsers +
+      starterExternalCustomerPrice * cappedCustomers
+    );
   };
 
   const calculateProMonthlyPrice = () => {
-    const cappedCustomers = Math.min(externalCustomers, proMaxExternalCustomers);
-    return (proInternalUserPrice * internalUsers) + 
-           (proExternalCustomerPrice * cappedCustomers);
+    const cappedCustomers = Math.min(
+      externalCustomers,
+      proMaxExternalCustomers,
+    );
+    return (
+      proInternalUserPrice * internalUsers +
+      proExternalCustomerPrice * cappedCustomers
+    );
   };
 
   const starterMonthlyPrice = calculateStarterMonthlyPrice();
   const proMonthlyPrice = calculateProMonthlyPrice();
-  
+
   // Calculate yearly total (monthly price * 12)
   const starterYearlyTotal = starterMonthlyPrice * 12;
   const proYearlyTotal = proMonthlyPrice * 12;
 
   // Helper function to round up and format price without commas
-  const formatPrice = (price) => {
+  const formatPrice = price => {
     return Math.ceil(price);
   };
 
@@ -92,7 +102,7 @@ function Pricing() {
     setInternalUsers(internalUsers + 1);
   };
 
-  const handleInternalUsersChange = (e) => {
+  const handleInternalUsersChange = e => {
     const value = e.target.value;
     if (value === '') {
       return; // Allow empty input temporarily
@@ -103,7 +113,7 @@ function Pricing() {
     }
   };
 
-  const handleInternalUsersBlur = (e) => {
+  const handleInternalUsersBlur = e => {
     const value = parseInt(e.target.value, 10);
     if (isNaN(value) || value < 1) {
       setInternalUsers(1);
@@ -120,7 +130,7 @@ function Pricing() {
     setExternalCustomers(externalCustomers + 1);
   };
 
-  const handleExternalCustomersChange = (e) => {
+  const handleExternalCustomersChange = e => {
     const value = e.target.value;
     if (value === '') {
       return; // Allow empty input temporarily
@@ -131,7 +141,7 @@ function Pricing() {
     }
   };
 
-  const handleExternalCustomersBlur = (e) => {
+  const handleExternalCustomersBlur = e => {
     const value = parseInt(e.target.value, 10);
     if (isNaN(value) || value < 1) {
       setExternalCustomers(1);
@@ -252,12 +262,13 @@ function Pricing() {
 
         <div className="row">
           <div className="col col--4">
-            <div className={clsx(
-              'card', 
-              'shadow--md', 
-              styles.pricingCardSide,
-              !isStarterAvailable && styles.pricingCardDisabled
-            )}>
+            <div
+              className={clsx(
+                'card',
+                'shadow--md',
+                styles.pricingCardSide,
+                !isStarterAvailable && styles.pricingCardDisabled,
+              )}>
               <div
                 className={clsx(
                   'card__header',
@@ -272,12 +283,23 @@ function Pricing() {
                   <span className={styles.period}>/month</span>
                 </div>
                 <p className={styles.description}>
-                  {currency}{formatPrice(starterInternalUserPrice)}/internal user + {currency}{formatPrice(starterExternalCustomerPrice)}/external customer
+                  {currency}
+                  {formatPrice(starterInternalUserPrice)}/internal user +{' '}
+                  {currency}
+                  {formatPrice(starterExternalCustomerPrice)}/external customer
                   <br />
-                  <span className={styles.limitText}>Up to {starterMaxExternalCustomers} external customers</span>
+                  <span className={styles.limitText}>
+                    Up to {starterMaxExternalCustomers} external customers
+                  </span>
                 </p>
                 <p className={styles.slider}>
-                  {internalUsers} {internalUsers === 1 ? 'internal user' : 'internal users'} • {externalCustomers} {externalCustomers === 1 ? 'external customer' : 'external customers'} •
+                  {internalUsers}{' '}
+                  {internalUsers === 1 ? 'internal user' : 'internal users'} •{' '}
+                  {externalCustomers}{' '}
+                  {externalCustomers === 1
+                    ? 'external customer'
+                    : 'external customers'}{' '}
+                  •
                   {billingCycle === 'monthly'
                     ? ' Billed monthly'
                     : ` ${currency}${formatPrice(starterYearlyTotal)} billed yearly`}
@@ -285,9 +307,12 @@ function Pricing() {
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.cardSubtitle}>First POCs + market validation</h4>
+                <h4 className={styles.cardSubtitle}>
+                  First POCs + market validation
+                </h4>
                 <p className={styles.cardDescription}>
-                  Docker + agent installs to ship fast, iterate fast, and get customers updated instantly.
+                  Docker + agent installs to ship fast, iterate fast, and get
+                  customers updated instantly.
                 </p>
                 <ul className={styles.featureList}>
                   <li>Up to 3 customer installs</li>
@@ -311,12 +336,13 @@ function Pricing() {
             </div>
           </div>
           <div className="col col--4">
-            <div className={clsx(
-              'card', 
-              'shadow--md', 
-              styles.pricingCardMain,
-              !isProAvailable && styles.pricingCardDisabled
-            )}>
+            <div
+              className={clsx(
+                'card',
+                'shadow--md',
+                styles.pricingCardMain,
+                !isProAvailable && styles.pricingCardDisabled,
+              )}>
               <div className={styles.comingSoonBanner}>Most popular</div>
               <div
                 className={clsx(
@@ -332,12 +358,22 @@ function Pricing() {
                   <span className={styles.period}>/month</span>
                 </div>
                 <p className={styles.description}>
-                  {currency}{formatPrice(proInternalUserPrice)}/internal user + {currency}{formatPrice(proExternalCustomerPrice)}/external customer
+                  {currency}
+                  {formatPrice(proInternalUserPrice)}/internal user + {currency}
+                  {formatPrice(proExternalCustomerPrice)}/external customer
                   <br />
-                  <span className={styles.limitText}>Up to {proMaxExternalCustomers} external customers</span>
+                  <span className={styles.limitText}>
+                    Up to {proMaxExternalCustomers} external customers
+                  </span>
                 </p>
                 <p className={styles.slider}>
-                  {internalUsers} {internalUsers === 1 ? 'internal user' : 'internal users'} • {externalCustomers} {externalCustomers === 1 ? 'external customer' : 'external customers'} •
+                  {internalUsers}{' '}
+                  {internalUsers === 1 ? 'internal user' : 'internal users'} •{' '}
+                  {externalCustomers}{' '}
+                  {externalCustomers === 1
+                    ? 'external customer'
+                    : 'external customers'}{' '}
+                  •
                   {billingCycle === 'monthly'
                     ? ' Billed monthly'
                     : ` ${currency}${formatPrice(proYearlyTotal)} billed yearly`}
@@ -345,9 +381,12 @@ function Pricing() {
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.cardSubtitle}>Rollout + operational scaling</h4>
+                <h4 className={styles.cardSubtitle}>
+                  Rollout + operational scaling
+                </h4>
                 <p className={styles.cardDescription}>
-                  Platform teams deploy through Helm/Kubernetes. Version visibility, governance, and license control.
+                  Platform teams deploy through Helm/Kubernetes. Version
+                  visibility, governance, and license control.
                 </p>
                 <ul className={styles.featureList}>
                   <li>Up to 50 customer installs</li>
@@ -360,7 +399,8 @@ function Pricing() {
                   <li>White glove onboarding + private Slack</li>
                 </ul>
                 <div className={styles.valueHook}>
-                  Production-grade rollout engine — version control + identity control at scale
+                  Production-grade rollout engine — version control + identity
+                  control at scale
                 </div>
               </div>
               <div className="card__footer">
@@ -373,7 +413,13 @@ function Pricing() {
             </div>
           </div>
           <div className="col">
-            <div className={clsx('card', 'shadow--md', styles.pricingCardSide, styles.pricingCardEnterprise)}>
+            <div
+              className={clsx(
+                'card',
+                'shadow--md',
+                styles.pricingCardSide,
+                styles.pricingCardEnterprise,
+              )}>
               <div
                 className={clsx(
                   'card__header',
@@ -383,14 +429,16 @@ function Pricing() {
                 )}>
                 <h3>Enterprise</h3>
                 <div className={styles.price}>Get a Demo</div>
-                <p className={styles.description}>
-                </p>
+                <p className={styles.description}></p>
               </div>
               <hr className={styles.hr} />
               <div className="card__body">
-                <h4 className={styles.cardSubtitle}>Entire self-hosted lifecycle</h4>
+                <h4 className={styles.cardSubtitle}>
+                  Entire self-hosted lifecycle
+                </h4>
                 <p className={styles.cardDescription}>
-                  Distribute software, docs, support, workflows, licensing & billing — all in one platform.
+                  Distribute software, docs, support, workflows, licensing &
+                  billing — all in one platform.
                 </p>
                 <ul className={styles.featureList}>
                   <li>Unlimited customer installs</li>

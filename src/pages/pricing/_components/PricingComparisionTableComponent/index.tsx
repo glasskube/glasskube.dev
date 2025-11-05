@@ -64,11 +64,9 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
-                    </tr>       
+                    </tr>
                     <tr>
-                      <td>
-                      Pre/Post Install Scripts
-                      </td>
+                      <td>Pre/Post Install Scripts</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
@@ -86,17 +84,13 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>
-                        License SDK
-                      </td>
+                      <td>License SDK</td>
                       <td>—</td>
                       <td>—</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
                     <tr>
-                      <td>
-                        Dynamic License Management
-                      </td>
+                      <td>Dynamic License Management</td>
                       <td>—</td>
                       <td>—</td>
                       <td className={styles.checkmark}>✓</td>
@@ -183,7 +177,7 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
-                    </tr> 
+                    </tr>
                     <tr>
                       <td>Dedicated Infrastructure</td>
                       <td>—</td>
@@ -196,8 +190,6 @@ function PricingComparisonTable() {
                       <td className={styles.checkmark}>✓</td>
                       <td className={styles.checkmark}>✓</td>
                     </tr>
-                    
-                    
 
                     <tr>
                       <td>Workflows / Automation</td>

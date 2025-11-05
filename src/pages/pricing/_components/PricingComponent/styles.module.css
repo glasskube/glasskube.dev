@@ -3,7 +3,9 @@
   min-height: 55rem;
   display: flex;
   flex-direction: column;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
 .pricingCardEnterprise {
@@ -25,7 +27,9 @@
   flex-direction: column;
   position: relative;
   padding-top: 15px;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
 @media (max-width: 996px) {
@@ -158,7 +162,6 @@
   margin-top: 0;
   color: var(--ifm-color-emphasis-700);
 }
-
 
 .featureList li:before {
   content: '✓';

@@ -19,7 +19,7 @@ export const PricingFAQs: PricingFAQ[] = [
     Choose Enterprise when Distr becomes your entire commercial self-hosted delivery suite. You’re not just distributing software anymore — but also documentation, support portals, public images, automated workflows, dynamic licensing, usage-based billing and more — all inside one platform. Enterprise includes dedicated infrastructure isolation and full white-label control.
     `,
   },
-  
+
   {
     id: 'pricing-model',
     question: 'How does pricing work?',
