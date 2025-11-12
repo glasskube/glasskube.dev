@@ -4,12 +4,12 @@ title: Should you run PostgreSQL on Kubernetes?
 description: Exploring the viability, benefits, and best practices of running PostgreSQL on Kubernetes with modern operators.
 authors: [jpage]
 tags: [postgres, kubernetes, database]
-image: https://github.com/user-attachments/assets/47028afb-53d8-4994-a4a3-8a32b06fcb31
+image: /img/blog/2024-11-07-postgres-on-kubernetes/thumbnail.png
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
-![thumbnail](https://github.com/user-attachments/assets/47028afb-53d8-4994-a4a3-8a32b06fcb31)
+![thumbnail](/img/blog/2024-11-07-postgres-on-kubernetes/thumbnail.png)
 
 ## TLDR;
 
@@ -91,11 +91,11 @@ Sure you could do that, probably when a Kubernetes StatefulSet was your only alt
 In many cases, deciding between running PostgreSQL on Kubernetes versus using a fully managed service feels a lot like weighing the trade-offs of SaaS versus self-hosted software in general. For many, including myself and our team, the extensibility and customization Kubernetes offers, combined with the relative ease of using an operator like CloudNativePG, make self-hosting a clear choice. Plus, the typically high cost of managed services only makes the decision to self-hosting on Kubernetes even easier.
 A comment on the [/kubernetes](https://www.reddit.com/r/kubernetes/comments/1c2u537/why_run_postgres_in_kubernetes/) subreddit put it well.
 
-![reddit-snapshot](https://github.com/user-attachments/assets/798bdb1f-c02d-4d26-9bbb-16b279df7369)
+![reddit-snapshot](/img/blog/2024-11-07-postgres-on-kubernetes/reddit-snapshot.png)
 
 ## What do you need to run PostgreSQL on Kubernetes?
 
-![postgres-and-k8s](https://github.com/user-attachments/assets/9cc74686-51ca-4542-a582-93e369520944)
+![postgres-and-k8s](/img/blog/2024-11-07-postgres-on-kubernetes/postgres-and-k8s.png)
 
 Largely there are three main ingredients required to be able to pull off efficient PostgreSQL management on Kubernetes.
 
@@ -111,7 +111,7 @@ If you’re already running application workloads in Kubernetes but have a data 
 
 ## Speaking of the operator: What is CloudNativePG?
 
-![cnpg](https://github.com/user-attachments/assets/3636df2a-a92a-4188-a3cf-0a09e6b9b40a)
+![cnpg](/img/blog/2024-11-07-postgres-on-kubernetes/cnpg.png)
 
 CloudNativePG is an open-source operator designed for managing PostgreSQL database clusters in Kubernetes. It’s loaded with features that make it production-ready and well-suited for high-availability PostgreSQL workloads.
 

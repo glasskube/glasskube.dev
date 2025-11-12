@@ -28,6 +28,39 @@ function HomepageHeader() {
                 <span className={styles.location}>Vienna</span>.
               </p>
 
+              <div className={styles.productSection} id="products">
+                <p className={styles.sectionLabel}>Featured Product</p>
+                <div className={styles.productCard}>
+                  <Link
+                    to="https://distr.sh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.productLink}
+                  >
+                    <span className={styles.productName}>distr.sh</span>
+                    <span className={styles.productDescription}>Enterprise software distribution platform for self-managed deployments</span>
+                  </Link>
+                  <div className={styles.productActions}>
+                    <Link
+                      to="https://github.com/glasskube/distr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.productButton}
+                    >
+                      GitHub
+                    </Link>
+                    <Link
+                      to="https://cal.glasskube.com/team/gk/demo?overlayCalendar=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.productButton}
+                    >
+                      Get a Demo
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               <div className={styles.expertiseSection} id="expertise">
                 <p className={styles.sectionLabel}>Areas of Expertise</p>
                 <div className={styles.expertiseGrid}>
@@ -65,19 +98,6 @@ function HomepageHeader() {
                   <div className={styles.statNumber}>Open Source</div>
                   <div className={styles.statLabel}>Commitment</div>
                 </div>
-              </div>
-
-              <div className={styles.productSection} id="products">
-                <p className={styles.sectionLabel}>Featured Product</p>
-                <Link
-                  to="https://distr.sh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.productLink}
-                >
-                  <span className={styles.productName}>distr.sh</span>
-                  <span className={styles.productDescription}>Enterprise software distribution platform for self-managed deployments</span>
-                </Link>
               </div>
 
               <div className={styles.legacySection}>
