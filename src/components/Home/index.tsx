@@ -1,185 +1,96 @@
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/core/lib/client/exports/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import EmblaCarousel from '@site/src/components/HomeCarousel/EmblaCarousel';
 import HomepageBlogs from '@site/src/components/HomepageBlogs';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import HomepageProducts from '@site/src/components/HomepageProducts';
-import NewsletterSignup from '@site/src/components/NewsletterSignup';
-import Testimonials from '@site/src/components/Testimonials';
-import DemoButton from '@site/src/components/buttons/DemoButton';
-import SignupForWaitlistButton from '@site/src/components/buttons/SignupForWaitlistButton';
-import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 import {Content} from '@theme/BlogPostPage';
 import Heading from '@theme/Heading';
-import Image from '@theme/IdealImage';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
-import {EmblaOptionsType} from 'embla-carousel';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-
-  const OPTIONS: EmblaOptionsType = {dragFree: false, loop: true};
-  const SLIDE_COUNT = 3;
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero', styles.heroBanner)} id="about">
       <div className="container">
-        <div className="row row--no-gutters">
-          <div className="col">
-            <Heading as="h2" className={styles.heroSuperTitle}>
-              Introducing Distr
-            </Heading>
-            <Heading as="h1" className={styles.heroTitle}>
-              {siteConfig.tagline}
-            </Heading>
-          </div>
-        </div>
-        <div className="row row--no-gutters">
-          <div className={clsx('col', styles.heroCol)}>
-            <div className={styles.buttons}>
-              <DemoButton additionalClassNames={'button--lg light'} />
-              <SignupForWaitlistButton
-                additionalClassNames={'button--lg light'}
-              />
-            </div>
-            <div className={styles.yc}>
-              <h4>Backed by</h4>
-              <Link
-                to="https://www.ycombinator.com/companies/glasskube"
-                target="_blank"
-                rel="noreferrer">
-                <Image
-                  alt="Glasskube backed by Y Combinator"
-                  className={styles.ycImg}
-                  img={useBaseUrl('/img/yc/yc.svg')}
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="row row--no-gutters margin-top--lg margin-bottom--lg">
-          <div className="col">
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function HomepageVideo() {
-  return (
-    <div
-      className={clsx(
-        'container-fluid',
-        'text--center',
-        styles.backgroundSecondary,
-      )}>
-      <div className="container text--center">
         <div className="row">
-          <div className="col col--8 col--offset-2 margin-vert--lg">
-            <Heading as={'h2'} className={styles.colorWhite}>
-              Distr Demo Video
-            </Heading>
-            <div
-              style={{
-                position: 'relative',
-                height: '0',
-                paddingBottom: '56.25%',
-              }}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <iframe
-                  width="100%"
-                  height="460"
-                  src="https://www.youtube-nocookie.com/embed/FkSWkudlHJw"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen></iframe>
+          <div className="col col--10 col--offset-1">
+            <div className={styles.heroContent}>
+              <Heading as="h1" className={styles.heroTitle}>
+                Glasskube
+              </Heading>
+              <div className={styles.divider}></div>
+              <p className={styles.heroTagline}>
+                Professional AI & Cloud Computing Services
+              </p>
+              <p className={styles.heroDescription}>
+                A software and AI engineering company operating out of{' '}
+                <span className={styles.location}>Chicago</span> and{' '}
+                <span className={styles.location}>Vienna</span>.
+              </p>
+
+              <div className={styles.expertiseSection} id="expertise">
+                <p className={styles.sectionLabel}>Areas of Expertise</p>
+                <div className={styles.expertiseGrid}>
+                  <div className={styles.expertiseItem}>
+                    <div className={styles.expertiseIcon}>🤖</div>
+                    <div className={styles.expertiseName}>Artificial Intelligence</div>
+                  </div>
+                  <div className={styles.expertiseItem}>
+                    <div className={styles.expertiseIcon}>🔗</div>
+                    <div className={styles.expertiseName}>Model Context Protocol</div>
+                  </div>
+                  <div className={styles.expertiseItem}>
+                    <div className={styles.expertiseIcon}>☁️</div>
+                    <div className={styles.expertiseName}>Cloud Computing</div>
+                  </div>
+                  <div className={styles.expertiseItem}>
+                    <div className={styles.expertiseIcon}>⚡</div>
+                    <div className={styles.expertiseName}>Efficient Programming</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.statsSection}>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>4K+</div>
+                  <div className={styles.statLabel}>GitHub Stars</div>
+                </div>
+                <div className={styles.statDivider}></div>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>3+</div>
+                  <div className={styles.statLabel}>Years in Business</div>
+                </div>
+                <div className={styles.statDivider}></div>
+                <div className={styles.statItem}>
+                  <div className={styles.statNumber}>Open Source</div>
+                  <div className={styles.statLabel}>Commitment</div>
+                </div>
+              </div>
+
+              <div className={styles.productSection} id="products">
+                <p className={styles.sectionLabel}>Featured Product</p>
+                <Link
+                  to="https://distr.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.productLink}
+                >
+                  <span className={styles.productName}>distr.sh</span>
+                  <span className={styles.productDescription}>Enterprise software distribution platform for self-managed deployments</span>
+                </Link>
+              </div>
+
+              <div className={styles.legacySection}>
+                <p className={styles.legacyText}>
+                  Previously created a Kubernetes package manager and operator
+                  <span className={styles.deprecated}> (now deprecated)</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function LogoSlider() {
-  return (
-    <div className={clsx('row', styles.sliderBg)}>
-      <div className={clsx(styles.sliderWrap, 'margin-bottom--lg')}>
-        <div className={styles.sliderContainer}>
-          <LogoGrid />
-          <LogoGrid />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LogoGrid() {
-  return (
-    <div className={styles.sliderGrid}>
-      <img
-        src="https://github.com/user-attachments/assets/5e08ab88-1cfd-4854-8e8d-c9dc0c75c0b7"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/c4e055e2-4a12-48e6-91a7-5b812a775881"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/5104fce0-b156-456f-83ac-480cedb42516"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/69532438-7ca7-4085-9fa2-9f20b1ea7a60"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/7e94c101-2b63-4432-ac80-a00ceeca8309"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/59a281a7-651b-43fd-93ea-6ad5a0661ccb"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/bfd56186-2538-41ab-b2a9-3d3fb64b878f"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/ad8628e4-b866-4d31-992c-3b12633b3538"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/a7648681-0145-4ee3-a94c-b0b596d81979"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/e3cf517a-add2-47cb-81fc-b7bd136f08dc"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/008137ed-ee3a-43b9-be8b-8c96aaefc170"
-        width={200}
-      />
-      <img
-        src="https://github.com/user-attachments/assets/4bc5298d-6b14-4d56-ba1b-c82c27711bdc"
-        width={200}
-      />
-    </div>
+    </header>
   );
 }
 
@@ -204,30 +115,19 @@ export default function Home({
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.tagline}
-      description="Featuring a GUI and a CLI. Glasskube packages are dependency aware, GitOps ready and get automatic updates via a central public package repository.">
+      title="Glasskube"
+      description="A software and AI engineering company operating out of Chicago and Vienna. Creators of the software distribution platform distr.sh.">
       <Head>
         <script async src="/js/koala.js"></script>
       </Head>
       <HomepageHeader />
       <main>
-        <LogoSlider />
-        <HomepageFeatures />
-        <HomepageProducts />
-        <HomepageVideo />
-        <HomepageBlogs
-          homePageBlogMetadata={homePageBlogMetadata}
-          recentPosts={recentPosts}
-        />
-        <Testimonials />
-        <div className="container">
-          <div className="row">
-            <div className="col col--10 col--offset-1">
-              <DefaultCTA />
-            </div>
-          </div>
-        </div>
-        <NewsletterSignup />
+        <section id="blog" className={styles.blogSection}>
+          <HomepageBlogs
+            homePageBlogMetadata={homePageBlogMetadata}
+            recentPosts={recentPosts}
+          />
+        </section>
       </main>
     </Layout>
   );

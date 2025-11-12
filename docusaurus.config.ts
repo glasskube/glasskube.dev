@@ -102,6 +102,108 @@ const config: Config = {
             to: '/contact',
             from: '/building-blocks-whitepaper-cta',
           },
+          // Blog post redirects to distr.sh
+          {
+            to: 'https://distr.sh/blog/self-managed-vs-cloud-vs-byoc/',
+            from: '/blog/self-managed-vs-cloud-vs-byoc/',
+          },
+          {
+            to: 'https://distr.sh/blog/5-ways-to-succeed-without-access-to-customer-environments/',
+            from: '/blog/5-ways-to-succeed-without-access-to-customer-environments/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-v1-release-post/',
+            from: '/blog/distr-v1-release-post/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-v2-release-post/',
+            from: '/blog/distr-v2-release-post/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-vs-replicated/',
+            from: '/blog/distr-vs-replicated/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-v1.4-release-post/',
+            from: '/blog/distr-v1.4-release-post/',
+          },
+          {
+            to: 'https://distr.sh/blog/container-image-registry-comparison/',
+            from: '/blog/container-image-registry-comparison/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-tutorials/',
+            from: '/blog/distr-tutorials/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-docker-swarm/',
+            from: '/blog/distr-docker-swarm/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-dashboard/',
+            from: '/blog/distr-dashboard/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-registry/',
+            from: '/blog/distr-registry/',
+          },
+          {
+            to: 'https://distr.sh/blog/distr-docs/',
+            from: '/blog/distr-docs/',
+          },
+          // Glossary page redirects to distr.sh
+          {
+            to: 'https://distr.sh/glossary/air-gapped-meaning/',
+            from: '/glossary/air-gapped-meaning/',
+          },
+          {
+            to: 'https://distr.sh/glossary/byoc-definition/',
+            from: '/glossary/byoc-definition/',
+          },
+          {
+            to: 'https://distr.sh/glossary/cve-common-vulnerabilities-and-exposures/',
+            from: '/glossary/cve-common-vulnerabilities-and-exposures/',
+          },
+          {
+            to: 'https://distr.sh/glossary/helm-chart/',
+            from: '/glossary/helm-chart/',
+          },
+          {
+            to: 'https://distr.sh/glossary/isv-meaning/',
+            from: '/glossary/isv-meaning/',
+          },
+          {
+            to: 'https://distr.sh/glossary/kubernetes/',
+            from: '/glossary/kubernetes/',
+          },
+          {
+            to: 'https://distr.sh/glossary/software-license-management/',
+            from: '/glossary/software-license-management/',
+          },
+          {
+            to: 'https://distr.sh/glossary/oci-container-artifact-registry/',
+            from: '/glossary/oci-container-artifact-registry/',
+          },
+          {
+            to: 'https://distr.sh/glossary/on-premises-definition/',
+            from: '/glossary/on-premises-definition/',
+          },
+          {
+            to: 'https://distr.sh/glossary/saas-definition/',
+            from: '/glossary/saas-definition/',
+          },
+          {
+            to: 'https://distr.sh/glossary/sbom-software-bill-of-materials/',
+            from: '/glossary/sbom-software-bill-of-materials/',
+          },
+          {
+            to: 'https://distr.sh/glossary/self-managed-software/',
+            from: '/glossary/self-managed-software/',
+          },
+          {
+            to: 'https://distr.sh/glossary/vulnerability-scanning/',
+            from: '/glossary/vulnerability-scanning/',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/products/package-manager')) {
@@ -115,15 +217,6 @@ const config: Config = {
           }
           return undefined; // Return a falsy value: no redirect created
         },
-      },
-    ],
-    [
-      'posthog-docusaurus',
-      {
-        apiKey: 'phc_EloQUW6cgfbTc0pI9c5CXElhQ4gVGRoBsrUAoakJVoQ',
-        appUrl: 'https://p.glasskube.eu',
-        ui_host: 'https://eu.posthog.com',
-        enableInDevelopment: false,
       },
     ],
   ],
@@ -183,29 +276,11 @@ const config: Config = {
         src: 'img/glasskube-logo.svg',
       },
       items: [
-        {
-          label: 'Docs',
-          to: 'https://distr.sh/docs/getting-started/what-is-distr/',
-        },
-        {label: 'Blog', to: '/blog/'},
-        {
-          type: 'dropdown',
-          label: 'Resources',
-          position: 'left',
-          items: [
-            {
-              label: 'White Paper',
-              to: '/white-paper/building-blocks/',
-            },
-            {
-              label: 'Case Studies',
-              to: '/case-studies/',
-            },
-          ],
-        },
-        {label: 'Pricing', to: '/pricing'},
+        {label: 'About', to: '/#about'},
+        {label: 'Expertise', to: '/#expertise'},
+        {label: 'Products', to: '/#products'},
+        {label: 'Blog', to: '/#blog'},
         {type: 'custom-wrapper', position: 'right'},
-        {label: 'Login', to: 'https://app.distr.sh/', position: 'right'},
       ],
     },
     footer: {
