@@ -108,6 +108,14 @@ const config: Config = {
             from: '/pricing/',
           },
           {
+            to: 'https://distr.sh/case-studies/',
+            from: '/case-studies/',
+          },
+          {
+            to: 'https://distr.sh/white-paper/building-blocks/',
+            from: '/white-paper/building-blocks/',
+          },
+          {
             to: 'https://distr.sh/blog/self-managed-vs-cloud-vs-byoc/',
             from: '/blog/self-managed-vs-cloud-vs-byoc/',
           },
