@@ -277,7 +277,6 @@ const config: Config = {
       },
       items: [
         {label: 'Distr', to: '/#products'},
-        {label: 'About', to: '/#about'},
         {label: 'Expertise', to: '/#expertise'},
         {label: 'Blog', to: '/blog'},
         {type: 'custom-wrapper', position: 'right'},
@@ -309,6 +308,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
+            {label: 'About', to: '/about/'},
             {label: 'Contact us', to: '/contact/'},
             {
               label: 'Schedule a meeting',
