@@ -4,12 +4,12 @@ title: The complete Kustomize tutorial
 description: A guide to modifying Kubernetes resource configurations using strategic merge and JSON patches, among other transformations with tips for managing resources across environments.
 authors: [jpage, pmig]
 tags: [glasskube, kustomize]
-image: https://github.com/user-attachments/assets/37ecf483-a984-4ca5-b10f-eaad367ff7cd
+image: /img/blog/2024-10-14-kustomize-guide/thumbnail.png
 ---
 
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
-![thumbnail-kustomize](https://github.com/user-attachments/assets/37ecf483-a984-4ca5-b10f-eaad367ff7cd)
+![thumbnail-kustomize](/img/blog/2024-10-14-kustomize-guide/thumbnail.png)
 
 ## What is Kustomize in the first place?
 
@@ -57,7 +57,7 @@ A typical Kustomize setup has two main directories: base and overlays.
 
 In Kustomize, overlays layer modifications on top of base manifests to create customized versions. The `kustomization.yaml` file guides this process, listing the base resources and applying the specified overlays. This can be seen as stacking changes on a temporary copy of the original manifest, resulting in a customized version that can be applied to Kubernetes with `kubectl apply`. Kustomize uses "transformer and generator" functions to modify manifests according to simple declarative rules through the `Kustomization.yaml` file.
 
-![kustomize-graph](https://github.com/user-attachments/assets/b19158c7-f9ce-4167-adb7-0a063f97a09c)
+![kustomize-graph](/img/blog/2024-10-14-kustomize-guide/kustomize-graph.png)
 
 ## Kustomize Transformers
 
@@ -276,7 +276,7 @@ generatorOptions:
 
 There are two main types of patches Kustomize can apply: **strategic merge patches** and **JSON patches**. Each is suited for different use cases and each plays a specific role in customizing Kubernetes configurations.
 
-![Kustomize patch types](https://github.com/user-attachments/assets/3f3a90d8-ee16-4a07-9d9a-0ec2f1ec49cd)
+![Kustomize patch types](/img/blog/2024-10-14-kustomize-guide/kustomize-patch-types.png)
 
 In the following example, both types of patches with reference the same base deployment which is:
 
@@ -416,7 +416,7 @@ spec:
 
 Because Kustomize works with un-templated Kubernetes base manifests and applies YAML overlays on top, these files can be easily stored in a version control system like GitHub. A GitOps tool like [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) can then apply the contents of the environment-specific overlay folders directly. Argo CD reads the `kustomization.yaml` file, applies the necessary patches and transformations, and knows where to find the base Kubernetes manifest files to deploy.
 
-![ArgoCD and Kustomize graph](https://github.com/user-attachments/assets/d9a1c782-c73e-4f93-9a60-63f9ec0a399a)
+![ArgoCD and Kustomize graph](/img/blog/2024-10-14-kustomize-guide/argocd-kustomize-graph.png)
 
 You can create a file structure like this, add the base manifests, patch files, and transformations discussed in the previous sections, and then push them to a platform like GitHub.
 

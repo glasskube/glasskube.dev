@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DefaultCTA from '@site/src/components/cta/DefaultCTA/defaultCTA';
 
-![Postgres on Kubernetes](https://github.com/user-attachments/assets/dc644481-5271-4685-85d9-cd107a55887b)
+![Postgres on Kubernetes](/img/guides/package-manager/postgres-on-kubernetes.png)
 
 We recently wrote about how, since late 2019, the landscape for running PostgreSQL on Kubernetes has transformed. Today, it’s not just a bold choice for those risky DBAs with nothing else to lose. Running PostgreSQL on Kubernetes has become not just a viable but even potentially a superior way to manage database workloads, especially if you are already invested on Kubernetes.
 
@@ -330,7 +330,7 @@ kubectl logs <CLUSTER_POD_NAME>
 
 If configured correctly, you can expect to find a new folder which is named the same of the cluster name created in the S3 bucket.
 
-![WAL backup in S3 bucket](https://github.com/user-attachments/assets/7238f707-f12d-4e05-a067-b3d3c3821ce0)
+![WAL backup in S3 bucket](/img/guides/package-manager/wal-backup-s3.png)
 
 ## The complete Cluster definition file looks like this
 
@@ -385,11 +385,11 @@ Grafana authentication: Once installed you can access the Grafana dashboard with
 
 Once inside Grafana then create a new dashboard and import an existing dashboard using the community-maintained CloudNativePG dashboard with ID 20417
 
-![grafana dashboard import](https://github.com/user-attachments/assets/acb429bf-8da3-424a-aba2-a46dc57fefcb)
+![grafana dashboard import](/img/guides/package-manager/grafana-dashboard-import.png)
 
 Give it a name, and after a few minutes you should see something similar to this
 
-![cloudnative-pg dashboard](https://github.com/user-attachments/assets/f1b56ba9-957c-4db7-b510-9add2cd78e60)
+![cloudnative-pg dashboard](/img/guides/package-manager/cloudnative-pg-dashboard.png)
 
 In this CloudNativePG guide, we walked through the initial setup of the CloudNativePG operator and introduced the basics of managing PostgreSQL clusters. We covered key features like enabling WAL file backups for disaster recovery, configuring TLS for secure database authentication, and deploying a monitoring stack to keep a close eye on your database cluster's health. Hopefully, this guide has been helpful and gives you a solid starting point for managing PostgreSQL clusters on Kubernetes with the CloudNativePG operator.
 
