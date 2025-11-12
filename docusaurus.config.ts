@@ -104,6 +104,10 @@ const config: Config = {
           },
           // Blog post redirects to distr.sh
           {
+            to: 'https://distr.sh/pricing/',
+            from: '/pricing/',
+          },
+          {
             to: 'https://distr.sh/blog/self-managed-vs-cloud-vs-byoc/',
             from: '/blog/self-managed-vs-cloud-vs-byoc/',
           },
