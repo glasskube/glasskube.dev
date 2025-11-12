@@ -276,10 +276,10 @@ const config: Config = {
         src: 'img/glasskube-logo.svg',
       },
       items: [
+        {label: 'Distr', to: '/#products'},
         {label: 'About', to: '/#about'},
         {label: 'Expertise', to: '/#expertise'},
-        {label: 'Products', to: '/#products'},
-        {label: 'Blog', to: '/#blog'},
+        {label: 'Blog', to: '/blog'},
         {type: 'custom-wrapper', position: 'right'},
       ],
     },
@@ -287,43 +287,28 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Distr',
+          title: 'Social',
           items: [
-            {label: 'GitHub', to: 'https://github.com/glasskube/distr/'},
-            {
-              label: 'Docs',
-              to: 'https://distr.sh/docs/getting-started/what-is-distr/',
-            },
-            {label: 'Signup', href: 'https://signup.distr.sh/'},
-          ],
-        },
-        {
-          title: 'Package Manager',
-          items: [
-            {label: 'GitHub', to: 'https://github.com/glasskube/glasskube/'},
-            {label: 'Docs', to: '/products/package-manager/docs/'},
-            {
-              label: 'Guides',
-              to: '/products/package-manager/guides/',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {label: 'Discord', href: 'https://discord.com/invite/SxH6KUCGH7'},
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/glasskube/',
             },
-            {label: 'Twitter / X', href: 'https://x.com/glasskube'},
+            {
+              label: 'Y Combinator',
+              href: 'https://www.ycombinator.com/companies/glasskube',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {label: 'Blog', to: '/blog/'},
+            {label: 'Glossary', to: '/glossary/'},
           ],
         },
         {
           title: 'More',
           items: [
-            {label: 'Blog', to: '/blog/'},
-            {label: 'Glossary', to: '/glossary/'},
             {label: 'Contact us', to: '/contact/'},
             {
               label: 'Schedule a meeting',

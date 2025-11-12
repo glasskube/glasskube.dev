@@ -1,5 +1,5 @@
-import styles from './styles.module.css';
 import TalkToFoundersButton from '@site/src/components/buttons/TalkToFoundersButton';
+import styles from './styles.module.css';
 
 function Index() {
   return (
