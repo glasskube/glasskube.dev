@@ -1,5 +1,6 @@
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Heading from '@theme/Heading';
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './index.module.css';
 
 function loadScript() {
@@ -27,179 +28,190 @@ interface ContactRequest {
   useCase: string;
 }
 
-class Form extends React.Component<unknown, {data: ContactRequest}> {
-  hubSpotLoaded = false;
+function Form() {
+  const [data, setData] = useState<ContactRequest>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    jobTitle: '',
+    companyName: '',
+    useCase: '',
+  });
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [hubSpotLoaded, setHubSpotLoaded] = useState(false);
+  const captchaRef = useRef<HCaptcha>(null);
 
-  constructor(props: unknown) {
-    super(props);
-    this.state = {data: {} as ContactRequest};
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  loadHubSpot() {
-    if (!this.hubSpotLoaded) {
+  useEffect(() => {
+    if (captchaToken && !hubSpotLoaded) {
       loadScript();
-      this.hubSpotLoaded = true;
+      setHubSpotLoaded(true);
     }
-  }
+  }, [captchaToken, hubSpotLoaded]);
 
-  async handleSubmit(event) {
+  const handleCaptchaVerify = (token: string) => {
+    setCaptchaToken(token);
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const {name, value} = e.target;
+    setData(prev => ({...prev, [name]: value}));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    loadScript();
 
-    await fetch('https://forms.glasskube.com/api/v1/contact', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state.data),
-    })
-      .then(() => {
-        alert(
-          'Thank you for reaching out. We will follow up as soon as possible.',
-        );
-      })
-      .catch(err => {
-        alert(err.message);
-        console.error(err.message);
+    if (!captchaToken) {
+      alert('Please complete the captcha verification.');
+      return;
+    }
+
+    try {
+      await fetch('https://forms.glasskube.com/api/v1/contact', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-  }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
-        <div className="row g-2 mt-1">
-          <div className="col">
-            <label htmlFor="firstName">First Name*</label>
-            <input
-              type="text"
-              className={styles.input}
-              id="firstName"
-              name="firstName"
-              placeholder="First name"
-              value={this.state.data.firstName}
-              onChange={e =>
-                this.setState(state => {
-                  state.data.firstName = e.target.value;
-                })
-              }
-              required
-            />
-          </div>
-          <div className="col">
-            <label htmlFor="lastName">Last Name*</label>
-            <input
-              type="text"
-              className={styles.input}
-              id="lastName"
-              name="lastName"
-              placeholder="Last name"
-              value={this.state.data.lastName}
-              onChange={e =>
-                this.setState(state => {
-                  state.data.lastName = e.target.value;
-                })
-              }
-              required
-            />
-          </div>
-        </div>
-        <div className="row g-2">
-          <div className="col">
-            <label htmlFor="email">Work Email*</label>
-            <input
-              type="email"
-              className={styles.input}
-              id="email"
-              placeholder="Work Email"
-              name="email"
-              value={this.state.data.email}
-              onChange={e => {
-                this.setState(state => {
-                  state.data.email = e.target.value;
-                });
-                this.loadHubSpot();
-              }}
-              required
-            />
-          </div>
-          <div className="col">
-            <label htmlFor="phone">Work Phone</label>
-            <input
-              type="tel"
-              className={styles.input}
-              id="phone"
-              placeholder="Work Phone"
-              value={this.state.data.phone}
-              onChange={e =>
-                this.setState(state => {
-                  state.data.phone = e.target.value;
-                })
-              }
-              name="phone"
-            />
-          </div>
-        </div>
-        <div className="row g-2">
-          <div className="col">
-            <label htmlFor="jobTitle">Job title*</label>
-            <input
-              type="text"
-              className={styles.input}
-              id="jobTitle"
-              placeholder="Job Title"
-              name="jobTitle"
-              value={this.state.data.jobTitle}
-              onChange={e =>
-                this.setState(state => {
-                  state.data.jobTitle = e.target.value;
-                })
-              }
-              required
-            />
-          </div>
-          <div className="col">
-            <label htmlFor="companyName">Company Name*</label>
-            <input
-              type="text"
-              className={styles.input}
-              id="companyName"
-              placeholder="Company Name"
-              name="companyName"
-              value={this.state.data.companyName}
-              onChange={e =>
-                this.setState(state => {
-                  state.data.companyName = e.target.value;
-                })
-              }
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="useCase">Use case*</label>
-          <textarea
-            id="useCase"
-            name="useCase"
-            required
-            placeholder=""
-            value={this.state.data.email}
-            onChange={e =>
-              this.setState(state => {
-                state.data.useCase = e.target.value;
-              })
-            }
+      alert(
+        'Thank you for reaching out. We will follow up as soon as possible.',
+      );
+
+      // Reset form and captcha
+      setData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        jobTitle: '',
+        companyName: '',
+        useCase: '',
+      });
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
+    } catch (err) {
+      alert(err.message);
+      console.error(err.message);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className="row g-2 mt-1">
+        <div className="col">
+          <label htmlFor="firstName">First Name*</label>
+          <input
+            type="text"
             className={styles.input}
+            id="firstName"
+            name="firstName"
+            placeholder="First name"
+            value={data.firstName}
+            onChange={handleInputChange}
+            required
           />
         </div>
-        <button className="button button--secondary button--lg" type="submit">
-          Submit
-        </button>
-      </form>
-    );
-  }
+        <div className="col">
+          <label htmlFor="lastName">Last Name*</label>
+          <input
+            type="text"
+            className={styles.input}
+            id="lastName"
+            name="lastName"
+            placeholder="Last name"
+            value={data.lastName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+      </div>
+      <div className="row g-2">
+        <div className="col">
+          <label htmlFor="email">Work Email*</label>
+          <input
+            type="email"
+            className={styles.input}
+            id="email"
+            placeholder="Work Email"
+            name="email"
+            value={data.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="col">
+          <label htmlFor="phone">Work Phone</label>
+          <input
+            type="tel"
+            className={styles.input}
+            id="phone"
+            placeholder="Work Phone"
+            value={data.phone}
+            onChange={handleInputChange}
+            name="phone"
+          />
+        </div>
+      </div>
+      <div className="row g-2">
+        <div className="col">
+          <label htmlFor="jobTitle">Job title*</label>
+          <input
+            type="text"
+            className={styles.input}
+            id="jobTitle"
+            placeholder="Job Title"
+            name="jobTitle"
+            value={data.jobTitle}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="col">
+          <label htmlFor="companyName">Company Name*</label>
+          <input
+            type="text"
+            className={styles.input}
+            id="companyName"
+            placeholder="Company Name"
+            name="companyName"
+            value={data.companyName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="useCase">Use case*</label>
+        <textarea
+          id="useCase"
+          name="useCase"
+          required
+          placeholder=""
+          value={data.useCase}
+          onChange={handleInputChange}
+          className={styles.input}
+        />
+      </div>
+      <div className="margin-vert--md">
+        <HCaptcha
+          sitekey="9258fe92-eac0-4aee-9062-3ae6fb8871aa"
+          onVerify={handleCaptchaVerify}
+          ref={captchaRef}
+        />
+      </div>
+      <button
+        className="button button--secondary button--lg"
+        type="submit"
+        disabled={!captchaToken}>
+        Submit
+      </button>
+    </form>
+  );
 }
 
 export default function ContactForm() {
