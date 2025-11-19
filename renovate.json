@@ -4,16 +4,18 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchManagers": ["npm", "github-actions"],
-      "matchDepTypes": ["devDependencies"],
+      "matchManagers": ["github-actions"],
+      "automerge": true
+    },
+    {
+      "matchManagers": ["npm"],
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     },
     {
-      "matchManagers": ["npm", "github-actions"],
+      "matchManagers": ["npm"],
       "matchUpdateTypes": ["patch"],
-      "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
   ],
