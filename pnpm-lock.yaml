@@ -100,7 +100,7 @@ importers:
         version: 1.4.0(react@19.2.5)
       react-parallax-tilt:
         specifier: ^1.7.284
-        version: 1.7.324(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 1.7.326(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       sharp:
         specifier: ^0.34.4
         version: 0.34.5
@@ -5413,8 +5413,8 @@ packages:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
 
-  react-parallax-tilt@1.7.324:
-    resolution: {integrity: sha512-iOmPMoObfRwozzf6Dfpp2k5irtjNhng8jgRX9RZFz40bTeuQT5ZRZW7o0u8vhtRqNvWwlEBkl9++qzoW+p6eFg==}
+  react-parallax-tilt@1.7.326:
+    resolution: {integrity: sha512-RrQp+zuP45QBzMBvznCBbNhN48XZrWMSu79CR3dqaTEKYAO3wz7wZhjn8+ZJXqM+1L+cGIr8h4rsUr4AzXWAQQ==}
     peerDependencies:
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6135,6 +6135,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   value-equal@1.0.1:
@@ -12947,7 +12948,7 @@ snapshots:
       react-loadable: '@docusaurus/react-loadable@6.0.0(react@19.2.5)'
       webpack: 5.102.1(@swc/core@1.13.5)
 
-  react-parallax-tilt@1.7.324(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-parallax-tilt@1.7.326(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
