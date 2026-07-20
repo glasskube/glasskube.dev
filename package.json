@@ -35,7 +35,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.0",
     "@giscus/react": "^3.0.0",
-    "@hcaptcha/react-hcaptcha": "^1.14.0",
+    "@hcaptcha/react-hcaptcha": "^2.0.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
