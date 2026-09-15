@@ -29,7 +29,7 @@ jobs:
         run: pnpm run lint
       - name: Build website
         run: pnpm run build
-      - uses: aws-actions/configure-aws-credentials@cbe3b392738ccf3f987d68400dafcf4b0624a56c # v6
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6
         if: github.ref == 'refs/heads/main'
         with:
           aws-access-key-id: ${{ secrets.WEBSITE_AWS_ACCESS_KEY_ID }}
