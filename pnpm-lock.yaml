@@ -105,8 +105,8 @@ importers:
         specifier: ^0.34.4
         version: 0.34.5
       typewriter-effect:
-        specifier: ^2.21.0
-        version: 2.22.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: ^3.0.0
+        version: 3.3.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
     devDependencies:
       '@docusaurus/module-type-aliases':
         specifier: ^3.9.2
@@ -4979,9 +4979,6 @@ packages:
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
-  performance-now@2.1.0:
-    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -5484,9 +5481,6 @@ packages:
   quick-lru@5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
-
-  raf@3.4.1:
-    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
 
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
@@ -6197,11 +6191,16 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typewriter-effect@2.22.0:
-    resolution: {integrity: sha512-01HCRYY462wT8Fxps/epwGCioZd/GMXY0aLKhFKrfJ5Xhgf54/SiDx7Oq7PoES5kGqOEAdW8FS8HYVM2WSvfhQ==}
+  typewriter-effect@3.3.0:
+    resolution: {integrity: sha512-4pHTt5WroYA92ZhOagEMAVFZwXVFn3qUIWMBAetSIhSCLLvqcDkfL13n3OqtbyiQFlI6iEeo9Ua/YrypU1PjjA==}
+    hasBin: true
     peerDependencies:
+      puppeteer: '>=22.0.0'
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
+    peerDependenciesMeta:
+      puppeteer:
+        optional: true
 
   ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
@@ -12854,8 +12853,6 @@ snapshots:
 
   pathe@2.0.3: {}
 
-  performance-now@2.1.0: {}
-
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -13403,10 +13400,6 @@ snapshots:
   queue-microtask@1.2.3: {}
 
   quick-lru@5.1.1: {}
-
-  raf@3.4.1:
-    dependencies:
-      performance-now: 2.1.0
 
   randombytes@2.1.0:
     dependencies:
@@ -14258,10 +14251,8 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  typewriter-effect@2.22.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  typewriter-effect@3.3.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
-      prop-types: 15.8.1
-      raf: 3.4.1
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
