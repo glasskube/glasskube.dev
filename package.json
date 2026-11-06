@@ -50,7 +50,7 @@
     "react-github-btn": "^1.4.0",
     "react-parallax-tilt": "^1.7.284",
     "sharp": "^0.34.4",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^3.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.9.2",
