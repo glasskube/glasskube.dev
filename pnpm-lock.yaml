@@ -100,7 +100,7 @@ importers:
         version: 1.4.0(react@19.3.1)
       react-parallax-tilt:
         specifier: ^1.7.284
-        version: 1.7.355(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        version: 1.7.361(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       sharp:
         specifier: ^0.34.4
         version: 0.34.5
@@ -5505,8 +5505,8 @@ packages:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
 
-  react-parallax-tilt@1.7.355:
-    resolution: {integrity: sha512-h2G6luy4sJhOBUS6K0apE+zgAXP7GHOeyjCWrQW5ZdDYXVlBWITQDGRvJkbxbjOzsebQX3IyAy7H+3nilVlHJA==}
+  react-parallax-tilt@1.7.361:
+    resolution: {integrity: sha512-fq3W0duU0lVE6Ks8vYjP756f6YcJ04Em03y4UYAEx1XMQKQX5DNeylitOO0ObSZUYrLciFjBalsM/7cNpgydnA==}
     peerDependencies:
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -13546,7 +13546,7 @@ snapshots:
       react-loadable: '@docusaurus/react-loadable@6.0.0(react@19.3.1)'
       webpack: 5.102.1(@swc/core@1.13.5)(postcss@8.5.6)
 
-  react-parallax-tilt@1.7.355(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  react-parallax-tilt@1.7.361(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
